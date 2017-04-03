@@ -58,6 +58,7 @@
   * `manage_categories`, `manage_links`, `manage_comments`,
 
 > __注： 读者与管理员是 P1 优先级，其他角色可以先不实现。__  
+> @see:  https://codex.wordpress.org/Roles_and_Capabilities
 
 #### 2.1.3 游客
 不能进入后台页面。可以查看文章、发表评论。
