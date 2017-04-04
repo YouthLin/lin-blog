@@ -1,6 +1,3 @@
-## 数据库设计
-
-```mysql
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `ID`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
@@ -226,5 +223,3 @@ CREATE TABLE `options` (
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci
   COMMENT '设置表';
-
-```
