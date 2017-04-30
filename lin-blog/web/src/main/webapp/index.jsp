@@ -12,6 +12,8 @@
     <title>Title</title>
 </head>
 <body>
-Index
+Index<br>
+<%=application%><br>
+<%=request.getHeader("X-Real-IP")%>
 </body>
 </html>
