@@ -3,5 +3,38 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.youthlin.blog.dao.UserDao">
+    <resultMap id="userMap" type="com.youthlin.blog.model.User">
+        <id property="userId" column="ID"/>
+        <result property="userLogin" column="user_login"/>
+        <result property="userPass" column="user_pass"/>
+        <result property="userEmail" column="user_email"/>
+        <result property="userUrl" column="user_url"/>
+        <result property="userRegistered" column="user_registered"/>
+        <result property="userStatus" column="user_status"/>
+        <result property="displayName" column="display_name"/>
+    </resultMap>
+
+    <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.User" keyProperty="userId">
+        INSERT INTO users (user_login, user_pass, user_email, user_url, user_registered, user_status, display_name)
+        VALUES (#{userLogin}, #{userPass}, #{userEmail}, #{userUrl}, #{userRegistered}, #{userStatus}, #{displayName})
+    </insert>
+
+    <sql id="all">
+        ID, user_login, user_pass, user_email, user_url, user_registered, user_status, display_name
+    </sql>
+
+    <select id="findByUserName" resultType="com.youthlin.blog.model.User" resultMap="userMap">
+        SELECT
+        <include refid="all"/>
+        FROM users
+        WHERE user_status=0 AND user_login=#{username}
+    </select>
+
+    <select id="findByUserNameAndPassword" resultType="com.youthlin.blog.model.User" resultMap="userMap">
+        SELECT
+        <include refid="all"/>
+        FROM users
+        WHERE user_status=0 AND user_login=#{username} AND user_pass=#{password}
+    </select>
 
 </mapper>
