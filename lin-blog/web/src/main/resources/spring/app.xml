@@ -15,6 +15,9 @@
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="classpath:/config/db.properties"/>
 
+    <import resource="druid.xml"/>
+    <import resource="mybatis.xml"/>
+
     <context:annotation-config/>
     <context:component-scan base-package="com.youthlin.blog">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

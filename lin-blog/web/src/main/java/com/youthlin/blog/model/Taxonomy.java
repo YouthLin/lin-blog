@@ -46,7 +46,7 @@ public class Taxonomy {
                 ", name='" + name + '\'' +
                 ", slug='" + slug + '\'' +
                 ", taxonomy='" + taxonomy + '\'' +
-                ", desciption='" + description + '\'' +
+                ", description='" + description + '\'' +
                 ", parent=" + parent +
                 ", count=" + count +
                 '}';
@@ -115,7 +115,6 @@ public class Taxonomy {
         this.count = count;
         return this;
     }
-
     //endregion
 
 }
