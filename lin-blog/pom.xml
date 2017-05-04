@@ -83,6 +83,11 @@
                 <artifactId>commons-fileupload</artifactId>
                 <version>${commons-fileupload.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.youthlin</groupId>
+                <artifactId>i18n</artifactId>
+                <version>1.0.0</version>
+            </dependency>
             <!-- endregion -->
 
             <!-- region spring web -->

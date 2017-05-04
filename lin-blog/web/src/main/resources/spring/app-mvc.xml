@@ -20,7 +20,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <bean class="com.youthlin.blog.web.interceptor.SessionIdInterceptor"/>
+            <bean class="com.youthlin.blog.web.interceptor.InitInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
