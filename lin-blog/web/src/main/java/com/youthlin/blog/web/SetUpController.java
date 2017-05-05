@@ -5,16 +5,20 @@ import com.youthlin.blog.model.enums.UserStatus;
 import com.youthlin.blog.service.OptionService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
+import com.youthlin.blog.util.MD5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+
+import java.util.UUID;
 
 import static com.youthlin.utils.i18n.Translation.__;
 import static com.youthlin.utils.i18n.Translation._f;
@@ -53,11 +57,20 @@ public class SetUpController {
             model.addAttribute(Constant.MSG, __("Username, password, email are all required."));
             return "redirect:install";
         }
+        if (pass.length() != 32) {
+            model.addAttribute(Constant.MSG, __("It seem that JavaScrip doesn't work, but we need it to generate password."));
+            return "redirect:install";
+        }
         if (!StringUtils.hasText(title)) {
             /*TRANSLATORS: 0: username*/
             title = _f("{0}'s Blog", user);
         }
         LOGGER.info("Setup Blog: title = {}, user = {}, password length = {}", title, user, pass.length());
+        String rand = UUID.randomUUID().toString().substring(0, 8);
+        if (rand.length() != 8) {
+            throw new AssertionError();//won't happen
+        }
+        pass = rand + MD5Util.md5(rand + pass);
         User admin = new User()
                 .setUserLogin(user)
                 .setUserPass(pass)

@@ -22,7 +22,7 @@
             $('#form').submit(function () {
                 <%--
                 md5(username+password) 传输给服务器
-                数据库保存 md5(md5(username+password)+randsalt)+randsalt
+                数据库保存 rand(8位)+md5(rand+md5(user+pass))(32位)=40长度
 
                 为什么要在密码里加点 “盐” https://libuchao.com/2013/07/05/password-salt
                 密码散列安全 http://php.net/manual/zh/faq.passwords.php

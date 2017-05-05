@@ -4,8 +4,8 @@ CREATE TABLE `users` (
   COMMENT '自增主键',
   `user_login`      VARCHAR(32)     NOT NULL DEFAULT ''
   COMMENT '用户名，字母或数字或下划线，字母开头，最多 32 字符',
-  `user_pass`       CHAR(32)        NOT NULL DEFAULT ''
-  COMMENT '密码，MD5 加密后的密码，32 位',
+  `user_pass`       CHAR(40)        NOT NULL DEFAULT ''
+  COMMENT '密码，MD5 加密后的密码，32 位+8 rand. user_pass = rand+md5(rand+md5(user+pass))',
   `user_email`      VARCHAR(64)     NOT NULL DEFAULT ''
   COMMENT '邮件地址，用于显示头像,最多 64 个字符',
   `user_url`        VARCHAR(128)    NOT NULL DEFAULT ''
