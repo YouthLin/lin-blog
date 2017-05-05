@@ -1,6 +1,6 @@
 package com.youthlin.blog.dao;
 
-import com.youthlin.blog.model.User;
+import com.youthlin.blog.model.po.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

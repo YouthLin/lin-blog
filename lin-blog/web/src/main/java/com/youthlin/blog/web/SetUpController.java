@@ -1,7 +1,6 @@
 package com.youthlin.blog.web;
 
-import com.youthlin.blog.model.User;
-import com.youthlin.blog.model.enums.UserStatus;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.OptionService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
@@ -10,7 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

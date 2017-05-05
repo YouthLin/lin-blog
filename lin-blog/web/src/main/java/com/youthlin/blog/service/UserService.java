@@ -1,7 +1,7 @@
 package com.youthlin.blog.service;
 
 import com.youthlin.blog.dao.UserDao;
-import com.youthlin.blog.model.User;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.MD5Util;
 import org.springframework.stereotype.Service;

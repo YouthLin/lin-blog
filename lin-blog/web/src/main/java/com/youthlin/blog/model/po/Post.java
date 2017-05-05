@@ -1,4 +1,4 @@
-package com.youthlin.blog.model;
+package com.youthlin.blog.model.po;
 
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.enums.PostType;

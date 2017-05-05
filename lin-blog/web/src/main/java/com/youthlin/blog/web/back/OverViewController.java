@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class OverViewController {
     @RequestMapping("/")
-    public String overivew() {
+    public String overview() {
         return "admin/index";
     }
 }

@@ -1,6 +1,6 @@
 package com.youthlin.blog.dao;
 
-import com.youthlin.blog.model.Option;
+import com.youthlin.blog.model.po.Option;
 import org.springframework.stereotype.Repository;
 
 /**

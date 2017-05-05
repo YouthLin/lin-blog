@@ -1,12 +1,12 @@
-package com.youthlin.blog.model;
+package com.youthlin.blog.model.po;
 
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:00.
  */
 class BaseMeta {
-    protected Long metaId;
-    protected String metaKey;
-    protected String metaValue;
+    Long metaId;
+    String metaKey;
+    String metaValue;
 
     @Override
     public String toString() {

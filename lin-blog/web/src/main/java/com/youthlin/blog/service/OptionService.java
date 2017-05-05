@@ -1,7 +1,7 @@
 package com.youthlin.blog.service;
 
 import com.youthlin.blog.dao.OptionDao;
-import com.youthlin.blog.model.Option;
+import com.youthlin.blog.model.po.Option;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.youthlin.blog.model;
+package com.youthlin.blog.model.po;
 
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 20:34.

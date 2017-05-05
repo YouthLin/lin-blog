@@ -1,6 +1,6 @@
 package com.youthlin.blog.dao;
 
-import com.youthlin.blog.model.Option;
+import com.youthlin.blog.model.po.Option;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,8 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-
-import static org.junit.Assert.*;
 
 /**
  * 创建： lin

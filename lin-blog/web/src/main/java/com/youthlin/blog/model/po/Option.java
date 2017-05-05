@@ -1,10 +1,4 @@
-package com.youthlin.blog.model;
-
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import com.google.common.collect.Maps;
-
-import java.util.Map;
+package com.youthlin.blog.model.po;
 
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:33.
