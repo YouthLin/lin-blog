@@ -13,4 +13,8 @@ public class Constant {
 
     // model
     public static final String MSG = "msg";
+    public static final String ERROR = "error";
+    public static final int RAND_LEN = 8;
+    public static final int MD5_LEN = 32;
+    public static final int PASS_LEN = RAND_LEN + MD5_LEN;
 }

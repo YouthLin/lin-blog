@@ -11,27 +11,8 @@
 <html>
 <head>
     <%@ include file="common/login/head.jsp" %>
-    <script src="<c:url value="/static/js/jquery.md5.min.js"/>"></script>
     <title><%=__("Install")%>
     </title>
-    <script>
-        $(document).ready(function () {
-            var user = $('#user');
-            var plain = $('#plain');
-            var pass = $('#pass');
-            $('#form').submit(function () {
-                <%--
-                md5(username+password) 传输给服务器
-                数据库保存 rand(8位)+md5(rand+md5(user+pass))(32位)=40长度
-
-                为什么要在密码里加点 “盐” https://libuchao.com/2013/07/05/password-salt
-                密码散列安全 http://php.net/manual/zh/faq.passwords.php
-                如何保证用户登录时提交密码已经加密？https://www.zhihu.com/question/20060155
-                --%>
-                pass.val($.md5(user.val() + plain.val()));
-            });
-        });
-    </script>
 </head>
 <body>
 <div id="wrap">
@@ -54,7 +35,7 @@
             <c:if test="${not empty msg}">
                 <p class="error">${msg}</p>
             </c:if>
-            <form class="form-horizontal" action="<c:url value="/install.do"/>" method="post" id="form">
+            <form class="form-horizontal" action="<c:url value="/install.do"/>" method="post" id="login-form">
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label"><%=__("Site Title")%>
                     </label>

@@ -40,23 +40,24 @@
                 <img src="<c:url value="/static/img/logo.png"/>" alt="Logo" width="84" height="84">
             </a>
         </h1>
-        <c:if test="${not empty msg}">
-            <div class="message">${msg}</div>
-        </c:if>
-        <c:if test="${not empty error}">
-            <div class="error">${error}</div>
-        </c:if>
         <div class="panel blog-panel login-panel">
-            <form id="login-form" action="" method="post">
+            <c:if test="${not empty msg}">
+                <div class="message">${msg}</div>
+            </c:if>
+            <c:if test="${not empty error}">
+                <div class="error">${error}</div>
+            </c:if>
+            <form id="login-form" action="<c:url value="/login.do"/> " method="post">
                 <div class="form-group">
-                    <label for="user_login"><%=__("Username or Email Address")%>
+                    <label for="user"><%=__("Username or Email Address")%>
                     </label>
-                    <input type="text" class="form-control" id="user_login" name="login" required>
+                    <input type="text" class="form-control" id="user" name="user" required>
                 </div>
                 <div class="form-group">
-                    <label for="user_pass"><%=__("Password")%>
+                    <label for="plain"><%=__("Password")%>
                     </label>
-                    <input type="password" class="form-control" id="user_pass" name="pass" required>
+                    <input type="password" class="form-control" id="plain" required>
+                    <input type="hidden" id="pass" name="pass">
                 </div>
                 <div class="checkbox pull-left">
                     <label>
@@ -65,7 +66,7 @@
                     </label>
                 </div>
                 <div class="submit pull-right">
-                    <button class="btn btn-primary"><%=__("Log In")%>
+                    <button type="submit" class="btn btn-primary"><%=__("Log In")%>
                     </button>
                 </div>
             </form>

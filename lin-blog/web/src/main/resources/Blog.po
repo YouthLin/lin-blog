@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-05 12:47+0800\n"
-"PO-Revision-Date: 2017-05-05 12:47+0800\n"
+"POT-Creation-Date: 2017-05-05 15:46+0800\n"
+"PO-Revision-Date: 2017-05-05 15:47+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -17,62 +17,62 @@ msgstr ""
 "X-Poedit-SearchPath-0: java/com/youthlin/blog\n"
 "X-Poedit-SearchPath-1: webapp/WEB-INF/pages\n"
 
-#: webapp/WEB-INF/pages/install.jsp:15
+#: webapp/WEB-INF/pages/install.jsp:14
 msgid "Install"
 msgstr "安装"
 
-#: webapp/WEB-INF/pages/install.jsp:45
+#: webapp/WEB-INF/pages/install.jsp:26
 msgid "Welcome"
 msgstr "欢迎"
 
-#: webapp/WEB-INF/pages/install.jsp:47
+#: webapp/WEB-INF/pages/install.jsp:28
 msgid ""
 "Welcome to the installation process! Just fill in the information below and "
 "you'll be on your way to using this blog."
 msgstr "欢迎来到安装向导！只需填写以下信息即可立即开始使用您的博客。"
 
-#: webapp/WEB-INF/pages/install.jsp:49
+#: webapp/WEB-INF/pages/install.jsp:30
 msgid "Information needed"
 msgstr "需要以下信息"
 
-#: webapp/WEB-INF/pages/install.jsp:51
+#: webapp/WEB-INF/pages/install.jsp:32
 msgid ""
 "Please provide the following information. Don't worry, you can always change "
 "these settings later."
 msgstr "请提供以下信息。别担心会填错，安装完成后可以随时修改。"
 
-#: webapp/WEB-INF/pages/install.jsp:59
+#: webapp/WEB-INF/pages/install.jsp:40
 msgid "Site Title"
 msgstr "博客标题"
 
-#: webapp/WEB-INF/pages/install.jsp:66
+#: webapp/WEB-INF/pages/install.jsp:47
 msgid "Username"
 msgstr "用户名"
 
-#: webapp/WEB-INF/pages/install.jsp:70
+#: webapp/WEB-INF/pages/install.jsp:51
 msgid ""
 "Username can have only alphanumeric characters, and can't changed later."
 msgstr "用户名只能包含字母或数字，一旦确定将不可修改。"
 
-#: webapp/WEB-INF/pages/install.jsp:74 webapp/WEB-INF/pages/login.jsp:57
+#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:57
 msgid "Password"
 msgstr "密码"
 
-#: webapp/WEB-INF/pages/install.jsp:79
+#: webapp/WEB-INF/pages/install.jsp:60
 msgid ""
 "<strong>Important:</strong>You will need this password to log in. Please "
 "store it in a secure location."
 msgstr "<strong>重要：</strong>您将使用这个密码登录，请牢记您的密码。"
 
-#: webapp/WEB-INF/pages/install.jsp:83
+#: webapp/WEB-INF/pages/install.jsp:64
 msgid "Your Email"
 msgstr "电子邮件"
 
-#: webapp/WEB-INF/pages/install.jsp:87
+#: webapp/WEB-INF/pages/install.jsp:68
 msgid "Double-check your email address before continuing."
 msgstr "继续下一步之前请再三确认您的邮件地址。"
 
-#: webapp/WEB-INF/pages/install.jsp:92
+#: webapp/WEB-INF/pages/install.jsp:73
 msgid "Next"
 msgstr "下一步"
 
@@ -86,7 +86,7 @@ msgid ""
 "database tables first and then restart the web container."
 msgstr "您似乎已经安装过。若要重新安装，请删除数据库表，并重启 Web 容器。"
 
-#: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/login.jsp:68
+#: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/login.jsp:69
 msgid "Log In"
 msgstr "登录"
 
@@ -98,26 +98,39 @@ msgstr "登录"
 msgid "Username or Email Address"
 msgstr "用户名或电子邮件"
 
-#: webapp/WEB-INF/pages/login.jsp:64
+#: webapp/WEB-INF/pages/login.jsp:65
 msgid "Remember Me"
 msgstr "记住我"
 
-#: webapp/WEB-INF/pages/login.jsp:73
+#: webapp/WEB-INF/pages/login.jsp:74
 msgid "Lost your password?"
 msgstr "忘记密码？"
 
 #. TRANSLATORS: 0. site name.
-#: webapp/WEB-INF/pages/login.jsp:75
+#: webapp/WEB-INF/pages/login.jsp:76
 #, java-format
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: java/com/youthlin/blog/web/SetUpController.java:53
+#: java/com/youthlin/blog/web/LoginController.java:40
+msgid "Username, password are all required."
+msgstr "用户名、密码均为必填项。"
+
+#: java/com/youthlin/blog/web/LoginController.java:44
+msgid "Username or password is incorrect."
+msgstr "用户名或密码错误"
+
+#: java/com/youthlin/blog/web/SetUpController.java:57
 msgid "Username, password, email are all required."
 msgstr "用户名、密码、电子邮件均为必填项。"
 
+#: java/com/youthlin/blog/web/SetUpController.java:61
+msgid ""
+"It seem that JavaScript doesn't work, but we need it to generate password."
+msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
+
 #. TRANSLATORS: 0: username
-#: java/com/youthlin/blog/web/SetUpController.java:58
+#: java/com/youthlin/blog/web/SetUpController.java:66
 #, java-format
 msgid "{0}'s Blog"
 msgstr "{0} 的博客"

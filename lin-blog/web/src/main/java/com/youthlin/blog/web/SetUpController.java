@@ -57,8 +57,8 @@ public class SetUpController {
             model.addAttribute(Constant.MSG, __("Username, password, email are all required."));
             return "redirect:install";
         }
-        if (pass.length() != 32) {
-            model.addAttribute(Constant.MSG, __("It seem that JavaScrip doesn't work, but we need it to generate password."));
+        if (pass.length() != Constant.MD5_LEN) {
+            model.addAttribute(Constant.MSG, __("It seem that JavaScript doesn't work, but we need it to generate password."));
             return "redirect:install";
         }
         if (!StringUtils.hasText(title)) {

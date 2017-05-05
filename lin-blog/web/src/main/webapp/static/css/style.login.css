@@ -54,7 +54,7 @@ body {
     border-left: 4px solid #00a0d2;
     padding: 12px;
     margin-left: 0;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, .5);
     -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
 }
@@ -63,7 +63,11 @@ body {
     border-left: 4px solid #dc3232;
     padding: 12px;
     margin-left: 0;
-    background-color: #fbeaea;
+    background-color: rgba(251, 234, 234, 0.5);
     -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, .5);
 }

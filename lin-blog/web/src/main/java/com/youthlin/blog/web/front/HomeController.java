@@ -18,4 +18,9 @@ public class HomeController {
         LOGGER.debug("Hello.");
         return "hello";
     }
+
+    @RequestMapping(path = {"/"})
+    public String home() {
+        return "index";
+    }
 }
