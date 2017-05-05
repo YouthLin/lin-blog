@@ -1,5 +1,6 @@
 package com.youthlin.blog.util;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -20,6 +21,8 @@ public final class JsonUtil {
 
     static {
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);//没有字段的类：如内部Mapper
+        // 使用 "@class" 保存数据的类信息
+        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
     }
 
     private JsonUtil() {

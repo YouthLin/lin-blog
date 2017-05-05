@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 import static com.youthlin.utils.i18n.Translation.__;
@@ -33,14 +35,14 @@ public class LoginController {
     }
 
     @RequestMapping(path = {"login.do"}, method = {RequestMethod.POST})
-    public String login(@RequestParam Map<String, String> param, Model model) {
+    public String login(@RequestParam Map<String, String> param, Model model, HttpServletRequest request, HttpServletResponse response) {
         String user = param.get("user");
         String pass = param.get("pass");
         if (!StringUtils.hasText(user) || !StringUtils.hasText(pass) || pass.length() != Constant.MD5_LEN) {
             model.addAttribute(Constant.MSG, __("Username, password are all required."));
             return "redirect:login";
         }
-        if (!userService.login(user, pass)) {
+        if (!userService.login(user, pass, request, response)) {
             model.addAttribute(Constant.ERROR, __("Username or password is incorrect."));
             return "redirect:login";
         }

@@ -1,26 +1,30 @@
 package com.youthlin.blog.model.bo;
 
+import java.util.Date;
+
 /**
  * 用户 Cookie
  * <p>
  * 创建： lin
  * 时间： 2017-05-05 16:30
  */
-public class UserCookie {
+public class LoginInfo {
     private int id;
     private String userName;
     private String userAgent;
     private String userIp;
     private String token;
+    private Date expire;
 
     @Override
     public String toString() {
-        return "UserCookie{" +
+        return "LoginInfo{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", userAgent='" + userAgent + '\'' +
                 ", userIp='" + userIp + '\'' +
                 ", token='" + token + '\'' +
+                ", expire=" + expire +
                 '}';
     }
 
@@ -28,7 +32,7 @@ public class UserCookie {
         return id;
     }
 
-    public UserCookie setId(int id) {
+    public LoginInfo setId(int id) {
         this.id = id;
         return this;
     }
@@ -37,7 +41,7 @@ public class UserCookie {
         return userName;
     }
 
-    public UserCookie setUserName(String userName) {
+    public LoginInfo setUserName(String userName) {
         this.userName = userName;
         return this;
     }
@@ -46,7 +50,7 @@ public class UserCookie {
         return userAgent;
     }
 
-    public UserCookie setUserAgent(String userAgent) {
+    public LoginInfo setUserAgent(String userAgent) {
         this.userAgent = userAgent;
         return this;
     }
@@ -55,7 +59,7 @@ public class UserCookie {
         return userIp;
     }
 
-    public UserCookie setUserIp(String userIp) {
+    public LoginInfo setUserIp(String userIp) {
         this.userIp = userIp;
         return this;
     }
@@ -64,8 +68,17 @@ public class UserCookie {
         return token;
     }
 
-    public UserCookie setToken(String token) {
+    public LoginInfo setToken(String token) {
         this.token = token;
+        return this;
+    }
+
+    public Date getExpire() {
+        return expire;
+    }
+
+    public LoginInfo setExpire(Date expire) {
+        this.expire = expire;
         return this;
     }
 }

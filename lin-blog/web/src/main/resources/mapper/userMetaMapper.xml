@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youthlin.blog.dao.UserMetaDao">
+    <resultMap id="userMetaMap" type="com.youthlin.blog.model.po.UserMeta">
+        <id property="metaId" column="meta_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="metaKey" column="meta_key"/>
+        <result property="metaValue" column="meta_value"/>
+    </resultMap>
+    <sql id="all">
+        meta_id, user_id, meta_key, meta_value
+    </sql>
+    <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.po.UserMeta" keyProperty="metaId">
+        INSERT INTO user_meta (user_id, meta_key, meta_value)
+        VALUES (#{userId}, #{metaKey}, #{metaValue})
+    </insert>
+
+    <update id="updateValue">
+        UPDATE user_meta
+        SET meta_value = #{metaValue}
+        WHERE meta_id = #{metaId};
+    </update>
+
+    <select id="findByUserIdAndMetaKey" resultMap="userMetaMap">
+        SELECT
+        <include refid="all"/>
+        FROM user_meta
+        WHERE user_id=#{userId} AND meta_key=#{metaKey}
+    </select>
+
+</mapper>

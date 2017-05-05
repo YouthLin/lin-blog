@@ -39,7 +39,6 @@ CREATE TABLE `user_meta` (
   KEY `meta_key` (`meta_key`(191))
 )
   ENGINE = InnoDB
-  AUTO_INCREMENT = 18
   DEFAULT CHARSET = utf8mb4
   COLLATE = utf8mb4_unicode_ci
   COMMENT '用户元数据';
