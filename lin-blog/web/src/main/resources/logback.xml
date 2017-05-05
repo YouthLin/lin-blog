@@ -21,7 +21,7 @@
 
     <logger name="org" level="INFO"/>
 
-    <root level="${log.level:-info}">
+    <root level="${log.level:-debug}">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
     </root>

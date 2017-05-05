@@ -1,5 +1,7 @@
 package com.youthlin.blog.model;
 
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import com.google.common.collect.Maps;
 
 import java.util.Map;
@@ -23,7 +25,6 @@ import java.util.Map;
  * COMMENT '设置表';</pre>
  */
 public class Option {
-    public static final Map<String, String> options = Maps.newConcurrentMap();
     private Long optionId;
     private String optionName;
     private String optionValue;

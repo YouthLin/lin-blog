@@ -8,7 +8,8 @@ package com.youthlin.blog.util;
  */
 public class Constant {
     // options
-    public static final String INSTALLED = "installed";
+    public static final String O_INSTALLED = "installed";
+    public static final String O_BLOG_TITLE = "blog_title";
 
     // model
     public static final String MSG = "msg";

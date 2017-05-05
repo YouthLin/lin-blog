@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youthlin.blog.dao.OptionDao">
+    <resultMap id="optionMap" type="com.youthlin.blog.model.Option">
+        <id property="optionId" column="option_id"/>
+        <result property="optionName" column="option_name"/>
+        <result property="optionValue" column="option_value"/>
+    </resultMap>
+
+    <sql id="all">
+        option_id, option_name, option_value
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.Option" keyProperty="optionId">
+        INSERT INTO options (option_name, option_value)
+        VALUES (#{optionName}, #{optionValue})
+    </insert>
+
+    <select id="findByName" resultMap="optionMap">
+        SELECT
+        <include refid="all"/>
+        FROM options
+        WHERE option_name=#{optionName}
+    </select>
+
+</mapper>

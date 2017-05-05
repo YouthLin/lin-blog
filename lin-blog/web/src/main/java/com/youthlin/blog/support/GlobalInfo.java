@@ -11,5 +11,5 @@ public interface GlobalInfo<K, V> {
 
     V get(K key);
 
-    V get(K key, Callable<V> callable);
+    V get(K key, Callable<V> valueLoader);
 }

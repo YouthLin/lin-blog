@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-05 10:47+0800\n"
-"PO-Revision-Date: 2017-05-05 10:52+0800\n"
+"POT-Creation-Date: 2017-05-05 12:47+0800\n"
+"PO-Revision-Date: 2017-05-05 12:47+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -112,9 +112,15 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: java/com/youthlin/blog/web/SetUpController.java:36
-msgid "Username and Password are required."
-msgstr "用户名、密码均为必填项。"
+#: java/com/youthlin/blog/web/SetUpController.java:53
+msgid "Username, password, email are all required."
+msgstr "用户名、密码、电子邮件均为必填项。"
+
+#. TRANSLATORS: 0: username
+#: java/com/youthlin/blog/web/SetUpController.java:58
+#, java-format
+msgid "{0}'s Blog"
+msgstr "{0} 的博客"
 
 #~ msgid "Hello"
 #~ msgstr "你好"
