@@ -14,6 +14,7 @@ public class Constant {
     // user meta
     public static final String K_LOGIN_INFO = "login_info";
     public static final String K_NEXT_LOGIN_ID = "next_login_id";
+    public static final String K_ROLE = "role";
 
     // options
     public static final String O_INSTALLED = "installed";

@@ -1,6 +1,8 @@
 package com.youthlin.blog.web;
 
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
+import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.service.OptionService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
@@ -75,6 +77,11 @@ public class SetUpController {
                 .setUserEmail(email)
                 .setDisplayName(user);
         userService.save(admin);
+        UserMeta roleInfo = new UserMeta();
+        roleInfo.setUserId(admin.getUserId())
+                .setMetaKey(Constant.K_ROLE)
+                .setMetaValue(Role.Administrator.name());
+        userService.saveMeta(roleInfo);
         optionService.install(title);
         return "redirect:login";
     }

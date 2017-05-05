@@ -37,8 +37,21 @@ public class UserService {
     @Resource
     private UserMetaDao userMetaDao;
 
-    public void save(User user) {
+    public User save(User user) {
         userDao.save(user);
+        return user;
+    }
+
+    public void saveMeta(UserMeta userMeta) {
+        userMetaDao.save(userMeta);
+    }
+
+    public String queryMetaValue(Long userId, String metaName) {
+        UserMeta meta = userMetaDao.findByUserIdAndMetaKey(userId, metaName);
+        if (meta != null) {
+            return meta.getMetaValue();
+        }
+        return null;
     }
 
     public boolean login(String username, String md5ByUserNameAndPassword,
