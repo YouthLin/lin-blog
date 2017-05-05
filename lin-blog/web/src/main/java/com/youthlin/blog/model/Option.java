@@ -1,5 +1,9 @@
 package com.youthlin.blog.model;
 
+import com.google.common.collect.Maps;
+
+import java.util.Map;
+
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:33.
  * <pre>DROP TABLE IF EXISTS `options`;
@@ -19,6 +23,7 @@ package com.youthlin.blog.model;
  * COMMENT '设置表';</pre>
  */
 public class Option {
+    public static final Map<String, String> options = Maps.newConcurrentMap();
     private Long optionId;
     private String optionName;
     private String optionValue;
