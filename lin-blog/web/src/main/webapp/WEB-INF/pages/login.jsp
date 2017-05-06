@@ -49,7 +49,7 @@
             </c:if>
             <form id="login-form" action="<c:url value="/login.do"/> " method="post">
                 <div class="form-group">
-                    <label for="user"><%=__("Username or Email Address")%>
+                    <label for="user"><%=__("Username")%>
                     </label>
                     <input type="text" class="form-control" id="user" name="user" required>
                 </div>

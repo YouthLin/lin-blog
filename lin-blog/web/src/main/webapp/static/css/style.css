@@ -45,26 +45,12 @@ a {
 }
 
 ul {
+    margin: 0;
     padding: 0;
 }
 
 li {
     list-style: none;
-}
-
-/* endregion */
-
-/* region color */
-.bg {
-    background: #222;
-}
-
-.bd {
-    border-bottom: 1px solid #080808;
-}
-
-.active {
-    color: #fff;
 }
 
 /* endregion */
@@ -130,16 +116,6 @@ body.nav-fixed {
     overflow-y: auto;
 }
 
-.panel-menu {
-    background: transparent;
-    margin: 0;
-    padding: 0;
-}
-
-.parent.active {
-    background: #48c;
-}
-
 #menu a {
     display: inline-block;
     width: 100%;
@@ -148,11 +124,28 @@ body.nav-fixed {
     padding: 0 20px;
 }
 
-.panel-menu a:hover {
+#menu a:hover {
     background: #9d9d9d;
 }
 
-a.parent.active:after {
+a.parent {
+    font-weight: bolder;
+    background: #333;
+}
+
+/* 子菜单 */
+.panel-menu {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.panel-menu a.active {
+    background: #48c;
+}
+
+.panel-menu a.active:after {
     border: 10px solid transparent;
     margin-top: 10px;
     right: 0;
@@ -162,6 +155,21 @@ a.parent.active:after {
     position: absolute;
     pointer-events: none;
     border-right-color: #f1f1f1;
+}
+
+/* endregion */
+
+/* region color */
+.bg {
+    background: #222;
+}
+
+.bd {
+    border-bottom: 1px solid #080808;
+}
+
+.active {
+    color: #fff;
 }
 
 /* endregion */

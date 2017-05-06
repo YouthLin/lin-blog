@@ -27,6 +27,7 @@ public class OptionService {
             Option option = optionDao.findByName(Constant.O_BLOG_TITLE);
             LOGGER.info("Global Info 无结果，查询数据库：{}", option);
             if (option != null) {
+                globalInfo.set(Constant.O_BLOG_TITLE, option.getOptionValue());
                 return option.getOptionValue();
             }
             return null;

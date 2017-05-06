@@ -1,5 +1,4 @@
 <%@ page import="static com.youthlin.utils.i18n.Translation._f" %>
-<%@ page import="static com.youthlin.utils.i18n.Translation._x" %>
 <%@ page import="com.youthlin.blog.util.Constant" %>
 <%@ page import="com.youthlin.blog.util.Gravatar" %>
 <%--@elvariable id="title" type="java.lang.String"--%>
@@ -31,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">${blog_title}</a>
+                <a class="navbar-brand" href="<c:url value="/"/>">${blog_title}</a>
                 <div class="pull-right nav-user">
                     <a href="#user-menu" aria-expanded="false" aria-controls="user-menu" data-toggle="collapse">
                         <%=/*TRANSLATORS: 0 username*/_f("Hi, {0}", request.getAttribute(Constant.NAME))%>
@@ -54,8 +53,10 @@
     </header>
     <aside class="collapse in navbar-collapse" id="sidebar">
         <div id="menu" class="col-xs-4 col-sm-3 col-md-2 bg">
-            <div class="panel panel-menu bd ">
-                <ul>
+           <a href="#overview" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-overview"
+              aria-expanded="false" aria-controls="post"><%=__("DashBoard")%></a>
+            <div class="panel panel-menu bd">
+                <ul id="overview" class="collapse">
                     <li><a class="menu-item-a menu-item-overview" href="<c:url value="/admin/"/>">
                             <%=__("Overview")%>
                     </a></li>
@@ -66,10 +67,18 @@
                aria-expanded="false" aria-controls="post"><%=__("Post")%></a>
             <div class="panel panel-menu bd ">
                 <ul id="post" class="collapse">
-                    <li><a class="menu-item-a menu-item-all-post" href="#"><%=__("All Post")%></a></li>
-                    <li><a class="menu-item-a menu-item-new-post" href=" #"><%=__("New Post")%></a></li>
-                    <li><a class="menu-item-a menu-item-category" href="#"><%=__("Categories")%></a></li>
-                    <li><a class="menu-item-a menu-item-tag" href="#"><%=__("Tag")%></a></li>
+                    <li><a class="menu-item-a menu-item-all-post" href="<c:url value="/admin/post/all"/>">
+                        <%=__("All Post")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-new-post" href="<c:url value="/admin/post/new"/>">
+                        <%=__("New Post")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-category" href="<c:url value="/admin/post/category"/>">
+                        <%=__("Categories")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-tag" href="<c:url value="/admin/post/tag"/>">
+                        <%=__("Tag")%>
+                    </a></li>
                 </ul>
             </div>
 
@@ -77,14 +86,22 @@
                aria-expanded="false" aria-controls="page"><%=__("Page")%></a>
             <div class="panel panel-menu bd ">
                 <ul id="page" class="collapse">
-                    <li><a class="menu-item-a menu-item-all-page" href="#"><%=__("All Page")%></a></li>
-                    <li><a class="menu-item-a menu-item-new-page" href="#"><%=__("New Page")%></a></li>
+                    <li><a class="menu-item-a menu-item-all-page" href="<c:url value="/admin/page/all"/>">
+                        <%=__("All Page")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-new-page" href="<c:url value="/admin/page/new"/>">
+                        <%=__("Write New Page")%>
+                    </a></li>
                 </ul>
             </div>
 
+            <a href="#comment" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-comment"
+               aria-expanded="false" aria-controls="post"><%=__("Comments")%></a>
             <div class="panel panel-menu bd ">
-                <ul>
-                    <li><a class="menu-item-a menu-item-comment" href="#"><%=__("Comments")%></a></li>
+                <ul id="comment" class="collapse">
+                    <li><a class="menu-item-a menu-item-comment" href="<c:url value="/admin/comment/all"/>">
+                        <%=__("All Comments")%>
+                    </a></li>
                 </ul>
             </div>
 
@@ -92,12 +109,16 @@
                aria-expanded="false" aria-controls="settings"><%=__("Settings")%></a>
             <div class="panel panel-menu bd ">
                 <ul id="settings" class="collapse">
-                    <li><a class="menu-item-a menu-item-settings-general" href="#">
-                        <%=_x("General", "Settings")%>
-                    </a></li>
-                    <li><a class="menu-item-a menu-item-settings-post" href="#"><%=_x("Post", "Settings")%></a></li>
-                    <li><a class="menu-item-a menu-item-settings-comment" href="#"><%=_x("Comment", "Settings")%></a>
+                    <li>
+                        <a class="menu-item-a menu-item-settings-general"
+                           href="<c:url value="/admin/settings/general"/>"><%=__("General Settings")%></a>
                     </li>
+                    <li><a class="menu-item-a menu-item-settings-post" href="<c:url value="/admin/settings/post"/>">
+                        <%=__("Post Settings")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-settings-comment"
+                           href="<c:url value="/admin/settings/comment"/>"><%=__("Comment Settings")%>
+                    </a></li>
                 </ul>
             </div>
 
