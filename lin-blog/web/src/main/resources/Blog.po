@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-05 15:46+0800\n"
-"PO-Revision-Date: 2017-05-05 15:47+0800\n"
+"POT-Creation-Date: 2017-05-06 19:20+0800\n"
+"PO-Revision-Date: 2017-05-06 19:21+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -16,6 +16,85 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_f;_x:2c,1;_fx:2c,1;_n:1,2;_nx:3c,1,2\n"
 "X-Poedit-SearchPath-0: java/com/youthlin/blog\n"
 "X-Poedit-SearchPath-1: webapp/WEB-INF/pages\n"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:11
+#: webapp/WEB-INF/pages/common/admin/header.jsp:59
+#: java/com/youthlin/blog/web/back/OverViewController.java:17
+msgid "Overview"
+msgstr "概览"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:29
+msgid "Toggle Navigation"
+msgstr "展开/折叠侧栏菜单"
+
+#. TRANSLATORS: 0 username
+#: webapp/WEB-INF/pages/common/admin/header.jsp:37
+#, java-format
+msgid "Hi, {0}"
+msgstr "嗨，{0}"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:49
+msgid "Profile"
+msgstr "个人资料"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:50
+msgid "Log out"
+msgstr "退出"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:64
+msgid "Post"
+msgstr "文章"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:67
+msgid "All Post"
+msgstr "所有文章"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:68
+msgid "New Post"
+msgstr "写文章"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:69
+msgid "Categories"
+msgstr "分类目录"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:70
+msgid "Tag"
+msgstr "标签"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:75
+msgid "Page"
+msgstr "页面"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:78
+msgid "All Page"
+msgstr "所有页面"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:79
+msgid "New Page"
+msgstr "新页面"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:85
+msgid "Comments"
+msgstr "评论"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:90
+msgid "Settings"
+msgstr "设置"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:93
+msgctxt "Settings"
+msgid "General"
+msgstr "常规"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:94
+msgctxt "Settings"
+msgid "Post"
+msgstr "文章"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:95
+msgctxt "Settings"
+msgid "Comment"
+msgstr "评论"
 
 #: webapp/WEB-INF/pages/install.jsp:14
 msgid "Install"
@@ -112,11 +191,11 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: java/com/youthlin/blog/web/LoginController.java:40
+#: java/com/youthlin/blog/web/LoginController.java:42
 msgid "Username, password are all required."
 msgstr "用户名、密码均为必填项。"
 
-#: java/com/youthlin/blog/web/LoginController.java:44
+#: java/com/youthlin/blog/web/LoginController.java:48
 msgid "Username or password is incorrect."
 msgstr "用户名或密码错误"
 
@@ -131,8 +210,9 @@ msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 
 #. TRANSLATORS: 0: username
 #: java/com/youthlin/blog/web/SetUpController.java:66
+#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:41
 #, java-format
-msgid "{0}'s Blog"
+msgid "{0}&#39;s Blog"
 msgstr "{0} 的博客"
 
 #~ msgid "Hello"

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="static com.youthlin.utils.i18n.Translation.__" %><%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-5
@@ -7,15 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
-</head>
-<body>
+<%@ include file="/WEB-INF/pages/common/admin/header.jsp" %>
+<script>$(document).ready(function () {
+    $(".menu-item-overview").addClass("active");
+});</script>
+<h1><%=__("Overview")%>
+</h1>
 
-</body>
-</html>
+<%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>
+

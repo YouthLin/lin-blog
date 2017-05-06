@@ -23,7 +23,7 @@ public class CheckInstallInterceptor extends HandlerInterceptorAdapter {
 
     private boolean checkInstall(HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (!optionService.installed()) {
-            response.sendRedirect(request.getContextPath() + "install");
+            response.sendRedirect(request.getContextPath() + "/install");
             return false;
         }
         return true;

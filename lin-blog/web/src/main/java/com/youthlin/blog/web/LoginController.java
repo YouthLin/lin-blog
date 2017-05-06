@@ -42,11 +42,10 @@ public class LoginController {
             model.addAttribute(Constant.MSG, __("Username, password are all required."));
             return "redirect:login";
         }
-        if (!userService.login(user, pass, request, response)) {
-            model.addAttribute(Constant.ERROR, __("Username or password is incorrect."));
-            return "redirect:login";
+        if (userService.login(user, pass, request, response)) {
+            return "redirect:admin/";
         }
-
-        return "redirect:admin/";
+        model.addAttribute(Constant.ERROR, __("Username or password is incorrect."));
+        return "redirect:login";
     }
 }

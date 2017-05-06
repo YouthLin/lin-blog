@@ -1,5 +1,6 @@
 package com.youthlin.blog.web.interceptor;
 
+import com.youthlin.blog.util.ServletUtil;
 import com.youthlin.utils.i18n.Translation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ public class InitInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         MDC.put("sessionId", UUID.randomUUID().toString());
+        LOGGER.debug("{} {} {}", request.getMethod(), ServletUtil.getUrl(request), ServletUtil.getRemoteIP(request));
         return true;
     }
 }

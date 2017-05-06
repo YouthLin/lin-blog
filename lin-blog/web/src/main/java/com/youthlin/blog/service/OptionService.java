@@ -23,8 +23,8 @@ public class OptionService {
     private GlobalInfo<String, String> globalInfo;
 
     public boolean installed() {
-        String installed = globalInfo.get(Constant.O_INSTALLED, () -> {
-            Option option = optionDao.findByName(Constant.O_INSTALLED);
+        String installed = globalInfo.get(Constant.O_BLOG_TITLE, () -> {
+            Option option = optionDao.findByName(Constant.O_BLOG_TITLE);
             LOGGER.info("Global Info 无结果，查询数据库：{}", option);
             if (option != null) {
                 return option.getOptionValue();
@@ -39,6 +39,6 @@ public class OptionService {
                 .setOptionName(Constant.O_BLOG_TITLE)
                 .setOptionValue(blogTitle);
         optionDao.save(option);
-        globalInfo.set(Constant.O_INSTALLED, blogTitle);
+        globalInfo.set(Constant.O_BLOG_TITLE, blogTitle);
     }
 }

@@ -1,0 +1,167 @@
+/* region 整体框架 */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #f1f1f1;
+}
+
+/*noinspection CssOverwrittenProperties*/
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -70px;
+}
+
+.clear {
+    clear: both;
+}
+
+#end {
+    clear: both;
+    height: 70px;
+}
+
+#copyright {
+    height: 70px;
+    overflow: hidden;
+    padding: 10px 0;
+    text-align: center;
+    color: #c7c7c7;
+    background-color: rgba(255, 255, 255, .2);
+}
+
+#copyright p:last-child {
+    margin-bottom: 0;
+}
+
+/* endregion */
+
+/* region reset */
+a {
+    text-decoration: none !important;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* endregion */
+
+/* region color */
+.bg {
+    background: #222;
+}
+
+.bd {
+    border-bottom: 1px solid #080808;
+}
+
+.active {
+    color: #fff;
+}
+
+/* endregion */
+
+/* region 导航条 */
+body.nav-fixed {
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+.navbar-header {
+    width: 100%;
+}
+
+.nav-user {
+    height: 50px;
+    line-height: 50px;
+}
+
+.nav-user a {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.nav-user img {
+    margin: 0 5px;
+}
+
+/* endregion*/
+
+/*region 用户资料*/
+#user-menu {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    padding: 20px 0 20px 40px;
+}
+
+#user-menu a {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    display: inline-block;
+}
+
+#user-menu a:hover {
+    color: #fff;
+}
+
+/*endregion*/
+
+/* region sidebar*/
+#sidebar {
+    padding: 0;
+}
+
+#menu {
+    position: fixed;
+    height: 100% !important;
+    top: 0;
+    padding: 50px 0 0 0;
+    overflow-y: auto;
+}
+
+.panel-menu {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.parent.active {
+    background: #48c;
+}
+
+#menu a {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+}
+
+.panel-menu a:hover {
+    background: #9d9d9d;
+}
+
+a.parent.active:after {
+    border: 10px solid transparent;
+    margin-top: 10px;
+    right: 0;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: #f1f1f1;
+}
+
+/* endregion */

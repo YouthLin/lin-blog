@@ -12,7 +12,9 @@ import org.springframework.stereotype.Repository;
 public interface UserMetaDao {
     void save(UserMeta userMeta);
 
-    void updateValue(UserMeta userMeta);
+    int updateValue(UserMeta userMeta);
 
     UserMeta findByUserIdAndMetaKey(@Param("userId") Long userId, @Param("metaKey") String metaKey);
+
+    UserMeta findByUserNameAndMetaKey(@Param("name") String username, @Param("key") String metaKey);
 }

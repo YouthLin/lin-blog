@@ -63,7 +63,8 @@ public class SetUpController {
         }
         if (!StringUtils.hasText(title)) {
             /*TRANSLATORS: 0: username*/
-            title = _f("{0}'s Blog", user);
+            title = _f("{0}&#39;" +
+                    "s Blog", user);
         }
         LOGGER.info("Setup Blog: title = {}, user = {}, password length = {}", title, user, pass.length());
         String rand = UUID.randomUUID().toString().substring(0, 8);

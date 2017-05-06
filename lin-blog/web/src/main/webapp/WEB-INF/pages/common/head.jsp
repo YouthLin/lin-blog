@@ -18,3 +18,4 @@
 <![endif]-->
 <script src="<c:url value="/static/js/jquery-3.1.1.min.js"/> "></script>
 <script src="<c:url value="/static/js/bootstrap.min.js"/> "></script>
+<link href="<c:url value="/static/css/style.css"/> " rel="stylesheet">

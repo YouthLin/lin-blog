@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
+/*DROP TABLE IF EXISTS `users`;*/
+CREATE TABLE IF NOT EXISTS `users` (
   `ID`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `user_login`      VARCHAR(32)     NOT NULL DEFAULT ''
@@ -25,8 +25,8 @@ CREATE TABLE `users` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT '用户表';
 
-DROP TABLE IF EXISTS `user_meta`;
-CREATE TABLE `user_meta` (
+/*DROP TABLE IF EXISTS `user_meta`;*/
+CREATE TABLE IF NOT EXISTS `user_meta` (
   `meta_id`    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `user_id`    BIGINT UNSIGNED NOT NULL DEFAULT '0'
@@ -43,8 +43,8 @@ CREATE TABLE `user_meta` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT '用户元数据';
 
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE `posts` (
+/*DROP TABLE IF EXISTS `posts`;*/
+CREATE TABLE IF NOT EXISTS `posts` (
   `ID`                BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `post_author`       BIGINT UNSIGNED NOT NULL DEFAULT '0'
@@ -92,8 +92,8 @@ CREATE TABLE `posts` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT '文章，页面，附件等 post ';
 
-DROP TABLE IF EXISTS `post_meta`;
-CREATE TABLE `post_meta` (
+/*DROP TABLE IF EXISTS `post_meta`;*/
+CREATE TABLE IF NOT EXISTS `post_meta` (
   `meta_id`    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `post_id`    BIGINT UNSIGNED NOT NULL DEFAULT '0'
@@ -109,8 +109,8 @@ CREATE TABLE `post_meta` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT 'post 元数据';
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE `comments` (
+/*DROP TABLE IF EXISTS `comments`;*/
+CREATE TABLE IF NOT EXISTS `comments` (
   `comment_ID`           BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `comment_post_ID`      BIGINT UNSIGNED NOT NULL DEFAULT '0'
@@ -153,8 +153,8 @@ CREATE TABLE `comments` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT '评论表';
 
-DROP TABLE IF EXISTS `comment_meta`;
-CREATE TABLE `comment_meta` (
+/*DROP TABLE IF EXISTS `comment_meta`;*/
+CREATE TABLE IF NOT EXISTS `comment_meta` (
   `meta_id`    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment_id` BIGINT UNSIGNED NOT NULL DEFAULT '0',
   `meta_key`   VARCHAR(255)             DEFAULT NULL,
@@ -168,8 +168,8 @@ CREATE TABLE `comment_meta` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT '评论元数据';
 
-DROP TABLE IF EXISTS `taxonomy`;
-CREATE TABLE `taxonomy` (
+/*DROP TABLE IF EXISTS `taxonomy`;*/
+CREATE TABLE IF NOT EXISTS `taxonomy` (
   `taxonomy_id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `name`        VARCHAR(200)    NOT NULL DEFAULT ''
@@ -193,8 +193,8 @@ CREATE TABLE `taxonomy` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT '分类信息表';
 
-DROP TABLE IF EXISTS `taxonomy_relationships`;
-CREATE TABLE `taxonomy_relationships` (
+/*DROP TABLE IF EXISTS `taxonomy_relationships`;*/
+CREATE TABLE IF NOT EXISTS `taxonomy_relationships` (
   `post_id`     BIGINT UNSIGNED NOT NULL DEFAULT '0'
   COMMENT 'post ID',
   `taxonomy_id` BIGINT UNSIGNED NOT NULL DEFAULT '0'
@@ -207,8 +207,8 @@ CREATE TABLE `taxonomy_relationships` (
   COLLATE = utf8mb4_unicode_ci
   COMMENT 'post - 分类 关联表';
 
-DROP TABLE IF EXISTS `options`;
-CREATE TABLE `options` (
+/*DROP TABLE IF EXISTS `options`;*/
+CREATE TABLE IF NOT EXISTS `options` (
   `option_id`    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
   `option_name`  VARCHAR(191)    NOT NULL DEFAULT ''

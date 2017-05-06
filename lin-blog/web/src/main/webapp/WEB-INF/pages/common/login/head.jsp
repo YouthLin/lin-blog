@@ -11,4 +11,3 @@
 <%@ include file="/WEB-INF/pages/common/head.jsp" %>
 <link href="<c:url value="/static/css/style.login.css"/> " rel="stylesheet">
 <script src="<c:url value="/static/js/jquery.md5.min.js"/>"></script>
-<script src="<c:url value="/static/js/login.js"/>"></script>

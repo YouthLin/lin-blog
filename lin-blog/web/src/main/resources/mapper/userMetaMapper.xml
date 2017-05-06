@@ -28,4 +28,11 @@
         WHERE user_id=#{userId} AND meta_key=#{metaKey}
     </select>
 
+    <select id="findByUserNameAndMetaKey" resultMap="userMetaMap">
+        SELECT
+        <include refid="all"/>
+        FROM user_meta LEFT JOIN users ON user_id=ID
+        WHERE user_status=0 AND user_login=#{name} AND meta_key=#{key}
+    </select>
+
 </mapper>

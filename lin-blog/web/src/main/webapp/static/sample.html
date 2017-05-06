@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <title>DashBoard</title>
+    <style>
+        /* 整体框架 */
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #f1f1f1;
+        }
+
+        /*noinspection CssOverwrittenProperties*/
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin: 0 auto -70px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        #end {
+            clear: both;
+            height: 70px;
+        }
+
+        #copyright {
+            height: 70px;
+            overflow: hidden;
+            padding: 10px 0;
+            text-align: center;
+            color: #c7c7c7;
+            background-color: rgba(255, 255, 255, .2);
+        }
+
+        #copyright p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* reset */
+        a {
+            text-decoration: none !important;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /* 导航条 */
+        body.nav-fixed {
+            padding-top: 50px;
+            overflow: hidden;
+        }
+
+        .navbar-header {
+            width: 100%;
+        }
+
+        .nav-user {
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .nav-user a {
+            display: inline-block;
+            padding: 0 5px;
+        }
+
+        .nav-user img {
+            padding: 0 5px;
+        }
+
+        /*用户资料*/
+        #user-menu {
+            position: fixed;
+            top: 50px;
+            right: 0;
+            background: #222;
+            padding: 20px 0 20px 40px;
+        }
+
+        #user-menu a {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 20px;
+            display: inline-block;
+        }
+
+        #user-menu a:hover {
+            color: #fff;
+        }
+
+        /*sidebar*/
+        #sidebar {
+            padding: 0;
+        }
+
+        #menu {
+            position: fixed;
+            height: 100% !important;
+            background: #222;
+            top: 0;
+            padding: 50px 0 0 0;
+            overflow-y: auto;
+        }
+
+        .panel-menu {
+            background: transparent;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid #080808;
+        }
+
+        .active {
+            color: #fff;
+        }
+
+        .parent.active {
+            background: #48c;
+        }
+
+        #menu a {
+            display: inline-block;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+        }
+
+        .panel-menu a:hover {
+            background: #9d9d9d;
+        }
+
+        a.parent.active:after {
+            border: 10px solid transparent;
+            margin-top: 10px;
+            right: 0;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-right-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body class="nav-fixed">
+<div id="wrap">
+    <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target="#sidebar"
+                        aria-expanded="true" aria-controls="navbar" id="toggle-btn">
+                    <span class="sr-only">展开/折叠菜单栏</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+                <div class="pull-right nav-user">
+                    <a href="#user-menu" aria-expanded="false" aria-controls="user-menu" data-toggle="collapse">Hi,
+                        Lin<img src="http://cn.gravatar.com/avatar/89081eaa9951596df4914597cdbb1204?s=18&d=monsterid&r=g"></a>
+                </div>
+            </div>
+        </nav>
+        <div id="user-menu" class="collapse">
+            <div class="pull-right">
+                <img src="http://cn.gravatar.com/avatar/89081eaa9951596df4914597cdbb1204?s=60&d=monsterid&r=g" width=60
+                     height=60 class="pull-left">
+                <ul class="pull-right">
+                    <li><a href="#">个人资料</a></li>
+                    <li><a href="#">登出</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <aside class="collapse in navbar-collapse" id="sidebar">
+        <div id="menu" class="col-xs-4 col-sm-3 col-md-2">
+            <div class="panel panel-menu">
+                <ul>
+                    <li><a href="#">Item 0</a></li>
+                </ul>
+            </div>
+            <a data-toggle="collapse" data-parent="#menu" aria-expanded="false" aria-controls="sub1" class="parent "
+               href="#sub1">Parent 1</a>
+            <div class="panel panel-menu">
+                <ul id="sub1" class="collapse">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
+            <a data-toggle="collapse" data-parent="#menu" data-target="#sub6" aria-expanded="false" aria-controls="sub6"
+               class="parent" href="#">Parent 6</a>
+            <div class="panel panel-menu">
+                <ul id="sub6" class="collapse">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
+            <a data-toggle="collapse" data-parent="#menu" data-target="#sub2" aria-expanded="true" aria-controls="sub2"
+               class="parent active" href="#">Parent 2</a>
+            <div class="panel panel-menu">
+                <ul id="sub2" class="collapse in">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a class="active" href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
+            <a data-toggle="collapse" data-parent="#menu" data-target="#sub3" aria-expanded="false" aria-controls="sub3"
+               class="parent" href="#">Parent 3</a>
+            <div class="panel panel-menu">
+                <ul id="sub3" class="collapse">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
+            <a data-toggle="collapse" data-parent="#menu" data-target="#sub4" aria-expanded="false" aria-controls="sub4"
+               class="parent" href="#">Parent 4</a>
+            <div class="panel panel-menu">
+                <ul id="sub4" class="collapse">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
+            <a data-toggle="collapse" data-parent="#menu" data-target="#sub5" aria-expanded="false" aria-controls="sub5"
+               class="parent" href="#">Parent 5</a>
+            <div class="panel panel-menu">
+                <ul id="sub5" class="collapse">
+                    <li><a href="#">Item 1</a></li>
+                    <li><a href="#">Item 2</a></li>
+                    <li><a href="#">Item 3</a></li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <section class="col-xs-offset-4 col-sm-offset-3 col-md-offset-2" id="main">
+        <main class="container">
+            <h1>Main</h1>
+        </main>
+    </section>
+    <div id="end"></div>
+</div>
+<footer id="copyright">
+    <p>&copy; 2017 LinBlog</p>
+    <p>YouthLin</p>
+</footer>
+<script>
+    $(document).ready(function () {
+        var sidebar = $("#sidebar");
+        var main = $("#main");
+        sidebar.on('show.bs.collapse', function () {
+            if (!sidebar.hasClass('in')) {
+                main.addClass("col-xs-offset-4");
+            }
+        });
+        sidebar.on('hidden.bs.collapse', function () {
+            if (!sidebar.hasClass('in')) {
+                main.removeClass("col-xs-offset-4");
+            }
+        });
+
+        $('body').click(function () {
+            $('#user-menu').collapse('hide');
+
+        });
+    });
+</script>
+</body>
+</html>
