@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS `users` (
   `ID`              BIGINT UNSIGNED NOT NULL AUTO_INCREMENT
   COMMENT '自增主键',
-  `user_login`      VARCHAR(32)     NOT NULL DEFAULT ''
+  `user_login`      VARCHAR(32)     NOT NULL DEFAULT '' UNIQUE
   COMMENT '用户名，字母或数字或下划线，字母开头，最多 32 字符',
   `user_pass`       CHAR(40)        NOT NULL DEFAULT ''
   COMMENT '密码，MD5 加密后的密码，32 位+8 rand. user_pass = rand+md5(rand+md5(user+pass))',
