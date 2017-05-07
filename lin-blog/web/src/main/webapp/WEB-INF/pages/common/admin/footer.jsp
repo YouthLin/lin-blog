@@ -19,6 +19,7 @@
 <%--@elvariable id="editor" type="java.lang.Boolean"--%>
 <c:if test="${editor}">
     <script src="<c:url value="/static/editor/js/wangEditor.min.js"/>"></script>
+    <script src="<c:url value="/static/editor.simple.md/simplemde.min.js"/>"></script>
 </c:if>
 </body>
 </html>

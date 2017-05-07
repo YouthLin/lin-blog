@@ -18,7 +18,7 @@
     <div class="main-content col-sm-9">
 
         <div class="form-group">
-            <label for="post-title"><span class="sr-only"><%=__("Post Title:")%></span>            </label>
+            <label for="post-title"><span class="sr-only"><%=__("Post Title:")%></span></label>
             <input type="text" class="form-control" name="post-title" id="post-title"
                    placeholder=<%=__("\"Write Post Title Here\"")%>>
         </div>
@@ -42,14 +42,17 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="markdown">
-
+                    <label for="md-editor" class="sr-only"><%=__("Post Content:")%></label>
+                    <div id="md-editor-container">
+                        <textarea class="form-control" id="md-editor" name="md-post-content" rows="20"
+                                  style="display:none;"></textarea>
+                    </div>
                 </div>
             </div><!-- /.Tab panes -->
 
         </div>
     </div>
     <div class="control-sidebar col-sm-3">
-
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading-publish">
@@ -97,7 +100,6 @@
             </div>
         </div>
 
-
         <button type="submit" class="btn btn-default">Submit</button>
 
     </div>
@@ -105,7 +107,7 @@
 </form>
 
 
-<%--suppress JSPotentiallyInvalidConstructorUsage --%>
+<%--suppress JSPotentiallyInvalidConstructorUsage, JSUnresolvedFunction --%>
 <script type="text/javascript">
     $(document).ready(function () {
         // 为页面所有的editor配置全局的密钥
@@ -113,6 +115,15 @@
         var editor = new wangEditor('editor');
         editor.create();
         $('#post-title').focus();
+
+        new SimpleMDE({
+            element: $("#md-editor")[0],
+            autosave: {
+                enabled: true,
+                uniqueId: "md-eitor",
+                delay: 1000
+            }
+        });
     });
 </script>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

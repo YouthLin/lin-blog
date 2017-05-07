@@ -168,6 +168,10 @@ a.parent {
 
 /* endregion post sidebar */
 
+.editor-toolbar.fullscreen {
+    z-index: 2000 !important;
+}
+
 /* region color */
 .bg {
     background: #222;
