@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
@@ -50,14 +51,6 @@ public class UserService {
         userMetaDao.save(userMeta);
     }
 
-    public String queryMetaValue(Long userId, String metaName) {
-        UserMeta meta = userMetaDao.findByUserIdAndMetaKey(userId, metaName);
-        if (meta != null) {
-            return meta.getMetaValue();
-        }
-        return null;
-    }
-
     /**
      * 检查 Cookie 信息，并更新 token 值重新给客户端
      *
@@ -74,9 +67,7 @@ public class UserService {
             return false;
         }
         UserMeta loginInfoMeta = userMetaDao.findByUserNameAndMetaKey(loginInfo.getUserName(), Constant.K_LOGIN_INFO);
-        String loginInfoJson = loginInfoMeta.getMetaValue();
-        @SuppressWarnings("unchecked")
-        Map<String, LoginInfo> map = JsonUtil.fromJson(loginInfoJson, Map.class);
+        Map<String, LoginInfo> map = getLoginInfoMapFromMeta(loginInfoMeta);
         if (map == null) {
             LOGGER.warn("数据库中没有登录记录");
             return false;
@@ -89,9 +80,7 @@ public class UserService {
         }
         loginInfo.setToken(UUID.randomUUID().toString());        // 设置新的 token
         map.put(String.valueOf(loginInfo.getId()), loginInfo);   // 更新 map
-        loginInfoJson = JsonUtil.toJson(map);
-        loginInfoMeta.setMetaValue(loginInfoJson);
-        userMetaDao.updateValue(loginInfoMeta);                  // 更新数据库
+        updateLoginInfo(loginInfoMeta, map);
         Cookie cookie = ServletUtil.makeCookie(loginInfo);       // 更新 Cookie
         response.addCookie(cookie);
         return true;
@@ -125,6 +114,48 @@ public class UserService {
         return success;
     }
 
+    public boolean logout(HttpServletRequest request, HttpServletResponse response) {
+        LoginInfo loginInfo = LoginInfo.fromRequest(request);
+        if (loginInfo != null) {
+            String userName = loginInfo.getUserName();
+            UserMeta loginInfoMeta = getLoginInfoMeta(userName);
+            Map<String, LoginInfo> loginInfoMap = getLoginInfoMapFromMeta(loginInfoMeta);
+            loginInfoMap.remove(loginInfo.getId());
+            updateLoginInfo(loginInfoMeta, loginInfoMap);
+            Cookie cookie = ServletUtil.makeCookie(loginInfo);
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+            return true;
+        }
+        LOGGER.warn("未登录不需要登出");
+        return false;
+    }
+
+    private UserMeta getLoginInfoMeta(String username) {
+        return userMetaDao.findByUserNameAndMetaKey(username, Constant.K_LOGIN_INFO);
+    }
+
+    private Map<String, LoginInfo> getLoginInfoMapFromMeta(UserMeta loginInfoMeta) {
+        if (Constant.K_LOGIN_INFO.equals(loginInfoMeta.getMetaKey())) {
+            String loginInfoJson = loginInfoMeta.getMetaValue();
+            @SuppressWarnings("unchecked")
+            Map<String, LoginInfo> map = JsonUtil.fromJson(loginInfoJson, Map.class);
+            return map;
+        }
+        LOGGER.warn("不是 Login Info Meta");
+        return Collections.emptyMap();
+    }
+
+    private void updateLoginInfo(UserMeta loginInfoMeta, Map<String, LoginInfo> map) {
+        if (Constant.K_LOGIN_INFO.equals(loginInfoMeta.getMetaKey())) {
+            String loginInfoJson = JsonUtil.toJson(map);
+            loginInfoMeta.setMetaValue(loginInfoJson);
+            userMetaDao.updateValue(loginInfoMeta);
+            return;
+        }
+        LOGGER.warn("不是 Login Info Meta");
+    }
+
     /**
      * 保存登录信息到数据库
      */
@@ -146,14 +177,9 @@ public class UserService {
     }
 
     private LoginInfo makeLoginInfo(UserMeta nextInfoIdMeta, User user, HttpServletRequest request) {
-        int id = 1;
+        String id = "1";
         if (nextInfoIdMeta != null) {
-            String nextIdStr = nextInfoIdMeta.getMetaValue();
-            try {
-                id = Integer.parseInt(nextIdStr);
-            } catch (NumberFormatException e) {
-                LOGGER.error("转换数字异常", e);
-            }
+            id = nextInfoIdMeta.getMetaValue();
         }
         String token = UUID.randomUUID().toString();
         Date expire = DateTime.now().plusDays(Constant.DEFAULT_EXPIRE_DAYS_7).toDate();
@@ -164,13 +190,12 @@ public class UserService {
                 .setUserIp(ServletUtil.getRemoteIP(request))
                 .setToken(token)
                 .setExpire(expire);
-
     }
 
     private void updateLoginInfo(User user, LoginInfo loginInfo, UserMeta loginInfoMeta) {
-        int id = loginInfo.getId();
+        String id = loginInfo.getId();
         if (loginInfoMeta == null) {
-            Map<Integer, LoginInfo> info = Maps.newHashMap();
+            Map<String, LoginInfo> info = Maps.newHashMap();
             info.put(id, loginInfo);
             loginInfoMeta = new UserMeta();
             loginInfoMeta.setUserId(user.getUserId())
@@ -179,18 +204,15 @@ public class UserService {
             userMetaDao.save(loginInfoMeta);
             return;
         }
-        String loginInfoValue = loginInfoMeta.getMetaValue();
         @SuppressWarnings("unchecked")
-        Map<String, LoginInfo> infoMap = JsonUtil.fromJson(loginInfoValue, Map.class);
+        Map<String, LoginInfo> infoMap = getLoginInfoMapFromMeta(loginInfoMeta);
         if (infoMap == null) {
             LOGGER.warn("InfoMap 为空");
             infoMap = Maps.newHashMap();
         }
         removeExpire(infoMap);
-        infoMap.put(String.valueOf(id), loginInfo);
-        loginInfoValue = JsonUtil.toJson(infoMap);
-        loginInfoMeta.setMetaValue(loginInfoValue);
-        userMetaDao.updateValue(loginInfoMeta);
+        infoMap.put(id, loginInfo);
+        updateLoginInfo(loginInfoMeta, infoMap);
     }
 
     private void removeExpire(Map<String, LoginInfo> infoMap) {
@@ -207,7 +229,8 @@ public class UserService {
     }
 
     private void updateNextId(LoginInfo loginInfo, UserMeta nextInfoIdMeta, User user) {
-        int next = loginInfo.getId() + 1;
+        int id = Integer.parseInt(loginInfo.getId());
+        int next = id + 1;
         String nextId = String.valueOf(next);
         if (nextInfoIdMeta == null) {
             nextInfoIdMeta = new UserMeta();

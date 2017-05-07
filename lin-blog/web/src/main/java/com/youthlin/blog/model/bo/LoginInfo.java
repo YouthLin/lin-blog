@@ -19,7 +19,7 @@ public class LoginInfo {
     private static final String SPLITTER_STR = ":";
     private static final Splitter SPLITTER = Splitter.on(SPLITTER_STR);
     private static final Joiner JOINER = Joiner.on(SPLITTER_STR);
-    private int id;
+    private String  id;
     private String userName;
     private String userAgent;
     private String userIp;
@@ -44,7 +44,7 @@ public class LoginInfo {
         String ip = ServletUtil.getRemoteIP(request);
         String ua = request.getHeader(Constant.UA);
         try {
-            int id = Integer.parseInt(split.get(0));
+            String id = split.get(0);
             String userName = split.get(1);
             String token = split.get(2);
             long time = Long.parseLong(split.get(3));
@@ -73,11 +73,11 @@ public class LoginInfo {
                 '}';
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public LoginInfo setId(int id) {
+    public LoginInfo setId(String id) {
         this.id = id;
         return this;
     }
@@ -134,18 +134,17 @@ public class LoginInfo {
 
         LoginInfo loginInfo = (LoginInfo) o;
 
-        if (id != loginInfo.id) return false;
+        if (!id.equals(loginInfo.id)) return false;
         if (!userName.equals(loginInfo.userName)) return false;
         if (!userAgent.equals(loginInfo.userAgent)) return false;
         if (!userIp.equals(loginInfo.userIp)) return false;
-        //noinspection SimplifiableIfStatement
         if (!token.equals(loginInfo.token)) return false;
         return expire.equals(loginInfo.expire);
     }
 
     @Override
     public int hashCode() {
-        int result = id;
+        int result = id.hashCode();
         result = 31 * result + userName.hashCode();
         result = 31 * result + userAgent.hashCode();
         result = 31 * result + userIp.hashCode();

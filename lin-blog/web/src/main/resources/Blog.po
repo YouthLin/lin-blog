@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-07 12:06+0800\n"
-"PO-Revision-Date: 2017-05-07 12:06+0800\n"
+"POT-Creation-Date: 2017-05-07 14:46+0800\n"
+"PO-Revision-Date: 2017-05-07 14:47+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -70,7 +70,6 @@ msgid "Post Title:"
 msgstr "文章标题："
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:23
-#| msgid "Write Post"
 msgid "\"Write Post Title Here\""
 msgstr "\"在这里填写标题\""
 
@@ -245,13 +244,17 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: java/com/youthlin/blog/web/LoginController.java:42
+#: java/com/youthlin/blog/web/LoginController.java:45
 msgid "Username, password are all required."
 msgstr "用户名、密码均为必填项。"
 
-#: java/com/youthlin/blog/web/LoginController.java:48
+#: java/com/youthlin/blog/web/LoginController.java:51
 msgid "Username or password is incorrect."
 msgstr "用户名或密码错误。"
+
+#: java/com/youthlin/blog/web/LoginController.java:64
+msgid "You are logged out now."
+msgstr "您已登出。"
 
 #: java/com/youthlin/blog/web/SetUpController.java:57
 msgid "Username, password, email are all required."

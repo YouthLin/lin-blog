@@ -1,7 +1,9 @@
 package com.youthlin.blog.web;
 
+import com.youthlin.blog.model.bo.LoginInfo;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
+import com.youthlin.blog.util.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
@@ -47,5 +50,12 @@ public class LoginController {
         }
         model.addAttribute(Constant.ERROR, __("Username or password is incorrect."));
         return "redirect:login";
+    }
+
+    @RequestMapping(path = {"login.out"}, method = {RequestMethod.GET})
+    public String logout(HttpServletRequest request, HttpServletResponse response, Model model) {
+        userService.logout(request, response);
+        model.addAttribute(Constant.MSG, __("You are logged out now."));
+        return "login";
     }
 }

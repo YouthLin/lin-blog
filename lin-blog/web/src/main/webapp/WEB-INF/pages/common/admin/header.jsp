@@ -50,7 +50,7 @@
                      width=60 height=60 class="pull-left">
                 <ul class="pull-right">
                     <li><a href="#"><%=__("Profile")%></a></li>
-                    <li><a href="#"><%=__("Log out")%></a></li>
+                    <li><a href="<c:url value="/login.out"/>"><%=__("Log out")%></a></li>
                 </ul>
             </div>
         </div>
