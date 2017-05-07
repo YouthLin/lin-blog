@@ -1,13 +1,17 @@
 package com.youthlin.blog.util;
 
+import com.google.common.base.Charsets;
+import com.google.common.hash.Hashing;
 import com.youthlin.blog.model.bo.LoginInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Base64Utils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * 创建： lin
@@ -25,12 +29,25 @@ public class ServletUtil {
         return uri;
     }
 
+    public static String base64Encode(String source) {
+        byte[] encode = Base64.getEncoder().encode(source.getBytes(Charsets.UTF_8));
+        return new String(encode);
+    }
+
+    public static String base64Decode(String base64String) {
+        byte[] decode = Base64.getDecoder().decode(base64String.getBytes(Charsets.UTF_8));
+        return new String(decode);
+    }
+
     public static String getCookieValue(HttpServletRequest request, String name) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
-            LOGGER.info("Cookies = {}", JsonUtil.toJson(cookies));
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug("Cookies = {}", JsonUtil.toJson(cookies));
+            }
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals(name)) {
+                    LOGGER.info("Find Cookie = {}", JsonUtil.toJson(cookie));
                     return cookie.getValue();
                 }
             }

@@ -88,7 +88,7 @@ public class UserService {
             return false;
         }
         loginInfo.setToken(UUID.randomUUID().toString());        // 设置新的 token
-        map.put(String.valueOf(loginInfo.getId()), loginInfo);                   // 更新 map
+        map.put(String.valueOf(loginInfo.getId()), loginInfo);   // 更新 map
         loginInfoJson = JsonUtil.toJson(map);
         loginInfoMeta.setMetaValue(loginInfoJson);
         userMetaDao.updateValue(loginInfoMeta);                  // 更新数据库

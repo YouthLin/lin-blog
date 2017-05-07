@@ -10,7 +10,7 @@
 <%@ include file="/WEB-INF/pages/common/admin/header.jsp" %>
 <script>$(document).ready(function () {
     $(".menu-parent-post").addClass("active").click();
-    $(".menu-item-ta").addClass("active");
+    $(".menu-item-tag").addClass("active");
 });</script>
 <h1><%=__("Tag")%></h1>
 

@@ -1,10 +1,13 @@
 package com.youthlin.blog.model.bo;
 
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.ServletUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户 Cookie
@@ -13,6 +16,9 @@ import java.util.Date;
  * 时间： 2017-05-05 16:30
  */
 public class LoginInfo {
+    private static final String SPLITTER_STR = ":";
+    private static final Splitter SPLITTER = Splitter.on(SPLITTER_STR);
+    private static final Joiner JOINER = Joiner.on(SPLITTER_STR);
     private int id;
     private String userName;
     private String userAgent;
@@ -21,7 +27,8 @@ public class LoginInfo {
     private Date expire;
 
     public String toCookieValue() {
-        return id + ":" + userName + ":" + token + ":" + expire.getTime();
+        String s = JOINER.join(id, userName, token, expire.getTime());
+        return ServletUtil.base64Encode(s);
     }
 
     public static LoginInfo fromRequest(HttpServletRequest request) {
@@ -29,17 +36,18 @@ public class LoginInfo {
         if (loginToken == null) {
             return null;
         }
-        String[] split = loginToken.split(":");
-        if (split.length != 4) {
+        loginToken = ServletUtil.base64Decode(loginToken);
+        List<String> split = SPLITTER.splitToList(loginToken);
+        if (split.size() != 4) {
             return null;
         }
         String ip = ServletUtil.getRemoteIP(request);
         String ua = request.getHeader(Constant.UA);
         try {
-            int id = Integer.parseInt(split[0]);
-            String userName = split[1];
-            String token = split[2];
-            long time = Long.parseLong(split[3]);
+            int id = Integer.parseInt(split.get(0));
+            String userName = split.get(1);
+            String token = split.get(2);
+            long time = Long.parseLong(split.get(3));
             Date expire = new Date(time);
             return new LoginInfo()
                     .setId(id)
