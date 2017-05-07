@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-07 14:46+0800\n"
-"PO-Revision-Date: 2017-05-07 14:47+0800\n"
+"POT-Creation-Date: 2017-05-07 15:01+0800\n"
+"PO-Revision-Date: 2017-05-07 15:02+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -90,22 +90,46 @@ msgid "Publish"
 msgstr "发布"
 
 #: webapp/WEB-INF/pages/admin/settings-comment.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:124
+#: webapp/WEB-INF/pages/common/admin/header.jsp:150
 #: java/com/youthlin/blog/web/back/SettingsController.java:29
 msgid "Comment Settings"
 msgstr "评论设置"
 
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:118
+#: webapp/WEB-INF/pages/common/admin/header.jsp:144
 #: java/com/youthlin/blog/web/back/SettingsController.java:18
 msgid "General Settings"
 msgstr "常规设置"
 
 #: webapp/WEB-INF/pages/admin/settings-post.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:121
+#: webapp/WEB-INF/pages/common/admin/header.jsp:147
 #: java/com/youthlin/blog/web/back/SettingsController.java:24
 msgid "Post Settings"
 msgstr "文章设置"
+
+#: webapp/WEB-INF/pages/admin/tool-export.jsp:15
+#: webapp/WEB-INF/pages/common/admin/header.jsp:133
+#: java/com/youthlin/blog/web/back/ToolController.java:24
+msgid "Export"
+msgstr "导出"
+
+#: webapp/WEB-INF/pages/admin/tool-import.jsp:15
+#: webapp/WEB-INF/pages/common/admin/header.jsp:130
+#: java/com/youthlin/blog/web/back/ToolController.java:18
+msgid "Import"
+msgstr "导入"
+
+#: webapp/WEB-INF/pages/admin/users-all.jsp:15
+#: webapp/WEB-INF/pages/common/admin/header.jsp:117
+#: java/com/youthlin/blog/web/back/UserController.java:18
+msgid "All Users"
+msgstr "所有用户"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:15
+#: webapp/WEB-INF/pages/common/admin/header.jsp:120
+#: java/com/youthlin/blog/web/back/UserController.java:24
+msgid "My Profile"
+msgstr "个人资料"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:32
 msgid "Toggle Navigation"
@@ -150,6 +174,14 @@ msgid "Comments"
 msgstr "评论"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:113
+msgid "Users"
+msgstr "用户"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:126
+msgid "Tools"
+msgstr "工具"
+
+#: webapp/WEB-INF/pages/common/admin/header.jsp:139
 msgid "Settings"
 msgstr "设置"
 
@@ -252,7 +284,7 @@ msgstr "用户名、密码均为必填项。"
 msgid "Username or password is incorrect."
 msgstr "用户名或密码错误。"
 
-#: java/com/youthlin/blog/web/LoginController.java:64
+#: java/com/youthlin/blog/web/LoginController.java:58
 msgid "You are logged out now."
 msgstr "您已登出。"
 

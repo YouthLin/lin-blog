@@ -109,6 +109,32 @@
                 </ul>
             </div>
 
+            <a href="#users" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-users"
+               aria-expanded="false" aria-controls="post"><%=__("Users")%></a>
+            <div class="panel panel-menu bd ">
+                <ul id="users" class="collapse">
+                    <li><a class="menu-item-a menu-item-all-user" href="<c:url value="/admin/users/all"/>">
+                        <%=__("All Users")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-my-profile" href="<c:url value="/admin/users/my"/>">
+                        <%=__("My Profile")%>
+                    </a></li>
+                </ul>
+            </div>
+
+            <a href="#tools" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-tools"
+               aria-expanded="false" aria-controls="post"><%=__("Tools")%></a>
+            <div class="panel panel-menu bd ">
+                <ul id="tools" class="collapse">
+                    <li><a class="menu-item-a menu-item-tool-import" href="<c:url value="/admin/tools/import"/>">
+                        <%=__("Import")%>
+                    </a></li>
+                    <li><a class="menu-item-a menu-item-tool-export" href="<c:url value="/admin/tools/export"/>">
+                        <%=__("Export")%>
+                    </a></li>
+                </ul>
+            </div>
+
             <a href="#settings" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-settings"
                aria-expanded="false" aria-controls="settings"><%=__("Settings")%></a>
             <div class="panel panel-menu bd ">
