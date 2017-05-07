@@ -86,6 +86,7 @@ body.nav-fixed {
     top: 50px;
     right: 0;
     padding: 20px 0 20px 40px;
+    z-index: 2;
 }
 
 #user-menu a {
@@ -157,6 +158,15 @@ a.parent {
 }
 
 /* endregion */
+
+/* region post sidebar */
+.panel-title a {
+    height: 100%;
+    line-height: 100%;
+    display: block;
+}
+
+/* endregion post sidebar */
 
 /* region color */
 .bg {
