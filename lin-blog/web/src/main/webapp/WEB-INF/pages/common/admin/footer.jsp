@@ -16,5 +16,9 @@
     <p>Powered By <a href="http://youthlin.com/" target="_blank">YouthLin Chen</a></p>
 </footer>
 <%@ include file="/WEB-INF/pages/common/footer.jsp" %>
+<%--@elvariable id="editor" type="java.lang.Boolean"--%>
+<c:if test="${editor}">
+    <script src="<c:url value="/static/editor/js/wangEditor.min.js"/>"></script>
+</c:if>
 </body>
 </html>

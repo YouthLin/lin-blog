@@ -26,6 +26,7 @@ public class PostController {
     @RequestMapping("/post/new")
     public String newPostPage(Model model) {
         model.addAttribute("title", __("Write Post"));
+        model.addAttribute("editor", true);
         return "admin/post-write";
     }
 

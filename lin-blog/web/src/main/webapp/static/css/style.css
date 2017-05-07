@@ -58,7 +58,6 @@ li {
 /* region 导航条 */
 body.nav-fixed {
     padding-top: 50px;
-    overflow: hidden;
 }
 
 .navbar-header {
@@ -168,7 +167,7 @@ a.parent {
     border-bottom: 1px solid #080808;
 }
 
-.active {
+a.active {
     color: #fff;
 }
 

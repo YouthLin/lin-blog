@@ -16,6 +16,10 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/pages/common/head.jsp" %>
+    <%--@elvariable id="editor" type="java.lang.Boolean"--%>
+    <c:if test="${editor}">
+        <link href="<c:url value="/static/editor/css/wangEditor.min.css"/> " rel="stylesheet">
+    </c:if>
     <title>${title}</title>
 </head>
 <body class="nav-fixed">
@@ -52,7 +56,7 @@
         </div>
     </header>
     <aside class="collapse in navbar-collapse" id="sidebar">
-        <div id="menu" class="col-xs-4 col-sm-3 col-md-2 bg">
+        <div id="menu" class="col-xs-4 col-sm-2 bg">
            <a href="#overview" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-overview"
               aria-expanded="false" aria-controls="post"><%=__("DashBoard")%></a>
             <div class="panel panel-menu bd">
@@ -124,5 +128,5 @@
 
         </div><!-- /#menu -->
     </aside>
-    <section class="col-xs-offset-4 col-sm-offset-3 col-md-offset-2" id="main">
-        <main class="container">
+    <section class="col-xs-offset-4 col-sm-offset-2 col-xs-8 col-sm-10" id="main">
+        <main>

@@ -14,11 +14,13 @@ $(document).ready(function () {
     sidebar.on('show.bs.collapse', function () {
         if (!sidebar.hasClass('in')) {
             main.addClass("col-xs-offset-4");
+            main.addClass("col-xs-8");
         }
     });
     sidebar.on('hidden.bs.collapse', function () {
         if (!sidebar.hasClass('in')) {
             main.removeClass("col-xs-offset-4");
+            main.removeClass("col-xs-8");
         }
     });
 
