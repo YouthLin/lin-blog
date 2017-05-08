@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-08 18:59+0800\n"
-"PO-Revision-Date: 2017-05-08 19:01+0800\n"
+"POT-Creation-Date: 2017-05-08 20:18+0800\n"
+"PO-Revision-Date: 2017-05-08 20:18+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -48,13 +48,13 @@ msgid "All Post"
 msgstr "所有文章"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:15
-#: webapp/WEB-INF/pages/admin/post-write.jsp:106
+#: webapp/WEB-INF/pages/admin/post-write.jsp:103
 #: java/com/youthlin/blog/web/back/CategoryController.java:18
 msgid "Category"
 msgstr "分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:15
-#: webapp/WEB-INF/pages/admin/post-write.jsp:122
+#: webapp/WEB-INF/pages/admin/post-write.jsp:119
 #: webapp/WEB-INF/pages/common/admin/header.jsp:87
 #: java/com/youthlin/blog/web/back/TagController.java:18
 msgid "Tag"
@@ -66,71 +66,63 @@ msgid "Write Post"
 msgstr "写文章"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:23
-msgid "Post Title:"
-msgstr "文章标题："
+msgid "Title:"
+msgstr "标题："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:25
-msgid "\"Write Post Title Here\""
-msgstr "\"在这里填写标题\""
+#: webapp/WEB-INF/pages/admin/post-write.jsp:27
+#: webapp/WEB-INF/pages/admin/post-write.jsp:45
+#: webapp/WEB-INF/pages/admin/post-write.jsp:50
+msgid "Content:"
+msgstr "内容："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:28
-#: webapp/WEB-INF/pages/admin/post-write.jsp:46
-#: webapp/WEB-INF/pages/admin/post-write.jsp:51
-msgid "Post Content:"
-msgstr "文章内容："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:34
+#: webapp/WEB-INF/pages/admin/post-write.jsp:33
 msgid "Rich Editor"
 msgstr "富文本"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:38
+#: webapp/WEB-INF/pages/admin/post-write.jsp:37
 msgid "Markdown"
 msgstr "Markdown"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:60
-msgid "Post Excerpt:"
-msgstr "文章摘要："
+#: webapp/WEB-INF/pages/admin/post-write.jsp:59
+msgid "Excerpt:"
+msgstr "摘要："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:61
-msgid "Post excerpt is the summary of the post."
-msgstr "文章的摘要。"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:74
-#: webapp/WEB-INF/pages/admin/post-write.jsp:97
+#: webapp/WEB-INF/pages/admin/post-write.jsp:71
+#: webapp/WEB-INF/pages/admin/post-write.jsp:94
 msgid "Publish"
 msgstr "发布"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:82
-#: webapp/WEB-INF/pages/admin/post-write.jsp:84
+#: webapp/WEB-INF/pages/admin/post-write.jsp:79
+#: webapp/WEB-INF/pages/admin/post-write.jsp:81
 msgid "Publish Datetime:"
 msgstr "发布时间："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:96
+#: webapp/WEB-INF/pages/admin/post-write.jsp:93
 msgid "Save Draft"
 msgstr "存草稿"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:138
+#: webapp/WEB-INF/pages/admin/post-write.jsp:135
 msgid "Other Settings"
 msgstr "其他设置"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:146
+#: webapp/WEB-INF/pages/admin/post-write.jsp:143
 msgid "Comments Open"
 msgstr "允许评论"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:149
+#: webapp/WEB-INF/pages/admin/post-write.jsp:146
 msgid "Pings Open"
 msgstr "允许 Ping"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:153
+#: webapp/WEB-INF/pages/admin/post-write.jsp:150
 msgid "Password:"
 msgstr "密码："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:159
+#: webapp/WEB-INF/pages/admin/post-write.jsp:156
 msgctxt "post name"
 msgid "Name:"
 msgstr "别名："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:165
+#: webapp/WEB-INF/pages/admin/post-write.jsp:162
 msgid ""
 "When Password has set, visitors must input password to view the post."
 "<br>Post name is used to show in url."
@@ -352,6 +344,12 @@ msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 #, java-format
 msgid "{0}&#39;s Blog"
 msgstr "{0} 的博客"
+
+#~ msgid "\"Write Post Title Here\""
+#~ msgstr "\"在这里填写标题\""
+
+#~ msgid "Post excerpt is the summary of the post."
+#~ msgstr "文章的摘要。"
 
 #~ msgid "Username or Email Address"
 #~ msgstr "用户名或电子邮件"

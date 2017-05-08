@@ -20,12 +20,11 @@
 <form>
     <div class="main-content col-sm-9">
         <div class="form-group">
-            <label for="post-title"><span class="sr-only"><%=__("Post Title:")%></span></label>
-            <input type="text" class="form-control" name="post-title" id="post-title"
-                   placeholder=<%=__("\"Write Post Title Here\"")%>>
+            <label for="post-title"><%=__("Title:")%></label>
+            <input type="text" class="form-control" name="post-title" id="post-title">
         </div>
         <div class="form-group">
-            <label><%=__("Post Content:")%></label>
+            <label><%=__("Content:")%></label>
         </div>
         <div>
             <!-- Nav tabs -->
@@ -43,12 +42,12 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="rich">
                     <div id="editor-container" class="editor-container">
-                        <label for="editor" class="sr-only"><%=__("Post Content:")%></label>
+                        <label for="editor" class="sr-only"><%=__("Content:")%></label>
                         <textarea class="form-control" id="editor" name="post-content" rows="20"></textarea>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="markdown">
-                    <label for="md-editor" class="sr-only"><%=__("Post Content:")%></label>
+                    <label for="md-editor" class="sr-only"><%=__("Content:")%></label>
                     <div id="md-editor-container" class="editor-container">
                         <textarea class="form-control" id="md-editor" name="md-post-content" rows="20"
                                   style="display:none;"></textarea>
@@ -57,9 +56,7 @@
             </div><!-- /.Tab panes -->
 
             <div class="form-group">
-                <label for="post-excerpt"><%=__("Post Excerpt:")%></label>
-                <small class="help-text"><%=__("Post excerpt is the summary of the post.")%>
-                </small>
+                <label for="post-excerpt"><%=__("Excerpt:")%></label>
                 <textarea class="form-control" name="post-excerpt" id="post-excerpt" rows="3"></textarea>
             </div>
         </div>
