@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._f" %>
 <%@ page import="com.youthlin.blog.util.Constant" %>
 <%@ page import="com.youthlin.blog.util.Gravatar" %>
@@ -15,12 +16,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@ include file="/WEB-INF/pages/common/head.jsp" %>
     <%--@elvariable id="editor" type="java.lang.Boolean"--%>
     <c:if test="${editor}">
         <link href="<c:url value="/static/editor/css/wangEditor.min.css"/> " rel="stylesheet">
         <link href="<c:url value="/static/editor.simple.md/simplemde.min.css"/> " rel="stylesheet">
+        <link href="<c:url value="/static/css/bootstrap-datetimepicker.min.css"/> " rel="stylesheet">
     </c:if>
+    <%@ include file="/WEB-INF/pages/common/head.jsp" %>
     <title>${title}</title>
 </head>
 <body class="nav-fixed">

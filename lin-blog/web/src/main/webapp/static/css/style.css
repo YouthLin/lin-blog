@@ -159,7 +159,20 @@ a.parent {
 
 /* endregion */
 
+.editor-container {
+    min-height: 460px;
+}
+
+.CodeMirror, .CodeMirror-scroll {
+    height: 350px;
+}
+
+.editor-toolbar.fullscreen {
+    z-index: 2000 !important;
+}
+
 /* region post sidebar */
+
 .panel-title a {
     height: 100%;
     line-height: 100%;
@@ -167,10 +180,6 @@ a.parent {
 }
 
 /* endregion post sidebar */
-
-.editor-toolbar.fullscreen {
-    z-index: 2000 !important;
-}
 
 /* region color */
 .bg {
