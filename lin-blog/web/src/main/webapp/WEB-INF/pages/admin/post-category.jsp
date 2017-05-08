@@ -13,5 +13,54 @@
     $(".menu-item-category").addClass("active");
 });</script>
 <h1><%=__("Category")%></h1>
+<div>
+    <div class="add-category col-sm-3">
+        <form action="">
+            <h4><%=__("Add Category")%></h4>
+            <div class="form-group">
+                <label for="category-name"><%=__("Name:")%></label>
+                <input type="text" class="form-control" id="category-name">
+                <span class="help-block"><%=__("This will be show on the site.")%></span>
+            </div>
+            <div class="form-group">
+                <label for="category-slug"><%=__("Slug:")%></label>
+                <input type="text" class="form-control" id="category-slug">
+                <span class="help-block"><%=__("Slug is used to show at URL. It only contains alphabetic or dash('-').")%></span>
+            </div>
+            <div class="form-group">
+                <label for="category-parent"><%=__("Parent:")%></label>
+                <input type="text" class="form-control" id="category-parent">
+                <span class="help-block"><%=__("Unlike tag, category can have a parent category.")%></span>
+            </div>
+            <div class="form-group">
+                <label for="category-description"><%=__("Description:")%></label>
+                <input type="text" class="form-control" id="category-description">
+                <span class="help-block"><%=__("And you may write some description about this category...")%></span>
+            </div>
+            <button class="btn btn-primary"><%=__("Add Category")%></button>
+        </form>
+    </div>
+    <div class="all-category col-sm-9">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        <label class="no-bottom-margin">
+                            <span class="sr-only"><%=__("Select All")%></span>
+                            <input type="checkbox">
+                        </label>
+                    </th>
+                    <th><%=__("Name")%></th>
+                    <th><%=__("Slug")%></th>
+                    <th><%=__("Description")%></th>
+                    <th><%=__("Count")%></th>
+                    <th><%=__("Operation")%></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
 
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

@@ -35,11 +35,4 @@ public class OptionService {
         return installed != null;
     }
 
-    public void install(String blogTitle) {
-        Option option = new Option()
-                .setOptionName(Constant.O_BLOG_TITLE)
-                .setOptionValue(blogTitle);
-        optionDao.save(option);
-        globalInfo.set(Constant.O_BLOG_TITLE, blogTitle);
-    }
 }

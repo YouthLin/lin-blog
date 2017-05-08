@@ -4,6 +4,7 @@ import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.service.OptionService;
+import com.youthlin.blog.service.SetupService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.MD5Util;
@@ -35,7 +36,7 @@ public class SetUpController {
     @Resource
     private OptionService optionService;
     @Resource
-    private UserService userService;
+    private SetupService setupService;
 
     @RequestMapping("install")
     public String setup() {
@@ -63,27 +64,11 @@ public class SetUpController {
         }
         if (!StringUtils.hasText(title)) {
             /*TRANSLATORS: 0: username*/
-            title = _f("{0}&#39;" +
-                    "s Blog", user);
+            title = _f("{0}&#39;Blog", user);
         }
         LOGGER.info("Setup Blog: title = {}, user = {}, password length = {}", title, user, pass.length());
-        String rand = UUID.randomUUID().toString().substring(0, 8);
-        if (rand.length() != 8) {
-            throw new AssertionError();//won't happen
-        }
-        pass = rand + MD5Util.md5(rand + pass);
-        User admin = new User()
-                .setUserLogin(user)
-                .setUserPass(pass)
-                .setUserEmail(email)
-                .setDisplayName(user);
-        userService.save(admin);
-        UserMeta roleInfo = new UserMeta();
-        roleInfo.setUserId(admin.getUserId())
-                .setMetaKey(Constant.K_ROLE)
-                .setMetaValue(Role.Administrator.name());
-        userService.saveMeta(roleInfo);
-        optionService.install(title);
+
+        setupService.setup(pass, user, email, title);
         return "redirect:login";
     }
 }
