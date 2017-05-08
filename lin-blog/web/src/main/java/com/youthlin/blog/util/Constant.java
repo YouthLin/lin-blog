@@ -8,6 +8,7 @@ package com.youthlin.blog.util;
  */
 @SuppressWarnings("WeakerAccess")
 public class Constant {
+    public static final String LONG_DASH = "——";
     // servlet
     public static final String UA = "User-Agent";
     public static final String TOKEN = "token";
@@ -24,6 +25,8 @@ public class Constant {
 
     // options
     public static final String O_BLOG_TITLE = "blog_title";
+    public static final String O_ALL_CATEGORIES = "all_categories";
+
 
     // model
     public static final String MSG = "msg";

@@ -58,6 +58,22 @@
                     <th><%=__("Operation")%></th>
                 </tr>
                 </thead>
+                <tbody>
+                <%--@elvariable id="categoryList" type="java.util.List"--%>
+                <%--@elvariable id="category" type="com.youthlin.blog.model.bo.Category"--%>
+                <c:forEach items="${categoryList}" var="category">
+                    <tr>
+                        <td><label><span class="sr-only"><%=__("Select")%></span>
+                            <input type="checkbox" name="" id="select-${category.taxonomyId}">
+                        </label></td>
+                        <td>${category.name}</td>
+                        <td>${category.slug}</td>
+                        <td>${category.description}</td>
+                        <td>${category.count}</td>
+                        <td></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
             </table>
         </div>
     </div>

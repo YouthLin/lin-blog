@@ -10,6 +10,7 @@ import java.util.List;
  * 时间： 2017-05-08 22:32.
  */
 public class Category extends Taxonomy {
+    private int depth;
     private Category parentCategory = null;
     private List<Category> children = Lists.newArrayList();
 
@@ -18,8 +19,26 @@ public class Category extends Taxonomy {
     }
 
     @Override
+    public String toString() {
+        return "Category{" +
+                "depth=" + depth +
+                ", parentCategory=" + parentCategory +
+                ", children=" + children +
+                "} " + super.toString();
+    }
+
+    @Override
     public Taxonomy setTaxonomy(String taxonomy) {
         return super.setTaxonomy(Taxonomy.TAXONOMY_CATEGORY);
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public Category setDepth(int depth) {
+        this.depth = depth;
+        return this;
     }
 
     public Category getParentCategory() {

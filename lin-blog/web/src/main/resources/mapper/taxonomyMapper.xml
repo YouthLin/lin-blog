@@ -14,7 +14,7 @@
     </resultMap>
 
     <sql id="all">
-       taxonomy_id, name, slug, taxonomy, description, parent, `count`
+        taxonomy_id, name, slug, taxonomy, description, parent, `count`
     </sql>
 
     <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.po.Taxonomy"
@@ -34,7 +34,7 @@
         SELECT
         <include refid="all"/>
         FROM taxonomy
-        WHEN taxonomy=#{taxonomy}
+        WHERE taxonomy=#{taxonomy}
         ORDER BY taxonomy_id
     </select>
 
