@@ -22,4 +22,8 @@ public interface TaxonomyDao {
     Taxonomy findById(long id);
 
     void update(Taxonomy taxonomy);
+
+    void delete(List<Long> ids);
+
+    void resetPostCategory(List<Long> taxonomyId);
 }

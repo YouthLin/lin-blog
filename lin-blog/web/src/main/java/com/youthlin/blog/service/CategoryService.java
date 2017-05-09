@@ -3,6 +3,7 @@ package com.youthlin.blog.service;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.po.Taxonomy;
@@ -11,10 +12,13 @@ import com.youthlin.blog.util.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 创建： youthlin.chen
@@ -89,6 +93,30 @@ public class CategoryService {
         taxonomyDao.update(category);
         globalInfo.set(Constant.O_ALL_CATEGORIES, null);
         return category;
+    }
+
+    @Transactional
+    public void delete(Long... ids) {
+        if (ids == null) {
+            return;
+        }
+        List<Category> categoryList = listCategories();
+        Set<Long> allId = Sets.newHashSet();
+        for (Category category : categoryList) {
+            allId.add(category.getTaxonomyId());
+        }
+        ArrayList<Long> idList = Lists.newArrayList();
+        for (Long id : ids) {
+            if (allId.contains(id)) {
+                idList.add(id);
+            }
+        }
+        if (idList.isEmpty()) {
+            return;
+        }
+        taxonomyDao.delete(idList);
+        taxonomyDao.resetPostCategory(idList);
+        globalInfo.set(Constant.O_ALL_CATEGORIES, null);
     }
 
     private List<Category> listCategories() {

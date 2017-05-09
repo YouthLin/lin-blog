@@ -37,6 +37,24 @@ body {
     margin-bottom: 0;
 }
 
+.message {
+    border-left: 4px solid #00a0d2;
+    padding: 12px;
+    margin-left: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.error {
+    border-left: 4px solid #dc3232;
+    padding: 12px;
+    margin-left: 0;
+    background-color: #fbeaea;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
 /* endregion */
 
 /* region reset */

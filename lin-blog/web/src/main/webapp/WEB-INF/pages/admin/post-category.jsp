@@ -83,7 +83,8 @@
                             <c:if test="${category.taxonomyId ne 1}">
                             <span class="operation operation-${category.taxonomyId}">
                                 <a href="<c:url value="/admin/post/category/edit?id=${category.taxonomyId}"/>"><%=__("Edit")%></a> |
-                                <a href="#" class="text-danger"><%=__("Delete")%></a> |
+                                <a href="<c:url value="/admin/post/category/delete?id=${category.taxonomyId}"/>"
+                                   class="text-danger"><%=__("Delete")%></a> |
                                 <a href="#"><%=__("View")%></a>
                             </span>
                             </c:if>&nbsp;

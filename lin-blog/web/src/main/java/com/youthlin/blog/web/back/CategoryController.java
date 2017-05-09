@@ -5,6 +5,8 @@ import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.ServletUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -26,6 +28,7 @@ import static com.youthlin.utils.i18n.Translation.__;
 @Controller
 @RequestMapping("/admin")
 public class CategoryController {
+    private static final Logger log = LoggerFactory.getLogger(CategoryController.class);
     @Resource
     private CategoryService categoryService;
 
@@ -74,7 +77,12 @@ public class CategoryController {
     }
 
     @RequestMapping(path = {"/post/category/edit"}, method = {RequestMethod.GET})
-    public String editCategoryPage(@RequestParam(name = "id", required = false, defaultValue = "0") long id, Model model) {
+    public String editCategoryPage(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr, Model model) {
+        long id = 0;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException ignore) {
+        }
         if (id < 2) {
             return "redirect:/admin/post/category";
         }
@@ -150,5 +158,18 @@ public class CategoryController {
         return "redirect:/admin/post/category";
     }
 
+    @RequestMapping(path = {"/post/category/delete"})
+    public String delete(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr, Model model) {
+        long id = 0;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException ignore) {
+        }
+        if (id < 2) {
+            log.warn("不能删除默认目录");
+        }
+        categoryService.delete(id);
+        return "redirect:/admin/post/category";
+    }
 
 }

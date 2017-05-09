@@ -23,7 +23,6 @@
         VALUES (#{name}, #{slug}, #{taxonomy}, #{description}, #{parent}, #{count})
     </insert>
 
-
     <select id="findByNameAndTaxonomy" resultMap="taxonomyMap">
         SELECT
         <include refid="all"/>
@@ -55,6 +54,22 @@
             parent=#{parent},
         </set>
         WHERE taxonomy_id=#{taxonomyId}
+    </update>
+
+    <delete id="delete" parameterType="list">
+        DELETE FROM taxonomy WHERE taxonomy_id IN
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="resetPostCategory" parameterType="list">
+        UPDATE taxonomy_relationships
+        SET taxonomy_id = 1
+        WHERE taxonomy_id IN
+        <foreach collection="list" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
     </update>
 
 </mapper>
