@@ -1,7 +1,8 @@
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._x" %>
-<%@ page import="java.util.Locale" %>
-<%@ page import="java.util.Date" %><%--
+<%--@elvariable id="categoryList" type="java.util.List"--%>
+<%--@elvariable id="category" type="com.youthlin.blog.model.bo.Category"--%>
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -107,7 +108,18 @@
                 <div id="collapse-category" class="panel-collapse collapse in" role="tabpanel"
                      aria-labelledby="heading-category">
                     <div class="panel-body">
-                        category Settings
+                        <c:forEach items="${categoryList}" var="category">
+                            <c:set var="select" value=""/>
+                            <c:if test="${category.taxonomyId eq 1}">
+                                <c:set var="select" value="checked"/>
+                            </c:if>
+                            <div class="checkbox">
+                                <label class="full-width">
+                                    <input type="checkbox" name="category" value="${category.taxonomyId}" ${select}>
+                                    ${category.name}
+                                </label>
+                            </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -140,10 +152,10 @@
                      aria-labelledby="heading-tag">
                     <div class="panel-body">
                         <div class="checkbox">
-                            <label><input type="checkbox" checked><%=__("Comments Open")%></label>
+                            <label class="full-width"><input type="checkbox" checked><%=__("Comments Open")%></label>
                         </div>
                         <div class="checkbox">
-                            <label><input type="checkbox" checked><%=__("Pings Open")%></label>
+                            <label class="full-width"><input type="checkbox" checked><%=__("Pings Open")%></label>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
@@ -158,9 +170,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer"><small class="help-text">
-                        <%=__("When Password has set, visitors must input password to view the post.<br>Post name is used to show in url.")%>
-                    </small></div>
+                    <div class="panel-footer">
+                        <small class="help-text">
+                            <%=__("When Password has set, visitors must input password to view the post.<br>Post name is used to show in url.")%>
+                        </small>
+                    </div>
                 </div>
 
                 <%-- Author: 可设置为其他作者（以后有需求再做） --%>
