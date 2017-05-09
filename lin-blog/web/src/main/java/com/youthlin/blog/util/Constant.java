@@ -8,7 +8,7 @@ package com.youthlin.blog.util;
  */
 @SuppressWarnings("WeakerAccess")
 public class Constant {
-    public static final String LONG_DASH = "——";
+    public static final String DASH = "—";
     // servlet
     public static final String UA = "User-Agent";
     public static final String TOKEN = "token";

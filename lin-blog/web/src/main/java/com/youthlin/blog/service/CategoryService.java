@@ -8,6 +8,8 @@ import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,13 +22,45 @@ import java.util.Map;
  */
 @Service
 public class CategoryService {
+    private static final Logger log = LoggerFactory.getLogger(CategoryService.class);
     @Resource
     private TaxonomyDao taxonomyDao;
     @Resource
     private GlobalInfo<String, List<Category>> globalInfo;
 
-    public List<Category> listCategories() {
+    public Category save(Category category) {
+        taxonomyDao.save(category);
+        globalInfo.set(Constant.O_ALL_CATEGORIES, null);
+        log.info("保存分类目录，重置缓存");
+        return category;
+    }
+
+    public List<Category> listCategoriesByOrder() {
+        List<Category> topLevelCategories = listTopLevelCategories();
+        List<Category> categoryList = Lists.newArrayList();
+        for (Category topLevel : topLevelCategories) {
+            categoryList.add(topLevel);
+            List<Category> children = topLevel.getChildren();
+            categoryList.addAll(children);
+        }
+        return categoryList;
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    public List<Category> listTopLevelCategories() {
+        List<Category> topLevel = Lists.newArrayList();
+        List<Category> categoryList = listCategories();
+        for (Category category : categoryList) {
+            if (category.getParentCategory() == null) {
+                topLevel.add(category);
+            }
+        }
+        return topLevel;
+    }
+
+    private List<Category> listCategories() {
         return globalInfo.get(Constant.O_ALL_CATEGORIES, () -> {
+            log.info("获取分类目录未命中缓存，查询数据库");
             // 按 id 排序的
             List<Taxonomy> categories = taxonomyDao.findByTaxonomy(Taxonomy.TAXONOMY_CATEGORY);
             List<Category> categoryList = fromTaxonomyList(categories);
@@ -39,9 +73,10 @@ public class CategoryService {
                     parent.getChildren().add(category);
                     category.setParentCategory(parent)
                             .setDepth(parent.getDepth() + 1);
-                    category.setName(Strings.repeat(Constant.LONG_DASH, category.getDepth()) + category.getName());
+                    category.setName(Strings.repeat(Constant.DASH, category.getDepth()) + category.getName());
                 }
             }
+            globalInfo.set(Constant.O_ALL_CATEGORIES, categoryList);
             return categoryList;
         });
     }

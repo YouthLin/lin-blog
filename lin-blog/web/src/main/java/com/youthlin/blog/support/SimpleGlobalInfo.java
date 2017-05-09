@@ -21,7 +21,11 @@ public class SimpleGlobalInfo<K, V> implements GlobalInfo<K, V> {
     @Override
     public void set(K key, V value) {
         Preconditions.checkNotNull(key);
-        map.put(key, value);
+        if (value == null) {
+            map.remove(key);
+        } else {
+            map.put(key, value);
+        }
     }
 
     @Override

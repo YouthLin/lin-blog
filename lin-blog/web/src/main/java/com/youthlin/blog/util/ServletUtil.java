@@ -39,6 +39,12 @@ public class ServletUtil {
         return new String(decode);
     }
 
+    public static String filterHtml(String source) {
+        return source
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;");
+    }
+
     public static String getCookieValue(HttpServletRequest request, String name) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {

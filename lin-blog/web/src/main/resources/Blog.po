@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-08 20:18+0800\n"
-"PO-Revision-Date: 2017-05-08 20:18+0800\n"
+"POT-Creation-Date: 2017-05-09 11:43+0800\n"
+"PO-Revision-Date: 2017-05-09 11:43+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -47,11 +47,88 @@ msgstr "新建页面"
 msgid "All Post"
 msgstr "所有文章"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:15
+#: webapp/WEB-INF/pages/admin/post-category.jsp:18
 #: webapp/WEB-INF/pages/admin/post-write.jsp:103
-#: java/com/youthlin/blog/web/back/CategoryController.java:18
+#: java/com/youthlin/blog/web/back/CategoryController.java:34
 msgid "Category"
 msgstr "分类目录"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:22
+#: webapp/WEB-INF/pages/admin/post-category.jsp:48
+msgid "Add Category"
+msgstr "新增分类目录"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:24
+msgid "Name:"
+msgstr "名称："
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:26
+msgid "This will be show on the site."
+msgstr "这将显示在站点中。"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:29
+msgid "Slug:"
+msgstr "别名："
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:31
+msgid "Slug is used to show at URL. It only contains alphabetic or dash('-')."
+msgstr "别名用于显示在 URL 中， 只能包含数字、字母与连字符(‘-’)。"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:34
+msgid "Parent:"
+msgstr "父节点："
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:36
+msgid "None"
+msgstr "无"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:41
+msgid "Unlike tag, category can have a parent category."
+msgstr "不同于标签，分类目录可以有父节点。"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:44
+msgid "Description:"
+msgstr "描述："
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:46
+msgid "And you may write some description about this category..."
+msgstr "分类目录的描述。"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:58
+msgid "Select All"
+msgstr "全选"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:62
+msgid "Name"
+msgstr "名称"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:63
+msgid "Slug"
+msgstr "别名"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:64
+msgid "Description"
+msgstr "描述"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:65
+msgid "Count"
+msgstr "总数"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:73
+msgid "Select"
+msgstr "选择"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:81
+msgid "Edit"
+msgstr "编辑"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:82
+msgid "Delete"
+msgstr "删除"
+
+#: webapp/WEB-INF/pages/admin/post-category.jsp:83
+msgid "View"
+msgstr "查看"
 
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:15
 #: webapp/WEB-INF/pages/admin/post-write.jsp:119
@@ -317,6 +394,10 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
+#: java/com/youthlin/blog/service/SetupService.java:78
+msgid "Un Categorized"
+msgstr "未分类"
+
 #: java/com/youthlin/blog/web/LoginController.java:45
 msgid "Username, password are all required."
 msgstr "用户名、密码均为必填项。"
@@ -329,21 +410,35 @@ msgstr "用户名或密码错误。"
 msgid "You are logged out now."
 msgstr "您已登出。"
 
-#: java/com/youthlin/blog/web/SetUpController.java:57
+#: java/com/youthlin/blog/web/SetUpController.java:58
 msgid "Username, password, email are all required."
 msgstr "用户名、密码、电子邮件均为必填项。"
 
-#: java/com/youthlin/blog/web/SetUpController.java:61
+#: java/com/youthlin/blog/web/SetUpController.java:62
 msgid ""
 "It seem that JavaScript doesn't work, but we need it to generate password."
 msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 
 #. TRANSLATORS: 0: username
-#: java/com/youthlin/blog/web/SetUpController.java:66
+#: java/com/youthlin/blog/web/SetUpController.java:67
 #: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:41
 #, java-format
-msgid "{0}&#39;s Blog"
+msgid "{0}&#39;Blog"
 msgstr "{0} 的博客"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:48
+msgid "Category name is required."
+msgstr "分类目录名称是必填项"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:57
+msgid "Unknown parent."
+msgstr "未知的父节点。"
+
+#~ msgid "Operation"
+#~ msgstr "操作"
+
+#~ msgid "{0}&#39;s Blog"
+#~ msgstr "{0} 的博客"
 
 #~ msgid "\"Write Post Title Here\""
 #~ msgstr "\"在这里填写标题\""

@@ -163,6 +163,7 @@ a.parent {
 
 /* endregion */
 
+/* region editor*/
 .editor-container {
     min-height: 460px;
 }
@@ -175,6 +176,8 @@ a.parent {
     z-index: 2000 !important;
 }
 
+/* endregion editor*/
+
 /* region post sidebar */
 
 .panel-title a {
@@ -185,6 +188,10 @@ a.parent {
 
 /* endregion post sidebar */
 
+/* region action */
+
+/* endregion action */
+
 /* region color */
 .bg {
     background: #222;
@@ -192,6 +199,10 @@ a.parent {
 
 .bd {
     border-bottom: 1px solid #080808;
+}
+
+.border-ccc {
+    border: 1px solid #ccc;
 }
 
 a.active {
