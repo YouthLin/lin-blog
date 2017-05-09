@@ -205,7 +205,10 @@
             }
         });
 
-        $('#datetimepicker').datetimepicker({});
+        $('#datetimepicker').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            dayViewHeaderFormat: 'YYYY-MM'
+        });
     });
 </script>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>
