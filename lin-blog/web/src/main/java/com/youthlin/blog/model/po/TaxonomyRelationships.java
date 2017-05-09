@@ -17,15 +17,26 @@ package com.youthlin.blog.model.po;
  * COMMENT 'post - 分类 关联表';</pre>
  */
 public class TaxonomyRelationships {
+    private Long id;
     private Long postId;
     private Long taxonomyId;
 
     @Override
     public String toString() {
         return "TaxonomyRelationships{" +
-                "postId=" + postId +
+                "id=" + id +
+                ", postId=" + postId +
                 ", taxonomyId=" + taxonomyId +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public TaxonomyRelationships setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public Long getPostId() {

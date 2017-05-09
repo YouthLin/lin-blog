@@ -195,11 +195,13 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
 
 /*DROP TABLE IF EXISTS `taxonomy_relationships`;*/
 CREATE TABLE IF NOT EXISTS `taxonomy_relationships` (
+  `ID`          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   `post_id`     BIGINT UNSIGNED NOT NULL DEFAULT '0'
   COMMENT 'post ID',
   `taxonomy_id` BIGINT UNSIGNED NOT NULL DEFAULT '0'
   COMMENT '分类 ID',
-  PRIMARY KEY (`post_id`, `taxonomy_id`),
+  PRIMARY KEY (`ID`),
+  KEY (`post_id`, `taxonomy_id`),
   KEY `term_taxonomy_id` (`taxonomy_id`)
 )
   ENGINE = InnoDB
