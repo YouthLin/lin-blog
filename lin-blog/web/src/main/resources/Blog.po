@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-09 11:43+0800\n"
-"PO-Revision-Date: 2017-05-09 11:43+0800\n"
+"POT-Creation-Date: 2017-05-09 13:01+0800\n"
+"PO-Revision-Date: 2017-05-09 13:03+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -47,86 +47,103 @@ msgstr "新建页面"
 msgid "All Post"
 msgstr "所有文章"
 
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:18
+msgid "Edit Category"
+msgstr "编辑分类目录"
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:26
+#: webapp/WEB-INF/pages/admin/post-category.jsp:28
+msgid "Name:"
+msgstr "名称："
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:29
+#: webapp/WEB-INF/pages/admin/post-category.jsp:30
+msgid "This will be show on the site."
+msgstr "这将显示在站点中。"
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:33
+#: webapp/WEB-INF/pages/admin/post-category.jsp:33
+msgid "Slug:"
+msgstr "别名："
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:36
+#: webapp/WEB-INF/pages/admin/post-category.jsp:35
+msgid "Slug is used to show at URL. It only contains alphabetic or dash('-')."
+msgstr "别名用于显示在 URL 中， 只能包含数字、字母与连字符(‘-’)。"
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:41
+#: webapp/WEB-INF/pages/admin/post-category.jsp:38
+msgid "Parent:"
+msgstr "父节点："
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:44
+#: webapp/WEB-INF/pages/admin/post-category.jsp:40
+msgid "None"
+msgstr "无"
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:55
+#: webapp/WEB-INF/pages/admin/post-category.jsp:45
+msgid "Unlike tag, category can have a parent category."
+msgstr "不同于标签，分类目录可以有父节点。"
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:59
+#: webapp/WEB-INF/pages/admin/post-category.jsp:48
+msgid "Description:"
+msgstr "描述："
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:62
+#: webapp/WEB-INF/pages/admin/post-category.jsp:50
+msgid "And you may write some description about this category..."
+msgstr "分类目录的描述。"
+
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:67
+msgid "Update"
+msgstr "更新"
+
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
 #: webapp/WEB-INF/pages/admin/post-write.jsp:103
 #: java/com/youthlin/blog/web/back/CategoryController.java:34
 msgid "Category"
 msgstr "分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:22
-#: webapp/WEB-INF/pages/admin/post-category.jsp:48
+#: webapp/WEB-INF/pages/admin/post-category.jsp:26
+#: webapp/WEB-INF/pages/admin/post-category.jsp:52
 msgid "Add Category"
 msgstr "新增分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:24
-msgid "Name:"
-msgstr "名称："
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:26
-msgid "This will be show on the site."
-msgstr "这将显示在站点中。"
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:29
-msgid "Slug:"
-msgstr "别名："
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:31
-msgid "Slug is used to show at URL. It only contains alphabetic or dash('-')."
-msgstr "别名用于显示在 URL 中， 只能包含数字、字母与连字符(‘-’)。"
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:34
-msgid "Parent:"
-msgstr "父节点："
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:36
-msgid "None"
-msgstr "无"
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:41
-msgid "Unlike tag, category can have a parent category."
-msgstr "不同于标签，分类目录可以有父节点。"
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:44
-msgid "Description:"
-msgstr "描述："
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:46
-msgid "And you may write some description about this category..."
-msgstr "分类目录的描述。"
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:58
+#: webapp/WEB-INF/pages/admin/post-category.jsp:62
 msgid "Select All"
 msgstr "全选"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:62
+#: webapp/WEB-INF/pages/admin/post-category.jsp:66
 msgid "Name"
 msgstr "名称"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:63
+#: webapp/WEB-INF/pages/admin/post-category.jsp:67
 msgid "Slug"
 msgstr "别名"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:64
+#: webapp/WEB-INF/pages/admin/post-category.jsp:68
 msgid "Description"
 msgstr "描述"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:65
+#: webapp/WEB-INF/pages/admin/post-category.jsp:69
 msgid "Count"
 msgstr "总数"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:73
+#: webapp/WEB-INF/pages/admin/post-category.jsp:77
 msgid "Select"
 msgstr "选择"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:81
+#: webapp/WEB-INF/pages/admin/post-category.jsp:85
 msgid "Edit"
 msgstr "编辑"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:82
+#: webapp/WEB-INF/pages/admin/post-category.jsp:86
 msgid "Delete"
 msgstr "删除"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:83
+#: webapp/WEB-INF/pages/admin/post-category.jsp:87
 msgid "View"
 msgstr "查看"
 
@@ -431,8 +448,26 @@ msgid "Category name is required."
 msgstr "分类目录名称是必填项"
 
 #: java/com/youthlin/blog/web/back/CategoryController.java:57
-msgid "Unknown parent."
-msgstr "未知的父节点。"
+#: java/com/youthlin/blog/web/back/CategoryController.java:109
+#: java/com/youthlin/blog/web/back/CategoryController.java:118
+msgid "Illegal parent."
+msgstr "非法父节点。"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:99
+msgid "Illegal category."
+msgstr "非法分类目录。"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:115
+msgid "Unknown category."
+msgstr "未知的分类目录。"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:122
+msgid "Category name must not be empty."
+msgstr "分类目录名称不能为空。"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:129
+msgid "The slug has be used by another item."
+msgstr "别名已被其他条目使用。"
 
 #~ msgid "Operation"
 #~ msgstr "操作"

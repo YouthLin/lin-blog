@@ -40,10 +40,20 @@ public class CategoryService {
         List<Category> categoryList = Lists.newArrayList();
         for (Category topLevel : topLevelCategories) {
             categoryList.add(topLevel);
-            List<Category> children = topLevel.getChildren();
-            categoryList.addAll(children);
+            addChildren(categoryList, topLevel);
         }
         return categoryList;
+    }
+
+    private void addChildren(List<Category> categoryList, Category category) {
+        if (category == null || category.getChildren().size() == 0) {
+            return;
+        }
+        List<Category> children = category.getChildren();
+        for (Category category1 : children) {
+            categoryList.add(category1);
+            addChildren(categoryList, category1);
+        }
     }
 
     @SuppressWarnings("WeakerAccess")
@@ -56,6 +66,29 @@ public class CategoryService {
             }
         }
         return topLevel;
+    }
+
+    public Category findById(long id) {
+        List<Category> categoryList = listCategoriesByOrder();
+        for (Category category : categoryList) {
+            if (category.getTaxonomyId() == id) {
+                Category find = new Category(category);
+                String prefix = Strings.repeat(Constant.DASH, find.getDepth());
+                if (find.getDepth() != 0) {
+                    String name = find.getName();
+                    name = name.substring(prefix.length());
+                    find.setName(name);
+                }
+                return find;
+            }
+        }
+        return null;
+    }
+
+    public Category update(Category category) {
+        taxonomyDao.update(category);
+        globalInfo.set(Constant.O_ALL_CATEGORIES, null);
+        return category;
     }
 
     private List<Category> listCategories() {

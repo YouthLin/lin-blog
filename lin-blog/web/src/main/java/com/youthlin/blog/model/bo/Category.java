@@ -18,11 +18,24 @@ public class Category extends Taxonomy {
         setTaxonomy(Taxonomy.TAXONOMY_CATEGORY);
     }
 
+    public Category(Category another) {
+        setTaxonomyId(another.getTaxonomyId());
+        setName(another.getName());
+        setSlug(another.getSlug());
+        setTaxonomy(Taxonomy.TAXONOMY_CATEGORY);
+        setDescription(another.getDescription());
+        setParent(another.getParent());
+        setCount(another.getCount());
+        setDepth(another.getDepth());
+        setParentCategory(another.getParentCategory());
+        setChildren(another.getChildren());
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "depth=" + depth +
-                ", parentCategory=" + parentCategory +
+                ", parentCategory=" + (parentCategory == null ? "null" : parentCategory.getName()) +
                 ", children=" + children +
                 "} " + super.toString();
     }

@@ -1,5 +1,6 @@
 package com.youthlin.blog.dao;
 
+import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.po.Taxonomy;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,8 @@ public interface TaxonomyDao {
     Taxonomy findByNameAndTaxonomy(@Param("name") String name, @Param("taxonomy") String taxonomy);
 
     List<Taxonomy> findByTaxonomy(String taxonomy);
+
+    Taxonomy findById(long id);
+
+    void update(Taxonomy taxonomy);
 }

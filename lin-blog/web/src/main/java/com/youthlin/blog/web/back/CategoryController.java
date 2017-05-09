@@ -54,7 +54,7 @@ public class CategoryController {
         try {
             parent = Long.parseLong(parentIdStr);
         } catch (NumberFormatException e) {
-            errMsg.append(__("Unknown parent.")).append("<br>");
+            errMsg.append(__("Illegal parent.")).append("<br>");
         }
         if (StringUtils.hasText(description)) {
             description = ServletUtil.filterHtml(description);
@@ -68,7 +68,87 @@ public class CategoryController {
             categoryService.save(category);
         } else {
             model.addAttribute(Constant.ERROR, errMsg.toString());
+            return "admin/post-category";
         }
         return "redirect:/admin/post/category";
     }
+
+    @RequestMapping(path = {"/post/category/edit"}, method = {RequestMethod.GET})
+    public String editCategoryPage(@RequestParam(name = "id", required = false, defaultValue = "0") long id, Model model) {
+        if (id < 2) {
+            return "redirect:/admin/post/category";
+        }
+        Category category = categoryService.findById(id);
+        if (category == null) {
+            return "redirect:/admin/post/category";
+        }
+        model.addAttribute("category", category);
+        List<Category> categoryList = categoryService.listCategoriesByOrder();
+        model.addAttribute("categoryList", categoryList);
+        return "admin/post-category-edit";
+    }
+
+    @RequestMapping(path = {"/post/category/edit"}, method = {RequestMethod.POST})
+    public String editCategory(@RequestParam Map<String, String> param, Model model) {
+        StringBuilder errMsg = new StringBuilder();
+        long id = 0;
+        String idStr = param.get("id");
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException e) {
+            errMsg.append(__("Illegal category.")).append("<br>");
+        }
+
+        String name = param.get("name");
+        String slug = param.get("slug");
+        long parentId = 0;
+        String parentIdStr = param.get("parent");
+        try {
+            parentId = Long.parseLong(parentIdStr);
+        } catch (NumberFormatException e) {
+            errMsg.append(__("Illegal parent.")).append("<br>");
+        }
+
+        String description = param.get("description");
+
+        if (id < 2) {
+            errMsg.append(__("Unknown category.")).append("<br>");
+        }
+        if (parentId < 0) {
+            errMsg.append(__("Illegal parent.")).append("<br>");
+        }
+
+        if (!StringUtils.hasText(name)) {
+            errMsg.append(__("Category name must not be empty.")).append("<br>");
+        }
+        if (StringUtils.hasText(slug)) {
+            // 看是否重复
+            List<Category> categoryList = categoryService.listCategoriesByOrder();
+            for (Category category : categoryList) {
+                if (category.getTaxonomyId() != id && category.getSlug().equals(slug)) {
+                    errMsg.append(__("The slug has be used by another item."));
+                    break;
+                }
+            }
+        } else {
+            slug = name;
+        }
+
+        if (StringUtils.hasText(description)) {
+            description = ServletUtil.filterHtml(description);
+        }
+        if (errMsg.length() > 0) {
+            model.addAttribute(Constant.ERROR, errMsg.toString());
+            return "admin/post-category-edit";
+        }
+        Category category = categoryService.findById(id);
+        category.setName(name)
+                .setSlug(slug)
+                .setParent(parentId)
+                .setDescription(description);
+        categoryService.update(category);
+        return "redirect:/admin/post/category";
+    }
+
+
 }

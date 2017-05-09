@@ -18,6 +18,10 @@
 <h1><%=__("Category")%></h1>
 <div>
     <div class="add-category col-sm-3">
+        <%--@elvariable id="error" type="java.lang.String"--%>
+        <c:if test="${not empty error}">
+            <div class="error">${error}</div>
+        </c:if>
         <form action="<c:url value="/admin/post/category/add"/>" method="post">
             <h4><%=__("Add Category")%></h4>
             <div class="form-group">
@@ -78,7 +82,7 @@
                             <strong>${category.name}</strong><br>
                             <c:if test="${category.taxonomyId ne 1}">
                             <span class="operation operation-${category.taxonomyId}">
-                                <a href="#"><%=__("Edit")%></a> |
+                                <a href="<c:url value="/admin/post/category/edit?id=${category.taxonomyId}"/>"><%=__("Edit")%></a> |
                                 <a href="#" class="text-danger"><%=__("Delete")%></a> |
                                 <a href="#"><%=__("View")%></a>
                             </span>
