@@ -18,51 +18,52 @@
 });</script>
 <h1><%=__("Write Post")%>
 </h1>
-<form>
+<form action="<c:url value="/admin/post/add"/>" method="post">
     <div class="main-content col-sm-9">
         <div class="form-group">
             <label for="post-title"><%=__("Title:")%></label>
-            <input type="text" class="form-control" name="post-title" id="post-title">
+            <input type="text" class="form-control" name="title" id="post-title">
         </div>
         <div class="form-group">
-            <label><%=__("Content:")%></label>
+            <label for="content"><%=__("Content:")%></label>
+            <textarea class="hide" name="content" id="content" rows="10"></textarea>
         </div>
-        <div>
+        <div id="editors">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
-                    <a href="#rich" aria-controls="rich" role="tab" data-toggle="tab"><%=__("Rich Editor")%>
+                    <a href="#rich" data-textarea="#editor" aria-controls="rich" role="tab" data-toggle="tab">
+                        <%=__("Rich Editor")%>
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="#markdown" aria-controls="markdown" role="tab" data-toggle="tab"><%=__("Markdown")%>
-                    </a>
+                    <a href="#markdown" data-textarea="#md-editor" aria-controls="markdown" role="tab"
+                       data-toggle="tab"><%=__("Markdown")%></a>
                 </li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="rich">
+                <div role="tabpanel" class="tab-pane active fade in" id="rich">
                     <div id="editor-container" class="editor-container">
                         <label for="editor" class="sr-only"><%=__("Content:")%></label>
-                        <textarea class="form-control" id="editor" name="post-content" rows="20"></textarea>
+                        <textarea class="form-control content-editor" id="editor" rows="20"></textarea>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="markdown">
+                <div role="tabpanel" class="tab-pane fade" id="markdown">
                     <label for="md-editor" class="sr-only"><%=__("Content:")%></label>
                     <div id="md-editor-container" class="editor-container">
-                        <textarea class="form-control" id="md-editor" name="md-post-content" rows="20"
+                        <textarea class="form-control content-editor" id="md-editor" name="md-content" rows="20"
                                   style="display:none;"></textarea>
                     </div>
                 </div>
             </div><!-- /.Tab panes -->
-
-            <div class="form-group">
-                <label for="post-excerpt"><%=__("Excerpt:")%></label>
-                <textarea class="form-control" name="post-excerpt" id="post-excerpt" rows="3"></textarea>
-            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="post-excerpt"><%=__("Excerpt:")%></label>
+            <textarea class="form-control" name="excerpt" id="post-excerpt" rows="3"></textarea>
+        </div>
 
+    </div>
     <div class="control-sidebar col-sm-3">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
@@ -84,7 +85,7 @@
                                    <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                      </span>
-                                    <input id="post-date" type='text' class="form-control"
+                                    <input id="post-date" type='text' class="form-control" name="date"
                                            value="<%=DateTime.now().toString("YYYY-MM-dd HH:mm")%>"/>
                                 </div>
                             </div>
@@ -164,21 +165,23 @@
                      aria-labelledby="heading-tag">
                     <div class="panel-body">
                         <div class="checkbox">
-                            <label class="full-width"><input type="checkbox" checked><%=__("Comments Open")%></label>
+                            <label class="full-width">
+                                <input type="checkbox" checked name="commentOpen"><%=__("Comments Open")%></label>
                         </div>
                         <div class="checkbox">
-                            <label class="full-width"><input type="checkbox" checked><%=__("Pings Open")%></label>
+                            <label class="full-width">
+                                <input type="checkbox" checked name="pingOpen"><%=__("Pings Open")%></label>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="post-password" class="input-group-addon"><%=__("Password:")%></label>
-                                <input type="text" class="form-control" id="post-password">
+                                <input type="text" class="form-control" id="post-password" name="password">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="post-name" class="input-group-addon"><%=_x("Name:", "post name")%></label>
-                                <input type="text" class="form-control" id="post-name">
+                                <input type="text" class="form-control" id="post-name" name="postName">
                             </div>
                         </div>
                     </div>
@@ -207,14 +210,18 @@
         editor.create();
         $('#post-title').focus();
 
-        new SimpleMDE({
+        var md = new SimpleMDE({
             element: $("#md-editor")[0],
             autosave: {
                 enabled: true,
                 uniqueId: "md-eitor",
                 delay: 1000
             },
-            spellChecker: false
+            spellChecker: false,
+            forceSync: true,
+            renderingConfig: {
+                codeSyntaxHighlighting: true
+            }
         });
 
         $('#datetimepicker').datetimepicker({
@@ -237,6 +244,7 @@
             var input = addInput.val();
             var tags = input.split(',');
             $(tags).each(function (index, e) {
+                e = e.trim();
                 if (e.length > 0) {
                     add(e); // add each
                 }
@@ -287,6 +295,32 @@
         // http://stackoverflow.com/a/14354091
         $(this).on('click', '.remove-tag', remove);
         //endregion
+
+        // check editor before change editor panel
+        $('a[data-toggle="tab"]').on('hide.bs.tab', function (e) {
+            var current = e.target;
+            var textarea = $($(current).data('textarea'));
+            var val = textarea.val();
+            if (val.length === 0 || val === '<p><br></p>') {
+                // 放行
+                $('#content').val('')//clear;
+            } else {
+                alert(<%=__("\"Current editor is not empty so you can not swith to another editor.\"")%>);
+                return e.preventDefault();
+            }
+        });
+
+        // http://www.jianshu.com/p/d1a2e8dce55a
+        $('#editors').bind('input propertychange', 'textarea', function () {
+            var editor;
+            if ($('#rich').hasClass('active')) {
+                editor = $('#editor');
+            } else if ($('#markdown').hasClass('active')) {
+                editor = $('#md-editor');
+
+            }
+            $('#content').val(editor.val());
+        });
 
     });
 </script>

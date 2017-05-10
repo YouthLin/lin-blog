@@ -21,6 +21,7 @@
         <link href="<c:url value="/static/editor/css/wangEditor.min.css"/> " rel="stylesheet">
         <link href="<c:url value="/static/editor.simple.md/simplemde.min.css"/> " rel="stylesheet">
         <link href="<c:url value="/static/css/bootstrap-datetimepicker.min.css"/> " rel="stylesheet">
+        <script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
     </c:if>
     <%@ include file="/WEB-INF/pages/common/head.jsp" %>
     <title>${title}</title>
@@ -74,7 +75,7 @@
                aria-expanded="false" aria-controls="post"><%=__("Post")%></a>
             <div class="panel panel-menu bd ">
                 <ul id="post" class="collapse">
-                    <li><a class="menu-item-a menu-item-all-post" href="<c:url value="/admin/post/all"/>">
+                    <li><a class="menu-item-a menu-item-all-post" href="<c:url value="/admin/post"/>">
                         <%=__("All Post")%>
                     </a></li>
                     <li><a class="menu-item-a menu-item-new-post" href="<c:url value="/admin/post/new"/>">
