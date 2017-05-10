@@ -1,6 +1,5 @@
 package com.youthlin.blog.web.back;
 
-import com.google.common.collect.Lists;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.util.Constant;
@@ -32,11 +31,15 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
-    @RequestMapping("/post/category")
-    public String categoryPage(Model model) {
+    private void showPage(Model model) {
         model.addAttribute("title", __("Category"));
         List<Category> categoryList = categoryService.listCategoriesByOrder();
         model.addAttribute("categoryList", categoryList);
+    }
+
+    @RequestMapping("/post/category")
+    public String categoryPage(Model model) {
+        showPage(model);
         return "admin/post-category";
     }
 
@@ -48,7 +51,7 @@ public class CategoryController {
         String description = param.get("description");
         StringBuilder errMsg = new StringBuilder();
         if (!StringUtils.hasText(name)) {
-            errMsg.append(__("Category name is required.")).append("<br>");
+            errMsg.append(__("Name is required.")).append("<br>");
         }
         if (!StringUtils.hasText(slug)) {
             slug = name;
@@ -61,6 +64,8 @@ public class CategoryController {
         }
         if (StringUtils.hasText(description)) {
             description = ServletUtil.filterHtml(description);
+        } else {
+            description = "";
         }
         if (errMsg.length() == 0) {
             Category category = new Category();
@@ -68,9 +73,14 @@ public class CategoryController {
                     .setSlug(slug)
                     .setDescription(description)
                     .setParent(parent);
-            categoryService.save(category);
-        } else {
+            String msg = categoryService.save(category);
+            if (StringUtils.hasText(msg)) {
+                errMsg.append(msg).append("<br>");
+            }
+        }
+        if (errMsg.length() > 0) {
             model.addAttribute(Constant.ERROR, errMsg.toString());
+            showPage(model);
             return "admin/post-category";
         }
         return "redirect:/admin/post/category";

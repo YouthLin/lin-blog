@@ -3,6 +3,7 @@ package com.youthlin.blog.dao;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.po.Taxonomy;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,4 +27,8 @@ public interface TaxonomyDao {
     void delete(List<Long> ids);
 
     void resetPostCategory(List<Long> taxonomyId);
+
+    Taxonomy findBySlugAndTaxonomy(@Param("slug") String slug, @Param("taxonomy") String taxonomy);
+
+    List<Taxonomy> findByPage(String taxonomy, RowBounds rowBounds);
 }

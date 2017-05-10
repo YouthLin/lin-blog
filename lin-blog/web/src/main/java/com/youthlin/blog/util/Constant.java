@@ -8,7 +8,9 @@ package com.youthlin.blog.util;
  */
 @SuppressWarnings("WeakerAccess")
 public class Constant {
+    // 分类目录缩进
     public static final String DASH = "—";
+
     // servlet
     public static final String UA = "User-Agent";
     public static final String TOKEN = "token";
@@ -27,13 +29,17 @@ public class Constant {
     public static final String O_BLOG_TITLE = "blog_title";
     public static final String O_ALL_CATEGORIES = "all_categories";
 
-
     // model
     public static final String MSG = "msg";
     public static final String ERROR = "error";
 
+    // password: rand(8)+md5{rand(8)+md5(user+pass)}
     public static final int RAND_LEN = 8;
     public static final int MD5_LEN = 32;
     public static final int PASS_LEN = RAND_LEN + MD5_LEN;
+
+    // pageable
+    public static final int DEFAULT_PAGE_INDEX = 1;
+    public static final int DEFAULT_PAGE_SIZE = 20;
 
 }

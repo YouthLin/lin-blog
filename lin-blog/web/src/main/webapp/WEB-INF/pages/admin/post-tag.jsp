@@ -13,5 +13,65 @@
     $(".menu-item-tag").addClass("active");
 });</script>
 <h1><%=__("Tag")%></h1>
-
+<div>
+    <div class="add-tag col-sm-3">
+        <%--@elvariable id="error" type="java.lang.String"--%>
+        <c:if test="${not empty error}">
+            <div class="error">${error}</div>
+        </c:if>
+        <form action="<c:url value="/admin/post/tag/add"/>" method="post">
+            <h4><%=__("Add Tag")%></h4>
+            <div class="form-group">
+                <label for="name"><%=__("Name:")%></label>
+                <input type="text" class="form-control" id="name" name="name" required>
+                <span class="help-block"><%=__("This will be show on the site.")%></span>
+            </div>
+            <div class="form-group">
+                <label for="slug"><%=__("Slug:")%></label>
+                <input type="text" class="form-control" id="slug" name="slug">
+                <span class="help-block"><%=__("Slug is used to show at URL. It only contains alphabetic or dash('-').")%></span>
+            </div>
+            <div class="form-group">
+                <label for="description"><%=__("Description:")%></label>
+                <input type="text" class="form-control" id="description" name="description">
+                <span class="help-block"><%=__("And you may write some description about this tag...")%></span>
+            </div>
+            <button type="submit" class="btn btn-primary"><%=__("Add Tag")%></button>
+        </form>
+    </div>
+    <div class="all-tag col-sm-9">
+        <table class="table table-striped table-hover border-ccc">
+            <thead>
+            <tr>
+                    <th>
+                        <label class="no-bottom-margin">
+                            <span class="sr-only"><%=__("Select All")%></span>
+                            <input type="checkbox">
+                        </label>
+                    </th>
+                    <th><%=__("Name")%></th>
+                    <th><%=__("Slug")%></th>
+                    <th><%=__("Description")%></th>
+                    <th><%=__("Count")%></th>
+                </tr>
+            </thead>
+            <tbody>
+            <%--@elvariable id="page" type="com.youthlin.blog.model.bo.Pageable"--%>
+            <%--@elvariable id="tag" type="com.youthlin.blog.model.bo.Tag"--%>
+            <c:forEach items="${page.list}" var="tag">
+                <tr>
+                    <td><label>
+                        <span class="sr-only"><%=__("Select")%></span>
+                        <input type="checkbox" name="selected" value="${tag.taxonomyId}">
+                    </label></td>
+                    <td>${tag.name}</td>
+                    <td>${tag.slug}</td>
+                    <td>${tag.description}</td>
+                    <td>${tag.count}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

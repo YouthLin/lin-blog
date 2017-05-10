@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-09 13:01+0800\n"
-"PO-Revision-Date: 2017-05-09 13:03+0800\n"
+"POT-Creation-Date: 2017-05-10 11:49+0800\n"
+"PO-Revision-Date: 2017-05-10 11:49+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -43,7 +43,7 @@ msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:78
-#: java/com/youthlin/blog/web/back/PostController.java:22
+#: java/com/youthlin/blog/web/back/PostController.java:30
 msgid "All Post"
 msgstr "所有文章"
 
@@ -51,58 +51,63 @@ msgstr "所有文章"
 msgid "Edit Category"
 msgstr "编辑分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:26
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:27
 #: webapp/WEB-INF/pages/admin/post-category.jsp:28
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:25
 msgid "Name:"
 msgstr "名称："
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:29
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:30
 #: webapp/WEB-INF/pages/admin/post-category.jsp:30
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:27
 msgid "This will be show on the site."
 msgstr "这将显示在站点中。"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:33
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:34
 #: webapp/WEB-INF/pages/admin/post-category.jsp:33
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:30
 msgid "Slug:"
 msgstr "别名："
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:36
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:37
 #: webapp/WEB-INF/pages/admin/post-category.jsp:35
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:32
 msgid "Slug is used to show at URL. It only contains alphabetic or dash('-')."
 msgstr "别名用于显示在 URL 中， 只能包含数字、字母与连字符(‘-’)。"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:41
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:42
 #: webapp/WEB-INF/pages/admin/post-category.jsp:38
 msgid "Parent:"
 msgstr "父节点："
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:44
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:45
 #: webapp/WEB-INF/pages/admin/post-category.jsp:40
 msgid "None"
 msgstr "无"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:55
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:56
 #: webapp/WEB-INF/pages/admin/post-category.jsp:45
 msgid "Unlike tag, category can have a parent category."
 msgstr "不同于标签，分类目录可以有父节点。"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:59
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:60
 #: webapp/WEB-INF/pages/admin/post-category.jsp:48
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:35
 msgid "Description:"
 msgstr "描述："
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:62
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:64
 #: webapp/WEB-INF/pages/admin/post-category.jsp:50
 msgid "And you may write some description about this category..."
 msgstr "分类目录的描述。"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:67
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
 msgid "Update"
 msgstr "更新"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
-#: webapp/WEB-INF/pages/admin/post-write.jsp:103
-#: java/com/youthlin/blog/web/back/CategoryController.java:34
+#: webapp/WEB-INF/pages/admin/post-write.jsp:104
+#: java/com/youthlin/blog/web/back/CategoryController.java:35
 msgid "Category"
 msgstr "分类目录"
 
@@ -112,26 +117,32 @@ msgid "Add Category"
 msgstr "新增分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:48
 msgid "Select All"
 msgstr "全选"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:52
 msgid "Name"
 msgstr "名称"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:67
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:53
 msgid "Slug"
 msgstr "别名"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:68
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:54
 msgid "Description"
 msgstr "描述"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:69
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:55
 msgid "Count"
 msgstr "总数"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:64
 msgid "Select"
 msgstr "选择"
 
@@ -139,84 +150,93 @@ msgstr "选择"
 msgid "Edit"
 msgstr "编辑"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:86
+#: webapp/WEB-INF/pages/admin/post-category.jsp:87
 msgid "Delete"
 msgstr "删除"
 
-#: webapp/WEB-INF/pages/admin/post-category.jsp:87
+#: webapp/WEB-INF/pages/admin/post-category.jsp:88
 msgid "View"
 msgstr "查看"
 
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:15
-#: webapp/WEB-INF/pages/admin/post-write.jsp:119
+#: webapp/WEB-INF/pages/admin/post-write.jsp:131
 #: webapp/WEB-INF/pages/common/admin/header.jsp:87
-#: java/com/youthlin/blog/web/back/TagController.java:18
+#: java/com/youthlin/blog/web/back/TagController.java:32
 msgid "Tag"
 msgstr "标签"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:18
-#: java/com/youthlin/blog/web/back/PostController.java:28
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:23
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:39
+msgid "Add Tag"
+msgstr "新增标签"
+
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:37
+msgid "And you may write some description about this tag..."
+msgstr "标签的描述。"
+
+#: webapp/WEB-INF/pages/admin/post-write.jsp:19
+#: java/com/youthlin/blog/web/back/PostController.java:36
 msgid "Write Post"
 msgstr "写文章"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:23
+#: webapp/WEB-INF/pages/admin/post-write.jsp:24
 msgid "Title:"
 msgstr "标题："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:27
-#: webapp/WEB-INF/pages/admin/post-write.jsp:45
-#: webapp/WEB-INF/pages/admin/post-write.jsp:50
+#: webapp/WEB-INF/pages/admin/post-write.jsp:28
+#: webapp/WEB-INF/pages/admin/post-write.jsp:46
+#: webapp/WEB-INF/pages/admin/post-write.jsp:51
 msgid "Content:"
 msgstr "内容："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:33
+#: webapp/WEB-INF/pages/admin/post-write.jsp:34
 msgid "Rich Editor"
 msgstr "富文本"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:37
+#: webapp/WEB-INF/pages/admin/post-write.jsp:38
 msgid "Markdown"
 msgstr "Markdown"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:59
+#: webapp/WEB-INF/pages/admin/post-write.jsp:60
 msgid "Excerpt:"
 msgstr "摘要："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:71
-#: webapp/WEB-INF/pages/admin/post-write.jsp:94
+#: webapp/WEB-INF/pages/admin/post-write.jsp:72
+#: webapp/WEB-INF/pages/admin/post-write.jsp:95
 msgid "Publish"
 msgstr "发布"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:79
-#: webapp/WEB-INF/pages/admin/post-write.jsp:81
+#: webapp/WEB-INF/pages/admin/post-write.jsp:80
+#: webapp/WEB-INF/pages/admin/post-write.jsp:82
 msgid "Publish Datetime:"
 msgstr "发布时间："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:93
+#: webapp/WEB-INF/pages/admin/post-write.jsp:94
 msgid "Save Draft"
 msgstr "存草稿"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:135
+#: webapp/WEB-INF/pages/admin/post-write.jsp:147
 msgid "Other Settings"
 msgstr "其他设置"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:143
+#: webapp/WEB-INF/pages/admin/post-write.jsp:155
 msgid "Comments Open"
 msgstr "允许评论"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:146
+#: webapp/WEB-INF/pages/admin/post-write.jsp:158
 msgid "Pings Open"
 msgstr "允许 Ping"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:150
+#: webapp/WEB-INF/pages/admin/post-write.jsp:162
 msgid "Password:"
 msgstr "密码："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:156
+#: webapp/WEB-INF/pages/admin/post-write.jsp:168
 msgctxt "post name"
 msgid "Name:"
 msgstr "别名："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:162
+#: webapp/WEB-INF/pages/admin/post-write.jsp:175
 msgid ""
 "When Password has set, visitors must input password to view the post."
 "<br>Post name is used to show in url."
@@ -415,6 +435,15 @@ msgstr "&larr; 返回 {0}"
 msgid "Un Categorized"
 msgstr "未分类"
 
+#: java/com/youthlin/blog/service/TaxonomyService.java:26
+msgid "The name has be used by another item."
+msgstr "名称已被其他条目使用。"
+
+#: java/com/youthlin/blog/service/TaxonomyService.java:31
+#: java/com/youthlin/blog/web/back/CategoryController.java:147
+msgid "The slug has be used by another item."
+msgstr "别名已被其他条目使用。"
+
 #: java/com/youthlin/blog/web/LoginController.java:45
 msgid "Username, password are all required."
 msgstr "用户名、密码均为必填项。"
@@ -443,31 +472,38 @@ msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 msgid "{0}&#39;Blog"
 msgstr "{0} 的博客"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:48
-msgid "Category name is required."
-msgstr "分类目录名称是必填项"
+#: java/com/youthlin/blog/web/back/CategoryController.java:54
+#: java/com/youthlin/blog/web/back/TagController.java:55
+msgid "Name is required."
+msgstr "名称是必填项。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:57
-#: java/com/youthlin/blog/web/back/CategoryController.java:109
-#: java/com/youthlin/blog/web/back/CategoryController.java:118
+#: java/com/youthlin/blog/web/back/CategoryController.java:63
+#: java/com/youthlin/blog/web/back/CategoryController.java:127
+#: java/com/youthlin/blog/web/back/CategoryController.java:136
 msgid "Illegal parent."
 msgstr "非法父节点。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:99
+#: java/com/youthlin/blog/web/back/CategoryController.java:117
 msgid "Illegal category."
 msgstr "非法分类目录。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:115
+#: java/com/youthlin/blog/web/back/CategoryController.java:133
 msgid "Unknown category."
 msgstr "未知的分类目录。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:122
+#: java/com/youthlin/blog/web/back/CategoryController.java:140
 msgid "Category name must not be empty."
 msgstr "分类目录名称不能为空。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:129
-msgid "The slug has be used by another item."
-msgstr "别名已被其他条目使用。"
+#, fuzzy
+#~| msgid "All Page"
+#~ msgid "All Pageable"
+#~ msgstr "所有页面"
+
+#, fuzzy
+#~| msgid "Write New Page"
+#~ msgid "Write New Pageable"
+#~ msgstr "新建页面"
 
 #~ msgid "Operation"
 #~ msgstr "操作"

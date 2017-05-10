@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -20,23 +21,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static com.youthlin.utils.i18n.Translation.__;
+
 /**
  * 创建： youthlin.chen
  * 时间： 2017-05-08 22:45.
  */
 @Service
-public class CategoryService {
+public class CategoryService extends TaxonomyService {
     private static final Logger log = LoggerFactory.getLogger(CategoryService.class);
     @Resource
     private TaxonomyDao taxonomyDao;
     @Resource
     private GlobalInfo<String, List<Category>> globalInfo;
 
-    public Category save(Category category) {
-        taxonomyDao.save(category);
+    @Override
+    public String save(Taxonomy category) {
+        String errMsg = super.save(category);
+        if (StringUtils.hasText(errMsg)) {
+            return errMsg;
+        }
         globalInfo.set(Constant.O_ALL_CATEGORIES, null);
         log.info("保存分类目录，重置缓存");
-        return category;
+        return null;
     }
 
     public List<Category> listCategoriesByOrder() {

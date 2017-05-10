@@ -186,6 +186,7 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
   COMMENT '该分类下 post 数量',
   PRIMARY KEY (`taxonomy_id`),
   UNIQUE KEY `uniq_name_taxonomy` (`name`, `taxonomy`),
+  UNIQUE KEY `uniq_slug_taxonomy` (`slug`, `taxonomy`),
   KEY `taxonomy` (`taxonomy`)
 )
   ENGINE = InnoDB

@@ -27,7 +27,7 @@
         SELECT
         <include refid="all"/>
         FROM taxonomy
-        WHERE name=#{name} AND taxonomy=${taxonomy}
+        WHERE name=#{name} AND taxonomy=#{taxonomy}
     </select>
 
     <select id="findByTaxonomy" resultMap="taxonomyMap">
@@ -71,5 +71,20 @@
             #{id}
         </foreach>
     </update>
+
+    <select id="findBySlugAndTaxonomy" resultMap="taxonomyMap">
+        SELECT
+        <include refid="all"/>
+        FROM taxonomy
+        WHERE slug=#{slug} AND taxonomy=#{taxonomy}
+    </select>
+
+    <select id="findByPage" resultMap="taxonomyMap">
+        SELECT
+        <include refid="all"/>
+        FROM taxonomy
+        WHERE taxonomy=#{taxonomy}
+    </select>
+
 
 </mapper>
