@@ -10,7 +10,6 @@ import java.util.List;
  * 时间： 2017-05-10 10:19.
  */
 public class Page<T> implements Pageable<T> {
-    private List<T> list = Lists.newArrayList();
     private long totalPage;
     private long currentPage;
     private long pageSize;
@@ -18,9 +17,9 @@ public class Page<T> implements Pageable<T> {
     private long startRow;
     private long endRow;
     private long size;
+    private List<T> list = Lists.newArrayList();
 
     public Page() {
-
     }
 
     public Page(PageInfo<T> pageInfo) {
@@ -37,14 +36,14 @@ public class Page<T> implements Pageable<T> {
     @Override
     public String toString() {
         return "Page{" +
-                "list=" + list +
-                ", totalPage=" + totalPage +
+                "totalPage=" + totalPage +
                 ", currentPage=" + currentPage +
                 ", pageSize=" + pageSize +
                 ", totalRow=" + totalRow +
                 ", startRow=" + startRow +
                 ", endRow=" + endRow +
                 ", size=" + size +
+                ", list=" + list +
                 '}';
     }
 

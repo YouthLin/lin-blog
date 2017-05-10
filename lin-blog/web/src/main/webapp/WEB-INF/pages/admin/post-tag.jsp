@@ -1,4 +1,7 @@
-<%@ page import="static com.youthlin.utils.i18n.Translation.__" %><%--
+<%--@elvariable id="page" type="com.youthlin.blog.model.bo.Pageable"--%>
+<%--@elvariable id="tag" type="com.youthlin.blog.model.bo.Tag"--%>
+<%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -40,6 +43,7 @@
         </form>
     </div>
     <div class="all-tag col-sm-9">
+
         <table class="table table-striped table-hover border-ccc">
             <thead>
             <tr>
@@ -56,15 +60,20 @@
                 </tr>
             </thead>
             <tbody>
-            <%--@elvariable id="page" type="com.youthlin.blog.model.bo.Pageable"--%>
-            <%--@elvariable id="tag" type="com.youthlin.blog.model.bo.Tag"--%>
             <c:forEach items="${page.list}" var="tag">
-                <tr>
+                <tr id="row-${tag.taxonomyId}" class="action-row">
                     <td><label>
                         <span class="sr-only"><%=__("Select")%></span>
                         <input type="checkbox" name="selected" value="${tag.taxonomyId}">
                     </label></td>
-                    <td>${tag.name}</td>
+                    <td>
+                        <strong>${tag.name}</strong><br>
+                        <span class="operation operation-${tag.taxonomyId}">
+                                <a href="#"><%=__("Edit")%></a> |
+                                <a href="#" class="text-danger confirm"><%=__("Delete")%></a> |
+                                <a href="#"><%=__("View")%></a>
+                            </span>
+                    </td>
                     <td>${tag.slug}</td>
                     <td>${tag.description}</td>
                     <td>${tag.count}</td>
