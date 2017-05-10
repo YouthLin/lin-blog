@@ -148,7 +148,7 @@
                         <a id="add-tag-btn" href="javascript:void(0);" class="btn btn-default"><%=__("Add")%></a>
                     </div>
                     <div class="panel-footer">
-                        <a href=""><%=__("Select from frequently-used tags.")%></a>
+                        <a href="javascript:void(0);"><%=__("Select from frequently-used tags.")%></a>
                     </div>
                 </div>
             </div>

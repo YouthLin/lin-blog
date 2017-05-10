@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-10 11:49+0800\n"
-"PO-Revision-Date: 2017-05-10 11:49+0800\n"
+"POT-Creation-Date: 2017-05-10 19:49+0800\n"
+"PO-Revision-Date: 2017-05-10 19:53+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -18,32 +18,32 @@ msgstr ""
 "X-Poedit-SearchPath-1: webapp/WEB-INF/pages\n"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:110
+#: webapp/WEB-INF/pages/common/admin/header.jsp:111
 #: java/com/youthlin/blog/web/back/CommentController.java:18
 msgid "All Comments"
 msgstr "所有评论"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:68
+#: webapp/WEB-INF/pages/common/admin/header.jsp:69
 #: java/com/youthlin/blog/web/back/OverViewController.java:17
 msgid "Overview"
 msgstr "概览"
 
 #: webapp/WEB-INF/pages/admin/page-all.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:97
+#: webapp/WEB-INF/pages/common/admin/header.jsp:98
 #: java/com/youthlin/blog/web/back/PageController.java:18
 msgid "All Page"
 msgstr "所有页面"
 
 #: webapp/WEB-INF/pages/admin/page-new.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:100
+#: webapp/WEB-INF/pages/common/admin/header.jsp:101
 #: java/com/youthlin/blog/web/back/PageController.java:24
 msgid "Write New Page"
 msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:78
-#: java/com/youthlin/blog/web/back/PostController.java:30
+#: webapp/WEB-INF/pages/common/admin/header.jsp:79
+#: java/com/youthlin/blog/web/back/PostController.java:33
 msgid "All Post"
 msgstr "所有文章"
 
@@ -53,25 +53,25 @@ msgstr "编辑分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:27
 #: webapp/WEB-INF/pages/admin/post-category.jsp:28
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:25
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:28
 msgid "Name:"
 msgstr "名称："
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:30
 #: webapp/WEB-INF/pages/admin/post-category.jsp:30
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:27
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:30
 msgid "This will be show on the site."
 msgstr "这将显示在站点中。"
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:34
 #: webapp/WEB-INF/pages/admin/post-category.jsp:33
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:30
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:33
 msgid "Slug:"
 msgstr "别名："
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:37
 #: webapp/WEB-INF/pages/admin/post-category.jsp:35
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:32
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:35
 msgid "Slug is used to show at URL. It only contains alphabetic or dash('-')."
 msgstr "别名用于显示在 URL 中， 只能包含数字、字母与连字符(‘-’)。"
 
@@ -92,7 +92,7 @@ msgstr "不同于标签，分类目录可以有父节点。"
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:60
 #: webapp/WEB-INF/pages/admin/post-category.jsp:48
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:35
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:38
 msgid "Description:"
 msgstr "描述："
 
@@ -106,7 +106,7 @@ msgid "Update"
 msgstr "更新"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
-#: webapp/WEB-INF/pages/admin/post-write.jsp:104
+#: webapp/WEB-INF/pages/admin/post-write.jsp:105
 #: java/com/youthlin/blog/web/back/CategoryController.java:35
 msgid "Category"
 msgstr "分类目录"
@@ -117,65 +117,68 @@ msgid "Add Category"
 msgstr "新增分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:48
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:52
 msgid "Select All"
 msgstr "全选"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:52
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56
 msgid "Name"
 msgstr "名称"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:67
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:53
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:57
 msgid "Slug"
 msgstr "别名"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:68
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:54
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:58
 msgid "Description"
 msgstr "描述"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:69
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:55
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:59
 msgid "Count"
 msgstr "总数"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:64
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:66
 msgid "Select"
 msgstr "选择"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:85
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
 msgid "Edit"
 msgstr "编辑"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:87
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:73
 msgid "Delete"
 msgstr "删除"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:88
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:74
 msgid "View"
 msgstr "查看"
 
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:15
-#: webapp/WEB-INF/pages/admin/post-write.jsp:131
-#: webapp/WEB-INF/pages/common/admin/header.jsp:87
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:18
+#: webapp/WEB-INF/pages/admin/post-write.jsp:132
+#: webapp/WEB-INF/pages/common/admin/header.jsp:88
 #: java/com/youthlin/blog/web/back/TagController.java:32
 msgid "Tag"
 msgstr "标签"
 
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:23
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:39
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:26
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:42
 msgid "Add Tag"
 msgstr "新增标签"
 
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:37
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:40
 msgid "And you may write some description about this tag..."
 msgstr "标签的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:19
-#: java/com/youthlin/blog/web/back/PostController.java:36
+#: java/com/youthlin/blog/web/back/PostController.java:39
 msgid "Write Post"
 msgstr "写文章"
 
@@ -184,59 +187,75 @@ msgid "Title:"
 msgstr "标题："
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:28
-#: webapp/WEB-INF/pages/admin/post-write.jsp:46
-#: webapp/WEB-INF/pages/admin/post-write.jsp:51
+#: webapp/WEB-INF/pages/admin/post-write.jsp:48
+#: webapp/WEB-INF/pages/admin/post-write.jsp:53
 msgid "Content:"
 msgstr "内容："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:34
+#: webapp/WEB-INF/pages/admin/post-write.jsp:36
 msgid "Rich Editor"
 msgstr "富文本"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:38
+#: webapp/WEB-INF/pages/admin/post-write.jsp:41
 msgid "Markdown"
 msgstr "Markdown"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:60
+#: webapp/WEB-INF/pages/admin/post-write.jsp:62
 msgid "Excerpt:"
 msgstr "摘要："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:72
-#: webapp/WEB-INF/pages/admin/post-write.jsp:95
+#: webapp/WEB-INF/pages/admin/post-write.jsp:73
+#: webapp/WEB-INF/pages/admin/post-write.jsp:96
 msgid "Publish"
 msgstr "发布"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:80
-#: webapp/WEB-INF/pages/admin/post-write.jsp:82
+#: webapp/WEB-INF/pages/admin/post-write.jsp:81
+#: webapp/WEB-INF/pages/admin/post-write.jsp:83
 msgid "Publish Datetime:"
 msgstr "发布时间："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:94
+#: webapp/WEB-INF/pages/admin/post-write.jsp:95
 msgid "Save Draft"
 msgstr "存草稿"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:147
+#: webapp/WEB-INF/pages/admin/post-write.jsp:144
+msgid "Attach Tag:"
+msgstr "附加标签："
+
+#: webapp/WEB-INF/pages/admin/post-write.jsp:146
+msgid "You can use comma(,) to split tags."
+msgstr "可以使用英文逗号(,)分隔多个标签。"
+
+#: webapp/WEB-INF/pages/admin/post-write.jsp:148
+msgid "Add"
+msgstr "添加"
+
+#: webapp/WEB-INF/pages/admin/post-write.jsp:151
+msgid "Select from frequently-used tags."
+msgstr "从常用标签中选择。"
+
+#: webapp/WEB-INF/pages/admin/post-write.jsp:160
 msgid "Other Settings"
 msgstr "其他设置"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:155
+#: webapp/WEB-INF/pages/admin/post-write.jsp:169
 msgid "Comments Open"
 msgstr "允许评论"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:158
+#: webapp/WEB-INF/pages/admin/post-write.jsp:173
 msgid "Pings Open"
 msgstr "允许 Ping"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:162
+#: webapp/WEB-INF/pages/admin/post-write.jsp:177
 msgid "Password:"
 msgstr "密码："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:168
+#: webapp/WEB-INF/pages/admin/post-write.jsp:183
 msgctxt "post name"
 msgid "Name:"
 msgstr "别名："
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:175
+#: webapp/WEB-INF/pages/admin/post-write.jsp:190
 msgid ""
 "When Password has set, visitors must input password to view the post."
 "<br>Post name is used to show in url."
@@ -244,99 +263,103 @@ msgstr ""
 "当设置了密码，读者必须输入密码才能浏览文章。<br>别名通常只包含字母、数字、连"
 "字符，有时会在 URL 中显示。"
 
+#: webapp/WEB-INF/pages/admin/post-write.jsp:308
+msgid "\"Current editor is not empty so you can not swith to another editor.\""
+msgstr "\"当前编辑器内容不为空，因此您不能切换到另一个编辑器。\""
+
 #: webapp/WEB-INF/pages/admin/settings-comment.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:153
+#: webapp/WEB-INF/pages/common/admin/header.jsp:154
 #: java/com/youthlin/blog/web/back/SettingsController.java:29
 msgid "Comment Settings"
 msgstr "评论设置"
 
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:147
+#: webapp/WEB-INF/pages/common/admin/header.jsp:148
 #: java/com/youthlin/blog/web/back/SettingsController.java:18
 msgid "General Settings"
 msgstr "常规设置"
 
 #: webapp/WEB-INF/pages/admin/settings-post.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:150
+#: webapp/WEB-INF/pages/common/admin/header.jsp:151
 #: java/com/youthlin/blog/web/back/SettingsController.java:24
 msgid "Post Settings"
 msgstr "文章设置"
 
 #: webapp/WEB-INF/pages/admin/tool-export.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:136
+#: webapp/WEB-INF/pages/common/admin/header.jsp:137
 #: java/com/youthlin/blog/web/back/ToolController.java:24
 msgid "Export"
 msgstr "导出"
 
 #: webapp/WEB-INF/pages/admin/tool-import.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:133
+#: webapp/WEB-INF/pages/common/admin/header.jsp:134
 #: java/com/youthlin/blog/web/back/ToolController.java:18
 msgid "Import"
 msgstr "导入"
 
 #: webapp/WEB-INF/pages/admin/users-all.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:120
+#: webapp/WEB-INF/pages/common/admin/header.jsp:121
 #: java/com/youthlin/blog/web/back/UserController.java:18
 msgid "All Users"
 msgstr "所有用户"
 
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:123
+#: webapp/WEB-INF/pages/common/admin/header.jsp:124
 #: java/com/youthlin/blog/web/back/UserController.java:24
 msgid "My Profile"
 msgstr "个人资料"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:35
+#: webapp/WEB-INF/pages/common/admin/header.jsp:36
 msgid "Toggle Navigation"
 msgstr "展开/折叠侧栏菜单"
 
 #. TRANSLATORS: 0 username
-#: webapp/WEB-INF/pages/common/admin/header.jsp:43
+#: webapp/WEB-INF/pages/common/admin/header.jsp:44
 #, java-format
 msgid "Hi, {0}"
 msgstr "嗨，{0}"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:55
+#: webapp/WEB-INF/pages/common/admin/header.jsp:56
 msgid "Profile"
 msgstr "个人资料"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:56
+#: webapp/WEB-INF/pages/common/admin/header.jsp:57
 msgid "Log out"
 msgstr "登出"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:64
+#: webapp/WEB-INF/pages/common/admin/header.jsp:65
 msgid "DashBoard"
 msgstr "仪表盘"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:74
+#: webapp/WEB-INF/pages/common/admin/header.jsp:75
 msgid "Post"
 msgstr "文章"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:81
+#: webapp/WEB-INF/pages/common/admin/header.jsp:82
 msgid "New Post"
 msgstr "写文章"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:84
+#: webapp/WEB-INF/pages/common/admin/header.jsp:85
 msgid "Categories"
 msgstr "分类目录"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:93
+#: webapp/WEB-INF/pages/common/admin/header.jsp:94
 msgid "Page"
 msgstr "页面"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:106
+#: webapp/WEB-INF/pages/common/admin/header.jsp:107
 msgid "Comments"
 msgstr "评论"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:116
+#: webapp/WEB-INF/pages/common/admin/header.jsp:117
 msgid "Users"
 msgstr "用户"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:129
+#: webapp/WEB-INF/pages/common/admin/header.jsp:130
 msgid "Tools"
 msgstr "工具"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:142
+#: webapp/WEB-INF/pages/common/admin/header.jsp:143
 msgid "Settings"
 msgstr "设置"
 
@@ -490,50 +513,3 @@ msgstr "非法分类目录。"
 #: java/com/youthlin/blog/web/back/CategoryController.java:133
 msgid "Unknown category."
 msgstr "未知的分类目录。"
-
-#: java/com/youthlin/blog/web/back/CategoryController.java:140
-msgid "Category name must not be empty."
-msgstr "分类目录名称不能为空。"
-
-#, fuzzy
-#~| msgid "All Page"
-#~ msgid "All Pageable"
-#~ msgstr "所有页面"
-
-#, fuzzy
-#~| msgid "Write New Page"
-#~ msgid "Write New Pageable"
-#~ msgstr "新建页面"
-
-#~ msgid "Operation"
-#~ msgstr "操作"
-
-#~ msgid "{0}&#39;s Blog"
-#~ msgstr "{0} 的博客"
-
-#~ msgid "\"Write Post Title Here\""
-#~ msgstr "\"在这里填写标题\""
-
-#~ msgid "Post excerpt is the summary of the post."
-#~ msgstr "文章的摘要。"
-
-#~ msgid "Username or Email Address"
-#~ msgstr "用户名或电子邮件"
-
-#~ msgid "New Page"
-#~ msgstr "新页面"
-
-#~ msgctxt "Settings"
-#~ msgid "General"
-#~ msgstr "常规"
-
-#~ msgctxt "Settings"
-#~ msgid "Post"
-#~ msgstr "文章"
-
-#~ msgctxt "Settings"
-#~ msgid "Comment"
-#~ msgstr "评论"
-
-#~ msgid "Hello"
-#~ msgstr "你好"

@@ -29,7 +29,7 @@ public class InitInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         MDC.put("sessionId", UUID.randomUUID().toString());
-        LOGGER.debug("{} {} {}", request.getMethod(), ServletUtil.getUrl(request), ServletUtil.getRemoteIP(request));
+        LOGGER.debug("{} {} {}", ServletUtil.getRemoteIP(request), request.getMethod(), ServletUtil.getUrl(request));
         return true;
     }
 }
