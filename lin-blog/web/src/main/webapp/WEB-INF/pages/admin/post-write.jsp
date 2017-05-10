@@ -135,7 +135,19 @@
                 <div id="collapse-tag" class="panel-collapse collapse in" role="tabpanel"
                      aria-labelledby="heading-tag">
                     <div class="panel-body">
-                        tag Settings
+                        <input type="hidden" name="tags" id="tags">
+                        <div>
+                            <div class="tags"></div>&nbsp;
+                        </div>
+                        <div class="form-group">
+                            <label for="add-tag"><span class="sr-only"><%=__("Attach Tag:")%></span></label>
+                            <input type="text" class="form-control" id="add-tag">
+                            <span class="help-block"><%=__("You can use comma(,) to split tags.")%></span>
+                        </div>
+                        <a id="add-tag-btn" href="javascript:void(0);" class="btn btn-default"><%=__("Add")%></a>
+                    </div>
+                    <div class="panel-footer">
+                        <a href=""><%=__("Select from frequently-used tags.")%></a>
                     </div>
                 </div>
             </div>
@@ -143,12 +155,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading-settings">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" href="#collapse-settings" aria-expanded="true"
+                        <a role="button" data-toggle="collapse" href="#collapse-settings" aria-expanded="false"
                            aria-controls="collapse-settings"><%=__("Other Settings")%>
                         </a>
                     </h4>
                 </div>
-                <div id="collapse-settings" class="panel-collapse collapse in" role="tabpanel"
+                <div id="collapse-settings" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="heading-tag">
                     <div class="panel-body">
                         <div class="checkbox">
@@ -186,7 +198,6 @@
     <div class="clear"></div>
 </form>
 
-
 <%--suppress JSPotentiallyInvalidConstructorUsage, JSUnresolvedFunction --%>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -202,13 +213,81 @@
                 enabled: true,
                 uniqueId: "md-eitor",
                 delay: 1000
-            }
+            },
+            spellChecker: false
         });
 
         $('#datetimepicker').datetimepicker({
             format: 'YYYY-MM-DD HH:mm',
             dayViewHeaderFormat: 'YYYY-MM'
         });
+
+        $('input').bind('keypress', function (e) {
+            if (event.keyCode === 13) {
+                return e.preventDefault();
+            }
+        });
+
+        //region //add tag
+        var addBtn = $("#add-tag-btn");
+        var addInput = $('#add-tag');
+        var tagList = $('.tags');
+        var tagsInput = $('#tags');
+        addBtn.click(function () {
+            var input = addInput.val();
+            var tags = input.split(',');
+            $(tags).each(function (index, e) {
+                if (e.length > 0) {
+                    add(e); // add each
+                }
+            });
+            addInput.val('');//clear input
+        });
+        addInput.on('keypress', function (e) {
+            if (event.keyCode === 13) {
+                addBtn.click();
+                return e.preventDefault();
+            }
+        });
+
+        var allTag = [];
+        var add = function (tag) {
+            if (allTag.indexOf(tag) !== -1) {
+                // already contains
+                return;
+            }
+            tagList.append(makeTagHtml(tag));
+            allTag.push(tag);
+            toInput();
+        };
+
+        var makeTagHtml = function (tag) {
+            return '<span class="label label-primary">' + tag +
+                '<a href="javascript:void(0);" data-tag="' + tag + '" class="badge remove-tag" aria-label="Remove">' +
+                '<span aria-hidden="true">&times;</span></a></span>';
+        };
+
+        var toInput = function () {
+            tagsInput.val(allTag.join(','));
+        };
+
+        var remove = function () {
+            var tag = $(this).data('tag');
+            var parent = $(this).parent();
+            parent.remove();// remove the tag from page
+            $(allTag).each(function (index, e) {
+                if (e === tag) {
+                    allTag.splice(index, 1);//delete 1 item from index
+                }
+            });
+            toInput();
+        };
+
+        // $(...).live is not a function
+        // http://stackoverflow.com/a/14354091
+        $(this).on('click', '.remove-tag', remove);
+        //endregion
+
     });
 </script>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

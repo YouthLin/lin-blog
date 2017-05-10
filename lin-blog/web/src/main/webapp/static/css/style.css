@@ -71,6 +71,15 @@ li {
     list-style: none;
 }
 
+textarea {
+    max-width: 100%;
+}
+
+.label {
+    margin: 0 .1em;
+    display: inline-block;
+}
+
 .no-bottom-margin {
     margin-bottom: 0;
 }
