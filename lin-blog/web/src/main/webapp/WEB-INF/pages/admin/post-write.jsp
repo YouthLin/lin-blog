@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-default "><%=__("Save Draft")%></button>
+                        <input type="submit" class="btn btn-default" name="draft" value=<%=__("\"Save Draft\"")%>/>
                         <button type="submit" class="btn btn-primary pull-right"><%=__("Publish")%></button>
                     </div>
                 </div>

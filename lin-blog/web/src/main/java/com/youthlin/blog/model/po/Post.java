@@ -4,8 +4,11 @@ import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.enums.PostType;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
+
+import static com.youthlin.utils.i18n.Translation.__;
 
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 20:36.
@@ -59,21 +62,22 @@ import java.util.Date;
  * COLLATE = utf8mb4_unicode_ci
  * COMMENT '文章，页面，附件等 post ';</pre>
  */
+@SuppressWarnings("WeakerAccess")
 public class Post {
     private Long postId;
     private Long postAuthorId = 0L;
     private Date postDate = new Date();
-    private Date postDateUtc = new DateTime(DateTimeZone.UTC).toDate();
+    private Date postDateUtc = new DateTime(new DateTime(postDate), DateTimeZone.UTC).toLocalDateTime().toDate();
     private String postContent;
     private String postTitle;
     private String postExcerpt = "";
     private PostStatus postStatus = PostStatus.DRAFT;
-    private Boolean commentOpen;
-    private Boolean pingOpen;
-    private String postPassword;
+    private Boolean commentOpen = true;
+    private Boolean pingOpen = true;
+    private String postPassword = "";
     private String postName;
     private Date postModified = new Date();
-    private Date postModifiedUtc = new DateTime(DateTimeZone.UTC).toDate();
+    private Date postModifiedUtc = new DateTime(new DateTime(postModified), DateTimeZone.UTC).toLocalDateTime().toDate();
     private Long postParent = 0L;
     private PostType postType = PostType.POST;
     private String postMimeType = "";
@@ -128,6 +132,7 @@ public class Post {
 
     public Post setPostDate(Date postDate) {
         this.postDate = postDate;
+        this.postDateUtc = new DateTime(new DateTime(postDate), DateTimeZone.UTC).toLocalDateTime().toDate();
         return this;
     }
 
@@ -145,6 +150,9 @@ public class Post {
     }
 
     public Post setPostContent(String postContent) {
+        if (!StringUtils.hasText(postContent)) {
+            postContent = "";
+        }
         this.postContent = postContent;
         return this;
     }
@@ -154,7 +162,13 @@ public class Post {
     }
 
     public Post setPostTitle(String postTitle) {
+        if (!StringUtils.hasText(postTitle)) {
+            postTitle = __("Untitled");
+        }
         this.postTitle = postTitle;
+        if (!StringUtils.hasText(postName)) {
+            postName = postTitle;
+        }
         return this;
     }
 
@@ -163,6 +177,9 @@ public class Post {
     }
 
     public Post setPostExcerpt(String postExcerpt) {
+        if (!StringUtils.hasText(postExcerpt)) {
+            postExcerpt = "";
+        }
         this.postExcerpt = postExcerpt;
         return this;
     }
@@ -199,6 +216,9 @@ public class Post {
     }
 
     public Post setPostPassword(String postPassword) {
+        if (!StringUtils.hasText(postPassword)) {
+            postPassword = "";
+        }
         this.postPassword = postPassword;
         return this;
     }
@@ -207,7 +227,11 @@ public class Post {
         return postName;
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public Post setPostName(String postName) {
+        if (!StringUtils.hasText(postName)) {
+            postName = getPostTitle();
+        }
         this.postName = postName;
         return this;
     }
@@ -218,6 +242,7 @@ public class Post {
 
     public Post setPostModified(Date postModified) {
         this.postModified = postModified;
+        this.postModifiedUtc = new DateTime(new DateTime(postModified), DateTimeZone.UTC).toLocalDateTime().toDate();
         return this;
     }
 

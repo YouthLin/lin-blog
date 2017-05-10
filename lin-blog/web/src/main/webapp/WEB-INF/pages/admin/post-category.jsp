@@ -26,7 +26,7 @@
             <h4><%=__("Add Category")%></h4>
             <div class="form-group">
                 <label for="category-name"><%=__("Name:")%></label>
-                <input type="text" class="form-control" id="category-name" name="name" required>
+                <input type="text" class="form-control" id="category-name" name="name" required autofocus>
                 <span class="help-block"><%=__("This will be show on the site.")%></span>
             </div>
             <div class="form-group">

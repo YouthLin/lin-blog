@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youthlin.blog.dao.PostDao">
+    <resultMap id="postMap" type="com.youthlin.blog.model.po.Post">
+        <id property="postId" column="ID"/>
+        <result property="postAuthorId" column="post_author"/>
+        <result property="postDate" column="post_date"/>
+        <result property="postDateUtc" column="post_date_utc"/>
+        <result property="postContent" column="post_content"/>
+        <result property="postTitle" column="post_title"/>
+        <result property="postExcerpt" column="post_excerpt"/>
+        <result property="postStatus" column="post_status"/>
+        <result property="commentOpen" column="comment_open"/>
+        <result property="pingOpen" column="ping_open"/>
+        <result property="postPassword" column="post_password"/>
+        <result property="postName" column="post_name"/>
+        <result property="postModified" column="post_modified"/>
+        <result property="postModifiedUtc" column="post_modified_utc"/>
+        <result property="postParent" column="post_parent"/>
+        <result property="postType" column="post_type"/>
+        <result property="postMimeType" column="post_mime_type"/>
+        <result property="commentCount" column="comment_count"/>
+    </resultMap>
+
+    <sql id="all">
+        ID, post_author, post_date, post_date_utc,
+        post_content, post_title, post_excerpt, post_status,
+        comment_open, ping_open, post_password, post_name,
+        post_modified, post_modified_utc, post_parent, post_type, post_mime_type, comment_count
+    </sql>
+
+    <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.po.Post" keyProperty="postId">
+        INSERT INTO posts (post_author, post_date, post_date_utc,
+                           post_content, post_title, post_excerpt, post_status,
+                           comment_open, ping_open, post_password, post_name,
+                           post_modified, post_modified_utc, post_parent, post_type, post_mime_type, comment_count)
+        VALUES
+            (#{postAuthorId}, #{postDate}, #{postDateUtc}, #{postContent}, #{postTitle}, #{postExcerpt}, #{postStatus},
+                              #{commentOpen}, #{pingOpen}, #{postPassword}, #{postName}, #{postModified},
+             #{postModifiedUtc}, #{postParent}, #{postType}, #{postMimeType}, #{commentCount})
+    </insert>
+
+
+</mapper>

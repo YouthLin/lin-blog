@@ -1,5 +1,7 @@
 package com.youthlin.blog.model.po;
 
+import org.springframework.util.StringUtils;
+
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:26.
  * <pre>
@@ -35,7 +37,7 @@ public class Taxonomy {
     private String name;
     private String slug;
     private String taxonomy;
-    private String description;
+    private String description = "";
     private Long parent = 0L;
     private Long count = 0L;
 
@@ -57,6 +59,7 @@ public class Taxonomy {
         return taxonomyId;
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public Taxonomy setTaxonomyId(Long taxonomyId) {
         this.taxonomyId = taxonomyId;
         return this;
@@ -68,6 +71,9 @@ public class Taxonomy {
 
     public Taxonomy setName(String name) {
         this.name = name;
+        if (!StringUtils.hasText(slug)) {
+            slug = name;
+        }
         return this;
     }
 

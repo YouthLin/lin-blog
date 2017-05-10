@@ -23,6 +23,22 @@
         VALUES (#{name}, #{slug}, #{taxonomy}, #{description}, #{parent}, #{count})
     </insert>
 
+    <insert id="saveList" useGeneratedKeys="true" parameterType="list" keyProperty="optionId">
+        INSERT INTO taxonomy (name, slug, taxonomy, description, parent, `count`)
+        VALUES
+        <foreach collection="list" separator="," item="taxonomy">
+            (#{taxonomy.name}, #{taxonomy.slug}, #{taxonomy.taxonomy}, #{taxonomy.description},
+            #{taxonomy.parent}, #{taxonomy.count})
+        </foreach>
+    </insert>
+    <insert id="saveTaxonomyRelationships" useGeneratedKeys="true" parameterType="list" keyProperty="ID">
+        INSERT INTO taxonomy_relationships (post_id, taxonomy_id)
+        VALUES
+        <foreach collection="list" item="e" separator=",">
+            (#{e.postId}, #{e.taxonomyId})
+        </foreach>
+    </insert>
+
     <select id="findByNameAndTaxonomy" resultMap="taxonomyMap">
         SELECT
         <include refid="all"/>
@@ -52,6 +68,7 @@
             slug=#{slug},
             description=#{description},
             parent=#{parent},
+            count=#{count}
         </set>
         WHERE taxonomy_id=#{taxonomyId}
     </update>
@@ -84,6 +101,25 @@
         <include refid="all"/>
         FROM taxonomy
         WHERE taxonomy=#{taxonomy}
+    </select>
+
+    <select id="findByTaxonomyAndNameIn" resultMap="taxonomyMap">
+        SELECT
+        <include refid="all"/>
+        FROM taxonomy
+        WHERE taxonomy=#{taxonomy} AND
+        <choose>
+            <when test="nameList.size() > 0">
+                name IN
+                <foreach collection="nameList" item="name" open="(" close=")" separator=",">
+                    #{name}
+                </foreach>
+            </when>
+            <otherwise>
+                1!=1
+            </otherwise>
+        </choose>
+
     </select>
 
 

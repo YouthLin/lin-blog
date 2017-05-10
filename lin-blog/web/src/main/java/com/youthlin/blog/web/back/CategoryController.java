@@ -137,7 +137,7 @@ public class CategoryController {
         }
 
         if (!StringUtils.hasText(name)) {
-            errMsg.append(__("Category name must not be empty.")).append("<br>");
+            errMsg.append(__("Name must not be empty.")).append("<br>");
         }
         if (StringUtils.hasText(slug)) {
             // 看是否重复

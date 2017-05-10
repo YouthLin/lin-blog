@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-10 19:49+0800\n"
-"PO-Revision-Date: 2017-05-10 19:53+0800\n"
+"POT-Creation-Date: 2017-05-10 23:48+0800\n"
+"PO-Revision-Date: 2017-05-10 23:48+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -43,7 +43,7 @@ msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:79
-#: java/com/youthlin/blog/web/back/PostController.java:33
+#: java/com/youthlin/blog/web/back/PostController.java:50
 msgid "All Post"
 msgstr "所有文章"
 
@@ -178,7 +178,7 @@ msgid "And you may write some description about this tag..."
 msgstr "标签的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:19
-#: java/com/youthlin/blog/web/back/PostController.java:39
+#: java/com/youthlin/blog/web/back/PostController.java:56
 msgid "Write Post"
 msgstr "写文章"
 
@@ -215,8 +215,8 @@ msgid "Publish Datetime:"
 msgstr "发布时间："
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:95
-msgid "Save Draft"
-msgstr "存草稿"
+msgid "\"Save Draft\""
+msgstr "“存草稿”"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:144
 msgid "Attach Tag:"
@@ -454,6 +454,10 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
+#: java/com/youthlin/blog/model/po/Post.java:165
+msgid "Untitled"
+msgstr "未命名"
+
 #: java/com/youthlin/blog/service/SetupService.java:78
 msgid "Un Categorized"
 msgstr "未分类"
@@ -513,3 +517,7 @@ msgstr "非法分类目录。"
 #: java/com/youthlin/blog/web/back/CategoryController.java:133
 msgid "Unknown category."
 msgstr "未知的分类目录。"
+
+#: java/com/youthlin/blog/web/back/CategoryController.java:140
+msgid "Name must not be empty."
+msgstr "名称不能为空。"
