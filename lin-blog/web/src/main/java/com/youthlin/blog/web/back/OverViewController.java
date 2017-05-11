@@ -12,7 +12,7 @@ import static com.youthlin.utils.i18n.Translation.__;
 @RequestMapping("/admin")
 @Controller
 public class OverViewController {
-    @RequestMapping("/")
+    @RequestMapping(path = {"", "/"})
     public String overview(Model model) {
         model.addAttribute("title", __("Overview"));
         return "admin/index";

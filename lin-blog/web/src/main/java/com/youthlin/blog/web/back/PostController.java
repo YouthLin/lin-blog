@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,8 +46,15 @@ public class PostController {
     @Resource
     private PostService postService;
 
-    @RequestMapping("/post")
-    public String allPostPage(Model model) {
+    @RequestMapping(path = {"/post", "/post/{status}"})
+    public String allPostPage(@PathVariable(required = false) String status, Model model) {
+        PostStatus postStatus = PostStatus.nameOf(status);
+        log.debug("post status = {}", postStatus);
+        if (postStatus != null) {
+            model.addAttribute("status", postStatus.name().toLowerCase());
+        } else {
+            model.addAttribute("status", "all");
+        }
         model.addAttribute("title", __("All Post"));
         return "admin/post-all";
     }

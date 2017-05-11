@@ -13,14 +13,18 @@ public enum PostStatus {
     private final int code;
     private final String describe;
     private static final Map<Integer, PostStatus> map;
+    private static final Map<String, PostStatus> nameMap;
 
     static {
         Map<Integer, PostStatus> all = Maps.newHashMap();
+        Map<String, PostStatus> allName = Maps.newHashMap();
         PostStatus[] values = PostStatus.values();
         for (PostStatus v : values) {
             all.put(v.code, v);
+            allName.put(v.name().toLowerCase(), v);
         }
         map = Collections.unmodifiableMap(all);
+        nameMap = Collections.unmodifiableMap(allName);
     }
 
     PostStatus(int code, String describe) {
@@ -38,5 +42,12 @@ public enum PostStatus {
 
     public static PostStatus codeOf(int code) {
         return map.get(code);
+    }
+
+    public static PostStatus nameOf(String name) {
+        if (name == null) {
+            return null;
+        }
+        return nameMap.get(name.toLowerCase());
     }
 }

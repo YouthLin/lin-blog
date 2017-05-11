@@ -2,6 +2,7 @@ package com.youthlin.blog.dao;
 
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
+import org.apache.ibatis.session.RowBounds;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
@@ -10,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -20,6 +23,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/app.xml"})
 public class PostDaoTest {
+
     @Resource
     private PostDao postDao;
 
@@ -42,5 +46,39 @@ public class PostDaoTest {
         System.out.println(utc.toLocalDateTime().toDate());
         System.out.println(now.toDate());
     }
+
+    @Test
+    public void findByStatusAndDateAndCategoryIdAndTag() throws Exception {
+        List<Post> posts = postDao.findByStatusAndDateAndCategoryIdAndTag
+                (null, null, null, null, null);
+        System.out.println("所有文章");
+        for (Post post : posts) {
+            System.out.println(post.getPostId() + ":" + post.getPostTitle());
+        }
+
+        posts = postDao.findByStatusAndDateAndCategoryIdAndTag
+                (PostStatus.PUBLISHED, null, null, null, null, new RowBounds(1, 2));
+        System.out.println("已发布文章：限 2 条");
+        for (Post post : posts) {
+            System.out.println(post.getPostId() + ":" + post.getPostTitle());
+        }
+
+        posts = postDao.findByStatusAndDateAndCategoryIdAndTag
+                (null, null, null, 1L, null, new RowBounds(1, 2));
+        System.out.println("未分类文章：限 2 条");
+        for (Post post : posts) {
+            System.out.println(post.getPostId() + ":" + post.getPostTitle());
+        }
+
+        posts = postDao.findByStatusAndDateAndCategoryIdAndTag
+                (null, null, null, null, "标签1", new RowBounds(1, 2));
+        System.out.println("标签 1 文章：限 2 条");
+        for (Post post : posts) {
+            System.out.println(post.getPostId() + ":" + post.getPostTitle());
+        }
+
+
+    }
+
 
 }

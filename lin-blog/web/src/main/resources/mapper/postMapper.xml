@@ -25,7 +25,7 @@
     </resultMap>
 
     <sql id="all">
-        ID, post_author, post_date, post_date_utc,
+        posts.ID, post_author, post_date, post_date_utc,
         post_content, post_title, post_excerpt, post_status,
         comment_open, ping_open, post_password, post_name,
         post_modified, post_modified_utc, post_parent, post_type, post_mime_type, comment_count
@@ -41,6 +41,30 @@
                               #{commentOpen}, #{pingOpen}, #{postPassword}, #{postName}, #{postModified},
              #{postModifiedUtc}, #{postParent}, #{postType}, #{postMimeType}, #{commentCount})
     </insert>
+    <select id="findByStatusAndDateAndCategoryIdAndTag" resultMap="postMap">
+        SELECT DISTINCT
+        <include refid="all"/>
+        FROM
+        posts
+        LEFT JOIN taxonomy_relationships ON posts.ID=taxonomy_relationships.post_id
+        LEFT JOIN taxonomy ON taxonomy_relationships.taxonomy_id=taxonomy.taxonomy_id
+        <where>
+            1=1
+            <if test="status != null">
+                AND post_status=#{status}
+            </if>
+            <if test="start !=null and end !=null">
+                AND post_date $gt;= #{start} AND post_date $lt;= #{end}
+            </if>
+            <if test="categoryId != null">
+                AND taxonomy_relationships.taxonomy_id=#{categoryId}
+            </if>
+            <if test="tagName != null">
+                AND name=#{tagName} AND taxonomy='tag'
+            </if>
+        </where>
+        ORDER BY post_date DESC
+    </select>
 
 
 </mapper>

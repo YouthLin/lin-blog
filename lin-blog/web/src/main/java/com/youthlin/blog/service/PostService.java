@@ -6,11 +6,14 @@ import com.google.common.collect.Sets;
 import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.bo.Tag;
+import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.TaxonomyRelationships;
 import com.youthlin.blog.support.GlobalInfo;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -106,4 +110,29 @@ public class PostService {
         }
         taxonomyDao.saveTaxonomyRelationships(relationshipsList);
     }
+
+    /**
+     * 查询 post.
+     *
+     * @param pageIndex  第几页 从 1 开始记
+     * @param pageSize   每页几条
+     * @param status     文章状态，若为 null 表示查询所有
+     * @param yearMonth  指定月份内的文章, 若为 null 表示查询所有日期
+     * @param categoryId 指定分类目录 若为 null 表示查询所有分类
+     * @param tagName    指定标签，若为 null 表示查询所有标签
+     * @return Post 分页对象
+     */
+    public Pageable<Post> findByPageAndStatusAndDateAndCategoryAndTag
+    (long pageIndex, long pageSize, PostStatus status, Date yearMonth, Long categoryId, String tagName) {
+        Date start, end;
+        if (yearMonth != null) {
+            DateTime dateTime = new DateTime(yearMonth).withDayOfMonth(0).withMillisOfDay(0);
+            start = dateTime.toDate();
+            end = dateTime.plusMonths(1).toDate();
+        }
+
+        return null;
+
+    }
+
 }
