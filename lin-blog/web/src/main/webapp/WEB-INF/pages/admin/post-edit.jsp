@@ -22,11 +22,11 @@
     <c:choose>
     <c:when test="${not empty md}">
     $('#li-md').addClass('active');
-    $('#markdown').addClass('fade in');
+    $('#markdown').addClass('active in');
     </c:when>
     <c:otherwise>
     $('#li-rich').addClass('active');
-    $('#rich').addClass('fade in');
+    $('#rich').addClass('active in');
     </c:otherwise>
     </c:choose>
 });</script>
@@ -40,7 +40,11 @@
         </div>
         <div class="form-group">
             <label for="content"><%=__("Content:")%></label>
-            <textarea class="hide" name="content" id="content" rows="10">${post.postContent}</textarea>
+            <textarea class="hide" name="content" id="content" rows="20">
+                <c:if test="${ empty md}">
+                    ${post.postContent}
+                </c:if>
+            </textarea>
         </div>
         <div id="editors">
             <!-- Nav tabs -->
@@ -57,10 +61,11 @@
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="rich">
+                <div role="tabpanel" class="tab-pane fade" id="rich">
                     <div id="editor-container" class="editor-container">
                         <label for="editor" class="sr-only"><%=__("Content:")%></label>
-                        <textarea class="form-control content-editor" id="editor" rows="20"></textarea>
+                        <textarea class="form-control content-editor" id="editor"
+                                  rows="20">${post.postContent}</textarea>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane fade" id="markdown">

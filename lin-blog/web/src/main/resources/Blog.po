@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-11 16:10+0800\n"
-"PO-Revision-Date: 2017-05-11 16:10+0800\n"
+"POT-Creation-Date: 2017-05-11 18:36+0800\n"
+"PO-Revision-Date: 2017-05-11 18:36+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -47,7 +47,7 @@ msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:28
 #: webapp/WEB-INF/pages/common/admin/header.jsp:79
-#: java/com/youthlin/blog/web/back/PostController.java:81
+#: java/com/youthlin/blog/web/back/PostController.java:83
 msgid "All Post"
 msgstr "所有文章"
 
@@ -73,6 +73,7 @@ msgid "Trash"
 msgstr "回收站"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:51
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:100
 #: webapp/WEB-INF/pages/admin/post-write.jsp:81
 msgid "Publish Datetime:"
 msgstr "发布时间："
@@ -109,12 +110,14 @@ msgstr "作者"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:93
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:123
 #: webapp/WEB-INF/pages/admin/post-write.jsp:104
 #: java/com/youthlin/blog/web/back/CategoryController.java:35
 msgid "Category"
 msgstr "分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:94
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:153
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:18
 #: webapp/WEB-INF/pages/admin/post-write.jsp:131
 #: webapp/WEB-INF/pages/common/admin/header.jsp:88
@@ -241,6 +244,112 @@ msgstr "描述"
 msgid "Count"
 msgstr "总数"
 
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:33
+#: java/com/youthlin/blog/web/back/PostController.java:321
+msgid "Edit Post"
+msgstr "编辑文章"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:38
+#: webapp/WEB-INF/pages/admin/post-write.jsp:24
+msgid "Title:"
+msgstr "标题："
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:42
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:66
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:72
+#: webapp/WEB-INF/pages/admin/post-write.jsp:28
+#: webapp/WEB-INF/pages/admin/post-write.jsp:48
+#: webapp/WEB-INF/pages/admin/post-write.jsp:53
+msgid "Content:"
+msgstr "内容："
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:54
+#: webapp/WEB-INF/pages/admin/post-write.jsp:36
+msgid "Rich Editor"
+msgstr "富文本"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:59
+#: webapp/WEB-INF/pages/admin/post-write.jsp:41
+msgid "Markdown"
+msgstr "Markdown"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:81
+#: webapp/WEB-INF/pages/admin/post-write.jsp:62
+msgid "Excerpt:"
+msgstr "摘要："
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:92
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:114
+#: webapp/WEB-INF/pages/admin/post-write.jsp:73
+#: webapp/WEB-INF/pages/admin/post-write.jsp:95
+msgid "Publish"
+msgstr "发布"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:113
+#: webapp/WEB-INF/pages/admin/post-write.jsp:94
+msgid "\"Save Draft\""
+msgstr "\"存草稿\""
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:175
+#: webapp/WEB-INF/pages/admin/post-write.jsp:143
+msgid "Attach Tag:"
+msgstr "附加标签："
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:177
+#: webapp/WEB-INF/pages/admin/post-write.jsp:145
+msgid "You can use comma(,) to split tags."
+msgstr "可以使用英文逗号(,)分隔多个标签。"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:179
+#: webapp/WEB-INF/pages/admin/post-write.jsp:147
+msgid "Add"
+msgstr "添加"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:182
+#: webapp/WEB-INF/pages/admin/post-write.jsp:150
+msgid "Select from frequently-used tags."
+msgstr "从常用标签中选择。"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:191
+#: webapp/WEB-INF/pages/admin/post-write.jsp:159
+msgid "Other Settings"
+msgstr "其他设置"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:204
+#: webapp/WEB-INF/pages/admin/post-write.jsp:168
+msgid "Comments Open"
+msgstr "允许评论"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:213
+#: webapp/WEB-INF/pages/admin/post-write.jsp:172
+msgid "Pings Open"
+msgstr "允许 Ping"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:217
+#: webapp/WEB-INF/pages/admin/post-write.jsp:176
+msgid "Password:"
+msgstr "密码："
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:224
+#: webapp/WEB-INF/pages/admin/post-write.jsp:182
+msgctxt "post name"
+msgid "Name:"
+msgstr "别名："
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:232
+#: webapp/WEB-INF/pages/admin/post-write.jsp:189
+msgid ""
+"When Password has set, visitors must input password to view the post."
+"<br>Post name is used to show in url."
+msgstr ""
+"当设置了密码，读者必须输入密码才能浏览文章。<br>别名通常只包含字母、数字、连"
+"字符，有时会在 URL 中显示。"
+
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:358
+#: webapp/WEB-INF/pages/admin/post-write.jsp:308
+msgid "\"Current editor is not empty so you can not swith to another editor.\""
+msgstr "\"当前编辑器内容不为空，因此您不能切换到另一个编辑器。\""
+
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:26
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:42
 msgid "Add Tag"
@@ -251,89 +360,9 @@ msgid "And you may write some description about this tag..."
 msgstr "标签的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:19
-#: java/com/youthlin/blog/web/back/PostController.java:217
+#: java/com/youthlin/blog/web/back/PostController.java:220
 msgid "Write Post"
 msgstr "写文章"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:24
-msgid "Title:"
-msgstr "标题："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:28
-#: webapp/WEB-INF/pages/admin/post-write.jsp:48
-#: webapp/WEB-INF/pages/admin/post-write.jsp:53
-msgid "Content:"
-msgstr "内容："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:36
-msgid "Rich Editor"
-msgstr "富文本"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:41
-msgid "Markdown"
-msgstr "Markdown"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:62
-msgid "Excerpt:"
-msgstr "摘要："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:73
-#: webapp/WEB-INF/pages/admin/post-write.jsp:95
-msgid "Publish"
-msgstr "发布"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:94
-msgid "\"Save Draft\""
-msgstr "\"存草稿\""
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:143
-msgid "Attach Tag:"
-msgstr "附加标签："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:145
-msgid "You can use comma(,) to split tags."
-msgstr "可以使用英文逗号(,)分隔多个标签。"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:147
-msgid "Add"
-msgstr "添加"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:150
-msgid "Select from frequently-used tags."
-msgstr "从常用标签中选择。"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:159
-msgid "Other Settings"
-msgstr "其他设置"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:168
-msgid "Comments Open"
-msgstr "允许评论"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:172
-msgid "Pings Open"
-msgstr "允许 Ping"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:176
-msgid "Password:"
-msgstr "密码："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:182
-msgctxt "post name"
-msgid "Name:"
-msgstr "别名："
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:189
-msgid ""
-"When Password has set, visitors must input password to view the post."
-"<br>Post name is used to show in url."
-msgstr ""
-"当设置了密码，读者必须输入密码才能浏览文章。<br>别名通常只包含字母、数字、连"
-"字符，有时会在 URL 中显示。"
-
-#: webapp/WEB-INF/pages/admin/post-write.jsp:308
-msgid "\"Current editor is not empty so you can not swith to another editor.\""
-msgstr "\"当前编辑器内容不为空，因此您不能切换到另一个编辑器。\""
 
 #: webapp/WEB-INF/pages/admin/settings-comment.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:154
@@ -590,6 +619,6 @@ msgstr "未知的分类目录。"
 msgid "Name must not be empty."
 msgstr "名称不能为空。"
 
-#: java/com/youthlin/blog/web/back/PostController.java:303
+#: java/com/youthlin/blog/web/back/PostController.java:304
 msgid "Illegal post id."
 msgstr "非法参数。"

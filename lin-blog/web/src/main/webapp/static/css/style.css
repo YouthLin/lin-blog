@@ -199,6 +199,10 @@ a.parent {
     min-height: 460px;
 }
 
+.wangEditor-txt {
+    min-height: 300px;
+}
+
 .active .CodeMirror, .active .CodeMirror-scroll {
     height: 350px;
 }
