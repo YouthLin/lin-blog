@@ -195,7 +195,7 @@ public class PostController {
     }
 
     private void fetchCategoryInfo(Model model) {
-        List<Category> categoryList = categoryService.listCategoriesByOrder();
+        List<Category> categoryList = categoryService.listCategoriesNoPrefix();
         model.addAttribute("categoryList", categoryList);
         Map<Long, String> categoryIdNameMap = Maps.newHashMap();
         for (Category category : categoryList) {

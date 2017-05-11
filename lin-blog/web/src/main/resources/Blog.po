@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-11 18:36+0800\n"
-"PO-Revision-Date: 2017-05-11 18:36+0800\n"
+"POT-Creation-Date: 2017-05-11 21:03+0800\n"
+"PO-Revision-Date: 2017-05-11 21:03+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -56,7 +56,7 @@ msgid "All"
 msgstr "所有"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:40
-#: webapp/WEB-INF/pages/admin/post-all.jsp:139
+#: webapp/WEB-INF/pages/admin/post-all.jsp:143
 msgid "Published"
 msgstr "已发布"
 
@@ -157,7 +157,11 @@ msgstr "删除"
 msgid "View"
 msgstr "查看"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:144
+#: webapp/WEB-INF/pages/admin/post-all.jsp:137
+msgid "Comment Count:"
+msgstr "评论数量："
+
+#: webapp/WEB-INF/pages/admin/post-all.jsp:148
 msgid "Last Modified"
 msgstr "最后修改"
 
@@ -345,7 +349,7 @@ msgstr ""
 "当设置了密码，读者必须输入密码才能浏览文章。<br>别名通常只包含字母、数字、连"
 "字符，有时会在 URL 中显示。"
 
-#: webapp/WEB-INF/pages/admin/post-edit.jsp:358
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:356
 #: webapp/WEB-INF/pages/admin/post-write.jsp:308
 msgid "\"Current editor is not empty so you can not swith to another editor.\""
 msgstr "\"当前编辑器内容不为空，因此您不能切换到另一个编辑器。\""

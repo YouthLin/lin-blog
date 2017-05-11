@@ -87,6 +87,9 @@ textarea {
 .full-width {
     width: 100%;
 }
+.no-padding{
+    padding: 0;
+}
 
 /* endregion */
 

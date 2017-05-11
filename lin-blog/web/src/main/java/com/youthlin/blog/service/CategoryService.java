@@ -56,6 +56,16 @@ public class CategoryService extends TaxonomyService {
         return categoryList;
     }
 
+    public List<Category> listCategoriesNoPrefix() {
+        List<Category> categoryList = listCategoriesByOrder();
+        List<Category> categories = Lists.newArrayListWithExpectedSize(categoryList.size());
+        for (Category category : categoryList) {
+            Category find = removePrefix(category);
+            categories.add(find);
+        }
+        return categories;
+    }
+
     private void addChildren(List<Category> categoryList, Category category) {
         if (category == null || category.getChildren().size() == 0) {
             return;
@@ -83,17 +93,21 @@ public class CategoryService extends TaxonomyService {
         List<Category> categoryList = listCategoriesByOrder();
         for (Category category : categoryList) {
             if (category.getTaxonomyId() == id) {
-                Category find = new Category(category);
-                String prefix = Strings.repeat(Constant.DASH, find.getDepth());
-                if (find.getDepth() != 0) {
-                    String name = find.getName();
-                    name = name.substring(prefix.length());
-                    find.setName(name);
-                }
-                return find;
+                return removePrefix(category);
             }
         }
         return null;
+    }
+
+    private Category removePrefix(Category category) {
+        Category find = new Category(category);
+        String prefix = Strings.repeat(Constant.DASH, find.getDepth());
+        if (find.getDepth() != 0) {
+            String name = find.getName();
+            name = name.substring(prefix.length());
+            find.setName(name);
+        }
+        return find;
     }
 
     public Category update(Category category) {

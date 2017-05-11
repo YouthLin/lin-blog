@@ -120,7 +120,8 @@
                     <%--@elvariable id="taxonomyCat" type="com.youthlin.blog.model.po.Taxonomy"--%>
                     <c:forEach items="${taxonomyMap[post.postId]}" var="taxonomyCat">
                         <c:if test="${taxonomyCat.taxonomy eq 'category'}">
-                            <a href="?category=${taxonomyCat.taxonomyId}">${taxonomyCat.name}</a>
+                            <a href="?category=${taxonomyCat.taxonomyId}">
+                                <span class="label label-default">${taxonomyCat.name}</span></a>
                         </c:if>
                     </c:forEach>
                 </td>
@@ -128,11 +129,14 @@
                     <%--@elvariable id="tag" type="com.youthlin.blog.model.po.Taxonomy"--%>
                     <c:forEach items="${taxonomyMap[post.postId]}" var="tag">
                         <c:if test="${tag.taxonomy eq 'tag'}">
-                            <a href="?tag=${tag.name}">${tag.name}</a>
+                            <a href="?tag=${tag.name}"><span class="label label-default">${tag.name}</span></a>
                         </c:if>
                     </c:forEach>
                 </td>
-                <td>${post.commentCount}</td>
+                <td><span class="label label-default no-padding">
+                        <span class="sr-only"><%=__("Comment Count:")%></span>
+                        <span class="badge">${post.commentCount}</span>
+                </span></td>
                 <td>
                     <c:choose>
                         <c:when test="${post.postStatus.code eq 0}">
