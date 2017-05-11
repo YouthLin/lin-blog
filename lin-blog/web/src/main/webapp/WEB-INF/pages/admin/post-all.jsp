@@ -92,7 +92,7 @@
             <th><%=__("Author")%></th>
             <th><%=__("Category")%></th>
             <th><%=__("Tag")%></th>
-            <th><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+            <th title="<%=__("Comment Count")%>"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                 <span class="sr-only"><%=__("Comment Count")%></span></th>
             <th><%=__("Date")%></th>
         </tr>
