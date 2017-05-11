@@ -110,7 +110,7 @@
                 </td>
                 <td><strong>${post.postTitle}</strong><br>
                 <span class="operation operation-${post.postId}">
-                    <a href="#"><%=__("Edit")%></a> |
+                    <a href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a> |
                     <a class="text-danger" href="#"><%=__("Delete")%></a> |
                     <a href="#"><%=__("View")%></a>
                 </span></td>

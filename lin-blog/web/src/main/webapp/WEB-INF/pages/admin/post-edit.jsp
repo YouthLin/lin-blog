@@ -1,7 +1,11 @@
+<%--@elvariable id="taxonomyMap" type="java.util.Map"--%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._x" %>
 <%--@elvariable id="categoryList" type="java.util.List"--%>
 <%--@elvariable id="category" type="com.youthlin.blog.model.bo.Category"--%>
+<%--@elvariable id="md" type="java.lang.String"--%>
 <%--
   Created by IntelliJ IDEA.
   User: lin
@@ -14,36 +18,46 @@
 <%@ include file="/WEB-INF/pages/common/admin/header.jsp" %>
 <script>$(document).ready(function () {
     $(".menu-parent-post").addClass("active").click();
-    $(".menu-item-new-post").addClass("active");
+    $(".menu-item-all-post").addClass("active");
+    <c:choose>
+    <c:when test="${not empty md}">
+    $('#li-md').addClass('active');
+    $('#markdown').addClass('fade in');
+    </c:when>
+    <c:otherwise>
+    $('#li-rich').addClass('active');
+    $('#rich').addClass('fade in');
+    </c:otherwise>
+    </c:choose>
 });</script>
-<h1><%=__("Write Post")%>
+<h1><%=__("Edit Post")%>
 </h1>
-<form action="<c:url value="/admin/post/add"/>" method="post" id="write-new-post-form">
+<form action="<c:url value="/admin/post/edit"/>" method="post" id="edit-post-form">
     <div class="main-content col-sm-9">
         <div class="form-group">
             <label for="post-title"><%=__("Title:")%></label>
-            <input type="text" class="form-control" name="title" id="post-title">
+            <input type="text" class="form-control" name="title" id="post-title" value="${post.postTitle}">
         </div>
         <div class="form-group">
             <label for="content"><%=__("Content:")%></label>
-            <textarea class="hide" name="content" id="content" rows="10"></textarea>
+            <textarea class="hide" name="content" id="content" rows="10">${post.postContent}</textarea>
         </div>
         <div id="editors">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
+                <li role="presentation" id="li-rich">
                     <a href="#rich" data-textarea="#editor" aria-controls="rich" role="tab" data-toggle="tab">
                         <%=__("Rich Editor")%>
                     </a>
                 </li>
-                <li role="presentation">
+                <li role="presentation" id="li-md">
                     <a href="#markdown" data-textarea="#md-editor" aria-controls="markdown" role="tab"
                        data-toggle="tab"><%=__("Markdown")%></a>
                 </li>
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active fade in" id="rich">
+                <div role="tabpanel" class="tab-pane active" id="rich">
                     <div id="editor-container" class="editor-container">
                         <label for="editor" class="sr-only"><%=__("Content:")%></label>
                         <textarea class="form-control content-editor" id="editor" rows="20"></textarea>
@@ -53,14 +67,14 @@
                     <label for="md-editor" class="sr-only"><%=__("Content:")%></label>
                     <div id="md-editor-container" class="editor-container">
                         <textarea class="form-control content-editor" id="md-editor" name="md-content" rows="20"
-                                  style="display:none;"></textarea>
+                                  style="display:none;">${md}</textarea>
                     </div>
                 </div>
             </div><!-- /.Tab panes -->
         </div>
         <div class="form-group">
             <label for="post-excerpt"><%=__("Excerpt:")%></label>
-            <textarea class="form-control" name="excerpt" id="post-excerpt" rows="3"></textarea>
+            <textarea class="form-control" name="excerpt" id="post-excerpt" rows="3">${post.postExcerpt}</textarea>
         </div>
 
     </div>
@@ -85,7 +99,7 @@
                                         <span class="glyphicon glyphicon-calendar"></span>
                                      </span>
                                     <input id="post-date" type='text' class="form-control" name="date"
-                                           value="<%=DateTime.now().toString("YYYY-MM-dd HH:mm")%>"/>
+                                           value="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>"/>
                                 </div>
                             </div>
                         </div>
@@ -109,13 +123,16 @@
                      aria-labelledby="heading-category">
                     <div class="panel-body">
                         <c:forEach items="${categoryList}" var="category">
-                            <c:set var="select" value=""/>
-                            <c:if test="${category.taxonomyId eq 1}">
-                                <c:set var="select" value="checked"/>
-                            </c:if>
+                            <c:set var="checked" value=""/>
+                            <%--@elvariable id="cat" type="com.youthlin.blog.model.po.Taxonomy"--%>
+                            <c:forEach items="${taxonomyMap[post.postId]}" var="cat">
+                                <c:if test="${cat.taxonomyId eq category.taxonomyId}">
+                                    <c:set var="checked" value="checked"/>
+                                </c:if>
+                            </c:forEach>
                             <div class="checkbox">
                                 <label class="full-width">
-                                    <input type="checkbox" name="category" value="${category.taxonomyId}" ${select}>
+                                    <input type="checkbox" name="category" value="${category.taxonomyId}" ${checked}>
                                     ${category.name}
                                 </label>
                             </div>
@@ -137,7 +154,17 @@
                     <div class="panel-body">
                         <input type="hidden" name="tags" id="tags">
                         <div>
-                            <div class="tags"></div>&nbsp;
+                            <div class="tags">
+                                <%-- 别忘了还有 js 里的数组 --%>
+                                <%--@elvariable id="tag" type="com.youthlin.blog.model.po.Taxonomy"--%>
+                                <c:forEach items="${taxonomyMap[post.postId]}" var="tag">
+                                    <c:if test="${tag.taxonomy eq 'tag'}">
+                                        <span class="label label-primary">${tag.name}
+                                        <a href="javascript:void(0);" data-tag="${tag.name}" class="badge remove-tag"
+                                           aria-label="Remove"><span aria-hidden="true">×</span></a></span>
+                                    </c:if>
+                                </c:forEach>
+                            </div>&nbsp;
                         </div>
                         <div class="form-group">
                             <label for="add-tag"><span class="sr-only"><%=__("Attach Tag:")%></span></label>
@@ -164,23 +191,34 @@
                      aria-labelledby="heading-tag">
                     <div class="panel-body">
                         <div class="checkbox">
+                            <c:set value="" var="checkComment"/>
+                            <c:if test="${post.commentOpen}">
+                                <c:set value="checked" var="checkComment"/>
+                            </c:if>
                             <label class="full-width">
-                                <input type="checkbox" checked name="commentOpen"><%=__("Comments Open")%></label>
+                                <input type="checkbox" ${checkComment} name="commentOpen"><%=__("Comments Open")%>
+                            </label>
                         </div>
                         <div class="checkbox">
+                            <c:set value="" var="pingOpen"/>
+                            <c:if test="${post.commentOpen}">
+                                <c:set value="checked" var="pingOpen"/>
+                            </c:if>
                             <label class="full-width">
-                                <input type="checkbox" checked name="pingOpen"><%=__("Pings Open")%></label>
+                                <input type="checkbox" ${pingOpen} name="pingOpen"><%=__("Pings Open")%></label>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="post-password" class="input-group-addon"><%=__("Password:")%></label>
-                                <input type="password" class="form-control" id="post-password" name="password">
+                                <input type="password" class="form-control" id="post-password" name="password"
+                                       value="${post.postPassword}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <label for="post-name" class="input-group-addon"><%=_x("Name:", "post name")%></label>
-                                <input type="text" class="form-control" id="post-name" name="postName">
+                                <input type="text" class="form-control" id="post-name" name="postName"
+                                       value="${post.postName}">
                             </div>
                         </div>
                     </div>
@@ -258,7 +296,14 @@
             }
         });
 
-        var allTag = [];
+        var allTag = [
+            <%--@elvariable id="tag" type="com.youthlin.blog.model.po.Taxonomy"--%>
+            <c:forEach items="${taxonomyMap[post.postId]}" var="tag">
+            <c:if test="${tag.taxonomy eq 'tag'}">
+            '${tag.name}',
+            </c:if>
+            </c:forEach>
+        ];
         var add = function (tag) {
             if (allTag.indexOf(tag) !== -1) {
                 // already contains
@@ -311,7 +356,7 @@
         });
 
         // submit 之前获取真正 content(html)
-        $('#write-new-post-form').submit(function () {
+        $('#edit-post-form').submit(function () {
             var $content = $('#content');
             if ($('#rich').hasClass('active')) {
                 var editor = $('#editor');

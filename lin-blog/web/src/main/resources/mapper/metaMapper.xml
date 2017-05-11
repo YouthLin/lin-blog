@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youthlin.blog.dao.MetaDao">
+    <resultMap id="postMetaMap" type="com.youthlin.blog.model.po.PostMeta">
+        <id property="metaId" column="meta_id"/>
+        <result property="metaKey" column="meta_key"/>
+        <result property="metaValue" column="meta_value"/>
+        <result property="postId" column="post_id"/>
+    </resultMap>
+    <sql id="postMeta">
+        post_meta.meta_id, post_meta.post_id, post_meta.meta_key, post_meta.meta_value
+    </sql>
+    <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.po.PostMeta" keyProperty="metaId">
+        INSERT INTO post_meta (post_id, meta_key, meta_value) VALUES (#{postId}, #{metaKey}, #{metaValue})
+    </insert>
+    <select id="findPostMetaByPostId" resultMap="postMetaMap">
+        SELECT
+        <include refid="postMeta"/>
+        FROM post_meta WHERE post_id=#{id}
+    </select>
+
+
+</mapper>

@@ -48,10 +48,15 @@
         SELECT DISTINCT
         <include refid="all"/>
         FROM taxonomy LEFT JOIN taxonomy_relationships ON taxonomy.taxonomy_id=taxonomy_relationships.taxonomy_id
-        WHERE post_id IN
-        <foreach collection="array" open="(" close=")" separator="," item="id">
-            #{id}
-        </foreach>
+        <where>
+            1!=1
+            <if test="array != null and array.length > 0">
+                OR post_id IN
+                <foreach collection="array" open="(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
     </select>
 
     <select id="findRelationshipsByPostId" resultMap="relationShipMap">
@@ -60,10 +65,16 @@
         post_id,
         taxonomy_id
         FROM taxonomy_relationships
-        WHERE post_id IN
-        <foreach collection="array" open="(" close=")" separator="," item="id">
-            #{id}
-        </foreach>
+        <where>
+            1!=1
+            <if test="array != null and array.length > 0">
+                OR post_id IN
+                <foreach collection="array" open="(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+
     </select>
 
     <select id="findByNameAndTaxonomy" resultMap="taxonomyMap">
@@ -101,19 +112,30 @@
     </update>
 
     <delete id="delete" parameterType="list">
-        DELETE FROM taxonomy WHERE taxonomy_id IN
-        <foreach collection="list" open="(" close=")" separator="," item="id">
-            #{id}
-        </foreach>
+        DELETE FROM taxonomy
+        <where>
+            1!=1
+            <if test="list.size() > 0">
+                OR taxonomy_id IN
+                <foreach collection="list" open="(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+
     </delete>
 
     <update id="resetPostCategory" parameterType="list">
         UPDATE taxonomy_relationships
-        SET taxonomy_id = 1
-        WHERE taxonomy_id IN
-        <foreach collection="list" open="(" close=")" separator="," item="id">
-            #{id}
-        </foreach>
+        <where>
+            1!=1
+            <if test="list.size() > 0">
+                OR taxonomy_id IN
+                <foreach collection="list" open="(" close=")" separator="," item="id">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
     </update>
 
     <select id="findBySlugAndTaxonomy" resultMap="taxonomyMap">

@@ -8,6 +8,7 @@ import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.PostMeta;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CategoryService;
@@ -61,6 +62,7 @@ public class PostController {
     @Resource
     private GlobalInfo<Long, String> globalInfoUserIdNameMap;
 
+    // region //list all post
     @RequestMapping(path = {"/post", "/post/{status}"})
     public String allPostPage(@PathVariable(required = false) String status, @RequestParam Map<String, String> param,
                               HttpServletRequest request, Model model) {
@@ -74,7 +76,7 @@ public class PostController {
         Pageable<Post> postPage = postService.findByPageAndStatusAndDateAndCategoryAndTagAndAuthorId
                 (pageIndex, Constant.DEFAULT_PAGE_SIZE, postStatus, yearMonth, categoryId, tagName, authorId);
         fetchAuthorInfo(postPage.getList(), model);
-        fetchTaxonomyRelationships(postPage.getList(),model);
+        fetchTaxonomyRelationships(postPage.getList(), model);
         model.addAttribute("postPage", postPage);
         fetchCategoryInfo(model);
         model.addAttribute("queryString", request.getQueryString());
@@ -211,6 +213,7 @@ public class PostController {
         Multimap<Long, Taxonomy> postIdTaxonomyMultimap = postService.findTaxonomyByPostId(postIds);
         model.addAttribute("taxonomyMap", postIdTaxonomyMultimap.asMap());
     }
+    // endregion
 
     @RequestMapping("/post/new")
     public String newPostPage(Model model) {
@@ -223,7 +226,7 @@ public class PostController {
     }
 
     @RequestMapping(path = {"/post/add"}, method = {RequestMethod.POST})
-    public String addPost(@RequestParam Map<String, String> param, HttpServletRequest request, Model model) {
+    public String addPost(@RequestParam Map<String, String> param, HttpServletRequest request) {
         String title = param.get("title");
         String content = param.get("content");
         String markdownContent = param.get("md-content");
@@ -283,11 +286,48 @@ public class PostController {
                 .setPingOpen(pingOpen)
                 .setPostPassword(password)
                 .setPostName(postName);
-
         postService.save(post, categoryList, tagList, markdownContent);
-        Long count = globalInfo.get(status.name());
+        Long count = getCount(status);
         globalInfo.set(status.name(), count + 1);
+        return "redirect:/admin/post";
+    }
 
+    @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.GET})
+    public String edit(@RequestParam Map<String, String> param, Model model) {
+        String postIdStr = param.get("postId");
+        Long postId = null;
+        try {
+            postId = Long.parseLong(postIdStr);
+        } catch (NumberFormatException ignore) {
+        }
+        if (postId == null) {
+            model.addAttribute(Constant.ERROR, __("Illegal post id."));
+            return "admin/die";
+        }
+        Post post = postService.findById(postId);
+        model.addAttribute("post", post);
+        List<PostMeta> postMetaList = postService.findPostMetaByPostId(postId);
+        String mdSource = null;
+        for (PostMeta postMeta : postMetaList) {
+            if (postMeta.getMetaKey().equals(Constant.K_MD_SOURCE)) {
+                mdSource = postMeta.getMetaValue();
+                break;
+            }
+        }
+        if (StringUtils.hasText(mdSource)) {
+            model.addAttribute("md", mdSource);
+        }
+        fetchTaxonomyRelationships(Lists.newArrayList(post), model);
+        model.addAttribute("title", __("Edit Post"));
+        model.addAttribute("editor", true);
+        List<Category> categoryList = categoryService.listCategoriesByOrder();
+        model.addAttribute("categoryList", categoryList);
+        return "admin/post-edit";
+    }
+
+    @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.POST})
+    public String editPost(@RequestParam Map<String, String> param, Model model) {
+        log.debug("param = {}", param);
         return "redirect:/admin/post";
     }
 

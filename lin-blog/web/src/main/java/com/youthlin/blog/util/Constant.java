@@ -28,6 +28,9 @@ public class Constant {
     public static final String K_NEXT_LOGIN_ID = "next_login_id";
     public static final String K_ROLE = "role";
 
+    // post meta
+    public static final String K_MD_SOURCE = "md_source";//Markdown 原文
+
     // options
     public static final String O_BLOG_TITLE = "blog_title";
     public static final String O_ALL_CATEGORIES = "all_categories";

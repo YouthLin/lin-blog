@@ -6,6 +6,7 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
+import com.youthlin.blog.dao.MetaDao;
 import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Category;
@@ -14,15 +15,19 @@ import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.bo.Tag;
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.PostMeta;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.TaxonomyRelationships;
+import com.youthlin.blog.util.Constant;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +41,8 @@ public class PostService {
     private static final Logger log = LoggerFactory.getLogger(PostService.class);
     @Resource
     private PostDao postDao;
+    @Resource
+    private MetaDao metaDao;
     @Resource
     private TaxonomyDao taxonomyDao;
     @Resource
@@ -52,7 +59,7 @@ public class PostService {
     @Transactional
     public Post save(Post post, List<Long> categoryIdList, List<String> tagList, String markdownContent) {
         postDao.save(post);
-
+        log.info("已保存 post {}", post);
         List<Category> categoryList = categoryService.listCategoriesByOrder();
         Map<Long, Category> allCategory = Maps.newHashMap();
         for (Category category : categoryList) {
@@ -80,21 +87,38 @@ public class PostService {
             }
         }
         saveNewTag(tagTosave);
-
+        tags = taxonomyDao.findByTaxonomyAndNameIn(Taxonomy.TAXONOMY_TAG, tagList);//reload
         saveRelationships(post.getPostId(), tags);
-
+        saveMarkdownContent(post, markdownContent);
         return post;
+    }
+
+    private void saveMarkdownContent(Post post, String mdContent) {
+        if (!StringUtils.hasText(mdContent)) {
+            return;
+        }
+        PostMeta postMeta = new PostMeta();
+        postMeta.setPostId(post.getPostId())
+                .setMetaKey(Constant.K_MD_SOURCE)
+                .setMetaValue(mdContent);
+        metaDao.save(postMeta);
+        log.info("已保存 md 原内容: {}", postMeta);
+    }
+
+    public Post findById(Long id) {
+        return postDao.findById(id);
     }
 
     private void saveNewTag(List<String> tags) {
         if (tags.isEmpty()) {
-            return;
+            return ;
         }
         List<Taxonomy> tagList = Lists.newArrayList();
         for (String tag : tags) {
             tagList.add(new Tag().setName(tag));
         }
         taxonomyDao.saveList(tagList);
+        log.info("已保存新标签：{}", tagList);
     }
 
     private void saveRelationships(Long postId, List<Taxonomy> taxonomyList) {
@@ -108,8 +132,10 @@ public class PostService {
             relationshipsList.add(relationships);
             taxonomy.setCount(taxonomy.getCount() + 1);
             taxonomyDao.update(taxonomy);
+            log.info("已更新 {} count 值: {}", taxonomy.getName(), taxonomy.getCount());
         }
         taxonomyDao.saveTaxonomyRelationships(relationshipsList);
+        log.info("已保存 post 与 taxonomy 关系: postId={}, taxonomy = {}", postId, taxonomyList);
     }
 
     /**
@@ -162,9 +188,12 @@ public class PostService {
             Long postId = relationship.getPostId();
             Long taxonomyId = relationship.getTaxonomyId();
             Taxonomy taxonomy = taxonomyMap.get(taxonomyId);
-            multimap.put(postId,taxonomy);
+            multimap.put(postId, taxonomy);
         }
         return multimap;
     }
 
+    public List<PostMeta> findPostMetaByPostId(Long postId) {
+        return metaDao.findPostMetaByPostId(postId);
+    }
 }

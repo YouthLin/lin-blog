@@ -28,4 +28,6 @@ public interface PostDao {
 
     long countByStatus(@Param("status") PostStatus status);
 
+    Post findById(Long id);
+
 }
