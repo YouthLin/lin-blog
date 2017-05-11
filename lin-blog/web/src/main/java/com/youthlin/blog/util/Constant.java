@@ -11,6 +11,9 @@ public class Constant {
     // 分类目录缩进
     public static final String DASH = "—";
 
+    // global info 计数
+    public static final String PostStatus_ALL = "PostStatus.ALL";
+
     // servlet
     public static final String UA = "User-Agent";
     public static final String TOKEN = "token";

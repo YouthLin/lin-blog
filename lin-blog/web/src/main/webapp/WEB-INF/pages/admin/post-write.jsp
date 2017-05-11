@@ -80,7 +80,6 @@
                         <div class="form-group">
                             <label for="post-date"><%=__("Publish Datetime:")%></label>
                             <div class="input-group">
-                                <span class="input-group-addon sr-only"><%=__("Publish Datetime:")%></span>
                                 <div class='input-group date' id="datetimepicker">
                                    <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -312,7 +311,7 @@
         });
 
         // submit 之前获取真正 content(html)
-        $('#write-new-post-form').submit(function (e) {
+        $('#write-new-post-form').submit(function () {
             var $content = $('#content');
             if ($('#rich').hasClass('active')) {
                 var editor = $('#editor');
@@ -325,8 +324,6 @@
                 console.log(preview);
                 $content.val(preview);
             }
-            // console.log($content.val());
-            // return e.preventDefault();
         });
 
     });

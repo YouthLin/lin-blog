@@ -54,7 +54,7 @@
                 AND post_status=#{status}
             </if>
             <if test="start !=null and end !=null">
-                AND post_date $gt;= #{start} AND post_date $lt;= #{end}
+                AND post_date &gt;= #{start} AND post_date &lt;= #{end}
             </if>
             <if test="categoryId != null">
                 AND taxonomy_relationships.taxonomy_id=#{categoryId}
@@ -66,5 +66,15 @@
         ORDER BY post_date DESC
     </select>
 
+    <select id="countByStatus" resultType="java.lang.Long" parameterType="com.youthlin.blog.model.enums.PostStatus">
+        SELECT COUNT(1)
+        FROM posts
+        <where>
+            1=1
+            <if test="status != null">
+                AND post_status = #{status}
+            </if>
+        </where>
+    </select>
 
 </mapper>

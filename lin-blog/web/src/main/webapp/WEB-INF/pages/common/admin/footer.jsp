@@ -20,8 +20,8 @@
 <c:if test="${editor}">
     <script src="<c:url value="/static/editor/js/wangEditor.min.js"/>"></script>
     <script src="<c:url value="/static/editor.simple.md/simplemde.min.js"/>"></script>
-    <script src="<c:url value="/static/js/moment-with-locales.min.js"/>"></script>
-    <script src="<c:url value="/static/js/bootstrap-datetimepicker.min.js"/>"></script>
 </c:if>
+<script src="<c:url value="/static/js/moment-with-locales.min.js"/>"></script>
+<script src="<c:url value="/static/js/bootstrap-datetimepicker.min.js"/>"></script>
 </body>
 </html>

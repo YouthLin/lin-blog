@@ -3,11 +3,13 @@ package com.youthlin.blog.web.back;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.service.PostService;
+import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -26,6 +28,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,14 +43,35 @@ import static com.youthlin.utils.i18n.Translation.__;
 public class PostController {
     private static final Logger log = LoggerFactory.getLogger(PostController.class);
     private static final DateTimeFormatter FORMATTER = DateTimeFormat.forPattern("YYYY-MM-dd HH:mm");
+    private static final DateTimeFormatter FORMATTER_YM = DateTimeFormat.forPattern("YYYY-MM");
     private static final Splitter SPLITTER = Splitter.on(",").trimResults().omitEmptyStrings();
     @Resource
     private CategoryService categoryService;
     @Resource
     private PostService postService;
+    @Resource
+    private GlobalInfo<String, Long> globalInfo;
 
     @RequestMapping(path = {"/post", "/post/{status}"})
-    public String allPostPage(@PathVariable(required = false) String status, Model model) {
+    public String allPostPage(@PathVariable(required = false) String status, @RequestParam Map<String, String> param, Model model) {
+        PostStatus postStatus = parseStatus(status, model);
+        Date yearMonth = parseDate(param, model);
+        Long categoryId = parseCategoryId(param, model);
+        int pageIndex = parsePageIndex(param, model);
+        String tagName = param.get("tag");
+
+        Pageable<Post> postPage = postService.findByPageAndStatusAndDateAndCategoryAndTag
+                (pageIndex, Constant.DEFAULT_PAGE_SIZE, postStatus, yearMonth, categoryId, tagName);
+        model.addAttribute("postPage", postPage);
+
+        List<Category> categoryList = categoryService.listCategoriesByOrder();
+        model.addAttribute("categoryList", categoryList);
+
+        model.addAttribute("title", __("All Post"));
+        return "admin/post-all";
+    }
+
+    private PostStatus parseStatus(String status, Model model) {
         PostStatus postStatus = PostStatus.nameOf(status);
         log.debug("post status = {}", postStatus);
         if (postStatus != null) {
@@ -55,8 +79,77 @@ public class PostController {
         } else {
             model.addAttribute("status", "all");
         }
-        model.addAttribute("title", __("All Post"));
-        return "admin/post-all";
+        count(model);
+        return postStatus;
+    }
+
+    private void count(Model model) {
+        long allCount = getCount(null);
+        long publishedCount = getCount(PostStatus.PUBLISHED);
+        long draftCount = getCount(PostStatus.DRAFT);
+        long pendingCount = getCount(PostStatus.PENDING);
+        long trashCount = getCount(PostStatus.TRASH);
+        model.addAttribute("allCount", allCount);
+        model.addAttribute("publishedCount", publishedCount);
+        model.addAttribute("draftCount", draftCount);
+        model.addAttribute("pendingCount", pendingCount);
+        model.addAttribute("trashCount", trashCount);
+    }
+
+    private long getCount(PostStatus status) {
+        if (status == null) {
+            return globalInfo.get(Constant.PostStatus_ALL, () -> {
+                long count = postService.countByStatus(null);
+                globalInfo.set(Constant.PostStatus_ALL, count);
+                return count;
+            });
+        }
+        return globalInfo.get(status.name(), () -> {
+            long count = postService.countByStatus(status);
+            globalInfo.set(status.name(), count);
+            return count;
+        });
+    }
+
+    private Date parseDate(Map<String, String> param, Model model) {
+        Date yearMonth = null;
+        String date = param.get("date");
+        if (StringUtils.hasText(date)) {
+            try {
+                yearMonth = DateTime.parse(date, FORMATTER_YM).toDate();
+                model.addAttribute("date", date);
+            } catch (Exception ignore) {
+                log.warn("日期格式错误:{}", date);
+            }
+        }
+        return yearMonth;
+    }
+
+    private Long parseCategoryId(Map<String, String> param, Model model) {
+        Long categoryId = null;
+        String category = param.get("category");
+        if (category != null) {
+            try {
+                categoryId = Long.parseLong(category);
+                model.addAttribute("categoryId", category);
+            } catch (NumberFormatException ignore) {
+                log.warn("分类目录 id 数字格式有误:{}", category);
+            }
+        }
+        return categoryId;
+    }
+
+    private int parsePageIndex(Map<String, String> param, Model model) {
+        int pageIndex = 1;
+        String pageIndexStr = param.get("page");
+        if (StringUtils.hasText(pageIndexStr)) {
+            try {
+                pageIndex = Integer.parseInt(pageIndexStr);
+            } catch (NumberFormatException ignore) {
+                log.warn("页码错误:{}", pageIndexStr);
+            }
+        }
+        return pageIndex;
     }
 
     @RequestMapping("/post/new")
@@ -132,6 +225,8 @@ public class PostController {
                 .setPostName(postName);
 
         postService.save(post, categoryList, tagList, markdownContent);
+        Long count = globalInfo.get(status.name());
+        globalInfo.set(status.name(), count + 1);
 
         return "redirect:/admin/post";
     }

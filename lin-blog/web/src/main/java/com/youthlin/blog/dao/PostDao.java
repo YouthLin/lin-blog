@@ -25,4 +25,6 @@ public interface PostDao {
             (@Param("status") PostStatus status, @Param("start") Date start, @Param("end") Date end,
              @Param("categoryId") Long categoryId, @Param("tagName") String tagName, RowBounds rowBounds);
 
+    long countByStatus(@Param("status") PostStatus status);
+
 }

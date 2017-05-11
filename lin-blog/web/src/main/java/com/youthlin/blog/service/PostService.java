@@ -1,11 +1,14 @@
 package com.youthlin.blog.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.bo.Tag;
 import com.youthlin.blog.model.enums.PostStatus;
@@ -123,16 +126,29 @@ public class PostService {
      * @return Post 分页对象
      */
     public Pageable<Post> findByPageAndStatusAndDateAndCategoryAndTag
-    (long pageIndex, long pageSize, PostStatus status, Date yearMonth, Long categoryId, String tagName) {
-        Date start, end;
+    (int pageIndex, int pageSize, PostStatus status, Date yearMonth, Long categoryId, String tagName) {
+        Date start = null, end = null;
         if (yearMonth != null) {
-            DateTime dateTime = new DateTime(yearMonth).withDayOfMonth(0).withMillisOfDay(0);
+            DateTime dateTime = new DateTime(yearMonth).withDayOfMonth(1).withMillisOfDay(0);
             start = dateTime.toDate();
             end = dateTime.plusMonths(1).toDate();
         }
+        final Date finalStart = start;
+        final Date finalEnd = end;
+        if (categoryId != null && categoryId < 1) {
+            categoryId = null;
+        }
+        final Long finalCategoryId = categoryId;
+        PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
+                () -> postDao.findByStatusAndDateAndCategoryIdAndTag(status, finalStart, finalEnd, finalCategoryId, tagName)
+        );
+        Pageable<Post> pageable = new Page<>(pageInfo);
+        log.debug("post page = {}", pageable);
+        return pageable;
+    }
 
-        return null;
-
+    public long countByStatus(PostStatus postStatus) {
+        return postDao.countByStatus(postStatus);
     }
 
 }

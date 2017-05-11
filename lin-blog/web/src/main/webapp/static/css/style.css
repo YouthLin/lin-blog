@@ -225,10 +225,6 @@ a.parent {
 
 /* endregion post sidebar */
 
-/* region action */
-
-/* endregion action */
-
 /* region color */
 .bg {
     background: #222;
@@ -247,3 +243,7 @@ a.active {
 }
 
 /* endregion */
+
+.margin-top-bottom-p1 {
+    margin: 1% 0;
+}
