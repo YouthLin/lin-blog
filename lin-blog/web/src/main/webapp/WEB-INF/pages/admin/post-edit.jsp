@@ -309,6 +309,10 @@
             </c:if>
             </c:forEach>
         ];
+        var toInput = function () {
+            tagsInput.val(allTag.join(','));
+        };
+        toInput();
         var add = function (tag) {
             if (allTag.indexOf(tag) !== -1) {
                 // already contains
@@ -318,17 +322,11 @@
             allTag.push(tag);
             toInput();
         };
-
         var makeTagHtml = function (tag) {
             return '<span class="label label-primary">' + tag +
                 '<a href="javascript:void(0);" data-tag="' + tag + '" class="badge remove-tag" aria-label="Remove">' +
                 '<span aria-hidden="true">&times;</span></a></span>';
         };
-
-        var toInput = function () {
-            tagsInput.val(allTag.join(','));
-        };
-
         var remove = function () {
             var tag = $(this).data('tag');
             var parent = $(this).parent();
