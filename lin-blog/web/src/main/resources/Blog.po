@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-10 23:48+0800\n"
-"PO-Revision-Date: 2017-05-10 23:48+0800\n"
+"POT-Creation-Date: 2017-05-11 09:08+0800\n"
+"PO-Revision-Date: 2017-05-11 09:08+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -216,7 +216,7 @@ msgstr "发布时间："
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:95
 msgid "\"Save Draft\""
-msgstr "“存草稿”"
+msgstr "\"存草稿\""
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:144
 msgid "Attach Tag:"
@@ -263,7 +263,7 @@ msgstr ""
 "当设置了密码，读者必须输入密码才能浏览文章。<br>别名通常只包含字母、数字、连"
 "字符，有时会在 URL 中显示。"
 
-#: webapp/WEB-INF/pages/admin/post-write.jsp:308
+#: webapp/WEB-INF/pages/admin/post-write.jsp:309
 msgid "\"Current editor is not empty so you can not swith to another editor.\""
 msgstr "\"当前编辑器内容不为空，因此您不能切换到另一个编辑器。\""
 
@@ -454,7 +454,7 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: java/com/youthlin/blog/model/po/Post.java:165
+#: java/com/youthlin/blog/model/po/Post.java:166
 msgid "Untitled"
 msgstr "未命名"
 

@@ -18,7 +18,7 @@
 });</script>
 <h1><%=__("Write Post")%>
 </h1>
-<form action="<c:url value="/admin/post/add"/>" method="post">
+<form action="<c:url value="/admin/post/add"/>" method="post" id="write-new-post-form">
     <div class="main-content col-sm-9">
         <div class="form-group">
             <label for="post-title"><%=__("Title:")%></label>
@@ -229,6 +229,7 @@
             dayViewHeaderFormat: 'YYYY-MM'
         });
 
+        // input  回车不让提交, 如添加标签、密码、postname
         $('input').bind('keypress', function (e) {
             if (event.keyCode === 13) {
                 return e.preventDefault();
@@ -310,16 +311,22 @@
             }
         });
 
-        // http://www.jianshu.com/p/d1a2e8dce55a
-        $('#editors').bind('input propertychange', 'textarea', function () {
-            var editor;
+        // submit 之前获取真正 content(html)
+        $('#write-new-post-form').submit(function (e) {
+            var $content = $('#content');
             if ($('#rich').hasClass('active')) {
-                editor = $('#editor');
+                var editor = $('#editor');
+                var content = editor.val();
+                console.log(content);
+                $content.val(content);
+                $("textarea[name='md-content']").val('');// clear md-content
             } else if ($('#markdown').hasClass('active')) {
-                editor = $('#md-editor');
-
+                var preview = md.options.previewRender(md.value());
+                console.log(preview);
+                $content.val(preview);
             }
-            $('#content').val(editor.val());
+            // console.log($content.val());
+            // return e.preventDefault();
         });
 
     });
