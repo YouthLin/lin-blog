@@ -17,13 +17,14 @@ import java.util.List;
 public interface PostDao {
     void save(Post post);
 
-    List<Post> findByStatusAndDateAndCategoryIdAndTag
+    List<Post> findByStatusAndDateAndCategoryIdAndTagAndAuthorId
             (@Param("status") PostStatus status, @Param("start") Date start, @Param("end") Date end,
-             @Param("categoryId") Long categoryId, @Param("tagName") String tagName);
+             @Param("categoryId") Long categoryId, @Param("tagName") String tagName, @Param("authorId") Long authorId);
 
-    List<Post> findByStatusAndDateAndCategoryIdAndTag
+    List<Post> findByStatusAndDateAndCategoryIdAndTagAndAuthorId
             (@Param("status") PostStatus status, @Param("start") Date start, @Param("end") Date end,
-             @Param("categoryId") Long categoryId, @Param("tagName") String tagName, RowBounds rowBounds);
+             @Param("categoryId") Long categoryId, @Param("tagName") String tagName, @Param("authorId") Long authorId,
+             RowBounds rowBounds);
 
     long countByStatus(@Param("status") PostStatus status);
 

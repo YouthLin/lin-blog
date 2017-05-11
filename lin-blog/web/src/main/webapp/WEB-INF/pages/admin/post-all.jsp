@@ -17,7 +17,7 @@
 <script>$(document).ready(function () {
     $(".menu-parent-post").addClass("active").click();
     $(".menu-item-all-post").addClass("active");
-    $('#a-${status}').css('font-weight', 'bold').css('color','#000').addClass("btn-info");
+    $('#a-${status}').css('font-weight', 'bold').css('color', '#000').addClass("btn-info");
     $('#datetimepicker').datetimepicker({
         format: 'YYYY-MM',
         dayViewHeaderFormat: 'YYYY-MM',
@@ -98,22 +98,55 @@
         </tr>
         </thead>
         <tbody>
-
         <c:forEach items="${postPage.list}" var="post">
+            <%--@elvariable id="queryString" type="java.lang.String"--%>
+            <%--@elvariable id="authorMap" type="java.util.Map"--%>
             <tr>
-                <td></td>
+                <td>
+                    <label>
+                        <span class="sr-only"><%=__("Select")%></span>
+                        <input type="checkbox" name="ids" value="${post.postId}">
+                    </label>
+                </td>
                 <td><strong>${post.postTitle}</strong><br>
                 <span class="operation operation-${post.postId}">
                     <a href="#"><%=__("Edit")%></a> |
                     <a class="text-danger" href="#"><%=__("Delete")%></a> |
                     <a href="#"><%=__("View")%></a>
                 </span></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><a href="?${queryString}&author=${post.postAuthorId}">${authorMap[post.postAuthorId]}</a></td>
+                <td>
+                    <%--@elvariable id="taxonomyMap" type="java.util.Map"--%>
+                    <%--@elvariable id="taxonomyCat" type="com.youthlin.blog.model.po.Taxonomy"--%>
+                    <c:forEach items="${taxonomyMap[post.postId]}" var="taxonomyCat">
+                        <c:if test="${taxonomyCat.taxonomy eq 'category'}">
+                            <a href="?category=${taxonomyCat.taxonomyId}">${taxonomyCat.name}</a>
+                        </c:if>
+                    </c:forEach>
+                </td>
+                <td>
+                    <%--@elvariable id="tag" type="com.youthlin.blog.model.po.Taxonomy"--%>
+                    <c:forEach items="${taxonomyMap[post.postId]}" var="tag">
+                        <c:if test="${tag.taxonomy eq 'tag'}">
+                            <a href="?tag=${tag.name}">${tag.name}</a>
+                        </c:if>
+                    </c:forEach>
+                </td>
                 <td>${post.commentCount}</td>
-                <td><abbr title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm:ss"/>">
-                    <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/></abbr></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${post.postStatus.code eq 0}">
+                            <%=__("Published")%><br>
+                            <abbr title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm:ss"/>">
+                                <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/></abbr>
+                        </c:when>
+                        <c:otherwise>
+                            <%=__("Last Modified")%><br>
+                            <abbr title="<fmt:formatDate value="${post.postModified}" pattern="YYYY-MM-dd HH:mm:ss"/>">
+                                <fmt:formatDate value="${post.postModified}" pattern="YYYY-MM-dd"/></abbr>
+                        </c:otherwise>
+                    </c:choose>
+                    </td>
             </tr>
         </c:forEach>
         </tbody>

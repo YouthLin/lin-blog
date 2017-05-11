@@ -12,9 +12,14 @@
         <result property="parent" column="parent"/>
         <result property="count" column="count"/>
     </resultMap>
+    <resultMap id="relationShipMap" type="com.youthlin.blog.model.po.TaxonomyRelationships">
+        <id property="id" column="ID"/>
+        <result property="postId" column="post_id"/>
+        <result property="taxonomyId" column="taxonomy_id"/>
+    </resultMap>
 
     <sql id="all">
-        taxonomy_id, name, slug, taxonomy, description, parent, `count`
+        taxonomy.taxonomy_id, name, slug, taxonomy, description, parent, `count`
     </sql>
 
     <insert id="save" useGeneratedKeys="true" parameterType="com.youthlin.blog.model.po.Taxonomy"
@@ -38,6 +43,28 @@
             (#{e.postId}, #{e.taxonomyId})
         </foreach>
     </insert>
+
+    <select id="findByPostId" resultMap="taxonomyMap">
+        SELECT DISTINCT
+        <include refid="all"/>
+        FROM taxonomy LEFT JOIN taxonomy_relationships ON taxonomy.taxonomy_id=taxonomy_relationships.taxonomy_id
+        WHERE post_id IN
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="findRelationshipsByPostId" resultMap="relationShipMap">
+        SELECT
+        ID,
+        post_id,
+        taxonomy_id
+        FROM taxonomy_relationships
+        WHERE post_id IN
+        <foreach collection="array" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
 
     <select id="findByNameAndTaxonomy" resultMap="taxonomyMap">
         SELECT

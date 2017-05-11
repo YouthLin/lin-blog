@@ -2,9 +2,10 @@ package com.youthlin.blog.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.Multimap;
 import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Category;
@@ -15,7 +16,6 @@ import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.TaxonomyRelationships;
-import com.youthlin.blog.support.GlobalInfo;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,11 +23,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 创建： youthlin.chen
@@ -125,8 +123,8 @@ public class PostService {
      * @param tagName    指定标签，若为 null 表示查询所有标签
      * @return Post 分页对象
      */
-    public Pageable<Post> findByPageAndStatusAndDateAndCategoryAndTag
-    (int pageIndex, int pageSize, PostStatus status, Date yearMonth, Long categoryId, String tagName) {
+    public Pageable<Post> findByPageAndStatusAndDateAndCategoryAndTagAndAuthorId
+    (int pageIndex, int pageSize, PostStatus status, Date yearMonth, Long categoryId, String tagName, Long authorId) {
         Date start = null, end = null;
         if (yearMonth != null) {
             DateTime dateTime = new DateTime(yearMonth).withDayOfMonth(1).withMillisOfDay(0);
@@ -140,7 +138,8 @@ public class PostService {
         }
         final Long finalCategoryId = categoryId;
         PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
-                () -> postDao.findByStatusAndDateAndCategoryIdAndTag(status, finalStart, finalEnd, finalCategoryId, tagName)
+                () -> postDao.findByStatusAndDateAndCategoryIdAndTagAndAuthorId
+                        (status, finalStart, finalEnd, finalCategoryId, tagName, authorId)
         );
         Pageable<Post> pageable = new Page<>(pageInfo);
         log.debug("post page = {}", pageable);
@@ -149,6 +148,23 @@ public class PostService {
 
     public long countByStatus(PostStatus postStatus) {
         return postDao.countByStatus(postStatus);
+    }
+
+    public Multimap<Long, Taxonomy> findTaxonomyByPostId(Long... postIds) {
+        Multimap<Long, Taxonomy> multimap = HashMultimap.create();
+        List<Taxonomy> taxonomies = taxonomyDao.findByPostId(postIds);
+        Map<Long, Taxonomy> taxonomyMap = Maps.newHashMap();
+        for (Taxonomy taxonomy : taxonomies) {
+            taxonomyMap.put(taxonomy.getTaxonomyId(), taxonomy);
+        }
+        List<TaxonomyRelationships> relationships = taxonomyDao.findRelationshipsByPostId(postIds);
+        for (TaxonomyRelationships relationship : relationships) {
+            Long postId = relationship.getPostId();
+            Long taxonomyId = relationship.getTaxonomyId();
+            Taxonomy taxonomy = taxonomyMap.get(taxonomyId);
+            multimap.put(postId,taxonomy);
+        }
+        return multimap;
     }
 
 }

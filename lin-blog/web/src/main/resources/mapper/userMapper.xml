@@ -30,11 +30,18 @@
         WHERE user_status=0 AND user_login=#{username}
     </select>
 
+    <select id="findById" resultMap="userMap">
+        SELECT
+        <include refid="all"/>
+        FROM users WHERE ID=#{id}
+    </select>
+
     <select id="findByUserNameAndPassword" resultType="com.youthlin.blog.model.po.User" resultMap="userMap">
         SELECT
         <include refid="all"/>
         FROM users
         WHERE user_status=0 AND user_login=#{username} AND user_pass=#{password}
     </select>
+
 
 </mapper>

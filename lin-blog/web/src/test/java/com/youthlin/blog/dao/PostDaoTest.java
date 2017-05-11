@@ -14,8 +14,6 @@ import javax.annotation.Resource;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * 创建： youthlin.chen
  * 时间： 2017-05-10 20:47.
@@ -49,29 +47,29 @@ public class PostDaoTest {
 
     @Test
     public void findByStatusAndDateAndCategoryIdAndTag() throws Exception {
-        List<Post> posts = postDao.findByStatusAndDateAndCategoryIdAndTag
-                (null, null, null, null, null);
+        List<Post> posts = postDao.findByStatusAndDateAndCategoryIdAndTagAndAuthorId
+                (null, null, null, null, null,1L);
         System.out.println("所有文章");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle());
         }
 
-        posts = postDao.findByStatusAndDateAndCategoryIdAndTag
-                (PostStatus.PUBLISHED, null, null, null, null, new RowBounds(1, 2));
+        posts = postDao.findByStatusAndDateAndCategoryIdAndTagAndAuthorId
+                (PostStatus.PUBLISHED, null, null, null, null, 1L,new RowBounds(1, 2));
         System.out.println("已发布文章：限 2 条");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle());
         }
 
-        posts = postDao.findByStatusAndDateAndCategoryIdAndTag
-                (null, null, null, 1L, null, new RowBounds(1, 2));
+        posts = postDao.findByStatusAndDateAndCategoryIdAndTagAndAuthorId
+                (null, null, null, 1L, null,1L, new RowBounds(1, 2));
         System.out.println("未分类文章：限 2 条");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle());
         }
 
-        posts = postDao.findByStatusAndDateAndCategoryIdAndTag
-                (null, null, null, null, "标签1", new RowBounds(1, 2));
+        posts = postDao.findByStatusAndDateAndCategoryIdAndTagAndAuthorId
+                (null, null, null, null, "标签1", 1L,new RowBounds(1, 2));
         System.out.println("标签 1 文章：限 2 条");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle());

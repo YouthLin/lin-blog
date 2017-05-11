@@ -47,6 +47,10 @@ public class UserService {
         return userDao.findByUserName(username);
     }
 
+    public User findById(Long id) {
+        return userDao.findById(id);
+    }
+
     public void saveMeta(UserMeta userMeta) {
         userMetaDao.save(userMeta);
     }

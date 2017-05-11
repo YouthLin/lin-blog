@@ -2,15 +2,20 @@ package com.youthlin.blog.web.back;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.service.PostService;
+import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
+import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -50,23 +55,29 @@ public class PostController {
     @Resource
     private PostService postService;
     @Resource
+    private UserService userService;
+    @Resource
     private GlobalInfo<String, Long> globalInfo;
+    @Resource
+    private GlobalInfo<Long, String> globalInfoUserIdNameMap;
 
     @RequestMapping(path = {"/post", "/post/{status}"})
-    public String allPostPage(@PathVariable(required = false) String status, @RequestParam Map<String, String> param, Model model) {
+    public String allPostPage(@PathVariable(required = false) String status, @RequestParam Map<String, String> param,
+                              HttpServletRequest request, Model model) {
         PostStatus postStatus = parseStatus(status, model);
         Date yearMonth = parseDate(param, model);
         Long categoryId = parseCategoryId(param, model);
         int pageIndex = parsePageIndex(param, model);
         String tagName = param.get("tag");
+        long authorId = parseAuthorId(param, model);
 
-        Pageable<Post> postPage = postService.findByPageAndStatusAndDateAndCategoryAndTag
-                (pageIndex, Constant.DEFAULT_PAGE_SIZE, postStatus, yearMonth, categoryId, tagName);
+        Pageable<Post> postPage = postService.findByPageAndStatusAndDateAndCategoryAndTagAndAuthorId
+                (pageIndex, Constant.DEFAULT_PAGE_SIZE, postStatus, yearMonth, categoryId, tagName, authorId);
+        fetchAuthorInfo(postPage.getList(), model);
+        fetchTaxonomyRelationships(postPage.getList(),model);
         model.addAttribute("postPage", postPage);
-
-        List<Category> categoryList = categoryService.listCategoriesByOrder();
-        model.addAttribute("categoryList", categoryList);
-
+        fetchCategoryInfo(model);
+        model.addAttribute("queryString", request.getQueryString());
         model.addAttribute("title", __("All Post"));
         return "admin/post-all";
     }
@@ -150,6 +161,55 @@ public class PostController {
             }
         }
         return pageIndex;
+    }
+
+    private long parseAuthorId(Map<String, String> param, Model model) {
+        String author = param.get("author");
+        long id = 1L;
+        if (author != null) {
+            try {
+                id = Long.parseLong(author);
+            } catch (NumberFormatException ignore) {
+                log.warn("作者 id 转换数字失败: {}", author);
+            }
+        }
+        return id;
+    }
+
+    private void fetchAuthorInfo(List<Post> posts, Model model) {
+        Map<Long, String> authorMap = Maps.newHashMap();
+        for (Post post : posts) {
+            Long authorId = post.getPostAuthorId();
+            String name = globalInfoUserIdNameMap.get(authorId, () -> {
+                User user = userService.findById(authorId);
+                Long id = user.getUserId();
+                String displayName = user.getDisplayName();
+                globalInfoUserIdNameMap.set(id, displayName);
+                return displayName;
+            });
+            authorMap.put(authorId, name);
+        }
+        model.addAttribute("authorMap", authorMap);
+    }
+
+    private void fetchCategoryInfo(Model model) {
+        List<Category> categoryList = categoryService.listCategoriesByOrder();
+        model.addAttribute("categoryList", categoryList);
+        Map<Long, String> categoryIdNameMap = Maps.newHashMap();
+        for (Category category : categoryList) {
+            categoryIdNameMap.put(category.getTaxonomyId(), category.getName());
+        }
+        model.addAttribute("categoryIdNameMap", categoryIdNameMap);
+    }
+
+    private void fetchTaxonomyRelationships(List<Post> posts, Model model) {
+        List<Long> ids = Lists.newArrayListWithExpectedSize(posts.size());
+        for (Post post : posts) {
+            ids.add(post.getPostId());
+        }
+        Long[] postIds = ids.toArray(new Long[0]);
+        Multimap<Long, Taxonomy> postIdTaxonomyMultimap = postService.findTaxonomyByPostId(postIds);
+        model.addAttribute("taxonomyMap", postIdTaxonomyMultimap.asMap());
     }
 
     @RequestMapping("/post/new")

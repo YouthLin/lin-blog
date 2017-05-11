@@ -21,6 +21,10 @@ public interface TaxonomyDao {
 
     void saveTaxonomyRelationships(List<TaxonomyRelationships> relationships);
 
+    List<Taxonomy> findByPostId(Long... postIds);
+
+    List<TaxonomyRelationships> findRelationshipsByPostId(Long... postIds);
+
     Taxonomy findByNameAndTaxonomy(@Param("name") String name, @Param("taxonomy") String taxonomy);
 
     List<Taxonomy> findByTaxonomy(String taxonomy);

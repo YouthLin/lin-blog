@@ -41,15 +41,16 @@
                               #{commentOpen}, #{pingOpen}, #{postPassword}, #{postName}, #{postModified},
              #{postModifiedUtc}, #{postParent}, #{postType}, #{postMimeType}, #{commentCount})
     </insert>
-    <select id="findByStatusAndDateAndCategoryIdAndTag" resultMap="postMap">
+    <select id="findByStatusAndDateAndCategoryIdAndTagAndAuthorId" resultMap="postMap">
         SELECT DISTINCT
         <include refid="all"/>
         FROM
         posts
+        LEFT JOIN users ON post_author=users.ID
         LEFT JOIN taxonomy_relationships ON posts.ID=taxonomy_relationships.post_id
         LEFT JOIN taxonomy ON taxonomy_relationships.taxonomy_id=taxonomy.taxonomy_id
         <where>
-            1=1
+            post_author=#{authorId}
             <if test="status != null">
                 AND post_status=#{status}
             </if>

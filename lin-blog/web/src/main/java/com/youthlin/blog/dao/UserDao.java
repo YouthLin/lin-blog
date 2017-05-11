@@ -14,5 +14,7 @@ public interface UserDao {
 
     User findByUserName(String username);
 
+    User findById(Long id);
+
     User findByUserNameAndPassword(@Param("username") String username, @Param("password") String password);
 }

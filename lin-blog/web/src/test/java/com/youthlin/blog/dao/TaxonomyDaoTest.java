@@ -47,9 +47,22 @@ public class TaxonomyDaoTest {
     public void saveRelationship() {
         taxonomyDao.saveTaxonomyRelationships(Lists.newArrayList(
                 new TaxonomyRelationships().setPostId(0L).setTaxonomyId(0L)
-                ,new TaxonomyRelationships().setPostId(1L).setTaxonomyId(1L)
+                , new TaxonomyRelationships().setPostId(1L).setTaxonomyId(1L)
 
         ));
+    }
+
+    @Test
+    public void testFindByPostId() {
+        List<Taxonomy> byPostId = taxonomyDao.findByPostId(1L, 2L, 9L);
+        for (Taxonomy taxonomy : byPostId) {
+            log.debug("{}", taxonomy);
+        }
+        log.debug("");
+        List<TaxonomyRelationships> relationships = taxonomyDao.findRelationshipsByPostId(1L, 2L, 9L);
+        for (TaxonomyRelationships t : relationships) {
+            log.debug("{}", t);
+        }
     }
 
 }
