@@ -21,6 +21,8 @@ public interface TaxonomyDao {
 
     void saveTaxonomyRelationships(List<TaxonomyRelationships> relationships);
 
+    int deleteRelationships(@Param("postId") Long postId, @Param("taxonomyId") List<Long> ids);
+
     List<Taxonomy> findByPostId(Long... postIds);
 
     List<TaxonomyRelationships> findRelationshipsByPostId(Long... postIds);

@@ -59,7 +59,7 @@ public class PostController {
     @Resource
     private UserService userService;
     @Resource
-    private GlobalInfo<String, Long> globalInfo;
+    private GlobalInfo<String, Long> globalInfo;//status-count
     @Resource
     private GlobalInfo<Long, String> globalInfoUserIdNameMap;
 
@@ -241,16 +241,7 @@ public class PostController {
             log.warn("日期转化异常：{}", date, e);
         }
 
-        List<String> categoriesStr = Lists.newArrayList(categories);
-        List<Long> categoryList = Lists.newArrayList();
-        for (String id : categoriesStr) {
-            try {
-                long categoryId = Long.parseLong(id);
-                categoryList.add(categoryId);
-            } catch (NumberFormatException e) {
-                log.warn("数字转化失败，分类目录编号。{}", id, e);
-            }
-        }
+        List<Long> categoryList = parseCategory(categories);
 
         List<String> tagList = SPLITTER.splitToList(tags);
         boolean commentOpen = true;
@@ -280,27 +271,36 @@ public class PostController {
                 .setPostPassword(password)
                 .setPostName(postName);
         postService.save(post, categoryList, tagList, markdownContent);
-        //  更新数量
-        Long count = getCount(status);
-        globalInfo.set(status.name(), count + 1);
-        count = getCount(null);
-        globalInfo.set(Constant.PostStatus_ALL, count + 1);
+        clearStatusCount();
         return "redirect:/admin/post";
+    }
+
+    private List<Long> parseCategory(String... categories) {
+        List<String> categoriesStr = Lists.newArrayList(categories);
+        List<Long> categoryList = Lists.newArrayList();
+        for (String id : categoriesStr) {
+            try {
+                long categoryId = Long.parseLong(id);
+                categoryList.add(categoryId);
+            } catch (NumberFormatException e) {
+                log.warn("数字转化失败，分类目录编号。{}", id, e);
+            }
+        }
+        return categoryList;
     }
 
     @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.GET})
     public String edit(@RequestParam Map<String, String> param, Model model) {
-        String postIdStr = param.get("postId");
-        Long postId = null;
-        try {
-            postId = Long.parseLong(postIdStr);
-        } catch (NumberFormatException ignore) {
-        }
+        Long postId = parsePostId(param);
         if (postId == null) {
-            model.addAttribute(Constant.ERROR, __("Illegal post id."));
+            model.addAttribute(Constant.ERROR, __("Illegal param: postId."));
             return "admin/die";
         }
         Post post = postService.findById(postId);
+        if (post == null) {
+            model.addAttribute(Constant.ERROR, __("Illegal param: postId does not exist."));
+            return "admin/die";
+        }
         model.addAttribute("post", post);
         List<PostMeta> postMetaList = postService.findPostMetaByPostId(postId);
         String mdSource = null;
@@ -318,13 +318,83 @@ public class PostController {
         model.addAttribute("editor", true);
         List<Category> categoryList = categoryService.listCategoriesByOrder();
         model.addAttribute("categoryList", categoryList);
+        model.addAttribute("status", PostStatus.values());
         return "admin/post-edit";
     }
 
+    private Long parsePostId(Map<String, String> param) {
+        String postIdStr = param.get("postId");
+        Long postId = null;
+        try {
+            postId = Long.parseLong(postIdStr);
+        } catch (NumberFormatException ignore) {
+        }
+        return postId;
+    }
+
     @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.POST})
-    public String editPost(@RequestParam Map<String, String> param, Model model) {
+    public String editPost(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
         log.debug("param = {}", param);
+        Long postId = parsePostId(param);
+        if (postId == null) {
+            model.addAttribute(Constant.ERROR, __("Illegal param: postId."));
+            return "admin/die";
+        }
+        Post post = postService.findById(postId);
+        if (post == null) {
+            model.addAttribute(Constant.ERROR, __("Illegal param: postId does not exist."));
+            return "admin/die";
+        }
+        String title = param.get("title");
+        String content = param.get("content");
+        String markdownContent = param.get("md-content");
+        String excerpt = param.get("excerpt");
+        String date = param.get("date");
+        String status = param.get("status");
+        String[] categories = request.getParameterValues("category");
+        String tags = param.get("tags");
+        String commentOpenStr = param.get("commentOpen");
+        String pingOpenStr = param.get("pingOpen");
+        String password = param.get("password");
+        String postName = param.get("postName");
+
+        post.setPostTitle(title);
+        post.setPostContent(content);
+        post.setPostExcerpt(excerpt);
+        try {
+            DateTime dateTime = DateTime.parse(date, FORMATTER);
+            post.setPostDate(dateTime.toDate());
+        } catch (Exception ignore) {
+            log.warn("日期格式错误: {}", date);
+        }
+        PostStatus postStatus = PostStatus.nameOf(status);
+        if (postStatus != null) {
+            post.setPostStatus(postStatus);
+        }
+        if (StringUtils.hasText(commentOpenStr)) {
+            post.setCommentOpen(commentOpenStr.equals("on"));
+        }
+        if (StringUtils.hasText(pingOpenStr)) {
+            post.setPingOpen(pingOpenStr.equals("on"));
+        }
+        post.setPostPassword(password);
+        post.setPostName(postName);
+
+        // md, cat, tag
+        List<Long> categoryList = parseCategory(categories);
+        List<String> tagList = SPLITTER.splitToList(tags);
+        postService.update(post, categoryList, tagList, markdownContent);
+        clearStatusCount();
         return "redirect:/admin/post";
+    }
+
+    private void clearStatusCount() {
+        globalInfo.set(Constant.PostStatus_ALL, null);
+        PostStatus[] values = PostStatus.values();
+        for (PostStatus status : values) {
+            globalInfo.set(status.name(), null);
+        }
+        log.info("clear status count cache");
     }
 
 }

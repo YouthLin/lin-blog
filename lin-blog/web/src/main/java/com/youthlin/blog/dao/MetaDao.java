@@ -15,4 +15,6 @@ public interface MetaDao {
 
     List<PostMeta> findPostMetaByPostId(Long id);
 
+    void update(PostMeta postMeta);
+
 }

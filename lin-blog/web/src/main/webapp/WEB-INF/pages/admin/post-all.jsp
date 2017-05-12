@@ -149,12 +149,12 @@
                 <td>
                     <c:choose>
                         <c:when test="${post.postStatus.code eq 0}">
-                            <%=__("Published")%><br>
+                            <%=__("Published")%> <br>
                             <abbr title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm:ss"/>">
                                 <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/></abbr>
                         </c:when>
                         <c:otherwise>
-                            <%=__("Last Modified")%><br>
+                            <span title="${post.postStatus.describe}"><%=__("Last Modified")%></span> <br>
                             <abbr title="<fmt:formatDate value="${post.postModified}" pattern="YYYY-MM-dd HH:mm:ss"/>">
                                 <fmt:formatDate value="${post.postModified}" pattern="YYYY-MM-dd"/></abbr>
                         </c:otherwise>

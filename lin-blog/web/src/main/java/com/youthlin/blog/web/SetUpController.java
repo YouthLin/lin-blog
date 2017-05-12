@@ -38,7 +38,7 @@ public class SetUpController {
     @Resource
     private SetupService setupService;
 
-    @RequestMapping("install")
+    @RequestMapping(path = {"install"}, method = {RequestMethod.GET})
     public String setup() {
         if (optionService.installed()) {
             LOGGER.info("已安装");
@@ -48,7 +48,7 @@ public class SetUpController {
         return "install";
     }
 
-    @RequestMapping(path = {"install.do"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"install"}, method = {RequestMethod.POST})
     public String install(@RequestParam(name = "user", required = false, defaultValue = "") String user,
                           @RequestParam(name = "pass", required = false, defaultValue = "") String pass,
                           @RequestParam(name = "email", required = false, defaultValue = "") String email,
@@ -56,11 +56,11 @@ public class SetUpController {
                           Model model) {
         if (!StringUtils.hasText(user) || !StringUtils.hasText(pass) || !StringUtils.hasText(email)) {
             model.addAttribute(Constant.MSG, __("Username, password, email are all required."));
-            return "redirect:install";
+            return "install";
         }
         if (pass.length() != Constant.MD5_LEN) {
             model.addAttribute(Constant.MSG, __("It seem that JavaScript doesn't work, but we need it to generate password."));
-            return "redirect:install";
+            return "install";
         }
         if (!StringUtils.hasText(title)) {
             /*TRANSLATORS: 0: username*/

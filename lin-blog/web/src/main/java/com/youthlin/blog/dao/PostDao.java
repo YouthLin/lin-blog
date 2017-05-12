@@ -18,10 +18,13 @@ import java.util.List;
 public interface PostDao {
     void save(Post post);
 
+    void update(Post post);
+
     List<Post> findByStatusAndDateAndCategoryIdAndTagAndAuthorId
             (@Param("status") PostStatus status, @Param("start") Date start, @Param("end") Date end,
              @Param("categoryId") Long categoryId, @Param("tagName") String tagName, @Param("authorId") Long authorId);
 
+    @SuppressWarnings("SameParameterValue")
     List<Post> findByStatusAndDateAndCategoryIdAndTagAndAuthorId
             (@Param("status") PostStatus status, @Param("start") Date start, @Param("end") Date end,
              @Param("categoryId") Long categoryId, @Param("tagName") String tagName, @Param("authorId") Long authorId,

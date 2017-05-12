@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--suppress MybatisMapperXmlInspection -->
 <mapper namespace="com.youthlin.blog.dao.PostDao">
     <resultMap id="postMap" type="com.youthlin.blog.model.po.Post">
         <id property="postId" column="ID"/>
@@ -42,6 +41,18 @@
                               #{commentOpen}, #{pingOpen}, #{postPassword}, #{postName}, #{postModified},
              #{postModifiedUtc}, #{postParent}, #{postType}, #{postMimeType}, #{commentCount})
     </insert>
+
+    <update id="update" parameterType="com.youthlin.blog.model.po.Post">
+        UPDATE posts
+        SET post_author       = #{postAuthorId}, post_date = #{postDate}, post_date_utc = #{postDateUtc},
+            post_content      = #{postContent}, post_title = #{postTitle}, post_excerpt = #{postExcerpt},
+            post_status       = #{postStatus}, comment_open = #{commentOpen}, ping_open = #{pingOpen},
+            post_password     = #{postPassword}, post_name = #{postName}, post_modified = #{postModified},
+            post_modified_utc = #{postModifiedUtc}, post_parent = #{postParent}, post_type = #{postType},
+            post_mime_type    = #{postMimeType}, comment_count = #{commentCount}
+        WHERE ID = #{postId}
+    </update>
+
     <select id="findByStatusAndDateAndCategoryIdAndTagAndAuthorId" resultMap="postMap">
         SELECT DISTINCT
         <include refid="all"/>
@@ -65,7 +76,7 @@
                 AND name=#{tagName} AND taxonomy='tag'
             </if>
         </where>
-        ORDER BY post_date DESC
+        ORDER BY posts.ID DESC
     </select>
 
     <select id="countByStatus" resultType="java.lang.Long" parameterType="com.youthlin.blog.model.enums.PostStatus">
@@ -107,7 +118,7 @@
             </if>
             <if test="taxonomies !=null and taxonomies.size() > 0">
                 <foreach collection="taxonomies" item="tax" open="AND (" close=")" separator="OR">
-                     ( taxonomy.name=#{tax.name} AND taxonomy.taxonomy=#{tax.taxonomy})
+                    ( taxonomy.name=#{tax.name} AND taxonomy.taxonomy=#{tax.taxonomy})
                 </foreach>
             </if>
             <if test="start!=null and end!=null">

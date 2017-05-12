@@ -34,6 +34,7 @@
 </h1>
 <form action="<c:url value="/admin/post/edit"/>" method="post" id="edit-post-form">
     <div class="main-content col-sm-9">
+        <input type="hidden" name="postId" value="${post.postId}">
         <div class="form-group">
             <label for="post-title"><%=__("Title:")%></label>
             <input type="text" class="form-control" name="title" id="post-title" value="${post.postTitle}">
@@ -108,10 +109,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="post-status"><%=__("Status:")%></label>
+                            <select class="form-control" id="post-status" name="status">
+                                <%--@elvariable id="status" type="com.youthlin.blog.model.enums.PostStatus[]"--%>
+                                <c:forEach items="${status}" var="s">
+                                    <c:set var="select" value=""/>
+                                    <c:if test="${post.postStatus eq s}">
+                                        <c:set var="select" value="selected"/>
+                                    </c:if>
+                                    <option ${select} value="${s.name()}">${s.describe}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>
                     <div class="panel-footer">
-                        <input type="submit" class="btn btn-default" name="draft" value=<%=__("\"Save Draft\"")%>/>
-                        <button type="submit" class="btn btn-primary pull-right"><%=__("Publish")%></button>
+                        <button type="submit" class="btn btn-primary"><%=__("Update")%></button>
                     </div>
                 </div>
             </div>
@@ -242,7 +255,6 @@
     </div>
     <div class="clear"></div>
 </form>
-
 <%--suppress JSPotentiallyInvalidConstructorUsage, JSUnresolvedFunction --%>
 <script type="text/javascript">
     $(document).ready(function () {

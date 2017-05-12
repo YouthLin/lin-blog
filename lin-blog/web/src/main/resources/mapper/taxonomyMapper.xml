@@ -125,6 +125,14 @@
 
     </delete>
 
+    <delete id="deleteRelationships">
+        DELETE FROM taxonomy_relationships
+        WHERE post_id=#{postId}
+        <foreach collection="taxonomyId" open="AND taxonomy_id IN(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+
     <update id="resetPostCategory" parameterType="list">
         UPDATE taxonomy_relationships
         <where>

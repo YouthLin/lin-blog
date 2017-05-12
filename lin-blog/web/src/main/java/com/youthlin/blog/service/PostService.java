@@ -18,6 +18,7 @@ import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.PostMeta;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.TaxonomyRelationships;
+import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -27,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,8 @@ public class PostService {
     private TaxonomyDao taxonomyDao;
     @Resource
     private CategoryService categoryService;
+    @Resource
+    private GlobalInfo<String, List<Category>> globalInfo;
 
     /**
      * 保存 post, 分类目录，标签。
@@ -60,6 +63,15 @@ public class PostService {
     public Post save(Post post, List<Long> categoryIdList, List<String> tagList, String markdownContent) {
         postDao.save(post);
         log.info("已保存 post {}", post);
+        List<Taxonomy> categoryToSave = getCategoryFromIds(categoryIdList);
+        saveRelationships(post.getPostId(), categoryToSave);
+        processTagList(post.getPostId(), tagList);
+        saveMarkdownContent(post.getPostId(), markdownContent);
+        globalInfo.set(Constant.O_ALL_CATEGORIES, null);//clear cache
+        return post;
+    }
+
+    private List<Taxonomy> getCategoryFromIds(List<Long> categoryIdList) {
         List<Category> categoryList = categoryService.listCategoriesByOrder();
         Map<Long, Category> allCategory = Maps.newHashMap();
         for (Category category : categoryList) {
@@ -71,34 +83,34 @@ public class PostService {
                 categoryToSave.add(allCategory.get(id));
             }
         }
+        return categoryToSave;
+    }
 
-        saveRelationships(post.getPostId(), categoryToSave);
-
+    /* 如果包含新的标签，先保存 tag. 然后保存所有 tag 与 post 的关联关系 */
+    private void processTagList(Long postId, List<String> tagList) {
         List<Taxonomy> tags = taxonomyDao.findByTaxonomyAndNameIn(Taxonomy.TAXONOMY_TAG, tagList);
         Map<String, Taxonomy> allTag = Maps.newHashMap();
         for (Taxonomy tag : tags) {
             allTag.put(tag.getName(), tag);
         }
 
-        List<String> tagTosave = Lists.newArrayList();
+        List<String> tagToSave = Lists.newArrayList();
         for (String tagName : tagList) {
             if (!allTag.containsKey(tagName)) {
-                tagTosave.add(tagName);
+                tagToSave.add(tagName);
             }
         }
-        saveNewTag(tagTosave);
+        saveNewTag(tagToSave);
         tags = taxonomyDao.findByTaxonomyAndNameIn(Taxonomy.TAXONOMY_TAG, tagList);//reload
-        saveRelationships(post.getPostId(), tags);
-        saveMarkdownContent(post, markdownContent);
-        return post;
+        saveRelationships(postId, tags);
     }
 
-    private void saveMarkdownContent(Post post, String mdContent) {
+    private void saveMarkdownContent(Long postId, String mdContent) {
         if (!StringUtils.hasText(mdContent)) {
             return;
         }
         PostMeta postMeta = new PostMeta();
-        postMeta.setPostId(post.getPostId())
+        postMeta.setPostId(postId)
                 .setMetaKey(Constant.K_MD_SOURCE)
                 .setMetaValue(mdContent);
         metaDao.save(postMeta);
@@ -197,7 +209,7 @@ public class PostService {
         return metaDao.findPostMetaByPostId(postId);
     }
 
-    public Page<Post> findPublishedPostByPage(int pageIndex, int pageSize) {
+    private Page<Post> findPublishedPostByPage(int pageIndex, int pageSize) {
         PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
                 () -> postDao.queryByTaxonomyNameKindAndDate(null, PostStatus.PUBLISHED, null, null)
         );
@@ -226,4 +238,50 @@ public class PostService {
         log.debug("按时间分页查询已发布文章：{}", postPage);
         return postPage;
     }
+
+    @Transactional
+    public void update(Post post, List<Long> categoryIds, List<String> tagList, String md) {
+        postDao.update(post);
+        Long postId = post.getPostId();
+        Multimap<Long, Taxonomy> multimap = findTaxonomyByPostId(postId);
+        Collection<Taxonomy> taxonomies = multimap.get(postId);
+        // remove relationship
+        removeRelationship(postId, taxonomies);
+        // save new ship
+        List<Taxonomy> categoriesToSave = getCategoryFromIds(categoryIds);
+        saveRelationships(postId, categoriesToSave);
+        processTagList(postId, tagList);
+        //md meta
+        List<PostMeta> postMetaList = metaDao.findPostMetaByPostId(postId);
+        PostMeta mdMeta = null;
+        for (PostMeta meta : postMetaList) {
+            if (meta.getMetaKey().equals(Constant.K_MD_SOURCE)) {
+                mdMeta = meta;
+                break;
+            }
+        }
+        if (mdMeta == null) {
+            saveMarkdownContent(postId, md);//原来没有
+        } else {
+            metaDao.update(mdMeta);
+        }
+        globalInfo.set(Constant.O_ALL_CATEGORIES, null);//clear cache
+    }
+
+    private void removeRelationship(Long postId, Collection<Taxonomy> taxonomies) {
+        if (taxonomies == null || taxonomies.isEmpty()) {
+            return;
+        }
+        List<Long> ids = Lists.newArrayListWithExpectedSize(taxonomies.size());
+        for (Taxonomy taxonomy : taxonomies) {
+            taxonomy.setCount(taxonomy.getCount() - 1);
+            taxonomyDao.update(taxonomy);
+            log.debug("已更新 {} 数量={} ({})", taxonomy.getName(), taxonomy.getCount(), taxonomy);
+            ids.add(taxonomy.getTaxonomyId());
+        }
+        taxonomyDao.deleteRelationships(postId, ids);
+        log.debug("已移除 post - taxonomy 关系: {} <-> {}", postId, taxonomies);
+        globalInfo.set(Constant.O_ALL_CATEGORIES, null);// clear cache
+    }
+
 }

@@ -27,29 +27,28 @@ import static com.youthlin.utils.i18n.Translation.__;
  */
 @Controller
 public class LoginController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
     @Resource
     private UserService userService;
 
-    @RequestMapping("login")
+    @RequestMapping(path = {"login"}, method = {RequestMethod.GET})
     public String page(@RequestParam Map<String, String> param, Model model) {
         model.addAllAttributes(param);
         return "login";
     }
 
-    @RequestMapping(path = {"login.do"}, method = {RequestMethod.POST})
+    @RequestMapping(path = {"login"}, method = {RequestMethod.POST})
     public String login(@RequestParam Map<String, String> param, Model model, HttpServletRequest request, HttpServletResponse response) {
         String user = param.get("user");
         String pass = param.get("pass");
         if (!StringUtils.hasText(user) || !StringUtils.hasText(pass) || pass.length() != Constant.MD5_LEN) {
             model.addAttribute(Constant.MSG, __("Username, password are all required."));
-            return "redirect:login";
+            return "login";
         }
         if (userService.login(user, pass, request, response)) {
             return "redirect:admin/";
         }
         model.addAttribute(Constant.ERROR, __("Username or password is incorrect."));
-        return "redirect:login";
+        return "login";
     }
 
     @RequestMapping(path = {"login.out"}, method = {RequestMethod.GET})

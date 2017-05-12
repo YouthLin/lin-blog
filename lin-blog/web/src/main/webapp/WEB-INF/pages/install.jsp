@@ -35,7 +35,7 @@
             <c:if test="${not empty msg}">
                 <p class="error">${msg}</p>
             </c:if>
-            <form class="form-horizontal" action="<c:url value="/install.do"/>" method="post" id="login-form">
+            <form class="form-horizontal" action="<c:url value="/install"/>" method="post" id="login-form">
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label"><%=__("Site Title")%>
                     </label>

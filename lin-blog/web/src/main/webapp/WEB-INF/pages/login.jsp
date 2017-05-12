@@ -47,7 +47,7 @@
             <c:if test="${not empty error}">
                 <div class="error">${error}</div>
             </c:if>
-            <form id="login-form" action="<c:url value="/login.do"/> " method="post">
+            <form id="login-form" action="<c:url value="/login"/> " method="post">
                 <div class="form-group">
                     <label for="user"><%=__("Username")%>
                     </label>
@@ -71,9 +71,9 @@
                 </div>
             </form>
             <div class="blog-panel-footer clear">
-                <p><a href=""><%=__("Lost your password?")%>
+                <p><a href="#"><%=__("Lost your password?")%>
                 </a></p>
-                <p><a href=""><%=/*TRANSLATORS: 0. site name.*/_f("&larr; Back to {0}", "LinBlog")%>
+                <p><a href="<c:url value="/"/>"><%=/*TRANSLATORS: 0. site name.*/_f("&larr; Back to {0}", "LinBlog")%>
                 </a></p>
             </div>
         </div>
