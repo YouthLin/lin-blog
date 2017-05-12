@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress MybatisMapperXmlInspection -->
 <mapper namespace="com.youthlin.blog.dao.PostDao">
     <resultMap id="postMap" type="com.youthlin.blog.model.po.Post">
         <id property="postId" column="ID"/>
@@ -83,6 +84,36 @@
         <include refid="all"/>
         FROM posts
         WHERE ID=#{id}
+    </select>
+
+    <select id="queryByTaxonomyNameKindAndDate" resultMap="postMap">
+        SELECT DISTINCT
+        <include refid="all"/>
+        FROM
+        <choose>
+            <when test="taxonomies !=null and taxonomies.size() > 0">
+                taxonomy
+                LEFT JOIN taxonomy_relationships ON taxonomy.taxonomy_id=taxonomy_relationships.taxonomy_id
+                LEFT JOIN posts ON taxonomy_relationships.post_id=posts.ID
+            </when>
+            <otherwise>
+                posts
+            </otherwise>
+        </choose>
+        <where>
+            1=1
+            <if test="status!=null">
+                AND posts.post_status=#{status}
+            </if>
+            <if test="taxonomies !=null and taxonomies.size() > 0">
+                <foreach collection="taxonomies" item="tax" open="AND (" close=")" separator="OR">
+                     ( taxonomy.name=#{tax.name} AND taxonomy.taxonomy=#{tax.taxonomy})
+                </foreach>
+            </if>
+            <if test="start!=null and end!=null">
+                AND (posts.post_date &gt;= #{start} AND posts.post_date &lt;= #{end})
+            </if>
+        </where>
     </select>
 
 </mapper>

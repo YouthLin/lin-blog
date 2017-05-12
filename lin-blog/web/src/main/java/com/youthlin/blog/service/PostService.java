@@ -111,7 +111,7 @@ public class PostService {
 
     private void saveNewTag(List<String> tags) {
         if (tags.isEmpty()) {
-            return ;
+            return;
         }
         List<Taxonomy> tagList = Lists.newArrayList();
         for (String tag : tags) {
@@ -195,5 +195,32 @@ public class PostService {
 
     public List<PostMeta> findPostMetaByPostId(Long postId) {
         return metaDao.findPostMetaByPostId(postId);
+    }
+
+    public Page<Post> findPublishedPostByPage(int pageIndex, int pageSize) {
+        PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
+                () -> postDao.queryByTaxonomyNameKindAndDate(null, PostStatus.PUBLISHED, null, null)
+        );
+        Page<Post> postPage = new Page<>(pageInfo);
+        log.info("分页查询已发布文章：{}", postPage);
+        return postPage;
+    }
+
+    public Page<Post> findPublishedPostByTaxonomyByPage(Taxonomy taxonomy, int pageIndex, int pageSize) {
+        PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
+                () -> postDao.queryByTaxonomyNameKindAndDate(Lists.newArrayList(taxonomy), PostStatus.PUBLISHED, null, null)
+        );
+        Page<Post> postPage = new Page<>(pageInfo);
+        log.info("按 Taxonomy 分页查询已发布文章：{}", postPage);
+        return postPage;
+    }
+
+    public Page<Post> findPublishedPostByDateByPage(Date start, Date end, int pageIndex, int pageSize) {
+        PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
+                () -> postDao.queryByTaxonomyNameKindAndDate(null, PostStatus.PUBLISHED, start, end)
+        );
+        Page<Post> postPage = new Page<>(pageInfo);
+        log.info(" 按时间分页查询已发布文章：{}", postPage);
+        return postPage;
     }
 }

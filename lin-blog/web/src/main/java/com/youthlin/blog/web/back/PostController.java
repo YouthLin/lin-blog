@@ -287,8 +287,11 @@ public class PostController {
                 .setPostPassword(password)
                 .setPostName(postName);
         postService.save(post, categoryList, tagList, markdownContent);
+        //  更新数量
         Long count = getCount(status);
         globalInfo.set(status.name(), count + 1);
+        count = getCount(null);
+        globalInfo.set(Constant.PostStatus_ALL, count + 1);
         return "redirect:/admin/post";
     }
 

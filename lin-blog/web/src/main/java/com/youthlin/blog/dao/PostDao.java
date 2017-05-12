@@ -2,6 +2,7 @@ package com.youthlin.blog.dao;
 
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.Taxonomy;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
@@ -30,4 +31,19 @@ public interface PostDao {
 
     Post findById(Long id);
 
+    /**
+     * 按 taxonomy, post status 与时间，查询文章.
+     * taxonomy 不为空时才会按 taxonomy 查，否则不限 taxonomy。
+     * status 为空时表示不限状态。
+     * start 与 end 同时不为 null 才会按时间查，否则不限时间。
+     *
+     * @param taxonomies 分类目录或标签等，使用其 name 和 taxonomy 属性查询。
+     * @param status     PostStatus
+     * @param start      开始时间
+     * @param end        结束时间
+     * @return 按时间倒序的文章列表(新的在前)
+     */
+    List<Post> queryByTaxonomyNameKindAndDate
+    (@Param("taxonomies") List<Taxonomy> taxonomies, @Param("status") PostStatus status,
+     @Param("start") Date start, @Param("end") Date end);
 }
