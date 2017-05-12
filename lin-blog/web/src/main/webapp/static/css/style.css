@@ -117,8 +117,13 @@ a.active {
     padding: 1%;
 }
 
-.meta-info{
+.meta-info {
     display: inline-block;
+}
+
+.meta-info > a + a:before {
+    color: #ccc;
+    content: ",";
 }
 
 /* endregion */

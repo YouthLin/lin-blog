@@ -93,7 +93,7 @@ public class HomeController {
                     taxonomyList.add(current.getParentCategory());
                     current = current.getParentCategory();
                 }
-                model.addAttribute("taxonomyList", taxonomyList);
+                model.addAttribute("taxonomyList", Lists.reverse(taxonomyList));
             }
         }
         if (StringUtils.hasText(tag)) {

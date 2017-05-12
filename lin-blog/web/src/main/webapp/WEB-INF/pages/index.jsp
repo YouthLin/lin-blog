@@ -48,7 +48,23 @@
                         <article id="post-${post.postId}"
                                  class="article article-${post.postId} border-ccc margin-padding-p1">
                             <header class="post-meta post-header">
-                                <h3><a href="#">${post.postTitle}</a></h3>
+                                <h3><a href="<c:url value="/${post.postId}"/>">${post.postTitle}</a></h3>
+                                <span class="meta-info meta-info-date">
+                                    <span class="glyphicon glyphicon-time"
+                                          aria-level=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
+                                    <a class="meta-link" href="<c:url value="/${post.postId}"/>">
+                                        <time datetime="${post.postDate}"
+                                              title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>">
+                                    <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/>
+                                    </time>
+                                </a>
+                                </span>
+                                <span class="meta-info meta-info-comment">
+                                    <span class="glyphicon glyphicon-comment"
+                                          aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
+                                    <a href="<c:url value="/${post.postId}#comment"/>">${post.commentCount}</a>
+                                    </a>
+                                </span>
                                 <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"
                                           aria-level=<%=__("\"Category:\"")%> aria-hidden="true"></span>
@@ -71,16 +87,7 @@
                                     </c:if>
                                 </c:forEach>
                                 </span>
-                                <span class="meta-info meta-info-date">
-                                    <span class="glyphicon glyphicon-time"
-                                          aria-level=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
-                                    <a class="meta-link" href="#">
-                                        <time datetime="${post.postDate}"
-                                              title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>">
-                                    <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/>
-                                    </time>
-                                </a>
-                            </span>
+
                             </header>
                             <div class="post-content">
                                 <c:choose>
@@ -96,7 +103,7 @@
                                 </c:choose>
                             </div>
                             <footer class="post-meta post-footer">
-                                <a href="#"><%=__("Read More")%></a>
+                                <a href="<c:url value="/${post.postId}"/>"><%=__("Read More")%></a>
                             </footer>
                         </article>
                     </c:forEach>
