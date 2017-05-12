@@ -26,6 +26,7 @@ public class CheckInstallInterceptor extends HandlerInterceptorAdapter {
             response.sendRedirect(request.getContextPath() + "/install");
             return false;
         }
+        request.setAttribute("siteTitle", optionService.getSiteTitle());
         return true;
     }
 }

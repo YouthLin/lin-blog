@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-11 21:07+0800\n"
-"PO-Revision-Date: 2017-05-11 21:07+0800\n"
+"POT-Creation-Date: 2017-05-12 16:18+0800\n"
+"PO-Revision-Date: 2017-05-12 16:18+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -47,7 +47,7 @@ msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:28
 #: webapp/WEB-INF/pages/common/admin/header.jsp:79
-#: java/com/youthlin/blog/web/back/PostController.java:83
+#: java/com/youthlin/blog/web/back/PostController.java:85
 msgid "All Post"
 msgstr "所有文章"
 
@@ -56,59 +56,59 @@ msgid "All"
 msgstr "所有"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:40
-#: webapp/WEB-INF/pages/admin/post-all.jsp:143
+#: webapp/WEB-INF/pages/admin/post-all.jsp:152
 msgid "Published"
 msgstr "已发布"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:42
-msgid "Draft"
-msgstr "草稿"
-
-#: webapp/WEB-INF/pages/admin/post-all.jsp:44
+#: webapp/WEB-INF/pages/admin/post-all.jsp:43
 msgid "Pending"
 msgstr "待审"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:46
+#: webapp/WEB-INF/pages/admin/post-all.jsp:45
+msgid "Draft"
+msgstr "草稿"
+
+#: webapp/WEB-INF/pages/admin/post-all.jsp:47
 msgid "Trash"
 msgstr "回收站"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:51
+#: webapp/WEB-INF/pages/admin/post-all.jsp:52
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:100
 #: webapp/WEB-INF/pages/admin/post-write.jsp:81
 msgid "Publish Datetime:"
 msgstr "发布时间："
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:61
+#: webapp/WEB-INF/pages/admin/post-all.jsp:62
 msgid "\"All Date\""
 msgstr "\"所有日期\""
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:66
+#: webapp/WEB-INF/pages/admin/post-all.jsp:67
 msgid "Select Category:"
 msgstr "选择分类目录："
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:68
+#: webapp/WEB-INF/pages/admin/post-all.jsp:69
 msgid "All Category"
 msgstr "所有分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:79
+#: webapp/WEB-INF/pages/admin/post-all.jsp:80
 msgid "Filter"
 msgstr "过滤"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:87
+#: webapp/WEB-INF/pages/admin/post-all.jsp:88
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:52
 msgid "Select All"
 msgstr "全选"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:91
+#: webapp/WEB-INF/pages/admin/post-all.jsp:92
 msgid "Title"
 msgstr "标题"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:92
+#: webapp/WEB-INF/pages/admin/post-all.jsp:93
 msgid "Author"
 msgstr "作者"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:93
+#: webapp/WEB-INF/pages/admin/post-all.jsp:94
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:123
 #: webapp/WEB-INF/pages/admin/post-write.jsp:104
@@ -116,7 +116,7 @@ msgstr "作者"
 msgid "Category"
 msgstr "分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:94
+#: webapp/WEB-INF/pages/admin/post-all.jsp:95
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:153
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:18
 #: webapp/WEB-INF/pages/admin/post-write.jsp:131
@@ -125,43 +125,51 @@ msgstr "分类目录"
 msgid "Tag"
 msgstr "标签"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:96
+#: webapp/WEB-INF/pages/admin/post-all.jsp:97
 msgid "Comment Count"
 msgstr "评论数量"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:97
+#: webapp/WEB-INF/pages/admin/post-all.jsp:98
 msgid "Date"
 msgstr "日期"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:107
+#: webapp/WEB-INF/pages/admin/post-all.jsp:108
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:66
 msgid "Select"
 msgstr "选择"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:113
-#: webapp/WEB-INF/pages/admin/post-category.jsp:85
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
-msgid "Edit"
-msgstr "编辑"
+#: webapp/WEB-INF/pages/admin/post-all.jsp:116
+msgid "UnTrash"
+msgstr "还原"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:114
+#: webapp/WEB-INF/pages/admin/post-all.jsp:117
 #: webapp/WEB-INF/pages/admin/post-category.jsp:87
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:73
 msgid "Delete"
 msgstr "删除"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:115
+#: webapp/WEB-INF/pages/admin/post-all.jsp:120
+#: webapp/WEB-INF/pages/admin/post-category.jsp:85
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
+msgid "Edit"
+msgstr "编辑"
+
+#: webapp/WEB-INF/pages/admin/post-all.jsp:121
+msgid "Move To Trash"
+msgstr "移至回收站"
+
+#: webapp/WEB-INF/pages/admin/post-all.jsp:124
 #: webapp/WEB-INF/pages/admin/post-category.jsp:88
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:74
 msgid "View"
 msgstr "查看"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:137
+#: webapp/WEB-INF/pages/admin/post-all.jsp:146
 msgid "Comment Count:"
 msgstr "评论数量："
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:148
+#: webapp/WEB-INF/pages/admin/post-all.jsp:157
 msgid "Last Modified"
 msgstr "最后修改"
 
@@ -249,7 +257,7 @@ msgid "Count"
 msgstr "总数"
 
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:33
-#: java/com/youthlin/blog/web/back/PostController.java:321
+#: java/com/youthlin/blog/web/back/PostController.java:317
 msgid "Edit Post"
 msgstr "编辑文章"
 
@@ -364,7 +372,7 @@ msgid "And you may write some description about this tag..."
 msgstr "标签的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:19
-#: java/com/youthlin/blog/web/back/PostController.java:220
+#: java/com/youthlin/blog/web/back/PostController.java:213
 msgid "Write Post"
 msgstr "写文章"
 
@@ -463,6 +471,26 @@ msgstr "工具"
 #: webapp/WEB-INF/pages/common/admin/header.jsp:143
 msgid "Settings"
 msgstr "设置"
+
+#: webapp/WEB-INF/pages/index.jsp:15
+msgid "Home"
+msgstr "首页"
+
+#: webapp/WEB-INF/pages/index.jsp:32
+msgid "\"Category:\""
+msgstr "\"分类目录：\""
+
+#: webapp/WEB-INF/pages/index.jsp:43
+msgid "\"Tags:\""
+msgstr "\"标签：\""
+
+#: webapp/WEB-INF/pages/index.jsp:52
+msgid "\"Published Date:\""
+msgstr "\"发布时间：\""
+
+#: webapp/WEB-INF/pages/index.jsp:75
+msgid "Read More"
+msgstr "阅读全文"
 
 #: webapp/WEB-INF/pages/install.jsp:14
 msgid "Install"
@@ -623,6 +651,6 @@ msgstr "未知的分类目录。"
 msgid "Name must not be empty."
 msgstr "名称不能为空。"
 
-#: java/com/youthlin/blog/web/back/PostController.java:304
+#: java/com/youthlin/blog/web/back/PostController.java:300
 msgid "Illegal post id."
 msgstr "非法参数。"

@@ -87,8 +87,34 @@ textarea {
 .full-width {
     width: 100%;
 }
-.no-padding{
+
+.no-padding {
     padding: 0;
+}
+
+.margin-top-bottom-p1 {
+    margin: 1% 0;
+}
+
+.bg {
+    background: #222;
+}
+
+.bd {
+    border-bottom: 1px solid #080808;
+}
+
+.border-ccc {
+    border: 1px solid #ccc;
+}
+
+a.active {
+    color: #fff;
+}
+
+.margin-padding-p1 {
+    margin: 1%;
+    padding: 1%;
 }
 
 /* endregion */
@@ -231,26 +257,3 @@ a.parent {
 }
 
 /* endregion post sidebar */
-
-/* region color */
-.bg {
-    background: #222;
-}
-
-.bd {
-    border-bottom: 1px solid #080808;
-}
-
-.border-ccc {
-    border: 1px solid #ccc;
-}
-
-a.active {
-    color: #fff;
-}
-
-/* endregion */
-
-.margin-top-bottom-p1 {
-    margin: 1% 0;
-}

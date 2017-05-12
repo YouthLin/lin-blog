@@ -7,6 +7,8 @@ import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.util.Constant;
+import com.youthlin.blog.util.PostTaxonomyHelper;
+import com.youthlin.blog.web.back.PostController;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +54,7 @@ public class HomeController {
         Page<Post> postPage = getPostPage(pageNum, taxonomy, start, end);
         model.addAttribute("postPage", postPage);
         log.info("post page = {}", postPage);
+        PostTaxonomyHelper.fetchTaxonomyRelationships(postPage.getList(), model, postService);
         return "index";
     }
 

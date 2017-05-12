@@ -16,6 +16,7 @@ import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
+import com.youthlin.blog.util.PostTaxonomyHelper;
 import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
@@ -62,6 +63,7 @@ public class PostController {
     @Resource
     private GlobalInfo<Long, String> globalInfoUserIdNameMap;
 
+
     // region //list all post
     @RequestMapping(path = {"/post", "/post/{status}"})
     public String allPostPage(@PathVariable(required = false) String status, @RequestParam Map<String, String> param,
@@ -76,7 +78,7 @@ public class PostController {
         Pageable<Post> postPage = postService.findByPageAndStatusAndDateAndCategoryAndTagAndAuthorId
                 (pageIndex, Constant.DEFAULT_PAGE_SIZE, postStatus, yearMonth, categoryId, tagName, authorId);
         fetchAuthorInfo(postPage.getList(), model);
-        fetchTaxonomyRelationships(postPage.getList(), model);
+        PostTaxonomyHelper.fetchTaxonomyRelationships(postPage.getList(), model, postService);
         model.addAttribute("postPage", postPage);
         fetchCategoryInfo(model);
         model.addAttribute("queryString", request.getQueryString());
@@ -204,15 +206,6 @@ public class PostController {
         model.addAttribute("categoryIdNameMap", categoryIdNameMap);
     }
 
-    private void fetchTaxonomyRelationships(List<Post> posts, Model model) {
-        List<Long> ids = Lists.newArrayListWithExpectedSize(posts.size());
-        for (Post post : posts) {
-            ids.add(post.getPostId());
-        }
-        Long[] postIds = ids.toArray(new Long[0]);
-        Multimap<Long, Taxonomy> postIdTaxonomyMultimap = postService.findTaxonomyByPostId(postIds);
-        model.addAttribute("taxonomyMap", postIdTaxonomyMultimap.asMap());
-    }
     // endregion
 
     @RequestMapping("/post/new")
@@ -320,7 +313,7 @@ public class PostController {
         if (StringUtils.hasText(mdSource)) {
             model.addAttribute("md", mdSource);
         }
-        fetchTaxonomyRelationships(Lists.newArrayList(post), model);
+        PostTaxonomyHelper.fetchTaxonomyRelationships(Lists.newArrayList(post), model, postService);
         model.addAttribute("title", __("Edit Post"));
         model.addAttribute("editor", true);
         List<Category> categoryList = categoryService.listCategoriesByOrder();

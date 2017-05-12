@@ -35,4 +35,11 @@ public class OptionService {
         return installed != null;
     }
 
+    public String getSiteTitle() {
+        if (!installed()) {
+            return null;
+        }
+        return globalInfo.get(Constant.O_BLOG_TITLE);
+    }
+
 }
