@@ -47,5 +47,6 @@ public class Constant {
     // pageable
     public static final int DEFAULT_PAGE_INDEX = 1;
     public static final int DEFAULT_PAGE_SIZE = 20;
+    public static final int DEFAULT_PAGE_SIZE_FRONT = 10;
 
 }

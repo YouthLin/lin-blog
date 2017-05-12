@@ -202,16 +202,19 @@ public class PostService {
                 () -> postDao.queryByTaxonomyNameKindAndDate(null, PostStatus.PUBLISHED, null, null)
         );
         Page<Post> postPage = new Page<>(pageInfo);
-        log.info("分页查询已发布文章：{}", postPage);
+        log.debug("分页查询已发布文章：{}", postPage);
         return postPage;
     }
 
     public Page<Post> findPublishedPostByTaxonomyByPage(Taxonomy taxonomy, int pageIndex, int pageSize) {
+        if (taxonomy == null) {
+            return findPublishedPostByPage(pageIndex, pageSize);
+        }
         PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
                 () -> postDao.queryByTaxonomyNameKindAndDate(Lists.newArrayList(taxonomy), PostStatus.PUBLISHED, null, null)
         );
         Page<Post> postPage = new Page<>(pageInfo);
-        log.info("按 Taxonomy 分页查询已发布文章：{}", postPage);
+        log.debug("按 Taxonomy 分页查询已发布文章：{}", postPage);
         return postPage;
     }
 
@@ -220,7 +223,7 @@ public class PostService {
                 () -> postDao.queryByTaxonomyNameKindAndDate(null, PostStatus.PUBLISHED, start, end)
         );
         Page<Post> postPage = new Page<>(pageInfo);
-        log.info(" 按时间分页查询已发布文章：{}", postPage);
+        log.debug("按时间分页查询已发布文章：{}", postPage);
         return postPage;
     }
 }

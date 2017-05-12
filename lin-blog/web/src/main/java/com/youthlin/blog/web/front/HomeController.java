@@ -1,15 +1,22 @@
 package com.youthlin.blog.web.front;
 
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.bo.Tag;
+import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
+import com.youthlin.blog.service.PostService;
+import com.youthlin.blog.util.Constant;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.annotation.Resource;
 
 /**
  * 创建： lin
@@ -18,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
     private static final Logger log = LoggerFactory.getLogger(HomeController.class);
+    private static final String DATE_TO_STRING = "YYYY-MM-dd HH:mm";
+    @Resource
+    private PostService postService;
 
     @RequestMapping(path = {
             "/", "/page/{pageIndex}",
@@ -30,31 +40,53 @@ public class HomeController {
                        @PathVariable(required = false) String categoryName,
                        @PathVariable(required = false) String tagName,
                        @PathVariable(required = false) String year,
-                       @PathVariable(required = false) String month) {
-        log.info("param: pageIndex = {}, categoryName = {}, tagName = {}, year = {}, month = {}",
+                       @PathVariable(required = false) String month, Model model) {
+        log.debug("param: pageIndex = {}, categoryName = {}, tagName = {}, year = {}, month = {}",
                 pageIndex, categoryName, tagName, year, month);
+        int pageNum = parsePageNum(pageIndex);
+        Taxonomy taxonomy = parseTaxonomy(categoryName, tagName);
+        DateTime[] dateTimes = parseDate(year, month);
+        DateTime start = dateTimes[0];
+        DateTime end = dateTimes[1];
+        log.info("参数：页码{} 分类法{} 日期{} -> {}", pageNum, taxonomy, toString(start), toString(end));
+        Page<Post> postPage = getPostPage(pageNum, taxonomy, start, end);
+        model.addAttribute("postPage", postPage);
+        log.info("post page = {}", postPage);
+        return "index";
+    }
+
+    private int parsePageNum(String pageIndex) {
         int pageNum = 1;
-        DateTime start = null, end = null;
-        Taxonomy taxonomy = null;
         if (StringUtils.hasText(pageIndex)) {
             try {
                 pageNum = Integer.parseInt(pageIndex);
             } catch (NumberFormatException ignore) {
+                log.debug("页码错误:{}", pageIndex);
             }
         }
+        return pageNum;
+    }
 
-        if (StringUtils.hasText(categoryName)) {
-            taxonomy = new Category().setName(categoryName);
+    private Taxonomy parseTaxonomy(String cat, String tag) {
+        Taxonomy taxonomy = null;
+        if (StringUtils.hasText(cat)) {
+            taxonomy = new Category().setName(cat);
         }
-        if (StringUtils.hasText(tagName)) {
-            taxonomy = new Tag().setName(tagName);
+        if (StringUtils.hasText(tag)) {
+            taxonomy = new Tag().setName(tag);
         }
+        return taxonomy;
+    }
+
+    private DateTime[] parseDate(String year, String month) {
+        DateTime start = null, end = null;
         if (StringUtils.hasText(year)) {
             try {
                 int y = Integer.parseInt(year);
                 start = new DateTime(y, 1, 1, 0, 0);
                 end = start.plusYears(1);
             } catch (NumberFormatException ignore) {
+                log.debug("年份不能识别:{}", year);
             }
         }
         if (StringUtils.hasText(month) && start != null && end != null) {
@@ -63,11 +95,25 @@ public class HomeController {
                 start = start.withMonthOfYear(m);
                 end = start.plusMonths(1);
             } catch (NumberFormatException ignore) {
+                log.debug("月份不能识别:{}", month);
             }
         }
-        log.info("参数：页码{} 分类法{} 日期{}-{}", pageNum, taxonomy, start, end);
-        return "index";
+        return new DateTime[]{start, end};
     }
 
+    private Page<Post> getPostPage(int pageNum, Taxonomy taxonomy, DateTime start, DateTime end) {
+        int pageSize = Constant.DEFAULT_PAGE_SIZE_FRONT;
+        if (start != null && end != null) {
+            return postService.findPublishedPostByDateByPage(start.toDate(), end.toDate(), pageNum, pageSize);
+        }
+        return postService.findPublishedPostByTaxonomyByPage(taxonomy, pageNum, pageSize);
+    }
+
+    private String toString(DateTime dateTime) {
+        if (dateTime != null) {
+            return dateTime.toString(DATE_TO_STRING);
+        }
+        return null;
+    }
 
 }
