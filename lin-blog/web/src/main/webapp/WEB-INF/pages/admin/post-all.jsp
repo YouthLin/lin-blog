@@ -38,10 +38,11 @@
             <%=__("All")%><span class="badge">${allCount}</span></a>
         <a class="btn btn-default" id="a-published" href="<c:url value="/admin/post/published"/>">
             <%=__("Published")%><span class="badge">${publishedCount}</span></a>
+        <%-- 暂时没有这个功能 --%>
+        <a class="btn btn-default sr-only" id="a-pending" href="<c:url value="/admin/post/pending"/>">
+            <%=__("Pending")%><span class="badge">${pendingCount}</span></a>
         <a class="btn btn-default" id="a-draft" href="<c:url value="/admin/post/draft"/>">
             <%=__("Draft")%><span class="badge">${draftCount}</span></a>
-        <a class="btn btn-default" id="a-pending" href="<c:url value="/admin/post/pending"/>">
-            <%=__("Pending")%><span class="badge">${pendingCount}</span></a>
         <a class="btn btn-default" id="a-trash" href="<c:url value="/admin/post/trash"/>">
             <%=__("Trash")%><span class="badge">${trashCount}</span></a>
     </div>
@@ -110,8 +111,16 @@
                 </td>
                 <td><strong>${post.postTitle}</strong><br>
                 <span class="operation operation-${post.postId}">
-                    <a href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a> |
-                    <a class="text-danger" href="#"><%=__("Delete")%></a> |
+                    <c:choose>
+                        <c:when test="${status eq 'trash'}">
+                            <a href="<c:url value="#"/>"><%=__("UnTrash")%></a> |
+                            <a class="text-danger" href="#"><%=__("Delete")%></a> |
+                        </c:when>
+                        <c:otherwise>
+                            <a href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a> |
+                            <a class="text-danger" href="#"><%=__("Move To Trash")%></a> |
+                        </c:otherwise>
+                    </c:choose>
                     <a href="#"><%=__("View")%></a>
                 </span></td>
                 <td><a href="?${queryString}&author=${post.postAuthorId}">${authorMap[post.postAuthorId]}</a></td>
