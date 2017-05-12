@@ -117,6 +117,10 @@ a.active {
     padding: 1%;
 }
 
+.meta-info{
+    display: inline-block;
+}
+
 /* endregion */
 
 /* region 导航条 */

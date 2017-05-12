@@ -46,7 +46,7 @@ public interface PostDao {
      * @param end        结束时间
      * @return 按时间倒序的文章列表(新的在前)
      */
-    List<Post> queryByTaxonomyNameKindAndDate
+    List<Post> queryByTaxonomySlugKindAndDate
     (@Param("taxonomies") List<Taxonomy> taxonomies, @Param("status") PostStatus status,
      @Param("start") Date start, @Param("end") Date end);
 }

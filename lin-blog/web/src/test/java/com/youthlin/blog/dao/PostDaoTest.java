@@ -83,7 +83,7 @@ public class PostDaoTest {
 
     @Test
     public void list() {
-        List<Post> posts = postDao.queryByTaxonomyNameKindAndDate(null, null, null, null);
+        List<Post> posts = postDao.queryByTaxonomySlugKindAndDate(null, null, null, null);
         System.out.println("find all post:");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle() + "(" + post.getPostStatus() + ")");
@@ -93,7 +93,7 @@ public class PostDaoTest {
         category.setName(" 分类1.1");
         Tag tag = new Tag();
         tag.setName("标签1");
-        posts = postDao.queryByTaxonomyNameKindAndDate(Lists.newArrayList(category, tag), null, null, null);
+        posts = postDao.queryByTaxonomySlugKindAndDate(Lists.newArrayList(category, tag), null, null, null);
         System.out.println("find post by category and tag:");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle() + "(" + post.getPostStatus() + ")");
@@ -101,7 +101,7 @@ public class PostDaoTest {
 
         DateTime firstDayOfMonth = DateTime.now().withDayOfMonth(1).withMillisOfDay(0);
         DateTime nextMonth = firstDayOfMonth.plusMonths(1);
-        posts = postDao.queryByTaxonomyNameKindAndDate(Lists.newArrayList(category, tag), null, firstDayOfMonth.toDate(), nextMonth.toDate());
+        posts = postDao.queryByTaxonomySlugKindAndDate(Lists.newArrayList(category, tag), null, firstDayOfMonth.toDate(), nextMonth.toDate());
         System.out.println("find post by category and tag and date:");
         for (Post post : posts) {
             System.out.println(post.getPostId() + ":" + post.getPostTitle() + "(" + post.getPostStatus() + ")");

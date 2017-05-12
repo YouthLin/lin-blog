@@ -27,30 +27,32 @@
                         <article class="article article-1 border-ccc margin-padding-p1">
                             <header class="post-meta post-header">
                                 <h3><a href="#">${post.postTitle}</a></h3>
-                                <span class="category">
+                                <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"
                                           aria-level=<%=__("\"Category:\"")%> aria-hidden="true"></span>
 <%--@elvariable id="taxonomyMap" type="java.util.Map"--%>
 <%--@elvariable id="taxonomyCat" type="com.youthlin.blog.model.po.Taxonomy"--%>
                                 <c:forEach items="${taxonomyMap[post.postId]}" var="taxonomyCat">
                                     <c:if test="${taxonomyCat.taxonomy eq 'category'}">
-                                        <a href="<c:url value="/category/${taxonomyCat.name}"/>">${taxonomyCat.name}</a>
+                                        <a class="meta-link" href="<c:url value="/category/${taxonomyCat.slug}"/>">
+                                                ${taxonomyCat.name}</a>
                                     </c:if>
                                 </c:forEach>
                                 </span>
-                                <span class="tag">
+                                <span class="meta-info meta-info-tag">
                                     <span class="glyphicon glyphicon-tags"
                                           aria-level=<%=__("\"Tags:\"")%> aria-hidden="true"></span>
                                 <c:forEach items="${taxonomyMap[post.postId]}" var="taxonomyCat">
                                     <c:if test="${taxonomyCat.taxonomy eq 'tag'}">
-                                        <a href="<c:url value="/tag/${taxonomyCat.name}"/>">${taxonomyCat.name}</a>
+                                        <a class="meta-link" href="<c:url value="/tag/${taxonomyCat.slug}"/>">
+                                                ${taxonomyCat.name}</a>
                                     </c:if>
                                 </c:forEach>
                                 </span>
-                                <span class="date">
+                                <span class="meta-info meta-info-date">
                                     <span class="glyphicon glyphicon-time"
                                           aria-level=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
-                                    <a href="#">
+                                    <a class="meta-link" href="#">
                                         <time datetime="${post.postDate}"
                                               title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>">
                                     <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/>

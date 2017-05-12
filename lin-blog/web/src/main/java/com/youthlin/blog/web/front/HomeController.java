@@ -8,7 +8,6 @@ import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.PostTaxonomyHelper;
-import com.youthlin.blog.web.back.PostController;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,20 +32,20 @@ public class HomeController {
 
     @RequestMapping(path = {
             "/", "/page/{pageIndex}",
-            "/category/{categoryName}", "/category/{categoryName}/page/{pageIndex}",
-            "/tag/{tagName}", "/tag/{tagName}/page/{pageIndex}",
+            "/category/{categorySlug}", "/category/{categorySlug}/page/{pageIndex}",
+            "/tag/{tagSlug}", "/tag/{tagSlug}/page/{pageIndex}",
             "/date/{year}", "/date/{year}/page/{pageIndex}",
             "/date/{year}/{month}", "/date/{year}/{month}/page/{pageIndex}"
     })
     public String home(@PathVariable(required = false) String pageIndex,
-                       @PathVariable(required = false) String categoryName,
-                       @PathVariable(required = false) String tagName,
+                       @PathVariable(required = false) String categorySlug,
+                       @PathVariable(required = false) String tagSlug,
                        @PathVariable(required = false) String year,
                        @PathVariable(required = false) String month, Model model) {
-        log.debug("param: pageIndex = {}, categoryName = {}, tagName = {}, year = {}, month = {}",
-                pageIndex, categoryName, tagName, year, month);
+        log.debug("param: pageIndex = {}, categorySlug = {}, tagSlug = {}, year = {}, month = {}",
+                pageIndex, categorySlug, tagSlug, year, month);
         int pageNum = parsePageNum(pageIndex);
-        Taxonomy taxonomy = parseTaxonomy(categoryName, tagName);
+        Taxonomy taxonomy = parseTaxonomy(categorySlug, tagSlug);
         DateTime[] dateTimes = parseDate(year, month);
         DateTime start = dateTimes[0];
         DateTime end = dateTimes[1];
@@ -73,10 +72,10 @@ public class HomeController {
     private Taxonomy parseTaxonomy(String cat, String tag) {
         Taxonomy taxonomy = null;
         if (StringUtils.hasText(cat)) {
-            taxonomy = new Category().setName(cat);
+            taxonomy = new Category().setSlug(cat);
         }
         if (StringUtils.hasText(tag)) {
-            taxonomy = new Tag().setName(tag);
+            taxonomy = new Tag().setSlug(tag);
         }
         return taxonomy;
     }

@@ -97,7 +97,7 @@
         WHERE ID=#{id}
     </select>
 
-    <select id="queryByTaxonomyNameKindAndDate" resultMap="postMap">
+    <select id="queryByTaxonomySlugKindAndDate" resultMap="postMap">
         SELECT DISTINCT
         <include refid="all"/>
         FROM
@@ -118,7 +118,7 @@
             </if>
             <if test="taxonomies !=null and taxonomies.size() > 0">
                 <foreach collection="taxonomies" item="tax" open="AND (" close=")" separator="OR">
-                    ( taxonomy.name=#{tax.name} AND taxonomy.taxonomy=#{tax.taxonomy})
+                    ( taxonomy.slug=#{tax.slug} AND taxonomy.taxonomy=#{tax.taxonomy})
                 </foreach>
             </if>
             <if test="start!=null and end!=null">
