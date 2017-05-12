@@ -119,6 +119,7 @@
                                     </li>
                                 </c:otherwise>
                             </c:choose>
+                            <li><span>${postPage.currentPage} / ${postPage.totalPage}</span></li>
                             <c:choose>
                                 <c:when test="${postPage.currentPage < postPage.totalPage}">
                                     <li class="next">
