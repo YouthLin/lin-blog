@@ -14,6 +14,7 @@ import static com.youthlin.utils.i18n.Translation.__;
  * 创建： youthlin.chen
  * 时间： 2017-05-10 11:25.
  */
+@Service
 public class TaxonomyService {
     private static final Logger log = LoggerFactory.getLogger(TaxonomyService.class);
     @Resource
@@ -33,5 +34,9 @@ public class TaxonomyService {
 
         taxonomyDao.save(taxonomy);
         return null;
+    }
+
+    public Taxonomy findBySlugAndTaxonomy(String slug, String taxonomy) {
+        return taxonomyDao.findBySlugAndTaxonomy(slug, taxonomy);
     }
 }

@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="static com.youthlin.utils.i18n.Translation.__" %><%--
+<%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
+<%@ page import="com.youthlin.blog.model.bo.Pageable" %><%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-5
@@ -18,13 +19,34 @@
 <div id="wrap">
     <div class="page container-fluid">
         <%@ include file="include/header.jsp" %>
+        <ol class="breadcrumb">
+            <li><a href="<c:url value="/"/>"><%=__("Home")%></a></li>
+            <%--@elvariable id="taxonomyList" type="java.util.List"--%>
+            <%--@elvariable id="taxonomy" type="com.youthlin.blog.model.po.Taxonomy"--%>
+            <c:forEach items="${taxonomyList}" var="taxonomy">
+                <li><a href="<c:url value="/${taxonomy.taxonomy}/${taxonomy.slug}"/>">${taxonomy.name}</a></li>
+            </c:forEach>
+            <%--@elvariable id="year" type="java.lang.String"--%>
+            <c:if test="${not empty year}">
+                <li><a href="<c:url value="/date/${year}"/>">${year}</a></li>
+            </c:if>
+            <%--@elvariable id="month" type="java.lang.String"--%>
+            <c:if test="${not empty month}">
+                <li><a href="<c:url value="/date/${year}/${month}"/>">${year}-${month}</a></li>
+            </c:if>
+            <c:if test="${postPage.totalPage > 1}">
+                <li class="active"><%=_f("Page {0}", ((Pageable) request.getAttribute("postPage")).getCurrentPage())%>
+                </li>
+            </c:if>
+        </ol>
         <div class="content-wrap row">
             <main id="page-main" class="col-sm-9">
                 <div class="main-content">
                     <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
                     <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
                     <c:forEach items="${postPage.list}" var="post">
-                        <article class="article article-1 border-ccc margin-padding-p1">
+                        <article id="post-${post.postId}"
+                                 class="article article-${post.postId} border-ccc margin-padding-p1">
                             <header class="post-meta post-header">
                                 <h3><a href="#">${post.postTitle}</a></h3>
                                 <span class="meta-info meta-info-category">
@@ -79,6 +101,41 @@
                         </article>
                     </c:forEach>
                 </div>
+                <%-- paging --%>
+                <c:if test="${postPage.totalPage > 1}">
+                    <nav aria-label="Navigation">
+                        <ul class="pager">
+                            <c:choose>
+                                <c:when test="${postPage.currentPage > 1}">
+                                    <li class="previous">
+                                        <a href="?page=${postPage.currentPage-1}">
+                                            <span aria-hidden="true">&larr;</span> <%=__("Previous Page")%></a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="previous disabled">
+                                        <a href="javascript:void(0);">
+                                            <span aria-hidden="true">&larr;</span> <%=__("Previous Page")%></a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${postPage.currentPage < postPage.totalPage}">
+                                    <li class="next">
+                                        <a href="?page=${postPage.currentPage+1}">
+                                            <%=__("Next Page")%> <span aria-hidden="true">&rarr;</span></a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="next disabled">
+                                        <a href="javascript:void(0);">
+                                            <%=__("Next Page")%> <span aria-hidden="true">&rarr;</span></a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+                        </ul>
+                    </nav>
+                </c:if>
             </main>
             <%@ include file="include/sidebar.jsp" %>
         </div>
