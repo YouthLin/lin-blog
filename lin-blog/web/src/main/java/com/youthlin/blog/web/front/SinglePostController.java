@@ -56,6 +56,10 @@ public class SinglePostController {
         model.addAttribute("post", post);
         PostTaxonomyHelper.fetchTaxonomyRelationships(Collections.singletonList(post), model, postService);
         fetchComment(post, model);
+        Post next = postService.findNextOrPrevious(postId, true);
+        Post previous = postService.findNextOrPrevious(postId, false);
+        model.addAttribute("next",next);
+        model.addAttribute("previous",previous);
         return "post";
     }
 

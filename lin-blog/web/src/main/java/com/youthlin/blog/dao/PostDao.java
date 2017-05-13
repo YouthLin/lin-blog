@@ -49,4 +49,6 @@ public interface PostDao {
     List<Post> queryByTaxonomySlugKindAndDate
     (@Param("taxonomies") List<Taxonomy> taxonomies, @Param("status") PostStatus status,
      @Param("start") Date start, @Param("end") Date end);
+
+    List<Post> findIdGreaterOrLessThen(@Param("id") long id, @Param("grater") boolean greater);
 }

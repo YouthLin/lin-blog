@@ -284,9 +284,21 @@ public class PostService {
         globalInfo.set(Constant.O_ALL_CATEGORIES, null);// clear cache
     }
 
-
     /* 更新 post,  如 comment count */
     public void update(Post post) {
         postDao.update(post);
+    }
+
+    public Post findNextOrPrevious(Long postId, boolean next) {
+        com.github.pagehelper.Page<Post> page = PageHelper.startPage(1, 1).doSelectPage(
+                () -> postDao.findIdGreaterOrLessThen(postId, next)
+        );
+        if (page != null) {
+            List<Post> result = page.getResult();
+            if (result != null && !result.isEmpty()) {
+                return result.get(0);
+            }
+        }
+        return null;
     }
 }

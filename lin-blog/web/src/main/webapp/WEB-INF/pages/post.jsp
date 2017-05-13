@@ -19,6 +19,8 @@
 </head>
 <body>
 <div id="wrap">
+    <%--@elvariable id="previous" type="com.youthlin.blog.model.po.Post"--%>
+    <%--@elvariable id="next" type="com.youthlin.blog.model.po.Post"--%>
     <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
     <%--@elvariable id="topLevelCommentNodeList" type="java.util.List"--%>
     <div class="page container-fluid">
@@ -75,6 +77,28 @@
                         <div class="post-content"> ${post.postContent} </div>
 
                     </article>
+                    <div class="border-ccc margin-padding-p1 well" id="post-nav">
+                        <nav aria-label="Navigation">
+                            <ul class="pager">
+                                <c:choose>
+                                    <c:when test="${previous != null}">
+                                        <li class="previous"><span class="sr-only"><%=__("Previous post:")%></span>
+                                            <a href="<c:url value="/post/${previous.postId}"/>">
+                                            <span aria-hidden="true">&larr;</span> ${previous.postTitle}</a>
+                                        </li>
+                                    </c:when>
+                                </c:choose>
+                                <c:choose>
+                                    <c:when test="${next != null}">
+                                        <li class="next"><span class="sr-only"><%=__("Next post:")%></span>
+                                            <a href="<c:url value="/post/${next.postId}"/>">
+                                            ${next.postTitle} <span aria-hidden="true">&rarr;</span></a>
+                                        </li>
+                                    </c:when>
+                                </c:choose>
+                            </ul>
+                        </nav>
+                    </div>
                     <cmt:comments post="${post}" topLevelCommentNodeList="${topLevelCommentNodeList}"/>
                     <div id="respond">
                         <c:choose>

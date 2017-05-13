@@ -128,4 +128,22 @@
         ORDER BY posts.post_date DESC
     </select>
 
+    <select id="findIdGreaterOrLessThen" resultMap="postMap">
+        SELECT
+        <include refid="all"/>
+        FROM posts
+        <where>
+            <choose>
+                <when test="grater">
+                    ID &gt; #{id}
+                </when>
+                <otherwise>
+                    ID &lt; #{id}
+                </otherwise>
+            </choose>
+        </where>
+        ORDER BY post_date
+        <if test="!grater">DESC</if>
+    </select>
+
 </mapper>
