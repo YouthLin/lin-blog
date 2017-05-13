@@ -35,7 +35,7 @@
                 <li><a href="<c:url value="/date/${year}/${month}"/>">${year}-${month}</a></li>
             </c:if>
             <c:if test="${postPage.totalPage > 1}">
-                <li class="active"><%=_f("Page {0}", ((Pageable) request.getAttribute("postPage")).getCurrentPage())%>
+                <li class="active"><%=_f("Page {0} ", ((Pageable) request.getAttribute("postPage")).getCurrentPage())%>
                 </li>
             </c:if>
         </ol>
@@ -63,7 +63,6 @@
                                     <span class="glyphicon glyphicon-comment"
                                           aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
                                     <a href="<c:url value="/${post.postId}#comments"/>">${post.commentCount}</a>
-                                    </a>
                                 </span>
                                 <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"

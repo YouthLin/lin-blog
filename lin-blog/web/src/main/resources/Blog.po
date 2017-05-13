@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-12 23:19+0800\n"
-"PO-Revision-Date: 2017-05-12 23:20+0800\n"
+"POT-Creation-Date: 2017-05-13 14:40+0800\n"
+"PO-Revision-Date: 2017-05-13 14:40+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -11,24 +11,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=n==1?0:1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_f;_x:2c,1;_fx:2c,1;_n:1,2;_nx:3c,1,2\n"
 "X-Poedit-SearchPath-0: java/com/youthlin/blog\n"
 "X-Poedit-SearchPath-1: webapp/WEB-INF/pages\n"
 
 #: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/index.jsp:16
-#: webapp/WEB-INF/pages/index.jsp:23 webapp/WEB-INF/pages/post.jsp:25
+#: webapp/WEB-INF/pages/index.jsp:23 webapp/WEB-INF/pages/post.jsp:27
 msgid "Home"
 msgstr "首页"
 
-#: webapp/WEB-INF/pages/404.jsp:27
+#: webapp/WEB-INF/pages/404.jsp:28
 msgid "404 Not Found"
 msgstr "404 未找到"
 
-#: webapp/WEB-INF/pages/404.jsp:28
+#: webapp/WEB-INF/pages/404.jsp:29
 msgid "We are sorry, but the page is not found. "
-msgstr "很抱歉，但是您访问的页面不存在。"
+msgstr "很抱歉，但是您访问的页面不存在。 "
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:111
@@ -503,35 +503,34 @@ msgstr "Powered By {0}"
 
 #: webapp/WEB-INF/pages/index.jsp:38
 #, java-format
-msgid "Page {0}"
-msgstr "第 {0} 页"
+msgid "Page {0} "
+msgstr "第 {0} 页 "
 
-#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:36
+#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:38
 msgid "\"Published Date:\""
 msgstr "\"发布时间：\""
 
-#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:46
-#| msgid "Comment Count:"
+#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:48
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:70 webapp/WEB-INF/pages/post.jsp:52
+#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:53
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:82 webapp/WEB-INF/pages/post.jsp:64
+#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:65
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
-#: webapp/WEB-INF/pages/index.jsp:106
+#: webapp/WEB-INF/pages/index.jsp:105
 msgid "Read More"
 msgstr "阅读全文"
 
-#: webapp/WEB-INF/pages/index.jsp:119 webapp/WEB-INF/pages/index.jsp:125
+#: webapp/WEB-INF/pages/index.jsp:118 webapp/WEB-INF/pages/index.jsp:124
 msgid "Previous Page"
 msgstr "上一页"
 
-#: webapp/WEB-INF/pages/index.jsp:134 webapp/WEB-INF/pages/index.jsp:140
+#: webapp/WEB-INF/pages/index.jsp:133 webapp/WEB-INF/pages/index.jsp:139
 msgid "Next Page"
 msgstr "下一页"
 
@@ -626,6 +625,14 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
+#: webapp/WEB-INF/pages/post.jsp:83
+msgid "Leave your comment"
+msgstr "留下你的想法"
+
+#: webapp/WEB-INF/pages/post.jsp:123
+msgid "Comment are closed"
+msgstr "评论已关闭"
+
 #: java/com/youthlin/blog/model/po/Post.java:166
 msgid "Untitled"
 msgstr "未命名"
@@ -642,6 +649,27 @@ msgstr "名称已被其他条目使用。"
 #: java/com/youthlin/blog/web/back/CategoryController.java:147
 msgid "The slug has be used by another item."
 msgstr "别名已被其他条目使用。"
+
+#. TRANSLATORS: 0, comment count; 1, post title.
+#: java/com/youthlin/blog/support/CommentTag.java:37
+#, java-format
+msgid "One Comment On {1} "
+msgid_plural "{0} Comments On {1} "
+msgstr[0] "《{1}》有一则评论 "
+msgstr[1] "《{1}》有 {0} 则评论 "
+
+#: java/com/youthlin/blog/support/CommentTag.java:50
+msgid "No Comments."
+msgstr "没有评论。"
+
+#: java/com/youthlin/blog/support/CommentTag.java:74
+#: java/com/youthlin/blog/support/CommentTag.java:77
+msgid "Says:"
+msgstr "说道："
+
+#: java/com/youthlin/blog/support/CommentTag.java:84
+msgid "Replay"
+msgstr "回复"
 
 #: java/com/youthlin/blog/web/LoginController.java:44
 msgid "Username, password are all required."

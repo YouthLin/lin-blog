@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# nplurals=2; plural=n==1?0:1;
+
 base=$(cd "$(dirname "$0")"; pwd)
 #echo ${base}
 # msgfmt

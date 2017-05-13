@@ -44,6 +44,7 @@ public class SinglePostController {
     }
 
     private void fetchComment(Post post, Model model) {
-        List<CommentNode> topLevelCommentOfPost = commentService.getTopLevelCommentOfPost(post.getPostId());
+        List<CommentNode> topLevelCommentNodeList = commentService.getTopLevelCommentOfPost(post.getPostId());
+        model.addAttribute("topLevelCommentNodeList", topLevelCommentNodeList);
     }
 }
