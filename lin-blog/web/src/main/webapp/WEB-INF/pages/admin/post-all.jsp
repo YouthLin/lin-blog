@@ -121,7 +121,7 @@
                             <a class="text-danger" href="#"><%=__("Move To Trash")%></a> |
                         </c:otherwise>
                     </c:choose>
-                    <a href="#"><%=__("View")%></a>
+                    <a href="<c:url value="/post/${post.postId}"/>" target="_blank"><%=__("View")%></a>
                 </span></td>
                 <td><a href="?${queryString}&author=${post.postAuthorId}">${authorMap[post.postAuthorId]}</a></td>
                 <td>

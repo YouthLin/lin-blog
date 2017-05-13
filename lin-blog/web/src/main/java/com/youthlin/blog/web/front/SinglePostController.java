@@ -117,7 +117,7 @@ public class SinglePostController {
         author = ServletUtil.filterHtml(author);
         email = ServletUtil.filterHtml(email);
         url = ServletUtil.filterHtml(url);
-        content = ServletUtil.filterXss(content);
+        content = ServletUtil.filterXss(content.replaceAll("(\\r\\n|\\n)", "<br>\n"));
         Comment comment = new Comment()
                 .setCommentPostId(postId)
                 .setCommentAuthor(author)
