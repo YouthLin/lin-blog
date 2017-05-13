@@ -77,6 +77,19 @@
                     <div id="comment">
 
                     </div>
+                    <div id="post-comment">
+                        <c:choose>
+                            <c:when test="${post.commentOpen}">
+                                <form action="">
+                                    <h4><%=__("Leave your comment")%></h4>
+
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <%=__("Comment are closed.")%>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
                 <%-- paging --%>
             </main>

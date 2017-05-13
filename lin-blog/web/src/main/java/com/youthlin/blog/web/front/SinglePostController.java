@@ -34,7 +34,11 @@ public class SinglePostController {
         }
         model.addAttribute("post", post);
         PostTaxonomyHelper.fetchTaxonomyRelationships(Collections.singletonList(post), model, postService);
-
+        fetchComment(post, model);
         return "post";
+    }
+
+    private void fetchComment(Post post, Model model) {
+
     }
 }

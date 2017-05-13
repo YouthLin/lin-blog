@@ -60,11 +60,10 @@ public class Comment {
     private Long commentPostId;
     private String commentAuthor;
     private String commentAuthorEmail;
-    private String commentAuthorUrl;
-    private Integer commentAuthorIp;
-    private byte[] commentAuthorIpv6;
+    private String commentAuthorUrl = "";
+    private String commentAuthorIp = "";
     private Date commentDate = new Date();
-    private Date commentDateUtc = new DateTime(DateTimeZone.UTC).toDate();
+    private Date commentDateUtc = new DateTime(new DateTime(commentDate), DateTimeZone.UTC).toLocalDateTime().toDate();
     private String commentContent;
     private CommentStatus commentStatus = CommentStatus.NORMAL;
     private String commentAgent = "";
@@ -81,7 +80,6 @@ public class Comment {
                 ", commentAuthorEmail='" + commentAuthorEmail + '\'' +
                 ", commentAuthorUrl='" + commentAuthorUrl + '\'' +
                 ", commentAuthorIp=" + commentAuthorIp +
-                ", commentAuthorIpv6=" + Arrays.toString(commentAuthorIpv6) +
                 ", commentDate=" + commentDate +
                 ", commentDateUtc=" + commentDateUtc +
                 ", commentContent='" + commentContent + '\'' +
@@ -139,21 +137,12 @@ public class Comment {
         return this;
     }
 
-    public Integer getCommentAuthorIp() {
+    public String getCommentAuthorIp() {
         return commentAuthorIp;
     }
 
-    public Comment setCommentAuthorIp(Integer commentAuthorIp) {
+    public Comment setCommentAuthorIp(String commentAuthorIp) {
         this.commentAuthorIp = commentAuthorIp;
-        return this;
-    }
-
-    public byte[] getCommentAuthorIpv6() {
-        return commentAuthorIpv6;
-    }
-
-    public Comment setCommentAuthorIpv6(byte[] commentAuthorIpv6) {
-        this.commentAuthorIpv6 = commentAuthorIpv6;
         return this;
     }
 
@@ -163,6 +152,7 @@ public class Comment {
 
     public Comment setCommentDate(Date commentDate) {
         this.commentDate = commentDate;
+        this.commentDateUtc = new DateTime(new DateTime(commentDate), DateTimeZone.UTC).toLocalDateTime().toDate();
         return this;
     }
 

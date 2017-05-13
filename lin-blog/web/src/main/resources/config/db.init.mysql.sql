@@ -121,10 +121,8 @@ CREATE TABLE IF NOT EXISTS `comments` (
   COMMENT '评论者邮件',
   `comment_author_url`   VARCHAR(128)    NOT NULL DEFAULT ''
   COMMENT '评论者URL',
-  `comment_author_IP`    INT             NOT NULL DEFAULT '0'
-  COMMENT 'inet_aton("10.10.10.10")=168430090, inet_ntoa(168430090)="10.10.10.10"',
-  `comment_author_IPv6`  BINARY(16)      NOT NULL DEFAULT '0'
-  COMMENT 'inet6_aton("FE80:0000:0000:0000:0202:B3FF:FE1E:8329")=0xFE800000000000000202B3FFFE1E8329, inet6_ntoa()',
+  `comment_author_IP`    VARCHAR(50)     NOT NULL DEFAULT ''
+  COMMENT 'IP',
   `comment_date`         DATETIME        NOT NULL DEFAULT now()
   COMMENT '评论时间',
   `comment_date_utc`     DATETIME        NOT NULL DEFAULT now()
