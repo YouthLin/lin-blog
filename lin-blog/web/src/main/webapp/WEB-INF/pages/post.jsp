@@ -84,7 +84,7 @@
                                     <c:when test="${previous != null}">
                                         <li class="previous"><span class="sr-only"><%=__("Previous post:")%></span>
                                             <a href="<c:url value="/post/${previous.postId}"/>">
-                                            <span aria-hidden="true">&larr;</span> ${previous.postTitle}</a>
+                                            <span aria-hidden="true">&larr;&nbsp;</span>${previous.postTitle}</a>
                                         </li>
                                     </c:when>
                                 </c:choose>
@@ -92,7 +92,7 @@
                                     <c:when test="${next != null}">
                                         <li class="next"><span class="sr-only"><%=__("Next post:")%></span>
                                             <a href="<c:url value="/post/${next.postId}"/>">
-                                            ${next.postTitle} <span aria-hidden="true">&rarr;</span></a>
+                                            ${next.postTitle}<span aria-hidden="true">&nbsp;&rarr;</span></a>
                                         </li>
                                     </c:when>
                                 </c:choose>
