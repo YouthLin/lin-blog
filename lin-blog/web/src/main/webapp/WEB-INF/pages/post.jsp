@@ -15,8 +15,7 @@
 <html>
 <head>
     <%@ include file="common/head.jsp" %>
-    <%--@elvariable id="title" type="java.lang.String"--%>
-    <title>${title}</title>
+    <title>${post.postTitle}</title>
 </head>
 <body>
 <div id="wrap">

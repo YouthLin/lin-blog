@@ -7,6 +7,8 @@ import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.util.Gravatar;
 import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.jsp.JspException;
@@ -79,7 +81,7 @@ public class CommentTag extends SimpleTagSupport {
         out.println("          <div class=\"meta-info-author\"><time><a href=\"#comment-" + comment.getCommentId()
                 + "\">" + new DateTime(comment.getCommentDate()).toString(dateFormat) + "</a></time></div>");
         out.println("          </header>");
-        out.println("          <div class=\"comment-cotent\">" + comment.getCommentContent() + "</div>");
+        out.println("          <div class=\"comment-cotent\">" + ServletUtil.filterXss(comment.getCommentContent()) + "</div>");
         out.println("          <footer class=\"comment-meta comment-meta-footer\">");
         out.println("            <span><a href=\"#commentform\" data-to='" + comment.getCommentId() + "' class='replay'>"
                 + __("Replay") + "</a></span>");
@@ -136,4 +138,5 @@ public class CommentTag extends SimpleTagSupport {
     public void setTopLevelCommentNodeList(List<CommentNode> topLevelCommentNodeList) {
         this.topLevelCommentNodeList = topLevelCommentNodeList;
     }
+
 }

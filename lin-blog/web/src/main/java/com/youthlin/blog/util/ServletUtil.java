@@ -3,6 +3,8 @@ package com.youthlin.blog.util;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hashing;
 import com.youthlin.blog.model.bo.LoginInfo;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Base64Utils;
@@ -76,6 +78,12 @@ public class ServletUtil {
         cookie.setHttpOnly(true);
         cookie.setPath("/");
         return cookie;
+    }
+
+    public static String filterXss(String html) {
+        return Jsoup.clean(html, Whitelist.relaxed()
+                .addAttributes("a", "target")
+                .addProtocols("a", "href", "#"));
     }
 
 }

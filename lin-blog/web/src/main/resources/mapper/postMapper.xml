@@ -125,6 +125,7 @@
                 AND (posts.post_date &gt;= #{start} AND posts.post_date &lt;= #{end})
             </if>
         </where>
+        ORDER BY posts.post_date DESC
     </select>
 
 </mapper>

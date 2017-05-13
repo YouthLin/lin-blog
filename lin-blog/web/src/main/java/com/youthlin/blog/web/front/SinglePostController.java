@@ -92,6 +92,7 @@ public class SinglePostController {
             model.addAttribute(Constant.ERROR, __("Name, email, and comment content are required."));
             return "die";
         }
+        content = ServletUtil.filterXss(content);
         if (!StringUtils.hasText(url)) {
             url = "";
         }
@@ -131,6 +132,6 @@ public class SinglePostController {
         }
         post.setCommentCount(commentCount + 1);
         postService.update(post);
-        return "redirect:/post/" + postId;
+        return "redirect:/post/" + postId + "#comment-" + comment.getCommentId();
     }
 }
