@@ -1,4 +1,4 @@
-package com.youthlin.blog.support;
+package com.youthlin.blog.web.tag;
 
 import com.google.common.collect.Lists;
 import com.youthlin.blog.model.bo.CommentNode;
@@ -63,7 +63,7 @@ public class CommentTag extends SimpleTagSupport {
         out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
                 + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
         out.println("      <div class=\"media-left\">");
-        out.println("        <img class=\"media-object\" src='" + getGravatarUrl(comment.getCommentAuthorEmail())
+        out.println("        <img class=\"media-object\" src='" + ServletUtil.getGravatarUrl(comment.getCommentAuthorEmail())
                 + "' alt=\"Gravatar\" width=\"40\" height=\"40\">");
         out.println("      </div>");
         out.println("      <div class=\"media-body\">");
@@ -102,10 +102,6 @@ public class CommentTag extends SimpleTagSupport {
         //endregion child
         out.println("      </div>");
         out.println("    </li>\n");
-    }
-
-    private String getGravatarUrl(String email) {
-        return Gravatar.withEmail(email).defaults(Gravatar.DefaultType.MONSTERID).getUrl();
     }
 
     public String getDateFormat() {

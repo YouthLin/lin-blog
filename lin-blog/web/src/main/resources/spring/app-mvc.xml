@@ -29,6 +29,14 @@
             <bean class="com.youthlin.blog.web.interceptor.CheckInstallInterceptor"/>
         </mvc:interceptor>
         <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/install*"/>
+            <mvc:exclude-mapping path="/404*"/>
+            <mvc:exclude-mapping path="/admin/**"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="com.youthlin.blog.web.interceptor.SidebarInjectInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
             <mvc:mapping path="/admin/**"/>
             <bean class="com.youthlin.blog.web.interceptor.CheckLoginInterceptor"/>
         </mvc:interceptor>

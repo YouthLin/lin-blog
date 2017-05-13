@@ -16,4 +16,7 @@ public interface CommentDao {
     List<Comment> findByPostId(Long postId);
 
     Comment findById(Long id);
+
+    List<Comment> listRecent(int count);
+
 }

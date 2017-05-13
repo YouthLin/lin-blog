@@ -138,6 +138,16 @@ a.active {
     background: #eee;
 }
 
+.recent-comment {
+    border-bottom: 1px solid #ccc;
+    margin: 2% 0;
+    padding: 2% 0;
+}
+
+.recent-comment:last-child {
+    border-bottom: none;
+}
+
 /* endregion */
 
 /* region 导航条 */

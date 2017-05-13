@@ -86,4 +86,8 @@ public class ServletUtil {
                 .addProtocols("a", "href", "#"));
     }
 
+    public static String getGravatarUrl(String email) {
+        return Gravatar.withEmail(email).defaults(Gravatar.DefaultType.MONSTERID).size(40).getUrl();
+    }
+
 }

@@ -50,4 +50,11 @@
         FROM comments WHERE comment_ID=#{id}
     </select>
 
+    <select id="listRecent" resultMap="commentMap">
+        SELECT
+        <include refid="all"/>
+        FROM comments
+        WHERE comment_status=0 ORDER BY comment_date DESC LIMIT #{count}
+    </select>
+
 </mapper>

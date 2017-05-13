@@ -146,4 +146,14 @@
         <if test="!grater">DESC</if>
     </select>
 
+    <select id="listPost" resultMap="postMap">
+        SELECT
+        <include refid="all"/>
+        FROM posts
+        WHERE post_status=0
+        <foreach collection="list" item="id" open="AND ID IN(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
 </mapper>

@@ -3,13 +3,16 @@ package com.youthlin.blog.service;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.youthlin.blog.dao.CommentDao;
+import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.model.bo.CommentNode;
 import com.youthlin.blog.model.po.Comment;
+import com.youthlin.blog.model.po.Post;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +25,8 @@ public class CommentService {
     private static final Logger log = LoggerFactory.getLogger(CategoryService.class);
     @Resource
     private CommentDao commentDao;
+    @Resource
+    private PostDao postDao;
 
     public Comment save(Comment comment) {
         commentDao.save(comment);
@@ -53,7 +58,7 @@ public class CommentService {
                         .setComment(comment)
                         .setParent(parentNode)
                         .setLevel(parentNode.getLevel() + 1);
-                commentNodeMap.put(comment.getCommentId(),node);
+                commentNodeMap.put(comment.getCommentId(), node);
                 int size = parentNode.getChildren().size();
                 if (size > 0) {
                     CommentNode pre = parentNode.getChildren().get(size - 1);
@@ -68,4 +73,23 @@ public class CommentService {
     public Comment findById(long id) {
         return commentDao.findById(id);
     }
+
+    public LinkedHashMap<Comment, Post> getRecentComment(int count) {
+        List<Comment> comments = commentDao.listRecent(count);
+        List<Long> postIds = Lists.newArrayList();
+        for (Comment comment : comments) {
+            postIds.add(comment.getCommentPostId());
+        }
+        List<Post> posts = postDao.listPost(postIds);
+        Map<Long, Post> postMap = Maps.newHashMapWithExpectedSize(posts.size());
+        for (Post post : posts) {
+            postMap.put(post.getPostId(), post);
+        }
+        LinkedHashMap<Comment, Post> map = Maps.newLinkedHashMapWithExpectedSize(comments.size());
+        for (Comment comment : comments) {
+            map.put(comment, postMap.get(comment.getCommentPostId()));
+        }
+        return map;
+    }
+
 }

@@ -51,4 +51,6 @@ public interface PostDao {
      @Param("start") Date start, @Param("end") Date end);
 
     List<Post> findIdGreaterOrLessThen(@Param("id") long id, @Param("grater") boolean greater);
+
+    List<Post> listPost(List<Long> ids);
 }

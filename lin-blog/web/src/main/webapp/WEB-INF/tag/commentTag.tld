@@ -10,7 +10,7 @@
         <!-- 定义标签名 -->
         <name>comments</name>
         <!-- 定义标签处理类 -->
-        <tag-class>com.youthlin.blog.support.CommentTag</tag-class>
+        <tag-class>com.youthlin.blog.web.tag.CommentTag</tag-class>
         <!-- 定义标签体为空 -->
         <body-content>empty</body-content>
         <!-- 配置标签属性 -->
