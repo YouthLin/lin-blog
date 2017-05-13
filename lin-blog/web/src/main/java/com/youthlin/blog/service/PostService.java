@@ -284,4 +284,9 @@ public class PostService {
         globalInfo.set(Constant.O_ALL_CATEGORIES, null);// clear cache
     }
 
+
+    /* 更新 post,  如 comment count */
+    public void update(Post post) {
+        postDao.update(post);
+    }
 }

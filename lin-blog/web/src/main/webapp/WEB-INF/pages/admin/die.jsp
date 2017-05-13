@@ -1,5 +1,4 @@
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
-<%--@elvariable id="error" type="java.lang.String"--%>
 <%--
   Created by IntelliJ IDEA.
   User: youthlin.chen
@@ -10,5 +9,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/pages/common/admin/header.jsp" %>
 <h1><%=__("Error")%></h1>
+<%--@elvariable id="error" type="java.lang.String"--%>
 <div class="error">${error}</div>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

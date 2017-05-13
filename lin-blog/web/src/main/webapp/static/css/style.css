@@ -134,6 +134,10 @@ a.active {
     color: red;
 }
 
+*:target {
+    background: #eee;
+}
+
 /* endregion */
 
 /* region 导航条 */

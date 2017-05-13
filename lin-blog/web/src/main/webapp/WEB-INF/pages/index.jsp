@@ -48,11 +48,11 @@
                         <article id="post-${post.postId}"
                                  class="article article-${post.postId} border-ccc margin-padding-p1">
                             <header class="post-meta post-header">
-                                <h3><a href="<c:url value="/${post.postId}"/>">${post.postTitle}</a></h3>
+                                <h3><a href="<c:url value="/post/${post.postId}"/>">${post.postTitle}</a></h3>
                                 <span class="meta-info meta-info-date">
                                     <span class="glyphicon glyphicon-time"
                                           aria-level=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
-                                    <a class="meta-link" href="<c:url value="/${post.postId}"/>">
+                                    <a class="meta-link" href="<c:url value="/post/${post.postId}"/>">
                                         <time datetime="${post.postDate}"
                                               title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>">
                                     <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/>
@@ -62,7 +62,7 @@
                                 <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
                                           aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
-                                    <a href="<c:url value="/${post.postId}#comments"/>">${post.commentCount}</a>
+                                    <a href="<c:url value="/post/${post.postId}#comments"/>">${post.commentCount}</a>
                                 </span>
                                 <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"
@@ -102,7 +102,7 @@
                                 </c:choose>
                             </div>
                             <footer class="post-meta post-footer">
-                                <a href="<c:url value="/${post.postId}"/>"><%=__("Read More")%></a>
+                                <a href="<c:url value="/post/${post.postId}"/>"><%=__("Read More")%></a>
                             </footer>
                         </article>
                     </c:forEach>

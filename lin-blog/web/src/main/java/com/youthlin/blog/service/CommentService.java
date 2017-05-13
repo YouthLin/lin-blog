@@ -23,11 +23,16 @@ public class CommentService {
     @Resource
     private CommentDao commentDao;
 
+    public Comment save(Comment comment) {
+        commentDao.save(comment);
+        return comment;
+    }
+
     public List<CommentNode> getTopLevelCommentOfPost(Long postId) {
         List<CommentNode> list = Lists.newArrayList();
         List<Comment> commentList = commentDao.findByPostId(postId);
         Map<Long, CommentNode> commentNodeMap = Maps.newHashMap();
-        CommentNode current = null, next = null;
+        CommentNode current = null, next;
         for (Comment comment : commentList) {
             Long parentId = comment.getCommentParent();
             if (parentId == 0L) {
@@ -48,6 +53,7 @@ public class CommentService {
                         .setComment(comment)
                         .setParent(parentNode)
                         .setLevel(parentNode.getLevel() + 1);
+                commentNodeMap.put(comment.getCommentId(),node);
                 int size = parentNode.getChildren().size();
                 if (size > 0) {
                     CommentNode pre = parentNode.getChildren().get(size - 1);
@@ -57,5 +63,9 @@ public class CommentService {
             }
         }
         return list;
+    }
+
+    public Comment findById(long id) {
+        return commentDao.findById(id);
     }
 }

@@ -1,6 +1,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="cmt" uri="http://youthlin.com/linblog/tag/comment" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
+<%@ page import="static com.youthlin.utils.i18n.Translation._x" %>
 <%--
   Created by IntelliJ IDEA.
   User: youthlin.chen
@@ -36,7 +37,7 @@
                             <span class="meta-info meta-info-date">
                                     <span class="glyphicon glyphicon-time"
                                           aria-level=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
-                                    <a class="meta-link" href="<c:url value="/${post.postId}"/>">
+                                    <a class="meta-link" href="<c:url value="/post/${post.postId}"/>">
                                         <time datetime="${post.postDate}"
                                               title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>">
                                     <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/>
@@ -46,7 +47,7 @@
                             <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
                                           aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
-                                    <a href="<c:url value="/${post.postId}#comments"/>">${post.commentCount}</a>
+                                    <a href="#comments">${post.commentCount}</a>
                             </span>
                             <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"
@@ -70,7 +71,7 @@
                                     </c:if>
                                 </c:forEach>
                             </span>
-                            <h3><a href="<c:url value="/${post.postId}"/>">${post.postTitle}</a></h3>
+                            <h3><a href="<c:url value="/post/${post.postId}"/>">${post.postTitle}</a></h3>
                         </header>
                         <div class="post-content"> ${post.postContent} </div>
 
@@ -79,29 +80,32 @@
                     <div id="respond">
                         <c:choose>
                             <c:when test="${post.commentOpen}">
-                                <form class="form-horizontal border-ccc margin-padding-p1 well" id="commentform">
-                                    <h4 class="margin-padding-p1"><%=__("Leave your comment")%></h4>
+                                <form class="form-horizontal border-ccc margin-padding-p1 well"
+                                      id="commentform" method="post">
+                                    <h4 class="margin-padding-p1"><%=__("Leave your comment")%>
+                                    <small><a href="javascript:cancel();" class="hide" id="to-cancel">
+                                        <%=_x("Cancel", "cancel response.")%></a></small></h4>
                                     <div class="form-group">
-                                        <label for="author" class="col-sm-2 control-label">Name
+                                        <label for="author" class="col-sm-2 control-label"><%=__("Name")%>
                                             <span class="star">*</span> </label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="author" name="author"
-                                                   required placeholder="Name">
+                                                   required placeholder=<%=__("\"Display Name\"")%>>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email" class="col-sm-2 control-label">Email
+                                        <label for="email" class="col-sm-2 control-label"><%=__("Email")%>
                                             <span class="star">*</span> </label>
                                         <div class="col-sm-10">
                                             <input type="email" class="form-control" id="email" name="email"
-                                                   required placeholder="Email will never public">
+                                                   required placeholder=<%=__("\"Email will never public\"")%>>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="url" class="col-sm-2 control-label">URL &nbsp;</label>
+                                        <label for="url" class="col-sm-2 control-label"><%=__("URL")%> &nbsp;</label>
                                         <div class="col-sm-10">
                                             <input type="url" class="form-control" id="url" name="url"
-                                                   placeholder="URL is optional.">
+                                                   placeholder=<%=__("\"URL is optional\"")%>>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -114,10 +118,34 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-default">Post Comment</button>
+                                            <input type="hidden" name="post" value="${post.postId}">
+                                            <input type="hidden" name="to" value="0" id="to">
+                                            <button type="submit" class="btn btn-default">
+                                                <%=__("Post Comment")%></button>
                                         </div>
                                     </div>
                                 </form>
+                                <script>
+                                    var $to = $('#to');
+                                    var $respond = $('#respond');
+                                    var $commentform = $('#commentform');
+                                    var $cancel = $('#to-cancel');
+                                    function cancel() {
+                                        $respond.html($commentform);
+                                        $to.val(0);
+                                        $cancel.addClass('hide');
+                                    }
+                                    $(document).ready(function () {
+                                        $('.replay').click(function () {
+                                            var parent = $(this).data('to');
+                                            var $toArticle = $('#comment-article-' + parent);
+                                            $respond.html('');
+                                            $toArticle.append($commentform);
+                                            $cancel.removeClass('hide');
+                                            $to.val(parent);
+                                        });
+                                    });
+                                </script>
                             </c:when>
                             <c:otherwise>
                                 <h4 class="margin-padding-p1 well"><%=__("Comment are closed")%></h4>

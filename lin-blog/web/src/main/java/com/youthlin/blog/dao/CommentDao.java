@@ -14,4 +14,6 @@ public interface CommentDao {
     void save(Comment comment);
 
     List<Comment> findByPostId(Long postId);
+
+    Comment findById(Long id);
 }

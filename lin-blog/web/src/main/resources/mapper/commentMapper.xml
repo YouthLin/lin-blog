@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.youthlin.blog.dao.CommentDao">
-    <resultMap id="optionMap" type="com.youthlin.blog.model.po.Comment">
+    <resultMap id="commentMap" type="com.youthlin.blog.model.po.Comment">
         <id property="commentId" column="comment_ID"/>
         <result property="commentPostId" column="comment_post_ID"/>
         <result property="commentAuthor" column="comment_author"/>
@@ -37,12 +37,17 @@
                                #{commentStatus}, #{commentAgent}, #{commentType}, #{commentParent}, #{userId})
     </insert>
 
-    <select id="findByPostId" resultMap="optionMap">
+    <select id="findByPostId" resultMap="commentMap">
         SELECT
         <include refid="all"/>
         FROM comments
         WHERE comment_post_ID=#{postId}
         ORDER BY comment_ID
+    </select>
+    <select id="findById" resultMap="commentMap">
+        SELECT
+        <include refid="all"/>
+        FROM comments WHERE comment_ID=#{id}
     </select>
 
 </mapper>

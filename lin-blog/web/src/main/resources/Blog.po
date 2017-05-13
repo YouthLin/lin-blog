@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-13 14:40+0800\n"
-"PO-Revision-Date: 2017-05-13 14:40+0800\n"
+"POT-Creation-Date: 2017-05-13 17:05+0800\n"
+"PO-Revision-Date: 2017-05-13 17:07+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -17,8 +17,9 @@ msgstr ""
 "X-Poedit-SearchPath-0: java/com/youthlin/blog\n"
 "X-Poedit-SearchPath-1: webapp/WEB-INF/pages\n"
 
-#: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/index.jsp:16
-#: webapp/WEB-INF/pages/index.jsp:23 webapp/WEB-INF/pages/post.jsp:27
+#: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/die.jsp:21
+#: webapp/WEB-INF/pages/index.jsp:16 webapp/WEB-INF/pages/index.jsp:23
+#: webapp/WEB-INF/pages/post.jsp:28
 msgid "Home"
 msgstr "首页"
 
@@ -36,7 +37,8 @@ msgstr "很抱歉，但是您访问的页面不存在。 "
 msgid "All Comments"
 msgstr "所有评论"
 
-#: webapp/WEB-INF/pages/admin/die.jsp:12
+#: webapp/WEB-INF/pages/admin/die.jsp:11 webapp/WEB-INF/pages/die.jsp:14
+#: webapp/WEB-INF/pages/die.jsp:23 webapp/WEB-INF/pages/die.jsp:27
 msgid "Error"
 msgstr "错误"
 
@@ -251,7 +253,7 @@ msgid "Add Category"
 msgstr "新增分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:56
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:89
 msgid "Name"
 msgstr "名称"
 
@@ -506,19 +508,19 @@ msgstr "Powered By {0}"
 msgid "Page {0} "
 msgstr "第 {0} 页 "
 
-#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:38
+#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:39
 msgid "\"Published Date:\""
 msgstr "\"发布时间：\""
 
-#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:48
+#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:49
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:53
+#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:54
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:65
+#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:66
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
@@ -625,11 +627,40 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: webapp/WEB-INF/pages/post.jsp:83
+#: webapp/WEB-INF/pages/post.jsp:85
 msgid "Leave your comment"
 msgstr "留下你的想法"
 
-#: webapp/WEB-INF/pages/post.jsp:123
+#: webapp/WEB-INF/pages/post.jsp:87
+msgctxt "cancel response."
+msgid "Cancel"
+msgstr "取消回复"
+
+#: webapp/WEB-INF/pages/post.jsp:93
+msgid "\"Display Name\""
+msgstr "\"显示名称\""
+
+#: webapp/WEB-INF/pages/post.jsp:97
+msgid "Email"
+msgstr "电子邮件"
+
+#: webapp/WEB-INF/pages/post.jsp:101
+msgid "\"Email will never public\""
+msgstr "\"邮件地址不会公开\""
+
+#: webapp/WEB-INF/pages/post.jsp:105
+msgid "URL"
+msgstr "网址"
+
+#: webapp/WEB-INF/pages/post.jsp:108
+msgid "\"URL is optional\""
+msgstr "\"可不填\""
+
+#: webapp/WEB-INF/pages/post.jsp:124
+msgid "Post Comment"
+msgstr "发表评论"
+
+#: webapp/WEB-INF/pages/post.jsp:151
 msgid "Comment are closed"
 msgstr "评论已关闭"
 
@@ -667,7 +698,7 @@ msgstr "没有评论。"
 msgid "Says:"
 msgstr "说道："
 
-#: java/com/youthlin/blog/support/CommentTag.java:84
+#: java/com/youthlin/blog/support/CommentTag.java:85
 msgid "Replay"
 msgstr "回复"
 
@@ -731,6 +762,27 @@ msgstr "非法参数︰ 文章不存在。"
 #: java/com/youthlin/blog/web/back/PostController.java:345
 msgid "Illegal param: postId does not exist."
 msgstr "非法参数︰ 文章不存在。"
+
+#: java/com/youthlin/blog/web/front/SinglePostController.java:74
+#: java/com/youthlin/blog/web/front/SinglePostController.java:79
+msgid "No such post."
+msgstr "文章不存在。"
+
+#: java/com/youthlin/blog/web/front/SinglePostController.java:84
+msgid "Comments are closed on this post."
+msgstr "评论已关闭。"
+
+#: java/com/youthlin/blog/web/front/SinglePostController.java:92
+msgid "Name, email, and comment content are required."
+msgstr "姓名，电子邮件和评论内容是必填项。"
+
+#: java/com/youthlin/blog/web/front/SinglePostController.java:108
+msgid "Parent comment does not exist."
+msgstr "您要回复的评论不存在。"
+
+#: java/com/youthlin/blog/web/front/SinglePostController.java:112
+msgid "This post does not contains the parent comment."
+msgstr "您回复的评论不是本文的评论。"
 
 #, fuzzy
 #~| msgid "Trash"

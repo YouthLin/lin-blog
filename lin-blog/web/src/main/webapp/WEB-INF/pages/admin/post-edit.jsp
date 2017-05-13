@@ -219,7 +219,7 @@
                         </div>
                         <div class="checkbox">
                             <c:set value="" var="pingOpen"/>
-                            <c:if test="${post.commentOpen}">
+                            <c:if test="${post.pingOpen}">
                                 <c:set value="checked" var="pingOpen"/>
                             </c:if>
                             <label class="full-width">
