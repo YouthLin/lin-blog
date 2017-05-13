@@ -126,6 +126,14 @@ a.active {
     content: ",";
 }
 
+.media-body article {
+    margin-bottom: 1%;
+}
+
+.star {
+    color: red;
+}
+
 /* endregion */
 
 /* region 导航条 */

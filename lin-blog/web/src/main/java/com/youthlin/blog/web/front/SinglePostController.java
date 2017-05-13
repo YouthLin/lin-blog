@@ -1,6 +1,8 @@
 package com.youthlin.blog.web.front;
 
+import com.youthlin.blog.model.bo.CommentNode;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.service.CommentService;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.util.PostTaxonomyHelper;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * 创建： youthlin.chen
@@ -20,6 +23,8 @@ import java.util.Collections;
 public class SinglePostController {
     @Resource
     private PostService postService;
+    @Resource
+    private CommentService commentService;
 
     @RequestMapping(path = {"/{id}"}, method = {RequestMethod.GET})
     public String view(@PathVariable(required = false, name = "id") String id, Model model) {
@@ -39,6 +44,6 @@ public class SinglePostController {
     }
 
     private void fetchComment(Post post, Model model) {
-
+        List<CommentNode> topLevelCommentOfPost = commentService.getTopLevelCommentOfPost(post.getPostId());
     }
 }

@@ -44,7 +44,7 @@
                             <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
                                           aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
-                                    <a href="<c:url value="/${post.postId}#comment"/>">${post.commentCount}</a>
+                                    <a href="<c:url value="/${post.postId}#comments"/>">${post.commentCount}</a>
                                 </a>
                                 </span>
                             <span class="meta-info meta-info-category">
@@ -74,15 +74,167 @@
                         <div class="post-content"> ${post.postContent} </div>
 
                     </article>
-                    <div id="comment">
-
+                    <div id="comments" class="border-ccc margin-padding-p1">
+                        <h4 class="margin-padding-p1">${post.commentCount} Comments On 《${post.postTitle}》</h4>
+                        <ol class="media-list comments-list">
+                            <li class="media border-ccc margin-padding-p1 comment-item comment-1 depth-1"
+                                id="comment-li-1">
+                                <div class="media-left">
+                                    <img class="media-object"
+                                         src="http://2.gravatar.com/avatar/89081eaa9951596df4914597cdbb1204?s=40&d=monsterid&r=g"
+                                         alt="Gravatar">
+                                </div>
+                                <div class="media-body">
+                                    <article id="comment-article-1">
+                                        <header class="media-heading comment-meta comment-meta-header">
+                                            <div><a href="#">YouthLin</a><span class="sr-only">Says:</span></div>
+                                            <div>
+                                                <time><a href="#">2017-05-13 11:05:12</a></time>
+                                            </div>
+                                        </header>
+                                        <div class="comment-cotent">
+                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
+                                            ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
+                                            tempus viverra turpis.
+                                        </div>
+                                        <footer class="comment-meta comment-meta-footer">
+                                            <span><a href="#">Reply</a></span>
+                                        </footer>
+                                    </article>
+                                    <ol class="media-list comments-list comments=list-children">
+                                        <li class="media border-ccc margin-padding-p1 comment-item comment-1 depth-1"
+                                            id="comment-li-3">
+                                            <div class="media-left">
+                                                <img class="media-object"
+                                                     src="http://2.gravatar.com/avatar/89081eaa9951596df4914597cdbb1204?s=40&d=monsterid&r=g"
+                                                     alt="Gravatar">
+                                            </div>
+                                            <div class="media-body">
+                                                <article id="comment-article-3">
+                                                    <header class="media-heading comment-meta comment-meta-header">
+                                                        <div><a href="#">YouthLin</a><span class="sr-only">Says:</span>
+                                                        </div>
+                                                        <div>
+                                                            <time><a href="#">2017-05-13 11:05:12</a></time>
+                                                        </div>
+                                                    </header>
+                                                    <div class="comment-cotent">
+                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                                                        scelerisque
+                                                        ante sollicitudin commodo. Cras purus odio, vestibulum in
+                                                        vulputate at,
+                                                        tempus viverra turpis.
+                                                    </div>
+                                                    <footer class="comment-meta comment-meta-footer">
+                                                        <span><a href="#">Reply</a></span>
+                                                    </footer>
+                                                </article>
+                                            </div>
+                                        </li>
+                                        <li class="media border-ccc margin-padding-p1 comment-item comment-1 depth-1"
+                                            id="comment-li-4">
+                                            <div class="media-left">
+                                                <img class="media-object"
+                                                     src="http://2.gravatar.com/avatar/89081eaa9951596df4914597cdbb1204?s=40&d=monsterid&r=g"
+                                                     alt="Gravatar">
+                                            </div>
+                                            <div class="media-body">
+                                                <article id="comment-article-4">
+                                                    <header class="media-heading comment-meta comment-meta-header">
+                                                        <div><a href="#">YouthLin</a><span class="sr-only">Says:</span>
+                                                        </div>
+                                                        <div>
+                                                            <time><a href="#">2017-05-13 11:05:12</a></time>
+                                                        </div>
+                                                    </header>
+                                                    <div class="comment-cotent">
+                                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+                                                        scelerisque
+                                                        ante sollicitudin commodo. Cras purus odio, vestibulum in
+                                                        vulputate at,
+                                                        tempus viverra turpis.
+                                                    </div>
+                                                    <footer class="comment-meta comment-meta-footer">
+                                                        <span><a href="#">Reply</a></span>
+                                                    </footer>
+                                                </article>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li class="media border-ccc margin-padding-p1 comment-item comment-1 depth-1"
+                                id="comment-li-2">
+                                <div class="media-left">
+                                    <img class="media-object"
+                                         src="http://2.gravatar.com/avatar/89081eaa9951596df4914597cdbb1204?s=40&d=monsterid&r=g"
+                                         alt="Gravatar">
+                                </div>
+                                <div class="media-body">
+                                    <article id="comment-article-2">
+                                        <header class="media-heading comment-meta comment-meta-header">
+                                            <div><a href="#">YouthLin</a><span class="sr-only">Says:</span></div>
+                                            <div>
+                                                <time><a href="#">2017-05-13 11:05:12</a></time>
+                                            </div>
+                                        </header>
+                                        <div class="comment-cotent">
+                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
+                                            ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
+                                            tempus viverra turpis.
+                                        </div>
+                                        <footer class="comment-meta comment-meta-footer">
+                                            <span><a href="#">Reply</a></span>
+                                        </footer>
+                                    </article>
+                                </div>
+                            </li>
+                        </ol>
                     </div>
-                    <div id="post-comment">
+                    <div id="respond">
                         <c:choose>
                             <c:when test="${post.commentOpen}">
-                                <form action="">
+                                <form class="form-horizontal border-ccc margin-padding-p1" id="commentform">
                                     <h4><%=__("Leave your comment")%></h4>
 
+                                    <div class="form-group">
+                                        <label for="author" class="col-sm-2 control-label">Name
+                                            <span class="star">*</span> </label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="author" name="author"
+                                                   required placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">Email
+                                            <span class="star">*</span> </label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                   required placeholder="Email will never public">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="url" class="col-sm-2 control-label">URL &nbsp;</label>
+                                        <div class="col-sm-10">
+                                            <input type="url" class="form-control" id="url" name="url"
+                                                   placeholder="URL is optional.">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="content" class="col-sm-2 control-label">Content
+                                            <span class="star">*</span> </label>
+                                        <div class="col-sm-10">
+                                                <textarea class="form-control" name="content" id="content"
+                                                          required rows="10"></textarea>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <button type="submit" class="btn btn-default">Post Comment</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </c:when>
                             <c:otherwise>
