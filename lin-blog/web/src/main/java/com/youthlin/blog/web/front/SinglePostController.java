@@ -92,7 +92,6 @@ public class SinglePostController {
             model.addAttribute(Constant.ERROR, __("Name, email, and comment content are required."));
             return "die";
         }
-        content = ServletUtil.filterXss(content);
         if (!StringUtils.hasText(url)) {
             url = "";
         }
@@ -115,6 +114,10 @@ public class SinglePostController {
             }
         }
         log.info("param:post id = {}, author = {}, email = {}, url = {}, content = {}", postId, author, email, url, content);
+        author = ServletUtil.filterHtml(author);
+        email = ServletUtil.filterHtml(email);
+        url = ServletUtil.filterHtml(url);
+        content = ServletUtil.filterXss(content);
         Comment comment = new Comment()
                 .setCommentPostId(postId)
                 .setCommentAuthor(author)

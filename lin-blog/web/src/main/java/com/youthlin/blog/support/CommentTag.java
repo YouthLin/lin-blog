@@ -75,7 +75,7 @@ public class CommentTag extends SimpleTagSupport {
             out.println("            <div class=\"meta-info-author\"><a href=\"" + ServletUtil.filterHtml(url)
                     + "\">" + comment.getCommentAuthor() + "</a><span class=\"sr-only\">" + __("Says:") + "</span></div>");
         } else {
-            out.println("            <div class=\"meta-info-author\"><span>" + comment.getCommentAuthor()
+            out.println("            <div class=\"meta-info-author\"><span>" + ServletUtil.filterHtml(comment.getCommentAuthor())
                     + "</span><span class=\"sr-only\">" + __("Says:") + "</span></div>");
         }
         out.println("          <div class=\"meta-info-author\"><time><a href=\"#comment-" + comment.getCommentId()
