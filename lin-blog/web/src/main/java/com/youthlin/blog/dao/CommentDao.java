@@ -19,4 +19,5 @@ public interface CommentDao {
 
     List<Comment> listRecent(int count);
 
+    long count();
 }

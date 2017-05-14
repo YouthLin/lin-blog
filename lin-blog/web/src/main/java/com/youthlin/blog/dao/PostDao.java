@@ -60,4 +60,7 @@ public interface PostDao {
      * @param status 当不为 null 时只要对应状态的，否则全部文章
      */
     List<Date> listAllDateByStatus(@Param("status")PostStatus status);
+
+    List<Post> listRecentPublished(int count);
+
 }

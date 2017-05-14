@@ -73,7 +73,7 @@ public class PostService {
     }
 
     private List<Taxonomy> getCategoryFromIds(List<Long> categoryIdList) {
-        List<Category> categoryList = categoryService.listCategoriesByOrder();
+        List<Category> categoryList = categoryService.listCategoriesNoPrefix();
         Map<Long, Category> allCategory = Maps.newHashMap();
         for (Category category : categoryList) {
             allCategory.put(category.getTaxonomyId(), category);
@@ -314,4 +314,9 @@ public class PostService {
         }
         return multiset;
     }
+
+    public List<Post> recentPublished(int count) {
+        return postDao.listRecentPublished(count);
+    }
+
 }

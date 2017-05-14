@@ -92,4 +92,7 @@ public class CommentService {
         return map;
     }
 
+    public long count() {
+        return commentDao.count();
+    }
 }

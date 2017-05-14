@@ -166,4 +166,10 @@
         ORDER BY post_date DESC
     </select>
 
+    <select id="listRecentPublished" resultMap="postMap">
+        SELECT
+        <include refid="all"/>
+        FROM posts WHERE post_status=0 ORDER BY post_date DESC LIMIT #{count}
+    </select>
+
 </mapper>

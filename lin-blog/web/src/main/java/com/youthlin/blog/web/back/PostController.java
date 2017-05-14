@@ -239,14 +239,16 @@ public class PostController {
         }
 
         List<Long> categoryList = parseCategory(categories);
-
+        if (!StringUtils.hasText(tags)) {
+            tags = "";
+        }
         List<String> tagList = SPLITTER.splitToList(tags);
         boolean commentOpen = true;
-        if (!"on".equals(commentOpenStr)) {
+        if ("off".equals(commentOpenStr)) {
             commentOpen = false;
         }
         boolean pingOpen = true;
-        if (!"on".equals(pingOpenStr)) {
+        if ("off".equals(pingOpenStr)) {
             pingOpen = false;
         }
 
@@ -273,8 +275,12 @@ public class PostController {
     }
 
     private List<Long> parseCategory(String... categories) {
-        List<String> categoriesStr = Lists.newArrayList(categories);
         List<Long> categoryList = Lists.newArrayList();
+        if (categories == null || categories.length == 0) {
+            categoryList.add(1L);
+            return categoryList;
+        }
+        List<String> categoriesStr = Lists.newArrayList(categories);
         for (String id : categoriesStr) {
             try {
                 long categoryId = Long.parseLong(id);

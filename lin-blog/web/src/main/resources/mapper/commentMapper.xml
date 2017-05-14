@@ -57,4 +57,9 @@
         WHERE comment_status=0 ORDER BY comment_date DESC LIMIT #{count}
     </select>
 
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(0)
+        FROM comments
+    </select>
+
 </mapper>

@@ -31,6 +31,7 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/install*"/>
+            <mvc:exclude-mapping path="/login*"/>
             <mvc:exclude-mapping path="/404*"/>
             <mvc:exclude-mapping path="/admin/**"/>
             <mvc:exclude-mapping path="/static/**"/>
