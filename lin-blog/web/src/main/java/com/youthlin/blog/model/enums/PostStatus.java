@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 20:46.
  */
+@SuppressWarnings("unused")
 public enum PostStatus {
     TRASH(-1, "回收站"), PUBLISHED(0, "已发布"), DRAFT(1, "草稿"), PENDING(2, "待审"),;
     private final int code;

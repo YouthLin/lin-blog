@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:22.
  */
+@SuppressWarnings("unused")
 public enum CommentType {
     COMMENT(0, "评论"), PINGBACK(1, "PingBack");
     private final int code;

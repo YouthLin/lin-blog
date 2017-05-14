@@ -5,7 +5,6 @@ import com.github.pagehelper.PageInfo;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.bo.Pageable;
-import com.youthlin.blog.model.bo.Tag;
 import com.youthlin.blog.model.po.Taxonomy;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;

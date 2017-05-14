@@ -1,7 +1,5 @@
 package com.youthlin.blog.model.bo;
 
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
 import com.google.common.collect.Lists;
 import com.youthlin.blog.model.po.Comment;
 

@@ -30,6 +30,7 @@ import java.util.UUID;
 /**
  * 创建者： youthlin.chen 日期： 17-4-4.
  */
+@SuppressWarnings("unused")
 @Service
 public class UserService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
@@ -118,6 +119,7 @@ public class UserService {
         return success;
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public boolean logout(HttpServletRequest request, HttpServletResponse response) {
         LoginInfo loginInfo = LoginInfo.fromRequest(request);
         if (loginInfo != null) {

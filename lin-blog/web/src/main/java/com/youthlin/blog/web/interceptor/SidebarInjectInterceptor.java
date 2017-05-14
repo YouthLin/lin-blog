@@ -1,7 +1,6 @@
 package com.youthlin.blog.web.interceptor;
 
 import com.google.common.collect.LinkedHashMultiset;
-import com.google.common.collect.Multiset;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Post;
@@ -18,14 +17,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 创建： youthlin.chen
  * 时间： 2017-05-14 00:22.
  */
+@SuppressWarnings("unused")
 public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
-    private int defaultCount = 6;
+    private int recentCommentsCount = 6;
     @Resource
     private CommentService commentService;
     @Resource
@@ -37,7 +36,10 @@ public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        LinkedHashMap<Comment, Post> recentComment = commentService.getRecentComment(defaultCount);
+        if (modelAndView == null) {
+            return;
+        }
+        LinkedHashMap<Comment, Post> recentComment = commentService.getRecentComment(recentCommentsCount);
         modelAndView.addObject("recentCommentMap", recentComment);
 
         List<Category> categoryList = categoryService.listCategoriesByOrder();
@@ -51,11 +53,11 @@ public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
 
     }
 
-    public int getDefaultCount() {
-        return defaultCount;
+    public int getRecentCommentsCount() {
+        return recentCommentsCount;
     }
 
-    public void setDefaultCount(int defaultCount) {
-        this.defaultCount = defaultCount;
+    public void setRecentCommentsCount(int recentCommentsCount) {
+        this.recentCommentsCount = recentCommentsCount;
     }
 }

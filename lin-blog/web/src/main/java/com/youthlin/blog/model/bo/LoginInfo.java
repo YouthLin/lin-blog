@@ -15,6 +15,7 @@ import java.util.List;
  * 创建： lin
  * 时间： 2017-05-05 16:30
  */
+@SuppressWarnings("unused")
 public class LoginInfo {
     private static final String SPLITTER_STR = ":";
     private static final Splitter SPLITTER = Splitter.on(SPLITTER_STR);
@@ -138,6 +139,7 @@ public class LoginInfo {
         if (!userName.equals(loginInfo.userName)) return false;
         if (!userAgent.equals(loginInfo.userAgent)) return false;
         if (!userIp.equals(loginInfo.userIp)) return false;
+        //noinspection SimplifiableIfStatement
         if (!token.equals(loginInfo.token)) return false;
         return expire.equals(loginInfo.expire);
     }

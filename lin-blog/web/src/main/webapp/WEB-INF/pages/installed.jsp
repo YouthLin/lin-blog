@@ -27,8 +27,8 @@
             </h1>
             <p><%=__("You appear to have already installed. To reinstall please clear your old database tables first and then restart the web container.")%>
             </p>
-            <p><a href="<c:url value="/login"/>" class="btn btn-primary"><%=__("Log In")%>
-            </a></p>
+            <p><a href="<c:url value="/"/>" class="btn btn-primary"><%=__("Home")%></a>
+            <a href="<c:url value="/login"/>" class="btn btn-default"><%=__("Log In")%></a></p>
         </div><!--/.panel-->
     </div><!--/.container-->
     <div id="end"></div>

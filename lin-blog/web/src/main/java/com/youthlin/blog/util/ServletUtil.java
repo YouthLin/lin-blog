@@ -1,18 +1,15 @@
 package com.youthlin.blog.util;
 
 import com.google.common.base.Charsets;
-import com.google.common.hash.Hashing;
 import com.youthlin.blog.model.bo.LoginInfo;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.Base64Utils;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Base64;
 
 /**

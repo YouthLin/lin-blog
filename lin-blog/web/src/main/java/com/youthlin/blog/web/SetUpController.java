@@ -1,13 +1,8 @@
 package com.youthlin.blog.web;
 
-import com.youthlin.blog.model.enums.Role;
-import com.youthlin.blog.model.po.User;
-import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.service.OptionService;
 import com.youthlin.blog.service.SetupService;
-import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
-import com.youthlin.blog.util.MD5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-
-import java.util.UUID;
 
 import static com.youthlin.utils.i18n.Translation.__;
 import static com.youthlin.utils.i18n.Translation._f;

@@ -4,11 +4,8 @@ import com.google.common.collect.Lists;
 import com.youthlin.blog.model.bo.CommentNode;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Post;
-import com.youthlin.blog.util.Gravatar;
 import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
-import org.jsoup.Jsoup;
-import org.jsoup.safety.Whitelist;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.jsp.JspException;
@@ -24,6 +21,7 @@ import static com.youthlin.utils.i18n.Translation._n;
  * 创建： youthlin.chen
  * 时间： 2017-05-13 10:48.
  */
+@SuppressWarnings("unused")
 public class CommentTag extends SimpleTagSupport {
     private Post post;
     private CommentNode commentNode;

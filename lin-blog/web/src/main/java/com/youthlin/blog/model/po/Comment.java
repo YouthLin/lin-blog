@@ -5,7 +5,6 @@ import com.youthlin.blog.model.enums.CommentType;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
-import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -55,6 +54,7 @@ import java.util.Date;
  * COLLATE = utf8mb4_unicode_ci
  * COMMENT '评论表';</pre>
  */
+@SuppressWarnings("unused")
 public class Comment {
     private Long commentId;
     private Long commentPostId;

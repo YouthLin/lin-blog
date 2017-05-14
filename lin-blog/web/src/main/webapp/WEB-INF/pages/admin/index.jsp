@@ -12,8 +12,6 @@
     $(".menu-parent-overview").addClass("active").click();
     $(".menu-item-overview").addClass("active");
 });</script>
-<h1><%=__("Overview")%>
-</h1>
+<h1><%=__("Overview")%></h1>
 
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>
-

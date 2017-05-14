@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * 创建者： youthlin.chen 日期： 17-4-4.
  */
+@SuppressWarnings("unused")
 public enum UserStatus {
     NORMAL(0, "正常"), LOCKED(1, "锁定");
 

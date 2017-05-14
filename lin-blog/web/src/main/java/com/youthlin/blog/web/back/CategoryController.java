@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-
 import java.util.List;
 import java.util.Map;
 
@@ -169,7 +168,7 @@ public class CategoryController {
     }
 
     @RequestMapping(path = {"/post/category/delete"})
-    public String delete(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr, Model model) {
+    public String delete(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr) {
         long id = 0;
         try {
             id = Long.parseLong(idStr);

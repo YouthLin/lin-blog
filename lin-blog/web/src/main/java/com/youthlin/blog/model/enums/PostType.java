@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 20:53.
  */
+@SuppressWarnings("unused")
 public enum PostType {
     POST(0, "文章"), PAGE(1, "页面"), ATTACHMENT(2, "附件");
     private final int code;

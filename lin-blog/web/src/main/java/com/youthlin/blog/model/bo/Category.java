@@ -9,6 +9,7 @@ import java.util.List;
  * 创建： youthlin.chen
  * 时间： 2017-05-08 22:32.
  */
+@SuppressWarnings("UnusedReturnValue")
 public class Category extends Taxonomy {
     private int depth;
     private Category parentCategory = null;

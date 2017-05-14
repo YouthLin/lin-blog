@@ -18,6 +18,7 @@ package com.youthlin.blog.model.po;
  * COLLATE = utf8mb4_unicode_ci
  * COMMENT '设置表';</pre>
  */
+@SuppressWarnings("unused")
 public class Option {
     private Long optionId;
     private String optionName;

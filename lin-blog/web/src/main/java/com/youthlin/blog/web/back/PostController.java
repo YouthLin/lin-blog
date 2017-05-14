@@ -3,13 +3,11 @@ package com.youthlin.blog.web.back;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.PostMeta;
-import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.service.PostService;
@@ -17,7 +15,6 @@ import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.PostTaxonomyHelper;
-import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -33,8 +30,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +40,7 @@ import static com.youthlin.utils.i18n.Translation.__;
  * 创建： lin
  * 时间： 2017-05-06 21:07
  */
+@SuppressWarnings("unused")
 @Controller
 @RequestMapping("/admin")
 public class PostController {
@@ -379,6 +375,7 @@ public class PostController {
         }
         post.setPostPassword(password);
         post.setPostName(postName);
+        post.setPostModified(new Date());
 
         // md, cat, tag
         List<Long> categoryList = parseCategory(categories);

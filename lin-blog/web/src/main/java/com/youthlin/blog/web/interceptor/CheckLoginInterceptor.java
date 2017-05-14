@@ -5,7 +5,6 @@ import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
-import com.youthlin.blog.util.ServletUtil;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.annotation.Resource;

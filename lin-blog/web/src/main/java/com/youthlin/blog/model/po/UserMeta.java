@@ -23,6 +23,7 @@ package com.youthlin.blog.model.po;
  * COMMENT '用户元数据';
  * </pre>
  */
+@SuppressWarnings("unused")
 public class UserMeta extends BaseMeta {
     private Long userId;
 
@@ -46,4 +47,5 @@ public class UserMeta extends BaseMeta {
         return this;
     }
     //endregion
+
 }

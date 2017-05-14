@@ -1,3 +1,4 @@
+<%--suppress ELValidationInJSP --%>
 <%@ page import="static com.youthlin.utils.i18n.Translation._f" %>
 <%@ page import="com.youthlin.blog.util.ServletUtil" %>
 <%@ page import="com.youthlin.blog.model.po.Comment" %>
@@ -57,7 +58,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="panel panel-default panel-category">
             <div class="panel-heading">
                 <h5 class="panel-title"><%=__("Categories")%></h5>
@@ -82,7 +82,7 @@
                 <%--@elvariable id="tagList" type="java.util.List"--%>
                 <%--@elvariable id="tag" type="com.youthlin.blog.model.bo.Tag"--%>
                 <c:forEach items="${tagList}" var="tag">
-                    <a href="<c:url value="/tag/${tag.slug}"/>" class="label label-info">
+                    <a href="<c:url value="/tag/${tag.slug}"/>" class="label label-info" data-count="${tag.count}">
                        ${tag.name}<span class="badge">${tag.count}</span></a>
                 </c:forEach>
             </div>

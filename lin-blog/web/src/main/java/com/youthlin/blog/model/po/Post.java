@@ -62,7 +62,7 @@ import static com.youthlin.utils.i18n.Translation.__;
  * COLLATE = utf8mb4_unicode_ci
  * COMMENT '文章，页面，附件等 post ';</pre>
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused", "UnusedReturnValue"})
 public class Post {
     private Long postId;
     private Long postAuthorId = 0L;

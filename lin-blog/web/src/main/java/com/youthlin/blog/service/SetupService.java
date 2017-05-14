@@ -1,6 +1,5 @@
 package com.youthlin.blog.service;
 
-import com.google.common.collect.Lists;
 import com.youthlin.blog.dao.OptionDao;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.dao.UserDao;
@@ -8,7 +7,6 @@ import com.youthlin.blog.dao.UserMetaDao;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Option;
-import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.support.GlobalInfo;
@@ -17,7 +15,6 @@ import com.youthlin.blog.util.MD5Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.UUID;
 
 import static com.youthlin.utils.i18n.Translation.__;

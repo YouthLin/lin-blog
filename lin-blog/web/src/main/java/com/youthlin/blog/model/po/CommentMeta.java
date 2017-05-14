@@ -17,6 +17,7 @@ package com.youthlin.blog.model.po;
  * COLLATE = utf8mb4_unicode_ci
  * COMMENT '评论元数据';</pre>
  */
+@SuppressWarnings("unused")
 public class CommentMeta extends BaseMeta {
     private Long commentId;
 

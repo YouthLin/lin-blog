@@ -1,6 +1,5 @@
 package com.youthlin.blog.dao;
 
-import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.TaxonomyRelationships;
 import org.apache.ibatis.annotations.Param;

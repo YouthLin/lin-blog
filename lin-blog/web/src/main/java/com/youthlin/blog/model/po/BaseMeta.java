@@ -3,7 +3,7 @@ package com.youthlin.blog.model.po;
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:00.
  */
-@SuppressWarnings("UnusedReturnValue")
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class BaseMeta {
     Long metaId;
     String metaKey;

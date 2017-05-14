@@ -9,6 +9,7 @@ import java.util.Map;
  * 创建： lin
  * 时间： 2017-05-05 21:11
  */
+@SuppressWarnings("unused")
 public enum Role {
     Administrator(0), Editor(1), Author(2), Contributor(3), Subscriber(4),;
     private static final Map<Integer, Role> map;

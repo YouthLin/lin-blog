@@ -8,6 +8,7 @@ import java.util.Map;
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:08.
  */
+@SuppressWarnings("unused")
 public enum CommentStatus {
     NORMAL(0, "正常"), PENDING(1, "待审"), SPAM(2, "垃圾评论"), TRASH(3, "回收站");
 

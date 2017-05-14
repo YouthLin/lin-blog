@@ -34,6 +34,7 @@ import java.util.Date;
  * COMMENT '用户表';
  * </pre>
  */
+@SuppressWarnings("unused")
 public class User {
     private Long userId;
     private String userLogin;
@@ -99,6 +100,7 @@ public class User {
         return userUrl;
     }
 
+    @SuppressWarnings("SameParameterValue")
     public User setUserUrl(String userUrl) {
         this.userUrl = userUrl;
         return this;

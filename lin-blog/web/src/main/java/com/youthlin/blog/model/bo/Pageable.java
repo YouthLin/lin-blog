@@ -8,6 +8,7 @@ import java.util.List;
  * 创建： youthlin.chen
  * 时间： 2017-05-10 09:59.
  */
+@SuppressWarnings("unused")
 public interface Pageable<T> {
     List<T> getList();
 

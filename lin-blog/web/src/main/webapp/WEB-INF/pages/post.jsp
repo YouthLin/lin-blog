@@ -48,7 +48,8 @@
                             <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
                                           aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
-                                    <a href="#comments">${post.commentCount}</a>
+                                <%--suppress HtmlUnknownAnchorTarget --%>
+                                <a href="#comments">${post.commentCount}</a>
                             </span>
                             <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"

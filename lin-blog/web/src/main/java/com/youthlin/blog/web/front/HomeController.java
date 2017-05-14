@@ -135,6 +135,9 @@ public class HomeController {
     }
 
     private Page<Post> getPostPage(int pageNum, int pageSize, Taxonomy taxonomy, DateTime start, DateTime end) {
+        if (pageSize == 0) {
+            pageSize = 3;
+        }
         if (start != null && end != null) {
             return postService.findPublishedPostByDateByPage(start.toDate(), end.toDate(), pageNum, pageSize);
         }
