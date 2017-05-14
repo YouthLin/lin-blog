@@ -53,4 +53,11 @@ public interface PostDao {
     List<Post> findIdGreaterOrLessThen(@Param("id") long id, @Param("grater") boolean greater);
 
     List<Post> listPost(List<Long> ids);
+
+    /**
+     * 获取所有日期
+     *
+     * @param status 当不为 null 时只要对应状态的，否则全部文章
+     */
+    List<Date> listAllDateByStatus(@Param("status")PostStatus status);
 }

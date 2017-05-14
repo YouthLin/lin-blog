@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-14 00:54+0800\n"
-"PO-Revision-Date: 2017-05-14 00:54+0800\n"
+"POT-Creation-Date: 2017-05-14 11:12+0800\n"
+"PO-Revision-Date: 2017-05-14 11:12+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -467,7 +467,7 @@ msgid "New Post"
 msgstr "写文章"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:85
-#: webapp/WEB-INF/pages/include/sidebar.jsp:62
+#: webapp/WEB-INF/pages/include/sidebar.jsp:63
 msgid "Categories"
 msgstr "分类目录"
 
@@ -495,23 +495,23 @@ msgstr "设置"
 msgid "Recent Comments"
 msgstr "近期评论"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:70
+#: webapp/WEB-INF/pages/include/sidebar.jsp:79
 msgid "Tags"
 msgstr "标签"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:78
+#: webapp/WEB-INF/pages/include/sidebar.jsp:92
 msgid "Archive"
 msgstr "归档"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:86
+#: webapp/WEB-INF/pages/include/sidebar.jsp:111
 msgid "Meta"
 msgstr "功能"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:90
+#: webapp/WEB-INF/pages/include/sidebar.jsp:115
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:92
+#: webapp/WEB-INF/pages/include/sidebar.jsp:117
 #, java-format
 msgid "Powered By {0}"
 msgstr "Powered By {0}"
@@ -693,11 +693,11 @@ msgstr "未命名"
 msgid "Un Categorized"
 msgstr "未分类"
 
-#: java/com/youthlin/blog/service/TaxonomyService.java:27
+#: java/com/youthlin/blog/service/TaxonomyService.java:29
 msgid "The name has be used by another item."
 msgstr "名称已被其他条目使用。"
 
-#: java/com/youthlin/blog/service/TaxonomyService.java:32
+#: java/com/youthlin/blog/service/TaxonomyService.java:34
 #: java/com/youthlin/blog/web/back/CategoryController.java:147
 msgid "The slug has be used by another item."
 msgstr "别名已被其他条目使用。"
@@ -804,8 +804,3 @@ msgstr "说道："
 #: java/com/youthlin/blog/web/tag/CommentTag.java:88
 msgid "Replay"
 msgstr "回复"
-
-#, fuzzy
-#~| msgid "Trash"
-#~ msgid "Trash..."
-#~ msgstr "回收站"

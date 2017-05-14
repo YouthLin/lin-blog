@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.bo.Pageable;
+import com.youthlin.blog.model.bo.Tag;
 import com.youthlin.blog.model.po.Taxonomy;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 创建： youthlin.chen
@@ -29,5 +31,9 @@ public class TagService extends TaxonomyService {
         Page<Taxonomy> page = new Page<>(pageInfo);
         log.debug("page = {}", page);
         return page;
+    }
+
+    public List<Taxonomy> listAllTag() {
+        return taxonomyDao.findByTaxonomy(Taxonomy.TAXONOMY_TAG);
     }
 }

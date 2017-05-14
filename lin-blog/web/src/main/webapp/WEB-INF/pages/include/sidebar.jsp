@@ -48,7 +48,8 @@
                                     <c:if test="${(not empty content) and(content.length()>50) }">
                                         <c:set var="content" value="${content.substring(0,50)} [...]"/>
                                     </c:if>
-                                    <span title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>${content}</span>
+                                    <a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>"
+                                       title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>${content}</a>
                                 </div>
                             </div>
                         </li>
@@ -62,7 +63,15 @@
                 <h5 class="panel-title"><%=__("Categories")%></h5>
             </div>
             <div class="panel-body">
-                Panel content
+                <ul class="category-list">
+                    <%--@elvariable id="categoryList" type="java.util.List"--%>
+                    <%--@elvariable id="category" type="com.youthlin.blog.model.bo.Category"--%>
+                    <c:forEach items="${categoryList}" var="category">
+                        <li class="category category-${category.taxonomyId}">
+                            <a href="<c:url value="/category/${category.slug}"/>">${category.name} (${category.count})</a>
+                        </li>
+                    </c:forEach>
+                </ul>
             </div>
         </div>
         <div class="panel panel-default panel-tag">
@@ -70,7 +79,12 @@
                 <h5 class="panel-title"><%=__("Tags")%></h5>
             </div>
             <div class="panel-body">
-                Panel content
+                <%--@elvariable id="tagList" type="java.util.List"--%>
+                <%--@elvariable id="tag" type="com.youthlin.blog.model.bo.Tag"--%>
+                <c:forEach items="${tagList}" var="tag">
+                    <a href="<c:url value="/tag/${tag.slug}"/>" class="label label-info">
+                       ${tag.name}<span class="badge">${tag.count}</span></a>
+                </c:forEach>
             </div>
         </div>
         <div class="panel panel-default panel-date">
@@ -78,7 +92,18 @@
                 <h5 class="panel-title"><%=__("Archive")%></h5>
             </div>
             <div class="panel-body">
-                Panel content
+                <ul class="month-list">
+                    <%--@elvariable id="months" type="com.google.common.collect.LinkedHashMultiset"--%>
+                    <%--@elvariable id="entry" type="com.google.common.collect.Multiset.Entry"--%>
+                    <%--@elvariable id="yearMonth" type="java.lang.String"--%>
+                    <c:forEach items="${months.entrySet()}" var="entry">
+                        <c:set var="yearMonth" value="${entry.element}"/>
+                        <c:set var="arr" value="${yearMonth.split('-')}"/>
+                        <li class="month month-${yearMonth}">
+                            <a href="<c:url value="/date/${arr[0]}/${arr[1]}"/>">${yearMonth} <span> (${entry.count})</span></a>
+                        </li>
+                    </c:forEach>
+                </ul>
             </div>
         </div>
         <div class="panel panel-default panel-date">

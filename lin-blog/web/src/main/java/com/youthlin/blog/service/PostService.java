@@ -3,9 +3,11 @@ package com.youthlin.blog.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.LinkedHashMultiset;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.Multiset;
 import com.youthlin.blog.dao.MetaDao;
 import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.dao.TaxonomyDao;
@@ -21,6 +23,8 @@ import com.youthlin.blog.model.po.TaxonomyRelationships;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -30,6 +34,7 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -300,5 +305,17 @@ public class PostService {
             }
         }
         return null;
+    }
+
+    /**
+     * 返回 YYYY-MM  对应相应月份的文章篇数
+     */
+    public LinkedHashMultiset<String> archiveCount() {
+        List<Date> dates = postDao.listAllDateByStatus(PostStatus.PUBLISHED);
+        LinkedHashMultiset<String> multiset = LinkedHashMultiset.create();
+        for (Date date : dates) {
+            multiset.add(new DateTime(date).toString(Constant.YYYY_MM));
+        }
+        return multiset;
     }
 }

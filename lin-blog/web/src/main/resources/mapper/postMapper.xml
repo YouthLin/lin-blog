@@ -112,7 +112,7 @@
             </otherwise>
         </choose>
         <where>
-            1=1
+            posts.post_date &lt; now()
             <if test="status!=null">
                 AND posts.post_status=#{status}
             </if>
@@ -154,6 +154,16 @@
         <foreach collection="list" item="id" open="AND ID IN(" close=")" separator=",">
             #{id}
         </foreach>
+    </select>
+
+    <select id="listAllDateByStatus" resultType="java.util.Date">
+        SELECT post_date
+        FROM posts
+        WHERE posts.post_date &lt; now()
+        <if test="status != null">
+            AND post_status=#{status}
+        </if>
+        ORDER BY post_date DESC
     </select>
 
 </mapper>
