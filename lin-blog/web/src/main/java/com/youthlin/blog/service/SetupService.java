@@ -1,12 +1,17 @@
 package com.youthlin.blog.service;
 
+import com.youthlin.blog.dao.CommentDao;
 import com.youthlin.blog.dao.OptionDao;
+import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.dao.UserDao;
 import com.youthlin.blog.dao.UserMetaDao;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.enums.Role;
+import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Option;
+import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.TaxonomyRelationships;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.support.GlobalInfo;
@@ -15,6 +20,7 @@ import com.youthlin.blog.util.MD5Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.UUID;
 
 import static com.youthlin.utils.i18n.Translation.__;
@@ -35,6 +41,10 @@ public class SetupService {
     private TaxonomyDao taxonomyDao;
     @Resource
     private GlobalInfo<String, Object> globalInfo;
+    @Resource
+    private PostDao postDao;
+    @Resource
+    private CommentDao commentDao;
 
     public void setup(String pass, String user, String email, String title) {
         saveAdmin(user, pass, email);
@@ -78,5 +88,26 @@ public class SetupService {
                 .setParent(0L)
                 .setCount(0L);
         taxonomyDao.save(uncategorized);
+    }
+
+    private void createPost() {
+        Post post = new Post();
+        post.setPostTitle(__("Hello, World"))
+                .setPostContent(__("Welcome to use LinBlog. This post is generate by the blog system. Edit or delete this post, and then going to start your blog!"))
+                .setCommentCount(1L);
+        postDao.save(post);
+        TaxonomyRelationships relationships = new TaxonomyRelationships();
+        relationships.setPostId(post.getPostId())
+                .setTaxonomyId(1L);// un categorised
+        taxonomyDao.saveTaxonomyRelationships(Collections.singletonList(relationships));
+    }
+
+    private void createComment() {
+        Comment comment = new Comment()
+                .setCommentAuthor("Youth．霖")
+                .setCommentAuthorUrl("http://youthlin.com/")
+                .setCommentAuthorEmail("yulinlin1995@gmail.com")
+                .setCommentContent(__("Hello, this is a comment. You can view or delete some comments at dashboard once you have login."));
+        commentDao.save(comment);
     }
 }

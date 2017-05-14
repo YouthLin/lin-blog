@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-14 11:12+0800\n"
-"PO-Revision-Date: 2017-05-14 11:12+0800\n"
+"POT-Creation-Date: 2017-05-14 15:39+0800\n"
+"PO-Revision-Date: 2017-05-14 15:42+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/die.jsp:21
 #: webapp/WEB-INF/pages/index.jsp:16 webapp/WEB-INF/pages/index.jsp:23
-#: webapp/WEB-INF/pages/post.jsp:29
+#: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/post.jsp:29
 msgid "Home"
 msgstr "首页"
 
@@ -42,11 +42,100 @@ msgstr "所有评论"
 msgid "Error"
 msgstr "错误"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:15
+#: webapp/WEB-INF/pages/admin/index.jsp:20
+#: webapp/WEB-INF/pages/admin/index.jsp:128
 #: webapp/WEB-INF/pages/common/admin/header.jsp:69
-#: java/com/youthlin/blog/web/back/OverViewController.java:17
+#: java/com/youthlin/blog/web/back/OverViewController.java:39
 msgid "Overview"
 msgstr "概览"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:27
+msgid "Recent Published"
+msgstr "最近发布"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:46
+#: webapp/WEB-INF/pages/admin/index.jsp:105
+#: webapp/WEB-INF/pages/admin/post-all.jsp:120
+#: webapp/WEB-INF/pages/admin/post-category.jsp:84
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
+msgid "Edit"
+msgstr "编辑"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:60
+#: webapp/WEB-INF/pages/include/sidebar.jsp:18
+msgid "Recent Comments"
+msgstr "近期评论"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:103
+msgctxt "un publish this comment"
+msgid "Pending"
+msgstr "驳回"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:104
+msgid "Response"
+msgstr "回复"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:107
+msgctxt "tagged as spam"
+msgid "Spam"
+msgstr "标为垃圾评论"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:109
+msgctxt "moving this comment to trash"
+msgid "Trash"
+msgstr "移至回收站"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:142
+#, java-format
+msgid "One Post"
+msgid_plural "{0} Posts"
+msgstr[0] "一篇文章"
+msgstr[1] "{0} 篇文章"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:147
+#, java-format
+msgid "One Comment"
+msgid_plural "{0} Comments"
+msgstr[0] "一则评论"
+msgstr[1] "{0} 则评论"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:152
+#, java-format
+msgid "One Category"
+msgid_plural "{0} Categories"
+msgstr[0] "一个分类目录"
+msgstr[1] "{0} 个分类目录"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:156
+#, java-format
+msgid "One Tag"
+msgid_plural "{0} Tags"
+msgstr[0] "一条标签"
+msgstr[1] "{0} 条标签"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:166
+msgid "Quickly Draft"
+msgstr "快速草稿"
+
+#: webapp/WEB-INF/pages/admin/index.jsp:174
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:39
+#: webapp/WEB-INF/pages/admin/post-write.jsp:24
+msgid "Title:"
+msgstr "标题："
+
+#: webapp/WEB-INF/pages/admin/index.jsp:178
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:43
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:67
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:73
+#: webapp/WEB-INF/pages/admin/post-write.jsp:28
+#: webapp/WEB-INF/pages/admin/post-write.jsp:48
+#: webapp/WEB-INF/pages/admin/post-write.jsp:53
+msgid "Content:"
+msgstr "内容："
+
+#: webapp/WEB-INF/pages/admin/index.jsp:182
+msgid "Save Draft"
+msgstr "存草稿"
 
 #: webapp/WEB-INF/pages/admin/page-all.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:98
@@ -62,7 +151,7 @@ msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:28
 #: webapp/WEB-INF/pages/common/admin/header.jsp:79
-#: java/com/youthlin/blog/web/back/PostController.java:85
+#: java/com/youthlin/blog/web/back/PostController.java:81
 msgid "All Post"
 msgstr "所有文章"
 
@@ -127,7 +216,7 @@ msgstr "作者"
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:136
 #: webapp/WEB-INF/pages/admin/post-write.jsp:104
-#: java/com/youthlin/blog/web/back/CategoryController.java:35
+#: java/com/youthlin/blog/web/back/CategoryController.java:34
 msgid "Category"
 msgstr "分类目录"
 
@@ -164,18 +253,12 @@ msgstr "还原"
 msgid "Delete"
 msgstr "删除"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:120
-#: webapp/WEB-INF/pages/admin/post-category.jsp:85
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
-msgid "Edit"
-msgstr "编辑"
-
 #: webapp/WEB-INF/pages/admin/post-all.jsp:121
 msgid "Move To Trash"
 msgstr "移至回收站"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:124
-#: webapp/WEB-INF/pages/admin/post-category.jsp:88
+#: webapp/WEB-INF/pages/admin/post-category.jsp:90
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:74
 msgid "View"
 msgstr "查看"
@@ -253,7 +336,7 @@ msgid "Add Category"
 msgstr "新增分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:112
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:113
 msgid "Name"
 msgstr "名称"
 
@@ -273,23 +356,9 @@ msgid "Count"
 msgstr "总数"
 
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:33
-#: java/com/youthlin/blog/web/back/PostController.java:317
+#: java/com/youthlin/blog/web/back/PostController.java:320
 msgid "Edit Post"
 msgstr "编辑文章"
-
-#: webapp/WEB-INF/pages/admin/post-edit.jsp:39
-#: webapp/WEB-INF/pages/admin/post-write.jsp:24
-msgid "Title:"
-msgstr "标题："
-
-#: webapp/WEB-INF/pages/admin/post-edit.jsp:43
-#: webapp/WEB-INF/pages/admin/post-edit.jsp:67
-#: webapp/WEB-INF/pages/admin/post-edit.jsp:73
-#: webapp/WEB-INF/pages/admin/post-write.jsp:28
-#: webapp/WEB-INF/pages/admin/post-write.jsp:48
-#: webapp/WEB-INF/pages/admin/post-write.jsp:53
-msgid "Content:"
-msgstr "内容："
 
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:55
 #: webapp/WEB-INF/pages/admin/post-write.jsp:36
@@ -386,7 +455,7 @@ msgid "And you may write some description about this tag..."
 msgstr "标签的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:19
-#: java/com/youthlin/blog/web/back/PostController.java:213
+#: java/com/youthlin/blog/web/back/PostController.java:210
 msgid "Write Post"
 msgstr "写文章"
 
@@ -491,10 +560,6 @@ msgstr "工具"
 msgid "Settings"
 msgstr "设置"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:17
-msgid "Recent Comments"
-msgstr "近期评论"
-
 #: webapp/WEB-INF/pages/include/sidebar.jsp:79
 msgid "Tags"
 msgstr "标签"
@@ -529,23 +594,23 @@ msgstr "\"发布时间：\""
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:55
+#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:56
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:67
+#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:68
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
-#: webapp/WEB-INF/pages/index.jsp:105
+#: webapp/WEB-INF/pages/index.jsp:104
 msgid "Read More"
 msgstr "阅读全文"
 
-#: webapp/WEB-INF/pages/index.jsp:118 webapp/WEB-INF/pages/index.jsp:124
+#: webapp/WEB-INF/pages/index.jsp:117 webapp/WEB-INF/pages/index.jsp:123
 msgid "Previous Page"
 msgstr "上一页"
 
-#: webapp/WEB-INF/pages/index.jsp:133 webapp/WEB-INF/pages/index.jsp:139
+#: webapp/WEB-INF/pages/index.jsp:132 webapp/WEB-INF/pages/index.jsp:138
 msgid "Next Page"
 msgstr "下一页"
 
@@ -618,7 +683,7 @@ msgid ""
 "database tables first and then restart the web container."
 msgstr "您似乎已经安装过。若要重新安装，请删除数据库表，并重启 Web 容器。"
 
-#: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/login.jsp:69
+#: webapp/WEB-INF/pages/installed.jsp:31 webapp/WEB-INF/pages/login.jsp:69
 msgid "Log In"
 msgstr "登录"
 
@@ -640,48 +705,48 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: webapp/WEB-INF/pages/post.jsp:85
+#: webapp/WEB-INF/pages/post.jsp:86
 msgid "Previous post:"
 msgstr "上一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:93
+#: webapp/WEB-INF/pages/post.jsp:94
 msgid "Next post:"
 msgstr "下一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:108
+#: webapp/WEB-INF/pages/post.jsp:109
 msgid "Leave your comment"
 msgstr "留下你的想法"
 
-#: webapp/WEB-INF/pages/post.jsp:110
+#: webapp/WEB-INF/pages/post.jsp:111
 msgctxt "cancel response."
 msgid "Cancel"
 msgstr "取消回复"
 
-#: webapp/WEB-INF/pages/post.jsp:116
+#: webapp/WEB-INF/pages/post.jsp:117
 msgid "\"Display Name\""
 msgstr "\"显示名称\""
 
-#: webapp/WEB-INF/pages/post.jsp:120
+#: webapp/WEB-INF/pages/post.jsp:121
 msgid "Email"
 msgstr "电子邮件"
 
-#: webapp/WEB-INF/pages/post.jsp:124
+#: webapp/WEB-INF/pages/post.jsp:125
 msgid "\"Email will never public\""
 msgstr "\"邮件地址不会公开\""
 
-#: webapp/WEB-INF/pages/post.jsp:128
+#: webapp/WEB-INF/pages/post.jsp:129
 msgid "URL"
 msgstr "网址"
 
-#: webapp/WEB-INF/pages/post.jsp:131
+#: webapp/WEB-INF/pages/post.jsp:132
 msgid "\"URL is optional\""
 msgstr "\"可不填\""
 
-#: webapp/WEB-INF/pages/post.jsp:147
+#: webapp/WEB-INF/pages/post.jsp:148
 msgid "Post Comment"
 msgstr "发表评论"
 
-#: webapp/WEB-INF/pages/post.jsp:174
+#: webapp/WEB-INF/pages/post.jsp:175
 msgid "Comment are closed"
 msgstr "评论已关闭"
 
@@ -689,118 +754,136 @@ msgstr "评论已关闭"
 msgid "Untitled"
 msgstr "未命名"
 
-#: java/com/youthlin/blog/service/SetupService.java:78
+#: java/com/youthlin/blog/service/SetupService.java:85
 msgid "Un Categorized"
 msgstr "未分类"
 
-#: java/com/youthlin/blog/service/TaxonomyService.java:29
+#: java/com/youthlin/blog/service/SetupService.java:95
+msgid "Hello, World"
+msgstr "世界，你好"
+
+#: java/com/youthlin/blog/service/SetupService.java:96
+msgid ""
+"Welcome to use LinBlog. This post is generate by the blog system. Edit or "
+"delete this post, and then going to start your blog!"
+msgstr ""
+"欢迎使用LinBlog。这个文章是由博客系统生成的。编辑或删除这篇文章，然后开始你的"
+"博客！"
+
+#: java/com/youthlin/blog/service/SetupService.java:110
+msgid ""
+"Hello, this is a comment. You can view or delete some comments at dashboard "
+"once you have login."
+msgstr "你好，这是一则评论。您可以登录后在仪表盘查看或删除评论。"
+
+#: java/com/youthlin/blog/service/TaxonomyService.java:27
 msgid "The name has be used by another item."
 msgstr "名称已被其他条目使用。"
 
-#: java/com/youthlin/blog/service/TaxonomyService.java:34
-#: java/com/youthlin/blog/web/back/CategoryController.java:147
+#: java/com/youthlin/blog/service/TaxonomyService.java:32
+#: java/com/youthlin/blog/web/back/CategoryController.java:146
 msgid "The slug has be used by another item."
 msgstr "别名已被其他条目使用。"
 
-#: java/com/youthlin/blog/web/LoginController.java:44
+#: java/com/youthlin/blog/web/LoginController.java:39
 msgid "Username, password are all required."
 msgstr "用户名、密码均为必填项。"
 
-#: java/com/youthlin/blog/web/LoginController.java:50
+#: java/com/youthlin/blog/web/LoginController.java:45
 msgid "Username or password is incorrect."
 msgstr "用户名或密码错误。"
 
-#: java/com/youthlin/blog/web/LoginController.java:57
+#: java/com/youthlin/blog/web/LoginController.java:52
 msgid "You are logged out now."
 msgstr "您已登出。"
 
-#: java/com/youthlin/blog/web/SetUpController.java:58
+#: java/com/youthlin/blog/web/SetUpController.java:51
 msgid "Username, password, email are all required."
 msgstr "用户名、密码、电子邮件均为必填项。"
 
-#: java/com/youthlin/blog/web/SetUpController.java:62
+#: java/com/youthlin/blog/web/SetUpController.java:55
 msgid ""
 "It seem that JavaScript doesn't work, but we need it to generate password."
 msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 
 #. TRANSLATORS: 0: username
-#: java/com/youthlin/blog/web/SetUpController.java:67
-#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:41
+#: java/com/youthlin/blog/web/SetUpController.java:60
+#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:40
 #, java-format
 msgid "{0}&#39;Blog"
 msgstr "{0} 的博客"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:54
+#: java/com/youthlin/blog/web/back/CategoryController.java:53
 #: java/com/youthlin/blog/web/back/TagController.java:55
 msgid "Name is required."
 msgstr "名称是必填项。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:63
-#: java/com/youthlin/blog/web/back/CategoryController.java:127
-#: java/com/youthlin/blog/web/back/CategoryController.java:136
+#: java/com/youthlin/blog/web/back/CategoryController.java:62
+#: java/com/youthlin/blog/web/back/CategoryController.java:126
+#: java/com/youthlin/blog/web/back/CategoryController.java:135
 msgid "Illegal parent."
 msgstr "非法父节点。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:117
+#: java/com/youthlin/blog/web/back/CategoryController.java:116
 msgid "Illegal category."
 msgstr "非法分类目录。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:133
+#: java/com/youthlin/blog/web/back/CategoryController.java:132
 msgid "Unknown category."
 msgstr "未知的分类目录。"
 
-#: java/com/youthlin/blog/web/back/CategoryController.java:140
+#: java/com/youthlin/blog/web/back/CategoryController.java:139
 msgid "Name must not be empty."
 msgstr "名称不能为空。"
 
-#: java/com/youthlin/blog/web/back/PostController.java:296
-#: java/com/youthlin/blog/web/back/PostController.java:340
+#: java/com/youthlin/blog/web/back/PostController.java:299
+#: java/com/youthlin/blog/web/back/PostController.java:343
 msgid "Illegal param: postId."
 msgstr "非法参数︰ 文章不存在。"
 
-#: java/com/youthlin/blog/web/back/PostController.java:301
-#: java/com/youthlin/blog/web/back/PostController.java:345
+#: java/com/youthlin/blog/web/back/PostController.java:304
+#: java/com/youthlin/blog/web/back/PostController.java:348
 msgid "Illegal param: postId does not exist."
 msgstr "非法参数︰ 文章不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:78
-#: java/com/youthlin/blog/web/front/SinglePostController.java:83
+#: java/com/youthlin/blog/web/front/SinglePostController.java:79
+#: java/com/youthlin/blog/web/front/SinglePostController.java:84
 msgid "No such post."
 msgstr "文章不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:88
+#: java/com/youthlin/blog/web/front/SinglePostController.java:89
 msgid "Comments are closed on this post."
 msgstr "评论已关闭。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:96
+#: java/com/youthlin/blog/web/front/SinglePostController.java:97
 msgid "Name, email, and comment content are required."
 msgstr "姓名，电子邮件和评论内容是必填项。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:112
+#: java/com/youthlin/blog/web/front/SinglePostController.java:113
 msgid "Parent comment does not exist."
 msgstr "您要回复的评论不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:116
+#: java/com/youthlin/blog/web/front/SinglePostController.java:117
 msgid "This post does not contains the parent comment."
 msgstr "您回复的评论不是本文的评论。"
 
 #. TRANSLATORS: 0, comment count; 1, post title.
-#: java/com/youthlin/blog/web/tag/CommentTag.java:39
+#: java/com/youthlin/blog/web/tag/CommentTag.java:37
 #, java-format
 msgid "One Comment On {1} "
 msgid_plural "{0} Comments On {1} "
 msgstr[0] "《{1}》有一则评论 "
 msgstr[1] "《{1}》有 {0} 则评论 "
 
-#: java/com/youthlin/blog/web/tag/CommentTag.java:52
+#: java/com/youthlin/blog/web/tag/CommentTag.java:50
 msgid "No Comments."
 msgstr "没有评论。"
 
-#: java/com/youthlin/blog/web/tag/CommentTag.java:76
-#: java/com/youthlin/blog/web/tag/CommentTag.java:79
+#: java/com/youthlin/blog/web/tag/CommentTag.java:74
+#: java/com/youthlin/blog/web/tag/CommentTag.java:77
 msgid "Says:"
 msgstr "说道："
 
-#: java/com/youthlin/blog/web/tag/CommentTag.java:88
+#: java/com/youthlin/blog/web/tag/CommentTag.java:86
 msgid "Replay"
 msgstr "回复"

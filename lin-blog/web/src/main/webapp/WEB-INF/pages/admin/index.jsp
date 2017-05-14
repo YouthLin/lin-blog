@@ -104,7 +104,7 @@
                                             <a href="#"><%=__("Response")%></a> |
                                             <a href="#"><%=__("Edit")%></a> |
                                             <a class="text-danger"
-                                               href="#"><%=_x("Spam", "moving this comment to trash")%></a> |
+                                               href="#"><%=_x("Spam", "tagged as spam")%></a> |
                                             <a class="text-danger"
                                                href="#"><%=_x("Trash", "moving this comment to trash")%></a>
                                         </span>
