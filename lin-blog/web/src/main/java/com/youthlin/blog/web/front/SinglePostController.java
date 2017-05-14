@@ -10,6 +10,7 @@ import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.PostTaxonomyHelper;
 import com.youthlin.blog.util.ServletUtil;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -50,7 +51,7 @@ public class SinglePostController {
         } catch (NumberFormatException ignore) {
         }
         Post post = postService.findById(postId);
-        if (post == null) {
+        if (post == null || new DateTime(post.getPostDate()).isAfterNow()) {
             return "404";
         }
         model.addAttribute("post", post);
@@ -58,8 +59,8 @@ public class SinglePostController {
         fetchComment(post, model);
         Post next = postService.findNextOrPrevious(postId, true);
         Post previous = postService.findNextOrPrevious(postId, false);
-        model.addAttribute("next",next);
-        model.addAttribute("previous",previous);
+        model.addAttribute("next", next);
+        model.addAttribute("previous", previous);
         return "post";
     }
 

@@ -121,9 +121,13 @@ public class CategoryService extends TaxonomyService {
         if (ids == null) {
             return;
         }
+        Category unCategory = null;
         List<Category> categoryList = listCategories();
         Set<Long> allId = Sets.newHashSet();
         for (Category category : categoryList) {
+            if (category.getTaxonomyId() == 1) {
+                unCategory = category;
+            }
             allId.add(category.getTaxonomyId());
         }
         ArrayList<Long> idList = Lists.newArrayList();
@@ -136,7 +140,11 @@ public class CategoryService extends TaxonomyService {
             return;
         }
         taxonomyDao.delete(idList);
-        taxonomyDao.resetPostCategory(idList);
+        int deleteCount = taxonomyDao.resetPostCategory(idList);
+        if (unCategory != null) {
+            unCategory.setCount(unCategory.getCount() + deleteCount);
+        }
+        taxonomyDao.update(unCategory);
         globalInfo.set(Constant.O_ALL_CATEGORIES, null);
     }
 

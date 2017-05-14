@@ -36,7 +36,7 @@ public interface TaxonomyDao {
 
     void delete(List<Long> ids);
 
-    void resetPostCategory(List<Long> taxonomyId);
+    int resetPostCategory(List<Long> taxonomyId);
 
     Taxonomy findBySlugAndTaxonomy(@Param("slug") String slug, @Param("taxonomy") String taxonomy);
 
