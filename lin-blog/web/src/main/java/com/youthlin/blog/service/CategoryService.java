@@ -17,6 +17,7 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -137,6 +138,18 @@ public class CategoryService extends TaxonomyService {
         }
         if (idList.isEmpty()) {
             return;
+        }
+        // 若有子分类
+        Set<Long> idSet = Sets.newHashSetWithExpectedSize(idList.size());
+        idSet.addAll(idList);
+        for (Category category : categoryList) {
+            Long parentId = category.getParent();
+            if (parentId != null && parentId != 0) {
+                if (idSet.contains(parentId)) {
+                    category.setParent(0L);
+                    taxonomyDao.update(category);
+                }
+            }
         }
         taxonomyDao.delete(idList);
         int deleteCount = taxonomyDao.resetPostCategory(idList);
