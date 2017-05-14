@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-14 15:39+0800\n"
-"PO-Revision-Date: 2017-05-14 16:24+0800\n"
+"POT-Creation-Date: 2017-05-14 16:51+0800\n"
+"PO-Revision-Date: 2017-05-14 16:51+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -43,7 +43,7 @@ msgid "Error"
 msgstr "错误"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:20
-#: webapp/WEB-INF/pages/admin/index.jsp:128
+#: webapp/WEB-INF/pages/admin/index.jsp:131
 #: webapp/WEB-INF/pages/common/admin/header.jsp:69
 #: java/com/youthlin/blog/web/back/OverViewController.java:39
 msgid "Overview"
@@ -53,39 +53,39 @@ msgstr "概览"
 msgid "Recent Published"
 msgstr "最近发布"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:46
-#: webapp/WEB-INF/pages/admin/index.jsp:105
+#: webapp/WEB-INF/pages/admin/index.jsp:47
+#: webapp/WEB-INF/pages/admin/index.jsp:108
 #: webapp/WEB-INF/pages/admin/post-all.jsp:120
 #: webapp/WEB-INF/pages/admin/post-category.jsp:84
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:72
 msgid "Edit"
 msgstr "编辑"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:60
+#: webapp/WEB-INF/pages/admin/index.jsp:61
 #: webapp/WEB-INF/pages/include/sidebar.jsp:18
 msgid "Recent Comments"
 msgstr "近期评论"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:103
+#: webapp/WEB-INF/pages/admin/index.jsp:106
 msgctxt "un publish this comment"
 msgid "Pending"
 msgstr "驳回"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:104
+#: webapp/WEB-INF/pages/admin/index.jsp:107
 msgid "Response"
 msgstr "回复"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:107
+#: webapp/WEB-INF/pages/admin/index.jsp:110
 msgctxt "tagged as spam"
 msgid "Spam"
 msgstr "标为垃圾评论"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:109
+#: webapp/WEB-INF/pages/admin/index.jsp:112
 msgctxt "moving this comment to trash"
 msgid "Trash"
 msgstr "移至回收站"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:142
+#: webapp/WEB-INF/pages/admin/index.jsp:145
 #, java-format
 msgid "One Post"
 msgid_plural "{0} Posts"
@@ -93,7 +93,7 @@ msgstr[0] "没有文章"
 msgstr[1] "一篇文章"
 msgstr[2] "{0} 篇文章"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:147
+#: webapp/WEB-INF/pages/admin/index.jsp:150
 #, java-format
 msgid "One Comment"
 msgid_plural "{0} Comments"
@@ -101,7 +101,7 @@ msgstr[0] "没有评论"
 msgstr[1] "一则评论"
 msgstr[2] "{0} 则评论"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:152
+#: webapp/WEB-INF/pages/admin/index.jsp:155
 #, java-format
 msgid "One Category"
 msgid_plural "{0} Categories"
@@ -109,7 +109,7 @@ msgstr[0] "暂无分类目录"
 msgstr[1] "一个分类目录"
 msgstr[2] "{0} 个分类目录"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:156
+#: webapp/WEB-INF/pages/admin/index.jsp:159
 #, java-format
 msgid "One Tag"
 msgid_plural "{0} Tags"
@@ -117,17 +117,17 @@ msgstr[0] "没有标签"
 msgstr[1] "一条标签"
 msgstr[2] "{0} 条标签"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:166
+#: webapp/WEB-INF/pages/admin/index.jsp:169
 msgid "Quickly Draft"
 msgstr "快速草稿"
 
-#: webapp/WEB-INF/pages/admin/index.jsp:174
+#: webapp/WEB-INF/pages/admin/index.jsp:177
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:39
 #: webapp/WEB-INF/pages/admin/post-write.jsp:24
 msgid "Title:"
 msgstr "标题："
 
-#: webapp/WEB-INF/pages/admin/index.jsp:178
+#: webapp/WEB-INF/pages/admin/index.jsp:181
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:43
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:67
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:73
@@ -137,7 +137,7 @@ msgstr "标题："
 msgid "Content:"
 msgstr "内容："
 
-#: webapp/WEB-INF/pages/admin/index.jsp:182
+#: webapp/WEB-INF/pages/admin/index.jsp:185
 msgid "Save Draft"
 msgstr "存草稿"
 
@@ -340,7 +340,7 @@ msgid "Add Category"
 msgstr "新增分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:113
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:126
 msgid "Name"
 msgstr "名称"
 
@@ -709,48 +709,56 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: webapp/WEB-INF/pages/post.jsp:86
+#: webapp/WEB-INF/pages/post.jsp:86 webapp/WEB-INF/pages/post.jsp:93
 msgid "Previous post:"
 msgstr "上一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:94
+#: webapp/WEB-INF/pages/post.jsp:95
+msgid "No previous post"
+msgstr "没有上一篇"
+
+#: webapp/WEB-INF/pages/post.jsp:101 webapp/WEB-INF/pages/post.jsp:107
 msgid "Next post:"
 msgstr "下一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:109
+#: webapp/WEB-INF/pages/post.jsp:108
+msgid "No next post"
+msgstr "没有下一篇"
+
+#: webapp/WEB-INF/pages/post.jsp:122
 msgid "Leave your comment"
 msgstr "留下你的想法"
 
-#: webapp/WEB-INF/pages/post.jsp:111
+#: webapp/WEB-INF/pages/post.jsp:124
 msgctxt "cancel response."
 msgid "Cancel"
 msgstr "取消回复"
 
-#: webapp/WEB-INF/pages/post.jsp:117
+#: webapp/WEB-INF/pages/post.jsp:130
 msgid "\"Display Name\""
 msgstr "\"显示名称\""
 
-#: webapp/WEB-INF/pages/post.jsp:121
+#: webapp/WEB-INF/pages/post.jsp:134
 msgid "Email"
 msgstr "电子邮件"
 
-#: webapp/WEB-INF/pages/post.jsp:125
+#: webapp/WEB-INF/pages/post.jsp:138
 msgid "\"Email will never public\""
 msgstr "\"邮件地址不会公开\""
 
-#: webapp/WEB-INF/pages/post.jsp:129
+#: webapp/WEB-INF/pages/post.jsp:142
 msgid "URL"
 msgstr "网址"
 
-#: webapp/WEB-INF/pages/post.jsp:132
+#: webapp/WEB-INF/pages/post.jsp:145
 msgid "\"URL is optional\""
 msgstr "\"可不填\""
 
-#: webapp/WEB-INF/pages/post.jsp:148
+#: webapp/WEB-INF/pages/post.jsp:161
 msgid "Post Comment"
 msgstr "发表评论"
 
-#: webapp/WEB-INF/pages/post.jsp:175
+#: webapp/WEB-INF/pages/post.jsp:188
 msgid "Comment are closed"
 msgstr "评论已关闭"
 
@@ -758,23 +766,23 @@ msgstr "评论已关闭"
 msgid "Untitled"
 msgstr "未命名"
 
-#: java/com/youthlin/blog/service/SetupService.java:85
+#: java/com/youthlin/blog/service/SetupService.java:89
 msgid "Un Categorized"
 msgstr "未分类"
 
-#: java/com/youthlin/blog/service/SetupService.java:95
+#: java/com/youthlin/blog/service/SetupService.java:99
 msgid "Hello, World"
 msgstr "世界，你好"
 
-#: java/com/youthlin/blog/service/SetupService.java:96
+#: java/com/youthlin/blog/service/SetupService.java:100
 msgid ""
 "Welcome to use LinBlog. This post is generate by the blog system. Edit or "
 "delete this post, and then going to start your blog!"
 msgstr ""
-"欢迎使用LinBlog。这个文章是由博客系统生成的。编辑或删除这篇文章，然后开始你的"
+"欢迎使用LinBlog。这篇文章是由博客系统生成的。编辑或删除这篇文章，然后开始你的"
 "博客！"
 
-#: java/com/youthlin/blog/service/SetupService.java:110
+#: java/com/youthlin/blog/service/SetupService.java:114
 msgid ""
 "Hello, this is a comment. You can view or delete some comments at dashboard "
 "once you have login."

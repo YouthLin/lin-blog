@@ -70,8 +70,8 @@ public class CommentTag extends SimpleTagSupport {
         out.println("          <header class=\"media-heading comment-meta comment-meta-header\">");
         String url = comment.getCommentAuthorUrl();
         if (StringUtils.hasText(url)) {
-            out.println("            <div class=\"meta-info-author\"><a href=\"" + ServletUtil.filterHtml(url)
-                    + "\">" + comment.getCommentAuthor() + "</a><span class=\"sr-only\">" + __("Says:") + "</span></div>");
+            out.println("            <div class=\"meta-info-author\"><a href=\"" + ServletUtil.filterHtml(url) + "\" target='_blank'>"
+                    + comment.getCommentAuthor() + "</a><span class=\"sr-only\">" + __("Says:") + "</span></div>");
         } else {
             out.println("            <div class=\"meta-info-author\"><span>" + ServletUtil.filterHtml(comment.getCommentAuthor())
                     + "</span><span class=\"sr-only\">" + __("Says:") + "</span></div>");

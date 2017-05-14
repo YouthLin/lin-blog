@@ -39,11 +39,12 @@
                                     <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>
                                 </div>
                                 <div class="col-sm-7">
-                                    <strong><a
-                                            href="<c:url value="/post/${post.postId}"/>">${post.postTitle}</a></strong>
+                                    <strong>
+                                        <a target="_blank"
+                                           href="<c:url value="/post/${post.postId}"/>">${post.postTitle}</a></strong>
                                     <small>
                                         | <a
-                                            href="<c:url value="/admin/post/edit?id=${post.postId}"/>"><%=__("Edit")%></a>
+                                            href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a>
                                     </small>
                                 </div>
                             </div>
@@ -88,7 +89,8 @@
                                                 ${comment.commentAuthor}
                                             </c:otherwise>
                                         </c:choose> :
-                                        《 <a href="<c:url value="/post/${post.postId}"/>">${post.postTitle}</a> 》
+                                        《 <a href="<c:url value="/post/${post.postId}"/>"
+                                             target="_blank">${post.postTitle}</a> 》
                                     </strong>
                                     <div>
                                         <c:set var="content" value="${comment.commentContent}"/>
@@ -96,6 +98,7 @@
                                             <c:set var="content" value="${content.substring(0,50)} [...]"/>
                                         </c:if>
                                         <a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>"
+                                           target="_blank"
                                            title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>${content}</a>
                                         <br>
                                         <span class="sr-only">

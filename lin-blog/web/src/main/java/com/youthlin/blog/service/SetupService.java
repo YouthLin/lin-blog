@@ -99,6 +99,7 @@ public class SetupService {
         post.setPostTitle(__("Hello, World"))
                 .setPostContent(__("Welcome to use LinBlog. This post is generate by the blog system. Edit or delete this post, and then going to start your blog!"))
                 .setPostStatus(PostStatus.PUBLISHED)
+                .setPostAuthorId(1L)
                 .setCommentCount(1L);
         postDao.save(post);
         TaxonomyRelationships relationships = new TaxonomyRelationships();
