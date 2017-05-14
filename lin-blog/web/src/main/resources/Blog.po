@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
 "POT-Creation-Date: 2017-05-14 15:39+0800\n"
-"PO-Revision-Date: 2017-05-14 15:42+0800\n"
+"PO-Revision-Date: 2017-05-14 16:24+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.1\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=n==1?0:1;\n"
+"Plural-Forms: nplurals=3; plural=n==0? 0 : n==1 ? 1 : 2;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_f;_x:2c,1;_fx:2c,1;_n:1,2;_nx:3c,1,2\n"
 "X-Poedit-SearchPath-0: java/com/youthlin/blog\n"
@@ -89,29 +89,33 @@ msgstr "移至回收站"
 #, java-format
 msgid "One Post"
 msgid_plural "{0} Posts"
-msgstr[0] "一篇文章"
-msgstr[1] "{0} 篇文章"
+msgstr[0] "没有文章"
+msgstr[1] "一篇文章"
+msgstr[2] "{0} 篇文章"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:147
 #, java-format
 msgid "One Comment"
 msgid_plural "{0} Comments"
-msgstr[0] "一则评论"
-msgstr[1] "{0} 则评论"
+msgstr[0] "没有评论"
+msgstr[1] "一则评论"
+msgstr[2] "{0} 则评论"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:152
 #, java-format
 msgid "One Category"
 msgid_plural "{0} Categories"
-msgstr[0] "一个分类目录"
-msgstr[1] "{0} 个分类目录"
+msgstr[0] "暂无分类目录"
+msgstr[1] "一个分类目录"
+msgstr[2] "{0} 个分类目录"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:156
 #, java-format
 msgid "One Tag"
 msgid_plural "{0} Tags"
-msgstr[0] "一条标签"
-msgstr[1] "{0} 条标签"
+msgstr[0] "没有标签"
+msgstr[1] "一条标签"
+msgstr[2] "{0} 条标签"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:166
 msgid "Quickly Draft"
@@ -872,8 +876,9 @@ msgstr "您回复的评论不是本文的评论。"
 #, java-format
 msgid "One Comment On {1} "
 msgid_plural "{0} Comments On {1} "
-msgstr[0] "《{1}》有一则评论 "
-msgstr[1] "《{1}》有 {0} 则评论 "
+msgstr[0] "{1} 暂无评论 "
+msgstr[1] "《{1}》有一则评论 "
+msgstr[2] "《{1}》有 {0} 则评论 "
 
 #: java/com/youthlin/blog/web/tag/CommentTag.java:50
 msgid "No Comments."

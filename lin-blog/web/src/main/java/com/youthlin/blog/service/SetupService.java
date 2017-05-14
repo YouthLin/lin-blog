@@ -7,6 +7,7 @@ import com.youthlin.blog.dao.TaxonomyDao;
 import com.youthlin.blog.dao.UserDao;
 import com.youthlin.blog.dao.UserMetaDao;
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Option;
@@ -18,6 +19,7 @@ import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.MD5Util;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Collections;
@@ -46,10 +48,12 @@ public class SetupService {
     @Resource
     private CommentDao commentDao;
 
+    @Transactional
     public void setup(String pass, String user, String email, String title) {
         saveAdmin(user, pass, email);
         saveTitle(title);
         createCategory();
+        createPost();
     }
 
     private void saveAdmin(String user, String pass, String email) {
@@ -86,7 +90,7 @@ public class SetupService {
                 .setSlug("uncategorized")
                 .setDescription("")
                 .setParent(0L)
-                .setCount(0L);
+                .setCount(1L);
         taxonomyDao.save(uncategorized);
     }
 
@@ -94,20 +98,20 @@ public class SetupService {
         Post post = new Post();
         post.setPostTitle(__("Hello, World"))
                 .setPostContent(__("Welcome to use LinBlog. This post is generate by the blog system. Edit or delete this post, and then going to start your blog!"))
+                .setPostStatus(PostStatus.PUBLISHED)
                 .setCommentCount(1L);
         postDao.save(post);
         TaxonomyRelationships relationships = new TaxonomyRelationships();
         relationships.setPostId(post.getPostId())
                 .setTaxonomyId(1L);// un categorised
         taxonomyDao.saveTaxonomyRelationships(Collections.singletonList(relationships));
-    }
-
-    private void createComment() {
         Comment comment = new Comment()
+                .setCommentPostId(post.getPostId())
                 .setCommentAuthor("Youth．霖")
                 .setCommentAuthorUrl("http://youthlin.com/")
                 .setCommentAuthorEmail("yulinlin1995@gmail.com")
                 .setCommentContent(__("Hello, this is a comment. You can view or delete some comments at dashboard once you have login."));
         commentDao.save(comment);
     }
+
 }

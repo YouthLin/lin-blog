@@ -88,6 +88,13 @@
                                             <span aria-hidden="true">&larr;&nbsp;</span>${previous.postTitle}</a>
                                         </li>
                                     </c:when>
+                                    <c:otherwise>
+                                        <li class="previous disabled">
+                                            <span class="sr-only"><%=__("Previous post:")%></span>
+                                            <a href="javascript:void(0);"><span aria-hidden="true">&larr;&nbsp;</span>
+                                                <%=__("No previous post")%></a>
+                                        </li>
+                                    </c:otherwise>
                                 </c:choose>
                                 <c:choose>
                                     <c:when test="${next != null}">
@@ -96,6 +103,12 @@
                                             ${next.postTitle}<span aria-hidden="true">&nbsp;&rarr;</span></a>
                                         </li>
                                     </c:when>
+                                    <c:otherwise>
+                                        <li class="next disabled"><span class="sr-only"><%=__("Next post:")%></span>
+                                            <a href="javascript:void(0);"><%=__("No next post")%>
+                                            <span aria-hidden="true">&nbsp;&rarr;</span></a></li>
+
+                                    </c:otherwise>
                                 </c:choose>
                             </ul>
                         </nav>

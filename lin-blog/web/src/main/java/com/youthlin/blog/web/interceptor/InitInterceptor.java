@@ -20,6 +20,7 @@ public class InitInterceptor extends HandlerInterceptorAdapter {
     static {
         try {
             Translation.setDft(Translation.getBundle("Blog"));
+            Translation.removeResource(Translation.DEFAULT_DOMAIN);
             LOGGER.info("加载语言包完成[{}]", Translation.getDft().getBaseBundleName());
         } catch (Exception e) {
             LOGGER.error("加载语言包出错", e);
