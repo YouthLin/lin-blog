@@ -71,7 +71,7 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${categoryList}" var="category">
-                    <tr id="row-${category.taxonomyId}"  class="action-row">
+                    <tr id="row-${category.taxonomyId}" class="action-row">
                         <td><c:if test="${category.taxonomyId ne 1}">
                             <label>
                                 <span class="sr-only"><%=__("Select")%></span>
@@ -80,14 +80,15 @@
                         </c:if></td>
                         <td>
                             <strong>${category.name}</strong><br>
-                            <c:if test="${category.taxonomyId ne 1}">
                             <span class="operation operation-${category.taxonomyId}">
                                 <a href="<c:url value="/admin/post/category/edit?id=${category.taxonomyId}"/>"><%=__("Edit")%></a> |
+                                <c:if test="${category.taxonomyId ne 1}">
                                 <a href="<c:url value="/admin/post/category/delete?id=${category.taxonomyId}"/>"
                                    class="text-danger confirm"><%=__("Delete")%></a> |
-                                <a href="#"><%=__("View")%></a>
-                            </span>
-                            </c:if>&nbsp;
+                                </c:if>
+                                <a href="<c:url value="/category/${category.slug}"/>"
+                                   target="_blank"><%=__("View")%></a>
+                            </span>&nbsp;
                         </td>
                         <td>${category.slug}</td>
                         <td>${category.description}</td>

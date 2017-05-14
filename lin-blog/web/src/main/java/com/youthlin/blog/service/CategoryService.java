@@ -17,11 +17,10 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import static com.youthlin.utils.i18n.Translation.__;
 
 /**
  * 创建： youthlin.chen
@@ -153,6 +152,7 @@ public class CategoryService extends TaxonomyService {
             log.info("获取分类目录未命中缓存，查询数据库");
             // 按 id 排序的
             List<Taxonomy> categories = taxonomyDao.findByTaxonomy(Taxonomy.TAXONOMY_CATEGORY);
+            // 按 parent id 排序的
             List<Category> categoryList = fromTaxonomyList(categories);
             Map<Long, Category> categoryMap = Maps.newHashMap();
             for (Category category : categoryList) {
@@ -176,6 +176,7 @@ public class CategoryService extends TaxonomyService {
         for (Taxonomy taxonomy : taxonomyList) {
             categoryList.add(fromTaxonomy(taxonomy));
         }
+        categoryList.sort(Comparator.comparingLong(Taxonomy::getParent));
         return categoryList;
     }
 

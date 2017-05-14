@@ -92,7 +92,7 @@ public class CategoryController {
             id = Long.parseLong(idStr);
         } catch (NumberFormatException ignore) {
         }
-        if (id < 2) {
+        if (id < 1) {
             return "redirect:/admin/post/category";
         }
         Category category = categoryService.findById(id);
@@ -128,7 +128,7 @@ public class CategoryController {
 
         String description = param.get("description");
 
-        if (id < 2) {
+        if (id < 1) {
             errMsg.append(__("Unknown category.")).append("<br>");
         }
         if (parentId < 0) {
