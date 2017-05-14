@@ -193,8 +193,9 @@ public class PostController {
     }
 
     private void fetchCategoryInfo(Model model) {
-        List<Category> categoryList = categoryService.listCategoriesNoPrefix();
+        List<Category> categoryList = categoryService.listCategoriesByOrder();
         model.addAttribute("categoryList", categoryList);
+        categoryList = categoryService.listCategoriesNoPrefix();
         Map<Long, String> categoryIdNameMap = Maps.newHashMap();
         for (Category category : categoryList) {
             categoryIdNameMap.put(category.getTaxonomyId(), category.getName());
