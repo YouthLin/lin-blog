@@ -1,9 +1,12 @@
 package com.youthlin.blog.service;
 
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import com.youthlin.blog.dao.UserDao;
 import com.youthlin.blog.dao.UserMetaDao;
 import com.youthlin.blog.model.bo.LoginInfo;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.util.Constant;
@@ -23,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -253,4 +257,12 @@ public class UserService {
         userMetaDao.updateValue(nextInfoIdMeta);
     }
 
+
+    public List<User> getAllUser() {
+        return userDao.listAll();
+    }
+
+    public List<UserMeta> getAllRole() {
+        return userMetaDao.listByMetaKey(Constant.K_ROLE);
+    }
 }

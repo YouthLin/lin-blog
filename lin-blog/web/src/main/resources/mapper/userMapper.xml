@@ -43,5 +43,11 @@
         WHERE user_status=0 AND user_login=#{username} AND user_pass=#{password}
     </select>
 
+    <select id="listAll" resultMap="userMap">
+        SELECT
+        <include refid="all"/>
+        FROM users
+    </select>
+
 
 </mapper>

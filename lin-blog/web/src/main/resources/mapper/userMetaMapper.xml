@@ -35,4 +35,11 @@
         WHERE user_status=0 AND user_login=#{name} AND meta_key=#{key}
     </select>
 
+    <select id="listByMetaKey" resultMap="userMetaMap">
+        SELECT
+        <include refid="all"/>
+        FROM user_meta
+        WHERE meta_key=#{meteKey}
+    </select>
+
 </mapper>

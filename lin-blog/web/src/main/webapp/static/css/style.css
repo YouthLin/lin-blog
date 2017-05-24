@@ -101,7 +101,7 @@ textarea {
 }
 
 .bd {
-    border-bottom: 1px solid #080808;
+    border-bottom: 1px solid #080808 !important;
 }
 
 .border-ccc {
