@@ -45,7 +45,7 @@
                                             </c:otherwise>
                                         </c:choose> :
                                     </strong>
-                                    <c:set var="content" value="${comment.commentContent}"/>
+                                    <c:set var="content" value="${comment.commentContent.replaceAll('<','&lt;')}"/>
                                     <c:if test="${(not empty content) and(content.length()>50) }">
                                         <c:set var="content" value="${content.substring(0,50)} [...]"/>
                                     </c:if>
