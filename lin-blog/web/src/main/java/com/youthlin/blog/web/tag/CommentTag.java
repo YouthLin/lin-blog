@@ -58,6 +58,27 @@ public class CommentTag extends SimpleTagSupport {
         if (comment == null) {
             return;
         }
+
+        switch (comment.getCommentStatus()) {
+            case NORMAL:
+                break;
+            case PENDING:
+                out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
+                        + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
+                out.println(__("Comment is pending to show."));
+                processChildrenComment(node);
+                out.println("    </li>\n");
+                return;
+            default:
+                out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
+                        + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
+                out.println(__("Comments has been deleted."));
+                processChildrenComment(node);
+                out.println("    </li>\n");
+                return;
+        }
+
+
         out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
                 + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
         out.println("      <div class=\"media-left\">");
@@ -87,7 +108,13 @@ public class CommentTag extends SimpleTagSupport {
         out.println("          </footer>");
         out.println("        </article>");
         // endregion article
-        //region children
+        processChildrenComment(node);
+        out.println("      </div>");
+        out.println("    </li>\n");
+    }
+
+    private void processChildrenComment(CommentNode node) throws IOException {
+        JspWriter out = getJspContext().getOut();
         List<CommentNode> children = node.getChildren();
         if (children != null && !children.isEmpty()) {
             out.println("          <ol class=\"media-list comments-list comments=list-children\">");
@@ -97,9 +124,6 @@ public class CommentTag extends SimpleTagSupport {
             out.println("          </ol>");
 
         }
-        //endregion child
-        out.println("      </div>");
-        out.println("    </li>\n");
     }
 
     public String getDateFormat() {
