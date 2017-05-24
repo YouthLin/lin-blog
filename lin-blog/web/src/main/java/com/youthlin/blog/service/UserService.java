@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -223,13 +224,15 @@ public class UserService {
 
     private void removeExpire(Map<String, LoginInfo> infoMap) {
         Set<Map.Entry<String, LoginInfo>> entries = infoMap.entrySet();
-        for (Map.Entry<String, LoginInfo> entry : entries) {
+        Iterator<Map.Entry<String, LoginInfo>> iterator = entries.iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, LoginInfo> entry = iterator.next();
             LoginInfo info = entry.getValue();
             Date expire = info.getExpire();
             DateTime dateTime = new DateTime(expire);
             if (dateTime.isBefore(DateTime.now())) {
                 // 已过期
-                infoMap.remove(entry.getKey());
+                iterator.remove();
             }
         }
     }
