@@ -1,6 +1,5 @@
 <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
-<%--@elvariable id="msg" type="java.lang.String"--%>
-<%--@elvariable id="error" type="java.lang.String"--%>
+
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.po.User" %><%--
   Created by IntelliJ IDEA.
@@ -20,6 +19,8 @@
 });</script>
 <form class="form-horizontal" id="profile-form" method="post">
     <h1><%=__("My Profile")%></h1>
+    <%--@elvariable id="msg" type="java.lang.String"--%>
+    <%--@elvariable id="error" type="java.lang.String"--%>
     <c:if test="${not empty msg}">
         <div class="message">${msg}</div>
     </c:if>
@@ -84,7 +85,7 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="submit" class="btn btn-primary"><%=__("Update")%></button>
         </div>
     </div>
 </form>

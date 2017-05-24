@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-14 16:51+0800\n"
-"PO-Revision-Date: 2017-05-14 17:04+0800\n"
+"POT-Creation-Date: 2017-05-24 23:52+0800\n"
+"PO-Revision-Date: 2017-05-24 23:53+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -205,6 +205,7 @@ msgstr "过滤"
 #: webapp/WEB-INF/pages/admin/post-all.jsp:88
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:52
+#: webapp/WEB-INF/pages/admin/users-all.jsp:23
 msgid "Select All"
 msgstr "全选"
 
@@ -213,6 +214,7 @@ msgid "Title"
 msgstr "标题"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:93
+#: java/com/youthlin/blog/model/enums/Role.java:37
 msgid "Author"
 msgstr "作者"
 
@@ -244,6 +246,7 @@ msgstr "日期"
 #: webapp/WEB-INF/pages/admin/post-all.jsp:108
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:66
+#: webapp/WEB-INF/pages/admin/users-all.jsp:41
 msgid "Select"
 msgstr "选择"
 
@@ -331,6 +334,7 @@ msgstr "分类目录的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:127
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:88
 msgid "Update"
 msgstr "更新"
 
@@ -468,46 +472,133 @@ msgid "\"Save Draft\""
 msgstr "\"存草稿\""
 
 #: webapp/WEB-INF/pages/admin/settings-comment.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:154
+#: webapp/WEB-INF/pages/common/admin/header.jsp:157
 #: java/com/youthlin/blog/web/back/SettingsController.java:29
 msgid "Comment Settings"
 msgstr "评论设置"
 
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:148
+#: webapp/WEB-INF/pages/common/admin/header.jsp:151
 #: java/com/youthlin/blog/web/back/SettingsController.java:18
 msgid "General Settings"
 msgstr "常规设置"
 
 #: webapp/WEB-INF/pages/admin/settings-post.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:151
+#: webapp/WEB-INF/pages/common/admin/header.jsp:154
 #: java/com/youthlin/blog/web/back/SettingsController.java:24
 msgid "Post Settings"
 msgstr "文章设置"
 
 #: webapp/WEB-INF/pages/admin/tool-export.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:137
+#: webapp/WEB-INF/pages/common/admin/header.jsp:140
 #: java/com/youthlin/blog/web/back/ToolController.java:24
 msgid "Export"
 msgstr "导出"
 
 #: webapp/WEB-INF/pages/admin/tool-import.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:134
+#: webapp/WEB-INF/pages/common/admin/header.jsp:137
 #: java/com/youthlin/blog/web/back/ToolController.java:18
 msgid "Import"
 msgstr "导入"
 
-#: webapp/WEB-INF/pages/admin/users-all.jsp:15
+#: webapp/WEB-INF/pages/admin/users-add.jsp:18
+#: webapp/WEB-INF/pages/admin/users-add.jsp:64
+#: webapp/WEB-INF/pages/common/admin/header.jsp:124
+#: java/com/youthlin/blog/web/back/UserController.java:49
+msgid "Add User"
+msgstr "添加用户"
+
+#: webapp/WEB-INF/pages/admin/users-add.jsp:28
+#: webapp/WEB-INF/pages/admin/users-all.jsp:27
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:44
+#: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:52
+msgid "Username"
+msgstr "用户名"
+
+#: webapp/WEB-INF/pages/admin/users-add.jsp:32
+msgid "Username can not change after user added."
+msgstr "添加后用户名不可更改。"
+
+#: webapp/WEB-INF/pages/admin/users-add.jsp:36
+#: webapp/WEB-INF/pages/admin/users-all.jsp:29
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:50
+#: webapp/WEB-INF/pages/post.jsp:134
+msgid "Email"
+msgstr "电子邮件"
+
+#: webapp/WEB-INF/pages/admin/users-add.jsp:42
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:69
+#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:57
+msgid "Password"
+msgstr "密码"
+
+#: webapp/WEB-INF/pages/admin/users-add.jsp:50
+#: webapp/WEB-INF/pages/admin/users-all.jsp:30
+msgid "Role"
+msgstr "角色"
+
+#: webapp/WEB-INF/pages/admin/users-all.jsp:16
 #: webapp/WEB-INF/pages/common/admin/header.jsp:121
-#: java/com/youthlin/blog/web/back/UserController.java:18
+#: java/com/youthlin/blog/web/back/UserController.java:39
 msgid "All Users"
 msgstr "所有用户"
 
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:15
-#: webapp/WEB-INF/pages/common/admin/header.jsp:124
-#: java/com/youthlin/blog/web/back/UserController.java:24
+#: webapp/WEB-INF/pages/admin/users-all.jsp:28
+msgid "Nickname"
+msgstr "昵称"
+
+#: webapp/WEB-INF/pages/admin/users-all.jsp:31
+msgid "Register date"
+msgstr "注册日期"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:21
+#: webapp/WEB-INF/pages/common/admin/header.jsp:127
+#: java/com/youthlin/blog/web/back/UserController.java:55
+#: java/com/youthlin/blog/web/back/UserController.java:62
 msgid "My Profile"
 msgstr "个人资料"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:31
+msgid "Avatar"
+msgstr "头像"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:35
+msgid "'How to change my avatar?'"
+msgstr "'如何更改头像？'"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:35
+msgid ""
+"'You can change your avatar image at <a href=\"http://cn.gravatar.com\" "
+"target=\"_blank\">Gravatar.com</a>'"
+msgstr ""
+"'您可以在 <a href=\"http://cn.gravatar.com\" target=\"_blank\">Gravatar.com</"
+"a> 更改头像'"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:42
+msgid "General"
+msgstr "常规"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:56
+msgid "Url"
+msgstr "网址"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:62
+msgid "Display name"
+msgstr "显示名称"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:69
+msgid ""
+"If you don't want change password, please remain the password filed blank "
+"below."
+msgstr "若您不想更改密码，请将下列输入框留空。"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:71
+msgid "Old password"
+msgstr "原密码"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:78
+msgid "New password"
+msgstr "新密码"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:36
 msgid "Toggle Navigation"
@@ -556,11 +647,11 @@ msgstr "评论"
 msgid "Users"
 msgstr "用户"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:130
+#: webapp/WEB-INF/pages/common/admin/header.jsp:133
 msgid "Tools"
 msgstr "工具"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:143
+#: webapp/WEB-INF/pages/common/admin/header.jsp:146
 msgid "Settings"
 msgstr "设置"
 
@@ -646,18 +737,10 @@ msgstr "请提供以下信息。别担心会填错，安装完成后可以随时
 msgid "Site Title"
 msgstr "博客标题"
 
-#: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:52
-msgid "Username"
-msgstr "用户名"
-
 #: webapp/WEB-INF/pages/install.jsp:51
 msgid ""
 "Username can have only alphanumeric characters, and can't changed later."
 msgstr "用户名只能包含字母或数字，一旦确定将不可修改。"
-
-#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:57
-msgid "Password"
-msgstr "密码"
 
 #: webapp/WEB-INF/pages/install.jsp:60
 msgid ""
@@ -738,10 +821,6 @@ msgstr "取消回复"
 msgid "\"Display Name\""
 msgstr "\"显示名称\""
 
-#: webapp/WEB-INF/pages/post.jsp:134
-msgid "Email"
-msgstr "电子邮件"
-
 #: webapp/WEB-INF/pages/post.jsp:138
 msgid "\"Email will never public\""
 msgstr "\"邮件地址不会公开\""
@@ -754,6 +833,10 @@ msgstr "网址"
 msgid "\"URL is optional\""
 msgstr "\"可不填\""
 
+#: webapp/WEB-INF/pages/post.jsp:149
+msgid "Content"
+msgstr "内容"
+
 #: webapp/WEB-INF/pages/post.jsp:161
 msgid "Post Comment"
 msgstr "发表评论"
@@ -761,6 +844,22 @@ msgstr "发表评论"
 #: webapp/WEB-INF/pages/post.jsp:188
 msgid "Comment are closed"
 msgstr "评论已关闭"
+
+#: java/com/youthlin/blog/model/enums/Role.java:35
+msgid "Administrator"
+msgstr "管理员"
+
+#: java/com/youthlin/blog/model/enums/Role.java:36
+msgid "Editor"
+msgstr "编辑"
+
+#: java/com/youthlin/blog/model/enums/Role.java:38
+msgid "Contributor"
+msgstr "投稿者"
+
+#: java/com/youthlin/blog/model/enums/Role.java:39
+msgid "Subscriber"
+msgstr "订阅者"
 
 #: java/com/youthlin/blog/model/po/Post.java:166
 msgid "Untitled"
@@ -814,6 +913,7 @@ msgid "Username, password, email are all required."
 msgstr "用户名、密码、电子邮件均为必填项。"
 
 #: java/com/youthlin/blog/web/SetUpController.java:55
+#: java/com/youthlin/blog/web/back/UserController.java:84
 msgid ""
 "It seem that JavaScript doesn't work, but we need it to generate password."
 msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
@@ -858,6 +958,22 @@ msgstr "非法参数︰ 文章不存在。"
 msgid "Illegal param: postId does not exist."
 msgstr "非法参数︰ 文章不存在。"
 
+#: java/com/youthlin/blog/web/back/UserController.java:69
+msgid "Email and display name are required."
+msgstr "电子邮件和显示名称是必填项。"
+
+#: java/com/youthlin/blog/web/back/UserController.java:77
+msgid "illegal url."
+msgstr "非法网址。"
+
+#: java/com/youthlin/blog/web/back/UserController.java:91
+msgid "Password is incorrect."
+msgstr "密码错误。"
+
+#: java/com/youthlin/blog/web/back/UserController.java:102
+msgid "Your profile has been updated."
+msgstr "您的信息已更新。"
+
 #: java/com/youthlin/blog/web/front/SinglePostController.java:79
 #: java/com/youthlin/blog/web/front/SinglePostController.java:84
 msgid "No such post."
@@ -892,11 +1008,19 @@ msgstr[2] "《 {1} 》有 {0} 则评论 "
 msgid "No Comments."
 msgstr "没有评论。"
 
-#: java/com/youthlin/blog/web/tag/CommentTag.java:74
-#: java/com/youthlin/blog/web/tag/CommentTag.java:77
+#: java/com/youthlin/blog/web/tag/CommentTag.java:68
+msgid "This comment is pending to show."
+msgstr "该评论正在审核。"
+
+#: java/com/youthlin/blog/web/tag/CommentTag.java:75
+msgid "This comment has been deleted."
+msgstr "该评论已删除。"
+
+#: java/com/youthlin/blog/web/tag/CommentTag.java:95
+#: java/com/youthlin/blog/web/tag/CommentTag.java:98
 msgid "Says:"
 msgstr "说道："
 
-#: java/com/youthlin/blog/web/tag/CommentTag.java:86
+#: java/com/youthlin/blog/web/tag/CommentTag.java:107
 msgid "Replay"
 msgstr "回复"

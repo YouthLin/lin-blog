@@ -65,14 +65,14 @@ public class CommentTag extends SimpleTagSupport {
             case PENDING:
                 out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
                         + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
-                out.println(__("Comment is pending to show."));
+                out.println(__("This comment is pending to show."));
                 processChildrenComment(node);
                 out.println("    </li>\n");
                 return;
             default:
                 out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
                         + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
-                out.println(__("Comments has been deleted."));
+                out.println(__("This comment has been deleted."));
                 processChildrenComment(node);
                 out.println("    </li>\n");
                 return;

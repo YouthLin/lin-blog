@@ -5,6 +5,8 @@ import com.google.common.collect.Maps;
 
 import java.util.Map;
 
+import static com.youthlin.utils.i18n.Translation.__;
+
 /**
  * 创建： lin
  * 时间： 2017-05-05 21:11
@@ -30,6 +32,11 @@ public enum Role {
         }
         map = ImmutableMap.copyOf(roleMap);
         nameMap = ImmutableMap.copyOf(stringRoleMap);
+        __("Administrator");
+        __("Editor");
+        __("Author");
+        __("Contributor");
+        __("Subscriber");
     }
 
     public int getCode() {

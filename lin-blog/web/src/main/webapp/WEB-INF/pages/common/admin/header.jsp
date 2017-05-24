@@ -120,6 +120,9 @@
                     <li><a class="menu-item-a menu-item-all-user" href="<c:url value="/admin/users/all"/>">
                         <%=__("All Users")%>
                     </a></li>
+                    <li><a class="menu-item-a menu-item-add-user" href="<c:url value="/admin/users/add"/>">
+                        <%=__("Add User")%>
+                    </a></li>
                     <li><a class="menu-item-a menu-item-my-profile" href="<c:url value="/admin/users/my"/>">
                         <%=__("My Profile")%>
                     </a></li>

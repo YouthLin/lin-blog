@@ -146,7 +146,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="content" class="col-sm-2 control-label">Content
+                                        <label for="content" class="col-sm-2 control-label"><%=__("Content")%>
                                             <span class="star">*</span> </label>
                                         <div class="col-sm-10">
                                                 <textarea class="form-control" name="content" id="content"

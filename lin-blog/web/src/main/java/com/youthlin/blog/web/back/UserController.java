@@ -44,21 +44,29 @@ public class UserController {
         return "admin/users-all";
     }
 
+    @RequestMapping(path = "/users/add", method = RequestMethod.GET)
+    public String add(Model model) {
+        model.addAttribute("title", __("Add User"));
+        return "admin/users-add";
+    }
+
     @RequestMapping(path = "/users/my", method = RequestMethod.GET)
     public String profile(Model model) {
         model.addAttribute("title", __("My Profile"));
         return "admin/users-profile";
     }
 
+
     @RequestMapping(path = {"/users/my"}, method = {RequestMethod.POST})
     public String updateProfile(@RequestParam Map<String, String> params, HttpServletRequest request, Model model) {
+        model.addAttribute("title", __("My Profile"));
         String email = params.get("email");
         String name = params.get("name");
         String url = params.get("url");
         String oldPass = params.get("oldPass");
         String newPass = params.get("newPass");
         if (!StringUtils.hasText(email) || !StringUtils.hasText(name)) {
-            model.addAttribute(Constant.ERROR, __("Email and display are required."));
+            model.addAttribute(Constant.ERROR, __("Email and display name are required."));
             return "admin/users-profile";
         }
         if (StringUtils.hasText(url)) {
