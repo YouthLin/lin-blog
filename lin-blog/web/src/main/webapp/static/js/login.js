@@ -29,4 +29,15 @@ $(document).ready(function () {
     });
     //endregion
 
+    $('#profile-form').submit(function () {
+        var user = $('#user').data('user');
+        var oldPlain = $('#old-pass').val();
+        var newPlain = $('#new-pass').val();
+        if (oldPlain !== undefined && oldPlain.length > 0) {
+            console.log(oldPlain);
+            $('#oldPass').val($.md5(user + oldPlain));
+            $('#newPass').val($.md5(user + newPlain));
+        }
+    });
+
 });

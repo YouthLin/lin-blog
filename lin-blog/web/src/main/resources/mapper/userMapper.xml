@@ -19,6 +19,14 @@
         VALUES (#{userLogin}, #{userPass}, #{userEmail}, #{userUrl}, #{userRegistered}, #{userStatus}, #{displayName})
     </insert>
 
+    <update id="update" parameterType="com.youthlin.blog.model.po.User">
+        UPDATE users
+        SET user_pass       = #{user.userPass}, user_email = #{user.userEmail}, user_url = #{user.userUrl},
+            user_registered = #{user.userRegistered}, user_status = #{user.userStatus},
+            display_name    = #{user.displayName}
+        WHERE ID = #{user.userId}
+    </update>
+
     <sql id="all">
         ID, user_login, user_pass, user_email, user_url, user_registered, user_status, display_name
     </sql>

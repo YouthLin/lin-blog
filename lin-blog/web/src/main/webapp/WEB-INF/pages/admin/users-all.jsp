@@ -39,7 +39,7 @@
                 <td>
                     <label>
                         <span class="sr-only"><%=__("Select")%></span>
-                        <%--<input type="checkbox" name="ids" value="${aUser.userId}">--%>
+                        <input type="checkbox" name="ids" value="${aUser.userId}">
                     </label>
                 </td>
                 <td>${aUser.userLogin}</td>

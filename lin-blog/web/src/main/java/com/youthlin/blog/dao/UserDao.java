@@ -14,6 +14,8 @@ import java.util.List;
 public interface UserDao {
     void save(User user);
 
+    int update(@Param("user") User user);
+
     User findByUserName(String username);
 
     User findById(Long id);

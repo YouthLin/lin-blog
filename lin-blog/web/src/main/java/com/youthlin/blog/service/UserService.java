@@ -49,6 +49,14 @@ public class UserService {
         return user;
     }
 
+    public User update(User user) {
+        int i = userDao.update(user);
+        if (i == 1) {
+            LOGGER.info("已更新{}", user);
+        }
+        return user;
+    }
+
     public User findByUserName(String username) {
         return userDao.findByUserName(username);
     }
