@@ -65,6 +65,9 @@ public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
         if (modelAndView == null) {
             return;
         }
+        if (!request.getMethod().equalsIgnoreCase("GET")) {
+            return;
+        }
         LinkedHashMap<Comment, Post> recentComment = commentService.getRecentComment(recentCommentsCount);
         modelAndView.addObject("recentCommentMap", recentComment);
 

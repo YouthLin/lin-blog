@@ -71,6 +71,11 @@ public class LoginController {
             model.addAttribute(Constant.ERROR, __("Invalid param."));
             return "register";
         }
+        User byUserName = userService.findByUserName(user);
+        if (byUserName != null) {
+            model.addAttribute(Constant.ERROR, __("This username has been used."));
+            return "register";
+        }
         String rand = UUID.randomUUID().toString().substring(0, Constant.RAND_LEN);
         pass = rand + MD5Util.md5(rand + pass);
         User newUser = new User()
