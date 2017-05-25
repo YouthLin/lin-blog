@@ -82,6 +82,9 @@
         <if test="status != null">
             AND comment_status = #{status}
         </if>
+        <if test="userId != null">
+            AND user_id=#{userId}
+        </if>
         ORDER BY comment_date DESC
     </select>
 

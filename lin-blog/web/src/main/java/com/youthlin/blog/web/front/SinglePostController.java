@@ -128,6 +128,11 @@ public class SinglePostController {
                 return "die";
             }
         }
+        User user = (User) request.getAttribute(Constant.USER);
+        long userId = 0;
+        if (user != null) {
+            userId = user.getUserId();
+        }
         log.info("param:post id = {}, author = {}, email = {}, url = {}, content = {}", postId, author, email, url, content);
         author = ServletUtil.filterHtml(author);
         email = ServletUtil.filterHtml(email);
@@ -141,7 +146,7 @@ public class SinglePostController {
                 .setCommentAgent(request.getHeader(Constant.UA))
                 .setCommentAuthorIp(ServletUtil.getRemoteIP(request))
                 .setCommentContent(content)
-                //.setCommentStatus(CommentStatus.NORMAL)
+                .setUserId(userId)
                 .setCommentParent(parent);
         commentService.save(comment);
         Long commentCount = post.getCommentCount();

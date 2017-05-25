@@ -5,6 +5,8 @@ import com.google.common.collect.Maps;
 import java.util.Collections;
 import java.util.Map;
 
+import static com.youthlin.utils.i18n.Translation.__;
+
 /**
  * 创建者： youthlin.chen 日期： 2017-04-04 21:08.
  */
@@ -27,6 +29,10 @@ public enum CommentStatus {
         }
         map = Collections.unmodifiableMap(all);
         nameMap = Collections.unmodifiableMap(names);
+        __("NORMAL");
+        __("PENDING");
+        __("SPAM");
+        __("TRASH");
     }
 
     CommentStatus(int code, String describe) {

@@ -7,6 +7,7 @@ import com.youthlin.blog.model.enums.CommentStatus;
 import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CommentService;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.util.Constant;
@@ -53,7 +54,7 @@ public class CommentController {
         processAction(param);
 
         CommentStatus status = parseStatus(statusStr, model);
-        processCommentPage(param, model, status);
+        processCommentPage(param, model, status, null);
         processStatusCount(model);
 
         model.addAttribute("title", __("All Comments"));
@@ -90,14 +91,15 @@ public class CommentController {
         return status;
     }
 
-    private void processCommentPage(Map<String, String> param, Model model, CommentStatus status) {
+    //param: pageIndex; model: add attribute; status: comment status, null -> all; userId: comment user id, null -> all
+    private void processCommentPage(Map<String, String> param, Model model, CommentStatus status, Long userId) {
         String pageIndexStr = param.get("page");
         int pageIndex = 1;
         try {
             pageIndex = Integer.parseInt(pageIndexStr);
         } catch (NumberFormatException ignore) {
         }
-        Page<Comment> commentPage = commentService.listPageByStatus(pageIndex, Constant.DEFAULT_PAGE_SIZE, status);
+        Page<Comment> commentPage = commentService.listPageByStatus(pageIndex, Constant.DEFAULT_PAGE_SIZE, status, userId);
         model.addAttribute("commentPage", commentPage);
         List<Comment> commentList = commentPage.getList();
         Set<Long> postIds = Sets.newHashSet();
@@ -125,7 +127,9 @@ public class CommentController {
 
 
     @RequestMapping("/comment/my")
-    public String myComments(Model model) {
+    public String myComments(@RequestParam Map<String, String> param, HttpServletRequest request, Model model) {
+        User user = (User) request.getAttribute(Constant.USER);
+        processCommentPage(param, model, null, user.getUserId());
         model.addAttribute("title", __("My Comments"));
         return "admin/comment-my";
     }
