@@ -25,7 +25,7 @@ public class UserDaoTest {
     private static final String USER = "lin";
     private static final String PASS = "12345678901234567890123456789012";
 
-    @Test
+    // @Test
     public void save() throws Exception {
         User user = new User();
         user.setUserLogin(USER)

@@ -28,7 +28,7 @@ public class TaxonomyDaoTest {
     @Resource
     private TaxonomyDao taxonomyDao;
 
-    @Test
+    //@Test
     public void saveList() {
         List<Taxonomy> tags = Lists.newArrayList(new Tag().setName("tag1"), new Tag().setName("tag2"));
         taxonomyDao.saveList(tags);
@@ -43,7 +43,7 @@ public class TaxonomyDaoTest {
         log.info("tags = {}", tags);
     }
 
-    @Test
+    //@Test
     public void saveRelationship() {
         taxonomyDao.saveTaxonomyRelationships(Lists.newArrayList(
                 new TaxonomyRelationships().setPostId(0L).setTaxonomyId(0L)

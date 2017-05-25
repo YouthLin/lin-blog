@@ -20,7 +20,7 @@ public class CommentDaoTest {
     @Resource
     private CommentDao commentDao;
 
-    @Test
+   // @Test
     public void save() throws Exception {
         Comment comment = new Comment();
         comment.setCommentPostId(1L)

@@ -22,6 +22,10 @@ public class OptionDaoTest {
     private OptionDao optionDao;
 
     @Test
+    public void te() {
+    }
+
+    // @Test
     public void test() throws Exception {
         Option option = new Option().setOptionName("test_name").setOptionValue("test_value");
         optionDao.save(option);

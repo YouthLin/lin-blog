@@ -25,6 +25,10 @@ public class UserMetaDaoTest {
     private UserMetaDao userMetaDao;
 
     @Test
+    public void te() {
+    }
+
+    //@Test
     public void test() throws Exception {
         UserMeta userMeta = new UserMeta();
         userMeta.setUserId(1L)
