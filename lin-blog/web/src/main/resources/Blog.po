@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 20:46+0800\n"
-"PO-Revision-Date: 2017-05-25 22:23+0800\n"
+"POT-Creation-Date: 2017-05-25 23:09+0800\n"
+"PO-Revision-Date: 2017-05-25 23:10+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -20,6 +20,7 @@ msgstr ""
 #: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/die.jsp:21
 #: webapp/WEB-INF/pages/index.jsp:16 webapp/WEB-INF/pages/index.jsp:23
 #: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/post.jsp:30
+#: java/com/youthlin/blog/web/interceptor/InitInterceptor.java:41
 msgid "Home"
 msgstr "首页"
 
@@ -207,7 +208,7 @@ msgstr "\"显示名称\""
 #: webapp/WEB-INF/pages/admin/users-add.jsp:37
 #: webapp/WEB-INF/pages/admin/users-all.jsp:30
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:57
-#: webapp/WEB-INF/pages/post.jsp:162
+#: webapp/WEB-INF/pages/post.jsp:162 webapp/WEB-INF/pages/register.jsp:57
 msgid "Email"
 msgstr "电子邮件"
 
@@ -359,7 +360,7 @@ msgstr "新建页面"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:30
 #: webapp/WEB-INF/pages/common/admin/header.jsp:82
-#: java/com/youthlin/blog/web/back/PostController.java:86
+#: java/com/youthlin/blog/web/back/PostController.java:88
 msgid "All Post"
 msgstr "所有文章"
 
@@ -516,7 +517,7 @@ msgid "Count"
 msgstr "总数"
 
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:33
-#: java/com/youthlin/blog/web/back/PostController.java:336
+#: java/com/youthlin/blog/web/back/PostController.java:337
 msgid "Edit Post"
 msgstr "编辑文章"
 
@@ -615,7 +616,7 @@ msgid "And you may write some description about this tag..."
 msgstr "标签的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:19
-#: java/com/youthlin/blog/web/back/PostController.java:219
+#: java/com/youthlin/blog/web/back/PostController.java:220
 msgid "Write Post"
 msgstr "写文章"
 
@@ -681,7 +682,8 @@ msgstr "添加用户"
 #: webapp/WEB-INF/pages/admin/users-add.jsp:29
 #: webapp/WEB-INF/pages/admin/users-all.jsp:28
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:43
-#: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:52
+#: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:53
+#: webapp/WEB-INF/pages/register.jsp:53
 msgid "Username"
 msgstr "用户名"
 
@@ -691,7 +693,8 @@ msgstr "添加后用户名不可更改。"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:43
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:76
-#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:57
+#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:58
+#: webapp/WEB-INF/pages/register.jsp:61
 msgid "Password"
 msgstr "密码"
 
@@ -779,6 +782,7 @@ msgid "Profile"
 msgstr "个人资料"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:57
+#: webapp/WEB-INF/pages/include/sidebar.jsp:118
 msgid "Log out"
 msgstr "登出"
 
@@ -827,50 +831,59 @@ msgstr "归档"
 msgid "Meta"
 msgstr "功能"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:115
+#: webapp/WEB-INF/pages/include/sidebar.jsp:117
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:117
+#: webapp/WEB-INF/pages/include/sidebar.jsp:121
+#: webapp/WEB-INF/pages/login.jsp:19 webapp/WEB-INF/pages/register.jsp:19
+msgid "Login"
+msgstr "登录"
+
+#: webapp/WEB-INF/pages/include/sidebar.jsp:122
+#: webapp/WEB-INF/pages/login.jsp:76 webapp/WEB-INF/pages/register.jsp:66
+msgid "Register"
+msgstr "注册"
+
+#: webapp/WEB-INF/pages/include/sidebar.jsp:126
 #, java-format
 msgid "Powered By {0}"
 msgstr "Powered By {0}"
 
-#: webapp/WEB-INF/pages/index.jsp:38
+#: webapp/WEB-INF/pages/index.jsp:42
 #, java-format
 msgid "Page {0} "
 msgstr "第 {0} 页 "
 
-#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:41
+#: webapp/WEB-INF/pages/index.jsp:58 webapp/WEB-INF/pages/post.jsp:41
 msgid "\"Published Date:\""
 msgstr "\"发布时间：\""
 
-#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:50
-#| msgid "Author"
+#: webapp/WEB-INF/pages/index.jsp:68 webapp/WEB-INF/pages/post.jsp:50
 msgid "\"Author:\""
 msgstr "\"作者:\""
 
-#: webapp/WEB-INF/pages/index.jsp:73 webapp/WEB-INF/pages/post.jsp:57
+#: webapp/WEB-INF/pages/index.jsp:76 webapp/WEB-INF/pages/post.jsp:57
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:78 webapp/WEB-INF/pages/post.jsp:63
+#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:63
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:90 webapp/WEB-INF/pages/post.jsp:75
+#: webapp/WEB-INF/pages/index.jsp:93 webapp/WEB-INF/pages/post.jsp:75
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
-#: webapp/WEB-INF/pages/index.jsp:113
+#: webapp/WEB-INF/pages/index.jsp:116
 msgid "Read More"
 msgstr "阅读全文"
 
-#: webapp/WEB-INF/pages/index.jsp:126 webapp/WEB-INF/pages/index.jsp:132
+#: webapp/WEB-INF/pages/index.jsp:129 webapp/WEB-INF/pages/index.jsp:135
 msgid "Previous Page"
 msgstr "上一页"
 
-#: webapp/WEB-INF/pages/index.jsp:141 webapp/WEB-INF/pages/index.jsp:147
+#: webapp/WEB-INF/pages/index.jsp:144 webapp/WEB-INF/pages/index.jsp:150
 msgid "Next Page"
 msgstr "下一页"
 
@@ -931,24 +944,20 @@ msgid ""
 "database tables first and then restart the web container."
 msgstr "您似乎已经安装过。若要重新安装，请删除数据库表，并重启 Web 容器。"
 
-#: webapp/WEB-INF/pages/installed.jsp:31 webapp/WEB-INF/pages/login.jsp:69
+#: webapp/WEB-INF/pages/installed.jsp:31 webapp/WEB-INF/pages/login.jsp:70
 msgid "Log In"
 msgstr "登录"
 
-#: webapp/WEB-INF/pages/login.jsp:18
-msgid "Login"
-msgstr "登录"
-
-#: webapp/WEB-INF/pages/login.jsp:65
+#: webapp/WEB-INF/pages/login.jsp:66
 msgid "Remember Me"
 msgstr "记住我"
 
-#: webapp/WEB-INF/pages/login.jsp:74
+#: webapp/WEB-INF/pages/login.jsp:75
 msgid "Lost your password?"
 msgstr "忘记密码？"
 
 #. TRANSLATORS: 0. site name.
-#: webapp/WEB-INF/pages/login.jsp:76
+#: webapp/WEB-INF/pages/login.jsp:77 webapp/WEB-INF/pages/register.jsp:72
 #, java-format
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
@@ -997,6 +1006,10 @@ msgstr "发表评论"
 #: webapp/WEB-INF/pages/post.jsp:221
 msgid "Comment are closed"
 msgstr "评论已关闭"
+
+#: webapp/WEB-INF/pages/register.jsp:71
+msgid "Log in"
+msgstr "登录"
 
 #: java/com/youthlin/blog/model/enums/CommentStatus.java:32
 msgid "NORMAL"
@@ -1065,17 +1078,22 @@ msgstr "名称已被其他条目使用。"
 msgid "The slug has be used by another item."
 msgstr "别名已被其他条目使用。"
 
-#: java/com/youthlin/blog/web/LoginController.java:39
+#: java/com/youthlin/blog/web/LoginController.java:43
 msgid "Username, password are all required."
 msgstr "用户名、密码均为必填项。"
 
-#: java/com/youthlin/blog/web/LoginController.java:45
+#: java/com/youthlin/blog/web/LoginController.java:49
 msgid "Username or password is incorrect."
 msgstr "用户名或密码错误。"
 
-#: java/com/youthlin/blog/web/LoginController.java:52
+#: java/com/youthlin/blog/web/LoginController.java:56
 msgid "You are logged out now."
 msgstr "您已登出。"
+
+#: java/com/youthlin/blog/web/LoginController.java:71
+#: java/com/youthlin/blog/web/back/CommentController.java:158
+msgid "Invalid param."
+msgstr "非法参数。"
 
 #: java/com/youthlin/blog/web/SetUpController.java:51
 msgid "Username, password, email are all required."
@@ -1117,10 +1135,6 @@ msgstr "未知的分类目录。"
 msgid "Name must not be empty."
 msgstr "名称不能为空。"
 
-#: java/com/youthlin/blog/web/back/CommentController.java:158
-msgid "Invalid param."
-msgstr "非法参数。"
-
 #: java/com/youthlin/blog/web/back/CommentController.java:165
 msgid "No such comment."
 msgstr "评论不存在。"
@@ -1138,13 +1152,13 @@ msgstr "姓名，电子邮件和评论内容是必填项。"
 msgid "Comment updated."
 msgstr "评论已更新。"
 
-#: java/com/youthlin/blog/web/back/PostController.java:315
-#: java/com/youthlin/blog/web/back/PostController.java:363
+#: java/com/youthlin/blog/web/back/PostController.java:316
+#: java/com/youthlin/blog/web/back/PostController.java:364
 msgid "Illegal param: postId."
 msgstr "非法参数︰ 文章不存在。"
 
-#: java/com/youthlin/blog/web/back/PostController.java:320
-#: java/com/youthlin/blog/web/back/PostController.java:368
+#: java/com/youthlin/blog/web/back/PostController.java:321
+#: java/com/youthlin/blog/web/back/PostController.java:369
 msgid "Illegal param: postId does not exist."
 msgstr "非法参数︰ 文章不存在。"
 

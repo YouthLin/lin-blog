@@ -48,32 +48,27 @@
             <c:if test="${not empty error}">
                 <div class="error">${error}</div>
             </c:if>
-            <form id="login-form" action="<c:url value="/login"/> " method="post">
+            <form id="login-form" action="<c:url value="/login.register"/> " method="post">
                 <div class="form-group">
-                    <label for="user"><%=__("Username")%>
-                    </label>
+                    <label for="user"><%=__("Username")%></label>
                     <input type="text" class="form-control" id="user" name="user" required>
                 </div>
                 <div class="form-group">
-                    <label for="plain"><%=__("Password")%>
-                    </label>
+                    <label for="email"><%=__("Email")%></label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="plain"><%=__("Password")%></label>
                     <input type="password" class="form-control" id="plain" required>
                     <input type="hidden" id="pass" name="pass">
                 </div>
-                <div class="checkbox pull-left">
-                    <label>
-                        <input type="checkbox" id="remember-me" value="forever" name="remember">
-                        <%=__("Remember Me")%>
-                    </label>
-                </div>
                 <div class="submit pull-right">
-                    <button type="submit" class="btn btn-primary"><%=__("Log In")%>
+                    <button type="submit" class="btn btn-primary"><%=__("Register")%>
                     </button>
                 </div>
             </form>
             <div class="blog-panel-footer clear">
-                <p><a href="#"><%=__("Lost your password?")%></a></p>
-                <p><a href="<c:url value="/login.register"/>"><%=__("Register")%></a></p>
+                <p><a href="<c:url value="/login"/>"><%=__("Log in")%></a></p>
                 <p><a href="<c:url value="/"/>"><%=/*TRANSLATORS: 0. site name.*/_f("&larr; Back to {0}",
                         request.getAttribute(Constant.O_BLOG_TITLE))%>
                 </a></p>

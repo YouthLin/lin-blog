@@ -1,7 +1,10 @@
 package com.youthlin.blog.web;
 
+import com.youthlin.blog.model.enums.Role;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
+import com.youthlin.blog.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -13,6 +16,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
+import java.util.UUID;
 
 import static com.youthlin.utils.i18n.Translation.__;
 
@@ -51,5 +55,30 @@ public class LoginController {
         userService.logout(request, response);
         model.addAttribute(Constant.MSG, __("You are logged out now."));
         return "login";
+    }
+
+    @RequestMapping(path = {"login.register"}, method = RequestMethod.GET)
+    public String register() {
+        return "register";
+    }
+
+    @RequestMapping(path = {"login.register"}, method = RequestMethod.POST)
+    public String register(@RequestParam Map<String, String> param, Model model) {
+        String user = param.get("user");
+        String email = param.get("email");
+        String pass = param.get("pass");
+        if (!StringUtils.hasText(user) || !StringUtils.hasText(email) || !StringUtils.hasText(pass) || pass.length() != Constant.MD5_LEN) {
+            model.addAttribute(Constant.ERROR, __("Invalid param."));
+            return "register";
+        }
+        String rand = UUID.randomUUID().toString().substring(0, Constant.RAND_LEN);
+        pass = rand + MD5Util.md5(rand + pass);
+        User newUser = new User()
+                .setUserLogin(user)
+                .setUserEmail(email)
+                .setUserPass(pass)
+                .setDisplayName(user);
+        userService.saveNewUser(newUser, Role.Subscriber);
+        return "redirect:/login";
     }
 }

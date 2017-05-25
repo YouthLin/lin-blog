@@ -112,8 +112,17 @@
             </div>
             <div class="panel-body">
                 <ul>
-                    <li><a href="<c:url value="/admin/"/>"><%=__("Dashboard")%></a></li>
-                    <li><a href="#"><abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                    <c:choose>
+                        <c:when test="${not empty user}">
+                            <li><a href="<c:url value="/admin/"/>"><%=__("Dashboard")%></a></li>
+                            <li><a href="<c:url value="/login.out"/>"><%=__("Log out")%></a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="<c:url value="/login"/>"><%=__("Login")%></a></li>
+                            <li><a href="<c:url value="/login.register"/>"><%=__("Register")%></a></li>
+                        </c:otherwise>
+                    </c:choose>
+                    <li><a href="javascript:"><abbr title="Really Simple Syndication">RSS</abbr></a></li>
                     <li><a href="http://youthlin.com/" target="_blank"><%=_f("Powered By {0}", "LinBlog")%></a></li>
                 </ul>
             </div>
