@@ -1,6 +1,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="tr" uri="http://youthlin.com/linblog/tag/comment" %>
-<%@ page import="static com.youthlin.utils.i18n.Translation.__" %><%--
+<%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
+<%@ page import="com.youthlin.blog.model.po.User" %>
+<%@ page import="com.youthlin.blog.model.bo.Page" %><%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -16,6 +18,36 @@
 });</script>
 <h1><%=__("All Users")%></h1>
 <div class="table-responsive">
+    <%--@elvariable id="userPage" type="com.youthlin.blog.model.bo.Page"--%>
+    <c:if test="${not empty userPage and userPage.totalPage>0}">
+        <div class="border-pager pull-right">
+            <%
+                Page<User> userPage = (Page<User>) request.getAttribute("userPage");
+            %>
+            <c:set var="totalRow" value="${userPage.totalRow}"/>
+            <span class="table-meta table-meta-count"><%=_f("{0} Items", userPage.getTotalRow())%></span>
+            <c:set var="disabled" value=""/>
+            <c:if test="${userPage.currentPage==1}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=1">
+                <span class="sr-only"><%=__("First page")%></span>&laquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${userPage.currentPage-1}">
+                <span class="sr-only"><%=__("Previous page")%></span>&lsaquo;</a>
+            <form action="" class="form-inline" style="display: inline-block;">
+                <label><input type="text" name="page" class="form-control" value="${userPage.currentPage}"
+                              style="width: 34px;"> / ${userPage.totalPage}</label>
+            </form>
+            <c:set var="disabled" value=""/>
+            <c:if test="${userPage.currentPage==userPage.totalPage}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${userPage.currentPage+1}">
+                 <span class="sr-only"><%=__("Next page")%></span>&rsaquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${userPage.totalPage}">
+                 <span class="sr-only"><%=__("Last page")%></span>&raquo;</a>
+        </div>
+    </c:if>
     <table class="table table-striped table-hover border-ccc">
         <thead>
         <tr>
@@ -33,9 +65,7 @@
         </tr>
         </thead>
         <tbody>
-        <%--@elvariable id="allUser" type="java.util.List"--%>
-        <%--@elvariable id="aUser" type="com.youthlin.blog.model.po.User"--%>
-        <c:forEach items="${allUser}" var="aUser">
+        <c:forEach items="${userPage.list}" var="aUser">
             <tr>
                 <td>
                     <label>
@@ -56,18 +86,44 @@
                       </td>
                 <td>${aUser.userEmail}</td>
                 <td>
-                <%--@elvariable id="allRole" type="java.util.List"--%>
-                <%--@elvariable id="role" type="com.youthlin.blog.model.po.UserMeta"--%>
-                <c:forEach items="${allRole}" var="role">
-                    <c:if test="${role.userId eq aUser.userId}">
-                        <span class="split">${tr:__(role.metaValue)}</span>
-                    </c:if>
-                </c:forEach>
+            <%--@elvariable id="roleMetaMap" type="java.util.Map"--%>
+                    <span class="split">${tr:__(roleMetaMap[aUser.userId].metaValue)}</span>
                </td>
                <td><fmt:formatDate value="${aUser.userRegistered}" pattern="YYYY-MM-dd HH:mm"/></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+    <%--@elvariable id="userPage" type="com.youthlin.blog.model.bo.Page"--%>
+    <c:if test="${not empty userPage and userPage.totalPage>0}">
+        <div class="border-pager pull-right">
+            <%
+                Page<User> userPage = (Page<User>) request.getAttribute("userPage");
+            %>
+            <c:set var="totalRow" value="${userPage.totalRow}"/>
+            <span class="table-meta table-meta-count"><%=_f("{0} Items", userPage.getTotalRow())%></span>
+            <c:set var="disabled" value=""/>
+            <c:if test="${userPage.currentPage==1}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=1">
+                <span class="sr-only"><%=__("First page")%></span>&laquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${userPage.currentPage-1}">
+                <span class="sr-only"><%=__("Previous page")%></span>&lsaquo;</a>
+            <form action="" class="form-inline" style="display: inline-block;">
+                <label><input type="text" name="page" class="form-control" value="${userPage.currentPage}"
+                              style="width: 34px;"> / ${userPage.totalPage}</label>
+            </form>
+            <c:set var="disabled" value=""/>
+            <c:if test="${userPage.currentPage==userPage.totalPage}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${userPage.currentPage+1}">
+                 <span class="sr-only"><%=__("Next page")%></span>&rsaquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${userPage.totalPage}">
+                 <span class="sr-only"><%=__("Last page")%></span>&raquo;</a>
+        </div>
+    </c:if>
+
 </div>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

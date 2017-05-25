@@ -1,11 +1,14 @@
 package com.youthlin.blog.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.youthlin.blog.dao.UserDao;
 import com.youthlin.blog.dao.UserMetaDao;
 import com.youthlin.blog.model.bo.LoginInfo;
+import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
@@ -291,6 +294,12 @@ public class UserService {
 
     public List<User> getAllUser() {
         return userDao.listAll();
+    }
+
+    public Page<User> listByPage(int pageIndex, int pageSize) {
+        PageInfo<User> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(() -> userDao.listAll());
+        Page<User> page = new Page<>(pageInfo);
+        return page;
     }
 
     public List<User> listById(Set<Long> userIds) {

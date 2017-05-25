@@ -83,13 +83,13 @@
 </form>
 <div class="table-responsive">
 
-    <%--@elvariable id="commentPage" type="com.youthlin.blog.model.bo.Page"--%>
+    <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
     <c:if test="${not empty postPage and postPage.totalPage>0}">
         <div class="border-pager pull-right">
             <%
                 Page<Post> postPage = (Page<Post>) request.getAttribute("postPage");
             %>
-            <c:set var="totalRow" value="${commentPage.totalRow}"/>
+            <c:set var="totalRow" value="${postPage.totalRow}"/>
             <span class="table-meta table-meta-count"><%=_f("{0} Items", postPage.getTotalRow())%></span>
             <c:set var="disabled" value=""/>
             <c:if test="${postPage.currentPage==1}">
@@ -204,13 +204,13 @@
         </tbody>
     </table>
 
-    <%--@elvariable id="commentPage" type="com.youthlin.blog.model.bo.Page"--%>
+    <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
     <c:if test="${not empty postPage and postPage.totalPage>0}">
         <div class="border-pager pull-right">
             <%
                 Page<Post> postPage = (Page<Post>) request.getAttribute("postPage");
             %>
-            <c:set var="totalRow" value="${commentPage.totalRow}"/>
+            <c:set var="totalRow" value="${postPage.totalRow}"/>
             <span class="table-meta table-meta-count"><%=_f("{0} Items", postPage.getTotalRow())%></span>
             <c:set var="disabled" value=""/>
             <c:if test="${postPage.currentPage==1}">

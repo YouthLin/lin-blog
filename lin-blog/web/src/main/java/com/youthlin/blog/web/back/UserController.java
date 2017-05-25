@@ -1,5 +1,7 @@
 package com.youthlin.blog.web.back;
 
+import com.google.common.collect.Maps;
+import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
@@ -44,11 +46,20 @@ public class UserController {
             return Constant.REDIRECT_TO_PROFILE;
         }
         model.addAttribute("title", __("All Users"));
-
-        List<User> allUser = userService.getAllUser();
+        String pageStr = request.getParameter("page");
+        int pageIndex = 1;
+        try {
+            pageIndex = Integer.parseInt(pageStr);
+        } catch (NumberFormatException ignore) {
+        }
+        Page<User> userPage = userService.listByPage(pageIndex, Constant.DEFAULT_PAGE_SIZE);
+        model.addAttribute("userPage", userPage);
         List<UserMeta> allRole = userService.getAllRole();
-        model.addAttribute("allUser", allUser);
-        model.addAttribute("allRole", allRole);
+        Map<Long, UserMeta> roleMetaMap = Maps.newHashMap();
+        for (UserMeta userMeta : allRole) {
+            roleMetaMap.put(userMeta.getUserId(), userMeta);
+        }
+        model.addAttribute("roleMetaMap", roleMetaMap);
         return "admin/users-all";
     }
 
