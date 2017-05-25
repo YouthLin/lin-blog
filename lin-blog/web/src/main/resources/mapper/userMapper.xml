@@ -57,5 +57,17 @@
         FROM users
     </select>
 
+    <select id="listByIds" resultMap="userMap" parameterType="collection">
+        SELECT
+        <include refid="all"/>
+        FROM users
+        WHERE 1!=1
+        <if test="userIds !=null and userIds.size() > 0">
+            <foreach collection="userIds" item="id" open=" OR ID IN( " close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+
 
 </mapper>

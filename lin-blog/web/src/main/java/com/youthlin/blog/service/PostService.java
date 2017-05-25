@@ -19,6 +19,7 @@ import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.PostMeta;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.TaxonomyRelationships;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import org.joda.time.DateTime;
@@ -213,19 +214,23 @@ public class PostService {
 
     private Page<Post> findPublishedPostByPage(int pageIndex, int pageSize) {
         PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
-                () -> postDao.queryByTaxonomySlugKindAndDate(null, PostStatus.PUBLISHED, null, null)
+                () -> postDao.queryByTaxonomySlugKindAndDate(null, null, PostStatus.PUBLISHED, null, null)
         );
         Page<Post> postPage = new Page<>(pageInfo);
         log.debug("分页查询已发布文章：{}", postPage);
         return postPage;
     }
 
-    public Page<Post> findPublishedPostByTaxonomyByPage(Taxonomy taxonomy, int pageIndex, int pageSize) {
-        if (taxonomy == null) {
+    public Page<Post> findPublishedPostByTaxonomyByPage(Taxonomy taxonomy, User author, int pageIndex, int pageSize) {
+        if (taxonomy == null && author == null) {
             return findPublishedPostByPage(pageIndex, pageSize);
         }
+        List<Taxonomy> taxonomyList = Lists.newArrayList();
+        if (taxonomy != null) {
+            taxonomyList.add(taxonomy);
+        }
         PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
-                () -> postDao.queryByTaxonomySlugKindAndDate(Lists.newArrayList(taxonomy), PostStatus.PUBLISHED, null, null)
+                () -> postDao.queryByTaxonomySlugKindAndDate(taxonomyList, author, PostStatus.PUBLISHED, null, null)
         );
         Page<Post> postPage = new Page<>(pageInfo);
         log.debug("按 Taxonomy 分页查询已发布文章：{}", postPage);
@@ -234,7 +239,7 @@ public class PostService {
 
     public Page<Post> findPublishedPostByDateByPage(Date start, Date end, int pageIndex, int pageSize) {
         PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(
-                () -> postDao.queryByTaxonomySlugKindAndDate(null, PostStatus.PUBLISHED, start, end)
+                () -> postDao.queryByTaxonomySlugKindAndDate(null, null, PostStatus.PUBLISHED, start, end)
         );
         Page<Post> postPage = new Page<>(pageInfo);
         log.debug("按时间分页查询已发布文章：{}", postPage);

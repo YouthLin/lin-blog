@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 创建： lin
@@ -23,4 +24,7 @@ public interface UserDao {
     User findByUserNameAndPassword(@Param("username") String username, @Param("password") String password);
 
     List<User> listAll();
+
+    List<User> listByIds(@Param("userIds") Set<Long> userIds);
+
 }

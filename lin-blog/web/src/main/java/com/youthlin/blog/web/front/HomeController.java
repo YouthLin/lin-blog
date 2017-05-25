@@ -1,14 +1,18 @@
 package com.youthlin.blog.web.front;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.bo.Page;
 import com.youthlin.blog.model.bo.Tag;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.service.TaxonomyService;
+import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.PostTaxonomyHelper;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -23,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * 创建： lin
@@ -38,29 +44,35 @@ public class HomeController {
     private CategoryService categoryService;
     @Resource
     private TaxonomyService taxonomyService;
+    @Resource
+    private UserService userService;
 
     @RequestMapping(path = {
             "/", "/category/{categorySlug}", "/tag/{tagSlug}", "/date/{year}", "/date/{year}/{month}",
+            "/author/{authorId}"
     })
     public String home(@RequestParam(required = false, name = "page") String pageIndex,
                        @RequestParam(required = false, name = "size") String pageSize,
                        @PathVariable(required = false) String categorySlug,
                        @PathVariable(required = false) String tagSlug,
                        @PathVariable(required = false) String year,
-                       @PathVariable(required = false) String month, Model model) {
-        log.debug("param: pageIndex = {}, categorySlug = {}, tagSlug = {}, year = {}, month = {}",
-                pageIndex, categorySlug, tagSlug, year, month);
+                       @PathVariable(required = false) String month, Model model,
+                       @PathVariable(required = false) String authorId) {
+        log.debug("param: pageIndex = {}, categorySlug = {}, tagSlug = {}, year = {}, month = {}, authorId str = {}",
+                pageIndex, categorySlug, tagSlug, year, month, authorId);
         int pageNum = parsePageNum(pageIndex);
         int size = parsePageNum(pageSize);
         Taxonomy taxonomy = parseTaxonomy(categorySlug, tagSlug, model);
+        User user = parseUser(authorId);
         DateTime[] dateTimes = parseDate(year, month, model);
         DateTime start = dateTimes[0];
         DateTime end = dateTimes[1];
         log.info("参数：页码{} 分类法{} 日期{} -> {}", pageNum, taxonomy, toString(start), toString(end));
-        Page<Post> postPage = getPostPage(pageNum, size, taxonomy, start, end);
+        Page<Post> postPage = getPostPage(pageNum, size, taxonomy, user, start, end);
         model.addAttribute("postPage", postPage);
         log.info("post page = {}", postPage);
         PostTaxonomyHelper.fetchTaxonomyRelationships(postPage.getList(), model, postService);
+        fetchAuthorInfo(postPage.getList(), model);
         return "index";
     }
 
@@ -107,6 +119,23 @@ public class HomeController {
         return taxonomy;
     }
 
+    private User parseUser(String authorIdStr) {
+        if (!StringUtils.hasText(authorIdStr)) {
+            return null;
+        }
+        long id = -1;
+        try {
+            id = Long.parseLong(authorIdStr);
+        } catch (NumberFormatException ignore) {
+        }
+        if (id < 0) {
+            return null;
+        }
+        User user = userService.findById(id);
+        log.debug("user = {}", user);
+        return user;
+    }
+
     private DateTime[] parseDate(String year, String month, Model model) {
         DateTime start = null, end = null;
         if (StringUtils.hasText(year)) {
@@ -134,14 +163,14 @@ public class HomeController {
         return new DateTime[]{start, end};
     }
 
-    private Page<Post> getPostPage(int pageNum, int pageSize, Taxonomy taxonomy, DateTime start, DateTime end) {
+    private Page<Post> getPostPage(int pageNum, int pageSize, Taxonomy taxonomy, User author, DateTime start, DateTime end) {
         if (pageSize == 0) {
             pageSize = 3;
         }
         if (start != null && end != null) {
             return postService.findPublishedPostByDateByPage(start.toDate(), end.toDate(), pageNum, pageSize);
         }
-        return postService.findPublishedPostByTaxonomyByPage(taxonomy, pageNum, pageSize);
+        return postService.findPublishedPostByTaxonomyByPage(taxonomy, author, pageNum, pageSize);
     }
 
     private String toString(DateTime dateTime) {
@@ -151,4 +180,19 @@ public class HomeController {
         return null;
     }
 
+    private void fetchAuthorInfo(List<Post> postList, Model model) {
+        if (postList == null) {
+            return;
+        }
+        Set<Long> userIds = Sets.newHashSet();
+        for (Post post : postList) {
+            userIds.add(post.getPostAuthorId());
+        }
+        List<User> users = userService.listById(userIds);
+        Map<Long, User> userMap = Maps.newHashMap();
+        for (User user : users) {
+            userMap.put(user.getUserId(), user);
+        }
+        model.addAttribute("userMap", userMap);
+    }
 }

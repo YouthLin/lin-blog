@@ -288,6 +288,10 @@ public class UserService {
         return userDao.listAll();
     }
 
+    public List<User> listById(Set<Long> userIds) {
+        return userDao.listByIds(userIds);
+    }
+
     public List<UserMeta> getAllRole() {
         return userMetaDao.listByMetaKey(Constant.K_ROLE);
     }

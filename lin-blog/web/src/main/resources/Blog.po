@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 19:46+0800\n"
-"PO-Revision-Date: 2017-05-25 19:46+0800\n"
+"POT-Creation-Date: 2017-05-25 20:46+0800\n"
+"PO-Revision-Date: 2017-05-25 20:46+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -38,12 +38,12 @@ msgid "All Comments"
 msgstr "所有评论"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:30
-#: webapp/WEB-INF/pages/admin/post-all.jsp:38
+#: webapp/WEB-INF/pages/admin/post-all.jsp:40
 msgid "All"
 msgstr "所有"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:32
-#: webapp/WEB-INF/pages/admin/post-all.jsp:43
+#: webapp/WEB-INF/pages/admin/post-all.jsp:45
 msgid "Pending"
 msgstr "待审"
 
@@ -56,7 +56,7 @@ msgid "Spam"
 msgstr "垃圾评论"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:38
-#: webapp/WEB-INF/pages/admin/post-all.jsp:47
+#: webapp/WEB-INF/pages/admin/post-all.jsp:49
 msgid "Trash"
 msgstr "回收站"
 
@@ -64,6 +64,8 @@ msgstr "回收站"
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:168
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:29
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:130
+#: webapp/WEB-INF/pages/admin/post-all.jsp:93
+#: webapp/WEB-INF/pages/admin/post-all.jsp:214
 #, java-format
 msgid "{0} Items"
 msgstr "共 {0} 项"
@@ -72,6 +74,8 @@ msgstr "共 {0} 项"
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:174
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:35
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:136
+#: webapp/WEB-INF/pages/admin/post-all.jsp:99
+#: webapp/WEB-INF/pages/admin/post-all.jsp:220
 msgid "First page"
 msgstr "首页"
 
@@ -79,6 +83,8 @@ msgstr "首页"
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:176
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:37
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:138
+#: webapp/WEB-INF/pages/admin/post-all.jsp:101
+#: webapp/WEB-INF/pages/admin/post-all.jsp:222
 msgid "Previous page"
 msgstr "上一页"
 
@@ -86,6 +92,8 @@ msgstr "上一页"
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:186
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:47
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:148
+#: webapp/WEB-INF/pages/admin/post-all.jsp:111
+#: webapp/WEB-INF/pages/admin/post-all.jsp:232
 msgid "Next page"
 msgstr "下一页"
 
@@ -93,12 +101,14 @@ msgstr "下一页"
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:188
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:49
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:150
+#: webapp/WEB-INF/pages/admin/post-all.jsp:113
+#: webapp/WEB-INF/pages/admin/post-all.jsp:234
 msgid "Last page"
 msgstr "尾页"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:78
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:57
-#: webapp/WEB-INF/pages/admin/post-all.jsp:88
+#: webapp/WEB-INF/pages/admin/post-all.jsp:122
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:52
 #: webapp/WEB-INF/pages/admin/users-all.jsp:24
@@ -107,7 +117,7 @@ msgstr "全选"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:82
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:61
-#: webapp/WEB-INF/pages/admin/post-all.jsp:93
+#: webapp/WEB-INF/pages/admin/post-all.jsp:127
 #: java/com/youthlin/blog/model/enums/Role.java:46
 msgid "Author"
 msgstr "作者"
@@ -125,13 +135,13 @@ msgstr "文章"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:85
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:64
-#: webapp/WEB-INF/pages/admin/post-all.jsp:98
+#: webapp/WEB-INF/pages/admin/post-all.jsp:132
 msgid "Date"
 msgstr "日期"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:107
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:87
-#: webapp/WEB-INF/pages/admin/post-all.jsp:108
+#: webapp/WEB-INF/pages/admin/post-all.jsp:142
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:66
 #: webapp/WEB-INF/pages/admin/users-all.jsp:42
@@ -142,7 +152,7 @@ msgstr "选择"
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:100
 #: webapp/WEB-INF/pages/admin/index.jsp:47
 #: webapp/WEB-INF/pages/admin/index.jsp:108
-#: webapp/WEB-INF/pages/admin/post-all.jsp:123
+#: webapp/WEB-INF/pages/admin/post-all.jsp:157
 #: webapp/WEB-INF/pages/admin/post-category.jsp:84
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:72
 msgid "Edit"
@@ -150,7 +160,7 @@ msgstr "编辑"
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:122
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:102
-#: webapp/WEB-INF/pages/admin/post-all.jsp:127
+#: webapp/WEB-INF/pages/admin/post-all.jsp:161
 #: webapp/WEB-INF/pages/admin/post-category.jsp:90
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:74
 msgid "View"
@@ -184,12 +194,12 @@ msgstr "编辑评论"
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:31
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:147
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:153
 msgid "Name"
 msgstr "名称"
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:34
-#: webapp/WEB-INF/pages/post.jsp:152
+#: webapp/WEB-INF/pages/post.jsp:158
 msgid "\"Display Name\""
 msgstr "\"显示名称\""
 
@@ -197,27 +207,27 @@ msgstr "\"显示名称\""
 #: webapp/WEB-INF/pages/admin/users-add.jsp:37
 #: webapp/WEB-INF/pages/admin/users-all.jsp:30
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:57
-#: webapp/WEB-INF/pages/post.jsp:156
+#: webapp/WEB-INF/pages/post.jsp:162
 msgid "Email"
 msgstr "电子邮件"
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:42
-#: webapp/WEB-INF/pages/post.jsp:161
+#: webapp/WEB-INF/pages/post.jsp:167
 msgid "\"Email will never public\""
 msgstr "\"邮件地址不会公开\""
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:46
-#: webapp/WEB-INF/pages/post.jsp:166
+#: webapp/WEB-INF/pages/post.jsp:172
 msgid "URL"
 msgstr "网址"
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:49
-#: webapp/WEB-INF/pages/post.jsp:169
+#: webapp/WEB-INF/pages/post.jsp:175
 msgid "\"URL is optional\""
 msgstr "\"可不填\""
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:54
-#: webapp/WEB-INF/pages/post.jsp:176
+#: webapp/WEB-INF/pages/post.jsp:182
 msgid "Content"
 msgstr "内容"
 
@@ -347,48 +357,48 @@ msgstr "所有页面"
 msgid "Write New Page"
 msgstr "新建页面"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:28
+#: webapp/WEB-INF/pages/admin/post-all.jsp:30
 #: webapp/WEB-INF/pages/common/admin/header.jsp:82
 #: java/com/youthlin/blog/web/back/PostController.java:86
 msgid "All Post"
 msgstr "所有文章"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:40
-#: webapp/WEB-INF/pages/admin/post-all.jsp:157
+#: webapp/WEB-INF/pages/admin/post-all.jsp:42
+#: webapp/WEB-INF/pages/admin/post-all.jsp:191
 msgid "Published"
 msgstr "已发布"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:45
+#: webapp/WEB-INF/pages/admin/post-all.jsp:47
 msgid "Draft"
 msgstr "草稿"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:52
+#: webapp/WEB-INF/pages/admin/post-all.jsp:54
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:101
 #: webapp/WEB-INF/pages/admin/post-write.jsp:81
 msgid "Publish Datetime:"
 msgstr "发布时间："
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:62
+#: webapp/WEB-INF/pages/admin/post-all.jsp:64
 msgid "\"All Date\""
 msgstr "\"所有日期\""
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:67
+#: webapp/WEB-INF/pages/admin/post-all.jsp:69
 msgid "Select Category:"
 msgstr "选择分类目录："
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:69
+#: webapp/WEB-INF/pages/admin/post-all.jsp:71
 msgid "All Category"
 msgstr "所有分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:80
+#: webapp/WEB-INF/pages/admin/post-all.jsp:82
 msgid "Filter"
 msgstr "过滤"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:92
+#: webapp/WEB-INF/pages/admin/post-all.jsp:126
 msgid "Title"
 msgstr "标题"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:94
+#: webapp/WEB-INF/pages/admin/post-all.jsp:128
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:145
 #: webapp/WEB-INF/pages/admin/post-write.jsp:111
@@ -396,7 +406,7 @@ msgstr "标题"
 msgid "Category"
 msgstr "分类目录"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:95
+#: webapp/WEB-INF/pages/admin/post-all.jsp:129
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:175
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:18
 #: webapp/WEB-INF/pages/admin/post-write.jsp:138
@@ -405,29 +415,29 @@ msgstr "分类目录"
 msgid "Tag"
 msgstr "标签"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:97
+#: webapp/WEB-INF/pages/admin/post-all.jsp:131
 msgid "Comment Count"
 msgstr "评论数量"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:119
+#: webapp/WEB-INF/pages/admin/post-all.jsp:153
 msgid "UnTrash"
 msgstr "还原"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:120
+#: webapp/WEB-INF/pages/admin/post-all.jsp:154
 #: webapp/WEB-INF/pages/admin/post-category.jsp:87
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:73
 msgid "Delete"
 msgstr "删除"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:124
+#: webapp/WEB-INF/pages/admin/post-all.jsp:158
 msgid "Move To Trash"
 msgstr "移至回收站"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:151
+#: webapp/WEB-INF/pages/admin/post-all.jsp:185
 msgid "Comment Count:"
 msgstr "评论数量："
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:162
+#: webapp/WEB-INF/pages/admin/post-all.jsp:196
 msgid "Last Modified"
 msgstr "最后修改"
 
@@ -835,27 +845,32 @@ msgstr "第 {0} 页 "
 msgid "\"Published Date:\""
 msgstr "\"发布时间：\""
 
-#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:51
+#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:50
+#| msgid "Author"
+msgid "\"Author:\""
+msgstr "\"作者:\""
+
+#: webapp/WEB-INF/pages/index.jsp:73 webapp/WEB-INF/pages/post.jsp:57
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:57
+#: webapp/WEB-INF/pages/index.jsp:78 webapp/WEB-INF/pages/post.jsp:63
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:69
+#: webapp/WEB-INF/pages/index.jsp:90 webapp/WEB-INF/pages/post.jsp:75
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
-#: webapp/WEB-INF/pages/index.jsp:104
+#: webapp/WEB-INF/pages/index.jsp:113
 msgid "Read More"
 msgstr "阅读全文"
 
-#: webapp/WEB-INF/pages/index.jsp:117 webapp/WEB-INF/pages/index.jsp:123
+#: webapp/WEB-INF/pages/index.jsp:126 webapp/WEB-INF/pages/index.jsp:132
 msgid "Previous Page"
 msgstr "上一页"
 
-#: webapp/WEB-INF/pages/index.jsp:132 webapp/WEB-INF/pages/index.jsp:138
+#: webapp/WEB-INF/pages/index.jsp:141 webapp/WEB-INF/pages/index.jsp:147
 msgid "Next Page"
 msgstr "下一页"
 
@@ -938,48 +953,48 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: webapp/WEB-INF/pages/post.jsp:87 webapp/WEB-INF/pages/post.jsp:94
+#: webapp/WEB-INF/pages/post.jsp:93 webapp/WEB-INF/pages/post.jsp:100
 msgid "Previous post:"
 msgstr "上一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:96
+#: webapp/WEB-INF/pages/post.jsp:102
 msgid "No previous post"
 msgstr "没有上一篇"
 
-#: webapp/WEB-INF/pages/post.jsp:102 webapp/WEB-INF/pages/post.jsp:108
+#: webapp/WEB-INF/pages/post.jsp:108 webapp/WEB-INF/pages/post.jsp:114
 msgid "Next post:"
 msgstr "下一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:109
+#: webapp/WEB-INF/pages/post.jsp:115
 msgid "No next post"
 msgstr "没有下一篇"
 
-#: webapp/WEB-INF/pages/post.jsp:127
+#: webapp/WEB-INF/pages/post.jsp:133
 msgid "Leave your comment"
 msgstr "留下你的想法"
 
-#: webapp/WEB-INF/pages/post.jsp:129
+#: webapp/WEB-INF/pages/post.jsp:135
 msgctxt "cancel response."
 msgid "Cancel"
 msgstr "取消回复"
 
 #. TRANSLATORS: 0, context path; 1, user display name
-#: webapp/WEB-INF/pages/post.jsp:135
+#: webapp/WEB-INF/pages/post.jsp:141
 #, java-format
 msgid ""
 "You are logged as <a href=\"{0}/admin/users/my\" target=\"_blank\">{1}</a>. "
 msgstr ""
 "您正已 <a href=\"{0}/admin/users/my\" target=\"_blank\">{1}</a> 的身份登录。 "
 
-#: webapp/WEB-INF/pages/post.jsp:138
+#: webapp/WEB-INF/pages/post.jsp:144
 msgid "Log out?"
 msgstr "登出？"
 
-#: webapp/WEB-INF/pages/post.jsp:188
+#: webapp/WEB-INF/pages/post.jsp:194
 msgid "Post Comment"
 msgstr "发表评论"
 
-#: webapp/WEB-INF/pages/post.jsp:215
+#: webapp/WEB-INF/pages/post.jsp:221
 msgid "Comment are closed"
 msgstr "评论已关闭"
 
@@ -1115,7 +1130,7 @@ msgid "Sorry, but you can not edit this comment."
 msgstr "很抱歉，但是您不能编辑这则评论。"
 
 #: java/com/youthlin/blog/web/back/CommentController.java:189
-#: java/com/youthlin/blog/web/front/SinglePostController.java:107
+#: java/com/youthlin/blog/web/front/SinglePostController.java:112
 msgid "Name, email, and comment content are required."
 msgstr "姓名，电子邮件和评论内容是必填项。"
 
@@ -1165,20 +1180,20 @@ msgstr "密码错误。"
 msgid "Your profile has been updated."
 msgstr "您的信息已更新。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:89
 #: java/com/youthlin/blog/web/front/SinglePostController.java:94
+#: java/com/youthlin/blog/web/front/SinglePostController.java:99
 msgid "No such post."
 msgstr "文章不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:99
+#: java/com/youthlin/blog/web/front/SinglePostController.java:104
 msgid "Comments are closed on this post."
 msgstr "评论已关闭。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:123
+#: java/com/youthlin/blog/web/front/SinglePostController.java:128
 msgid "Parent comment does not exist."
 msgstr "您要回复的评论不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:127
+#: java/com/youthlin/blog/web/front/SinglePostController.java:132
 msgid "This post does not contains the parent comment."
 msgstr "您回复的评论不是本文的评论。"
 

@@ -8,6 +8,7 @@ import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CommentService;
 import com.youthlin.blog.service.PostService;
+import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.PostTaxonomyHelper;
 import com.youthlin.blog.util.ServletUtil;
@@ -41,6 +42,8 @@ public class SinglePostController {
     private PostService postService;
     @Resource
     private CommentService commentService;
+    @Resource
+    private UserService userService;
 
     @SuppressWarnings("StatementWithEmptyBody")
     @RequestMapping(path = {"/post/{id}"}, method = {RequestMethod.GET})
@@ -69,6 +72,8 @@ public class SinglePostController {
         fetchComment(post, model);
         Post next = postService.findNextOrPrevious(postId, true);
         Post previous = postService.findNextOrPrevious(postId, false);
+        User author = userService.findById(post.getPostAuthorId());
+        model.addAttribute("author", author);
         model.addAttribute("next", next);
         model.addAttribute("previous", previous);
         return "post";

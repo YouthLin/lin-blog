@@ -59,6 +59,15 @@
                                     </time>
                                 </a>
                                 </span>
+                                <span class="meta-info meta-info-author">
+                                    <span class="glyphicon glyphicon-user"
+                                          aria-label=<%=__("\"Author:\"")%> aria-hidden="true"></span>
+                                    <%--@elvariable id="userMap" type="java.util.Map"--%>
+                                    <%--@elvariable id="author" type="com.youthlin.blog.model.po.User"--%>
+                                    <c:set var="author" value="${userMap[post.postAuthorId]}"/>
+                                    <a href="<c:url value="/author/${post.postAuthorId}"/>">${author.displayName}</a>
+                                </span>
+
                                 <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
                                           aria-label=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>

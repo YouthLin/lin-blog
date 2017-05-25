@@ -3,6 +3,7 @@ package com.youthlin.blog.dao;
 import com.youthlin.blog.model.enums.PostStatus;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
+import com.youthlin.blog.model.po.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
@@ -48,7 +49,9 @@ public interface PostDao {
      * @return 按时间倒序的文章列表(新的在前)
      */
     List<Post> queryByTaxonomySlugKindAndDate
-    (@Param("taxonomies") List<Taxonomy> taxonomies, @Param("status") PostStatus status,
+    (@Param("taxonomies") List<Taxonomy> taxonomies,
+     @Param("author") User author,
+     @Param("status") PostStatus status,
      @Param("start") Date start, @Param("end") Date end);
 
     List<Post> findIdGreaterOrLessThen(@Param("id") long id, @Param("grater") boolean greater);
@@ -60,7 +63,7 @@ public interface PostDao {
      *
      * @param status 当不为 null 时只要对应状态的，否则全部文章
      */
-    List<Date> listAllDateByStatus(@Param("status")PostStatus status);
+    List<Date> listAllDateByStatus(@Param("status") PostStatus status);
 
     List<Post> listRecentPublished(int count);
 

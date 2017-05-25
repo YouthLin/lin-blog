@@ -127,6 +127,9 @@
             <if test="start!=null and end!=null">
                 AND (posts.post_date &gt;= #{start} AND posts.post_date &lt;= #{end})
             </if>
+            <if test="author != null">
+                AND posts.post_author=#{author.userId}
+            </if>
         </where>
         ORDER BY posts.post_date DESC
     </select>

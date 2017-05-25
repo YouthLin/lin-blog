@@ -45,7 +45,13 @@
                                     <fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd"/>
                                     </time>
                                 </a>
+                            <span class="meta-info meta-info-author">
+                                    <span class="glyphicon glyphicon-user"
+                                          aria-label=<%=__("\"Author:\"")%> aria-hidden="true"></span>
+                                    <%--@elvariable id="author" type="com.youthlin.blog.model.po.User"--%>
+                                    <a href="<c:url value="/author/${post.postAuthorId}"/>">${author.displayName}</a>
                                 </span>
+                             </span>
                             <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
                                           aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
