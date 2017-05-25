@@ -67,6 +67,11 @@ public class UserService {
         return user;
     }
 
+    public UserMeta updateMeta(UserMeta userMeta) {
+        userMetaDao.updateValue(userMeta);
+        return userMeta;
+    }
+
     public User findByUserName(String username) {
         return userDao.findByUserName(username);
     }

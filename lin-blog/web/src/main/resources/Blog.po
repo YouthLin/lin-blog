@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 23:09+0800\n"
-"PO-Revision-Date: 2017-05-25 23:10+0800\n"
+"POT-Creation-Date: 2017-05-26 00:24+0800\n"
+"PO-Revision-Date: 2017-05-26 00:24+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -156,6 +156,7 @@ msgstr "选择"
 #: webapp/WEB-INF/pages/admin/post-all.jsp:157
 #: webapp/WEB-INF/pages/admin/post-category.jsp:84
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:72
+#: webapp/WEB-INF/pages/admin/users-all.jsp:48
 msgid "Edit"
 msgstr "编辑"
 
@@ -207,6 +208,7 @@ msgstr "\"显示名称\""
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:38
 #: webapp/WEB-INF/pages/admin/users-add.jsp:37
 #: webapp/WEB-INF/pages/admin/users-all.jsp:30
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:68
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:57
 #: webapp/WEB-INF/pages/post.jsp:162 webapp/WEB-INF/pages/register.jsp:57
 msgid "Email"
@@ -240,6 +242,7 @@ msgstr "状态"
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:136
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:26
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:99
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:95
 msgid "Update"
 msgstr "更新"
@@ -674,13 +677,14 @@ msgstr "导入"
 #: webapp/WEB-INF/pages/admin/users-add.jsp:19
 #: webapp/WEB-INF/pages/admin/users-add.jsp:70
 #: webapp/WEB-INF/pages/common/admin/header.jsp:138
-#: java/com/youthlin/blog/web/back/UserController.java:60
-#: java/com/youthlin/blog/web/back/UserController.java:70
+#: java/com/youthlin/blog/web/back/UserController.java:146
+#: java/com/youthlin/blog/web/back/UserController.java:156
 msgid "Add User"
 msgstr "添加用户"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:29
 #: webapp/WEB-INF/pages/admin/users-all.jsp:28
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:44
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:43
 #: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:53
 #: webapp/WEB-INF/pages/register.jsp:53
@@ -700,6 +704,7 @@ msgstr "密码"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:51
 #: webapp/WEB-INF/pages/admin/users-all.jsp:31
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:50
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:49
 msgid "Role"
 msgstr "角色"
@@ -718,21 +723,22 @@ msgstr "昵称"
 msgid "Register date"
 msgstr "注册日期"
 
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:22
-#: webapp/WEB-INF/pages/common/admin/header.jsp:142
-#: java/com/youthlin/blog/web/back/UserController.java:109
-#: java/com/youthlin/blog/web/back/UserController.java:115
-msgid "My Profile"
-msgstr "个人资料"
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:22
+#: java/com/youthlin/blog/web/back/UserController.java:61
+msgid "Edit User"
+msgstr "编辑用户"
 
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:33
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:32
 msgid "Avatar"
 msgstr "头像"
 
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:37
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:36
 msgid "'How to change my avatar?'"
 msgstr "'如何更改头像？'"
 
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:37
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:36
 msgid ""
 "'You can change your avatar image at <a href=\"http://cn.gravatar.com\" "
@@ -741,17 +747,35 @@ msgstr ""
 "'您可以在 <a href=\"http://cn.gravatar.com\" target=\"_blank\">Gravatar.com</"
 "a> 更改头像'"
 
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:55
-msgid "General"
-msgstr "常规"
-
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:74
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:63
 msgid "Url"
 msgstr "网址"
 
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:80
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:69
 msgid "Display name"
 msgstr "显示名称"
+
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:88
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:85
+msgid "New password"
+msgstr "新密码"
+
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:92
+msgid "Leave this filed blank if you does't need change the user's password."
+msgstr "若不需更改该用户密码，请将此输入项留空。"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:22
+#: webapp/WEB-INF/pages/common/admin/header.jsp:142
+#: java/com/youthlin/blog/web/back/UserController.java:195
+#: java/com/youthlin/blog/web/back/UserController.java:201
+msgid "My Profile"
+msgstr "个人资料"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:55
+msgid "General"
+msgstr "常规"
 
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:76
 msgid ""
@@ -762,10 +786,6 @@ msgstr "若您不想更改密码，请将下列输入框留空。"
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:78
 msgid "Old password"
 msgstr "原密码"
-
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:85
-msgid "New password"
-msgstr "新密码"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:36
 msgid "Toggle Navigation"
@@ -1092,15 +1112,21 @@ msgstr "您已登出。"
 
 #: java/com/youthlin/blog/web/LoginController.java:71
 #: java/com/youthlin/blog/web/back/CommentController.java:158
+#: java/com/youthlin/blog/web/back/UserController.java:69
 msgid "Invalid param."
 msgstr "非法参数。"
+
+#: java/com/youthlin/blog/web/LoginController.java:76
+#: java/com/youthlin/blog/web/back/UserController.java:164
+msgid "This username has been used."
+msgstr "该用户名已被使用。"
 
 #: java/com/youthlin/blog/web/SetUpController.java:51
 msgid "Username, password, email are all required."
 msgstr "用户名、密码、电子邮件均为必填项。"
 
 #: java/com/youthlin/blog/web/SetUpController.java:55
-#: java/com/youthlin/blog/web/back/UserController.java:137
+#: java/com/youthlin/blog/web/back/UserController.java:223
 msgid ""
 "It seem that JavaScript doesn't work, but we need it to generate password."
 msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
@@ -1162,35 +1188,38 @@ msgstr "非法参数︰ 文章不存在。"
 msgid "Illegal param: postId does not exist."
 msgstr "非法参数︰ 文章不存在。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:78
-msgid "This username has been used."
-msgstr "该用户名已被使用。"
+#: java/com/youthlin/blog/web/back/UserController.java:91
+#: java/com/youthlin/blog/web/back/UserController.java:98
+msgid "Invalid param"
+msgstr "非法参数"
 
-#: java/com/youthlin/blog/web/back/UserController.java:82
-msgid "Password is required."
-msgstr "密码是必填项。"
-
-#: java/com/youthlin/blog/web/back/UserController.java:86
-msgid "Illegal email."
-msgstr "非法的电子邮件。"
-
-#: java/com/youthlin/blog/web/back/UserController.java:103
-msgid "User added."
-msgstr "用户已添加。"
-
-#: java/com/youthlin/blog/web/back/UserController.java:122
+#: java/com/youthlin/blog/web/back/UserController.java:113
+#: java/com/youthlin/blog/web/back/UserController.java:208
 msgid "Email and display name are required."
 msgstr "电子邮件和显示名称是必填项。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:130
+#: java/com/youthlin/blog/web/back/UserController.java:121
+#: java/com/youthlin/blog/web/back/UserController.java:216
 msgid "illegal url."
 msgstr "非法网址。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:144
+#: java/com/youthlin/blog/web/back/UserController.java:168
+msgid "Password is required."
+msgstr "密码是必填项。"
+
+#: java/com/youthlin/blog/web/back/UserController.java:172
+msgid "Illegal email."
+msgstr "非法的电子邮件。"
+
+#: java/com/youthlin/blog/web/back/UserController.java:189
+msgid "User added."
+msgstr "用户已添加。"
+
+#: java/com/youthlin/blog/web/back/UserController.java:230
 msgid "Password is incorrect."
 msgstr "密码错误。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:155
+#: java/com/youthlin/blog/web/back/UserController.java:241
 msgid "Your profile has been updated."
 msgstr "您的信息已更新。"
 
@@ -1240,3 +1269,9 @@ msgstr "说道："
 #: java/com/youthlin/blog/web/tag/CommentTag.java:107
 msgid "Replay"
 msgstr "回复"
+
+#~ msgid "Invalid param,"
+#~ msgstr "非法参数。"
+
+#~ msgid "Incalid param"
+#~ msgstr "非法参数。"

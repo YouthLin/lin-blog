@@ -43,8 +43,17 @@
                         <input type="checkbox" name="ids" value="${aUser.userId}">
                     </label>
                 </td>
-                <td>${aUser.userLogin}</td>
-                <td>${aUser.displayName}</td>
+                <td>${aUser.userLogin}&nbsp;
+                    <a href="<c:url value="/admin/users/edit?id=${aUser.userId}"/>" class="pull-right">
+                        <%=__("Edit")%></a></td>
+                <td>
+                    <c:choose>
+                        <c:when test="${not empty aUser.userUrl}">
+                            <a href="${aUser.userUrl}" target="_blank">${aUser.displayName}</a>
+                        </c:when>
+                        <c:otherwise>${aUser.displayName}</c:otherwise>
+                    </c:choose>
+                      </td>
                 <td>${aUser.userEmail}</td>
                 <td>
                 <%--@elvariable id="allRole" type="java.util.List"--%>

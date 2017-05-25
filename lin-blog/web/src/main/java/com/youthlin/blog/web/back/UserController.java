@@ -44,11 +44,97 @@ public class UserController {
             return Constant.REDIRECT_TO_PROFILE;
         }
         model.addAttribute("title", __("All Users"));
+
         List<User> allUser = userService.getAllUser();
         List<UserMeta> allRole = userService.getAllRole();
         model.addAttribute("allUser", allUser);
         model.addAttribute("allRole", allRole);
         return "admin/users-all";
+    }
+
+    @RequestMapping(path = "/users/edit", method = RequestMethod.GET)
+    public String editUser(Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Administrator.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
+        model.addAttribute("title", __("Edit User"));
+        String idStr = request.getParameter("id");
+        long id = -1;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException ignore) {
+        }
+        if (id < 0) {
+            model.addAttribute(Constant.ERROR, __("Invalid param."));
+        }
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
+        model.addAttribute("roleMeta", roleMeta);
+        return "admin/users-edit";
+    }
+
+    @RequestMapping(path = "/users/edit", method = RequestMethod.POST)
+    public String editUser(@RequestParam Map<String, String> params, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Administrator.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
+        String idStr = params.get("id");
+        long id = -1;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException ignore) {
+        }
+        if (id < 0) {
+            model.addAttribute(Constant.ERROR, __("Invalid param"));
+            return "admin/users-edit";
+        }
+        User user = userService.findById(id);
+        String roleStr = params.get("role");
+        role = Role.nameOf(roleStr);
+        if (role == null) {
+            model.addAttribute(Constant.ERROR, __("Invalid param"));
+            return "admin/users-edit";
+        }
+
+        UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
+        if (!user.getUserId().equals(1L)) {
+            roleMeta.setMetaValue(role.name());
+            userService.updateMeta(roleMeta);
+        }
+
+        String email = params.get("email");
+        String url = params.get("url");
+        String name = params.get("name");
+        String newPass = params.get("newPass");
+        if (!StringUtils.hasText(email) || !StringUtils.hasText(name)) {
+            model.addAttribute(Constant.ERROR, __("Email and display name are required."));
+            return "admin/users-edit";
+        }
+        if (StringUtils.hasText(url)) {
+            try {
+                //noinspection ResultOfMethodCallIgnored
+                URI.create(url).toURL();
+            } catch (MalformedURLException e) {
+                model.addAttribute(Constant.ERROR, __("illegal url."));
+                return "admin/users-edit";
+            }
+        }
+        user.setUserEmail(email)
+                .setUserUrl(url)
+                .setDisplayName(name);
+        if (StringUtils.hasText(newPass)) {
+            String rand = UUID.randomUUID().toString().substring(0, Constant.RAND_LEN);
+            newPass = rand + MD5Util.md5(rand + newPass);
+            user.setUserPass(newPass);
+            UserMeta loginInfoMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_LOGIN_INFO);
+            loginInfoMeta.setMetaValue(null);
+            userService.updateMeta(loginInfoMeta);
+        }
+        userService.update(user);
+        return "redirect:/admin/users/all";
     }
 
     @RequestMapping(path = "/users/add", method = RequestMethod.GET)

@@ -40,4 +40,12 @@ $(document).ready(function () {
         }
     });
 
+    $('#edit-user-form').submit(function () {
+        var user = $('#user').data('user');
+        var newPlain = $('#new-pass').val();
+        if (newPlain !== undefined && newPlain.length > 0) {
+            $('#newPass').val($.md5(user + newPlain));
+        }
+    });
+
 });
