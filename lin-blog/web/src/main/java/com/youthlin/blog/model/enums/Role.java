@@ -13,7 +13,16 @@ import static com.youthlin.utils.i18n.Translation.__;
  */
 @SuppressWarnings("unused")
 public enum Role {
-    Administrator(0), Editor(1), Author(2), Contributor(3), Subscriber(4),;
+    Administrator(40),//设置、工具
+
+    Editor(30),//页面、可以编辑其他人文章、分类、标签
+
+    Author(20),//list自己的文章、发文章
+
+    Contributor(10),//能看到概览、list 自己的文章、写草稿
+
+    Subscriber(0),;//能看到自己的评论
+
     private static final Map<Integer, Role> map;
     private static final Map<String, Role> nameMap;
     private final int code;

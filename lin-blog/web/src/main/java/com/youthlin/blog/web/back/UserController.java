@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -39,7 +38,11 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/users/all")
-    public String allUsers(Model model) {
+    public String allUsers(Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Administrator.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         model.addAttribute("title", __("All Users"));
         List<User> allUser = userService.getAllUser();
         List<UserMeta> allRole = userService.getAllRole();
@@ -49,13 +52,21 @@ public class UserController {
     }
 
     @RequestMapping(path = "/users/add", method = RequestMethod.GET)
-    public String add(Model model) {
+    public String add(Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Administrator.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         model.addAttribute("title", __("Add User"));
         return "admin/users-add";
     }
 
     @RequestMapping(path = "/users/add", method = RequestMethod.POST)
-    public String add(@RequestParam Map<String, String> params, Model model) {
+    public String add(@RequestParam Map<String, String> params, Model model, HttpServletRequest request) {
+        Role role1 = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role1 != null && role1.getCode() < Role.Administrator.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         model.addAttribute("title", __("Add User"));
         log.debug("add user, params = {}", params);
         String username = params.get("username");
@@ -98,7 +109,6 @@ public class UserController {
         model.addAttribute("title", __("My Profile"));
         return "admin/users-profile";
     }
-
 
     @RequestMapping(path = {"/users/my"}, method = {RequestMethod.POST})
     public String updateProfile(@RequestParam Map<String, String> params, HttpServletRequest request, Model model) {

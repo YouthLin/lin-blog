@@ -1,6 +1,7 @@
 package com.youthlin.blog.web.back;
 
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.ServletUtil;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -37,13 +39,21 @@ public class CategoryController {
     }
 
     @RequestMapping("/post/category")
-    public String categoryPage(Model model) {
+    public String categoryPage(Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         showPage(model);
         return "admin/post-category";
     }
 
     @RequestMapping(path = {"/post/category/add"}, method = {RequestMethod.POST})
-    public String addCategory(@RequestParam Map<String, String> param, Model model) {
+    public String addCategory(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         String name = param.get("name");
         String slug = param.get("slug");
         String parentIdStr = param.get("parent");
@@ -86,7 +96,12 @@ public class CategoryController {
     }
 
     @RequestMapping(path = {"/post/category/edit"}, method = {RequestMethod.GET})
-    public String editCategoryPage(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr, Model model) {
+    public String editCategoryPage(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr,
+                                   HttpServletRequest request, Model model) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         long id = 0;
         try {
             id = Long.parseLong(idStr);
@@ -106,7 +121,11 @@ public class CategoryController {
     }
 
     @RequestMapping(path = {"/post/category/edit"}, method = {RequestMethod.POST})
-    public String editCategory(@RequestParam Map<String, String> param, Model model) {
+    public String editCategory(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         StringBuilder errMsg = new StringBuilder();
         long id = 0;
         String idStr = param.get("id");
@@ -168,7 +187,11 @@ public class CategoryController {
     }
 
     @RequestMapping(path = {"/post/category/delete"})
-    public String delete(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr) {
+    public String delete(@RequestParam(name = "id", required = false, defaultValue = "0") String idStr, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         long id = 0;
         try {
             id = Long.parseLong(idStr);

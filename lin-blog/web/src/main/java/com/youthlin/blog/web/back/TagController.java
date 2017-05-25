@@ -2,6 +2,7 @@ package com.youthlin.blog.web.back;
 
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.bo.Tag;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.service.TagService;
 import com.youthlin.blog.util.Constant;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 import static com.youthlin.utils.i18n.Translation.__;
@@ -35,7 +37,11 @@ public class TagController {
     }
 
     @RequestMapping("/post/tag")
-    public String tagPage(@RequestParam Map<String, String> param, Model model) {
+    public String tagPage(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         String page = param.get("page");
         int pageIndex = Constant.DEFAULT_PAGE_INDEX;
         try {
@@ -47,7 +53,11 @@ public class TagController {
     }
 
     @RequestMapping(path = {"/post/tag/add"}, method = {RequestMethod.POST})
-    public String addTag(@RequestParam Map<String, String> param, Model model) {
+    public String addTag(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Editor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         String name = param.get("name");
         String slug = param.get("slug");
         String description = param.get("description");

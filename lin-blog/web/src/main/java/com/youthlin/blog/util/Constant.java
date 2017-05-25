@@ -38,6 +38,7 @@ public class Constant {
     // model
     public static final String MSG = "msg";
     public static final String ERROR = "error";
+    public static final String REDIRECT_TO_PROFILE = "redirect:/admin/users/my";
 
     // password: rand(8)+md5{rand(8)+md5(user+pass)}
     public static final int RAND_LEN = 8;

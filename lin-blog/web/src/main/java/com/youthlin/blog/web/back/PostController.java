@@ -6,6 +6,7 @@ import com.google.common.collect.Maps;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.enums.PostStatus;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.PostMeta;
 import com.youthlin.blog.model.po.User;
@@ -64,6 +65,10 @@ public class PostController {
     @RequestMapping(path = {"/post", "/post/{status}"})
     public String allPostPage(@PathVariable(required = false) String status, @RequestParam Map<String, String> param,
                               HttpServletRequest request, Model model) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         PostStatus postStatus = parseStatus(status, model);
         Date yearMonth = parseDate(param, model);
         Long categoryId = parseCategoryId(param, model);
@@ -206,10 +211,13 @@ public class PostController {
     // endregion
 
     @RequestMapping("/post/new")
-    public String newPostPage(Model model) {
+    public String newPostPage(HttpServletRequest request, Model model) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         model.addAttribute("title", __("Write Post"));
         model.addAttribute("editor", true);
-
         List<Category> categoryList = categoryService.listCategoriesByOrder();
         model.addAttribute("categoryList", categoryList);
         return "admin/post-write";
@@ -217,6 +225,10 @@ public class PostController {
 
     @RequestMapping(path = {"/post/add"}, method = {RequestMethod.POST})
     public String addPost(@RequestParam Map<String, String> param, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         String title = param.get("title");
         String content = param.get("content");
         String markdownContent = param.get("md-content");
@@ -293,7 +305,11 @@ public class PostController {
     }
 
     @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.GET})
-    public String edit(@RequestParam Map<String, String> param, Model model) {
+    public String edit(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         Long postId = parsePostId(param);
         if (postId == null) {
             model.addAttribute(Constant.ERROR, __("Illegal param: postId."));
@@ -337,6 +353,10 @@ public class PostController {
 
     @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.POST})
     public String editPost(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         log.debug("param = {}", param);
         Long postId = parsePostId(param);
         if (postId == null) {

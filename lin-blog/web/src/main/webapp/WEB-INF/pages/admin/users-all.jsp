@@ -1,4 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="tr" uri="http://youthlin.com/linblog/tag/comment" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %><%--
   Created by IntelliJ IDEA.
   User: lin
@@ -50,7 +51,7 @@
                 <%--@elvariable id="role" type="com.youthlin.blog.model.po.UserMeta"--%>
                 <c:forEach items="${allRole}" var="role">
                     <c:if test="${role.userId eq aUser.userId}">
-                        <span class="split">${role.metaValue}</span>
+                        <span class="split">${tr:__(role.metaValue)}</span>
                     </c:if>
                 </c:forEach>
                </td>

@@ -1,6 +1,7 @@
 package com.youthlin.blog.web.interceptor;
 
 import com.youthlin.blog.model.bo.LoginInfo;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.service.UserService;
@@ -38,7 +39,7 @@ public class CheckLoginInterceptor extends HandlerInterceptorAdapter {
         User user = userService.findByUserName(userName);
         UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
         if (roleMeta != null) {
-            request.setAttribute(Constant.K_ROLE, roleMeta.getMetaValue());
+            request.setAttribute(Constant.K_ROLE, Role.nameOf(roleMeta.getMetaValue()));
         }
         request.setAttribute(Constant.USER, user);
         request.setAttribute(Constant.NAME, user.getDisplayName());

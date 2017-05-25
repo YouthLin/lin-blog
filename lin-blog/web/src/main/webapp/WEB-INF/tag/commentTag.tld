@@ -39,4 +39,9 @@
             <type>java.lang.String</type>
         </attribute>
     </tag>
+    <function>
+        <name>__</name>
+        <function-class>com.youthlin.utils.i18n.Translation</function-class>
+        <function-signature>java.lang.String __(java.lang.String)</function-signature>
+    </function>
 </taglib>

@@ -1,7 +1,8 @@
 <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
 
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
-<%@ page import="com.youthlin.blog.model.po.User" %><%--
+<%@ page import="com.youthlin.blog.model.po.User" %>
+<%@ page import="com.youthlin.blog.model.enums.Role" %><%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -47,7 +48,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label"><%=__("Role")%></label>
         <div class="col-sm-10">
-            <p class="form-control-static" id="role"><%=__(String.valueOf(request.getAttribute(Constant.K_ROLE)))%></p>
+            <p class="form-control-static" id="role"><%=__(((Role) request.getAttribute(Constant.K_ROLE)).name())%></p>
         </div>
     </div>
     <fieldset>

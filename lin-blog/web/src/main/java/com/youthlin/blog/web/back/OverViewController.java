@@ -1,6 +1,7 @@
 package com.youthlin.blog.web.back;
 
 import com.youthlin.blog.model.bo.Category;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Post;
 import com.youthlin.blog.model.po.Taxonomy;
@@ -8,11 +9,13 @@ import com.youthlin.blog.service.CategoryService;
 import com.youthlin.blog.service.CommentService;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.service.TagService;
+import com.youthlin.blog.util.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -35,7 +38,11 @@ public class OverViewController {
     private TagService tagService;
 
     @RequestMapping(path = {"", "/"})
-    public String overview(Model model) {
+    public String overview(HttpServletRequest request, Model model) {
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
         model.addAttribute("title", __("Overview"));
         count(model);
 

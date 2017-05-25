@@ -59,56 +59,69 @@
             </div>
         </div>
     </header>
+
     <aside class="collapse in navbar-collapse" id="sidebar">
         <div id="menu" class="col-xs-4 col-sm-2 bg">
-           <a href="#overview" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-overview"
-              aria-expanded="false" aria-controls="post"><%=__("DashBoard")%></a>
-            <div class="panel panel-menu bd">
-                <ul id="overview" class="collapse">
-                    <li><a class="menu-item-a menu-item-overview" href="<c:url value="/admin/"/>">
+            <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+            <c:if test="${not empty role and (role.code ge 10)}"><%--订阅者以上权限(能写草稿的角色)--%>
+                <a href="#overview" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-overview"
+                   aria-expanded="false" aria-controls="post"><%=__("DashBoard")%></a>
+                <div class="panel panel-menu bd">
+                    <ul id="overview" class="collapse">
+                        <li><a class="menu-item-a menu-item-overview" href="<c:url value="/admin/"/>">
                             <%=__("Overview")%>
                     </a></li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
 
-            <a href="#post" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-post"
-               aria-expanded="false" aria-controls="post"><%=__("Post")%></a>
-            <div class="panel panel-menu bd ">
-                <ul id="post" class="collapse">
-                    <li><a class="menu-item-a menu-item-all-post" href="<c:url value="/admin/post"/>">
+                <a href="#post" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-post"
+                   aria-expanded="false" aria-controls="post"><%=__("Post")%></a>
+                <div class="panel panel-menu bd ">
+                    <ul id="post" class="collapse">
+                        <li><a class="menu-item-a menu-item-all-post" href="<c:url value="/admin/post"/>">
                         <%=__("All Post")%>
                     </a></li>
-                    <li><a class="menu-item-a menu-item-new-post" href="<c:url value="/admin/post/new"/>">
+                        <li><a class="menu-item-a menu-item-new-post" href="<c:url value="/admin/post/new"/>">
                         <%=__("New Post")%>
                     </a></li>
-                    <li><a class="menu-item-a menu-item-category" href="<c:url value="/admin/post/category"/>">
-                        <%=__("Categories")%>
-                    </a></li>
-                    <li><a class="menu-item-a menu-item-tag" href="<c:url value="/admin/post/tag"/>">
-                        <%=__("Tag")%>
-                    </a></li>
-                </ul>
-            </div>
+                        <c:if test="${role.code ge 30}"><%--Editor--%>
+                            <li><a class="menu-item-a menu-item-category" href="<c:url value="/admin/post/category"/>">
+                            <%=__("Categories")%>
+                            </a></li>
+                            <li><a class="menu-item-a menu-item-tag" href="<c:url value="/admin/post/tag"/>">
+                            <%=__("Tag")%>
+                            </a></li>
+                        </c:if>
+                    </ul>
+                </div>
+            </c:if>
 
-            <a href="#page" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-page"
-               aria-expanded="false" aria-controls="page"><%=__("Page")%></a>
-            <div class="panel panel-menu bd ">
-                <ul id="page" class="collapse">
-                    <li><a class="menu-item-a menu-item-all-page" href="<c:url value="/admin/page/all"/>">
+            <c:if test="${not empty role and (role.code ge 30)}"><%--编辑及以上权限(能新增页面)--%>
+                <a href="#page" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-page"
+                   aria-expanded="false" aria-controls="page"><%=__("Page")%></a>
+                <div class="panel panel-menu bd ">
+                    <ul id="page" class="collapse">
+                        <li><a class="menu-item-a menu-item-all-page" href="<c:url value="/admin/page/all"/>">
                         <%=__("All Page")%>
                     </a></li>
-                    <li><a class="menu-item-a menu-item-new-page" href="<c:url value="/admin/page/new"/>">
+                        <li><a class="menu-item-a menu-item-new-page" href="<c:url value="/admin/page/new"/>">
                         <%=__("Write New Page")%>
                     </a></li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
+            </c:if>
 
             <a href="#comment" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-comment"
                aria-expanded="false" aria-controls="post"><%=__("Comments")%></a>
             <div class="panel panel-menu bd ">
                 <ul id="comment" class="collapse">
-                    <li><a class="menu-item-a menu-item-comment" href="<c:url value="/admin/comment/all"/>">
+                    <c:if test="${not empty role and (role.code ge 30)}"><%--编辑及以上权限(能编辑他人评论)--%>
+                        <li><a class="menu-item-a menu-item-comment" href="<c:url value="/admin/comment/all"/>">
                         <%=__("All Comments")%>
+                    </a></li>
+                    </c:if>
+                    <li><a class="menu-item-a menu-item-comment-my" href="<c:url value="/admin/comment/my"/>">
+                        <%=__("My Comments")%>
                     </a></li>
                 </ul>
             </div>
@@ -117,49 +130,52 @@
                aria-expanded="false" aria-controls="post"><%=__("Users")%></a>
             <div class="panel panel-menu bd ">
                 <ul id="users" class="collapse">
-                    <li><a class="menu-item-a menu-item-all-user" href="<c:url value="/admin/users/all"/>">
+                    <c:if test="${not empty role and (role.code ge 40)}"><%-- 管理员添加用户--%>
+                        <li><a class="menu-item-a menu-item-all-user" href="<c:url value="/admin/users/all"/>">
                         <%=__("All Users")%>
                     </a></li>
-                    <li><a class="menu-item-a menu-item-add-user" href="<c:url value="/admin/users/add"/>">
+                        <li><a class="menu-item-a menu-item-add-user" href="<c:url value="/admin/users/add"/>">
                         <%=__("Add User")%>
                     </a></li>
+                    </c:if>
                     <li><a class="menu-item-a menu-item-my-profile" href="<c:url value="/admin/users/my"/>">
                         <%=__("My Profile")%>
                     </a></li>
                 </ul>
             </div>
-
-            <a href="#tools" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-tools"
-               aria-expanded="false" aria-controls="post"><%=__("Tools")%></a>
-            <div class="panel panel-menu bd ">
-                <ul id="tools" class="collapse">
-                    <li><a class="menu-item-a menu-item-tool-import" href="<c:url value="/admin/tools/import"/>">
+            <c:if test="${not empty role and (role.code ge 40)}"><%-- 管理员工具、设置--%>
+                <a href="#tools" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-tools"
+                   aria-expanded="false" aria-controls="post"><%=__("Tools")%></a>
+                <div class="panel panel-menu bd ">
+                    <ul id="tools" class="collapse">
+                        <li><a class="menu-item-a menu-item-tool-import" href="<c:url value="/admin/tools/import"/>">
                         <%=__("Import")%>
                     </a></li>
-                    <li><a class="menu-item-a menu-item-tool-export" href="<c:url value="/admin/tools/export"/>">
+                        <li><a class="menu-item-a menu-item-tool-export" href="<c:url value="/admin/tools/export"/>">
                         <%=__("Export")%>
                     </a></li>
-                </ul>
-            </div>
-
-            <a href="#settings" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-settings"
-               aria-expanded="false" aria-controls="settings"><%=__("Settings")%></a>
-            <div class="panel panel-menu bd ">
-                <ul id="settings" class="collapse">
-                    <li>
+                    </ul>
+                </div>
+                <a href="#settings" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-settings"
+                   aria-expanded="false" aria-controls="settings"><%=__("Settings")%></a>
+                <div class="panel panel-menu bd ">
+                    <ul id="settings" class="collapse">
+                        <li>
                         <a class="menu-item-a menu-item-settings-general"
                            href="<c:url value="/admin/settings/general"/>"><%=__("General Settings")%></a>
-                    </li>
-                    <li><a class="menu-item-a menu-item-settings-post" href="<c:url value="/admin/settings/post"/>">
+                        </li>
+                        <li><a class="menu-item-a menu-item-settings-post" href="<c:url value="/admin/settings/post"/>">
                         <%=__("Post Settings")%>
                     </a></li>
-                    <li><a class="menu-item-a menu-item-settings-comment"
-                           href="<c:url value="/admin/settings/comment"/>"><%=__("Comment Settings")%>
+                        <li><a class="menu-item-a menu-item-settings-comment"
+                               href="<c:url value="/admin/settings/comment"/>"><%=__("Comment Settings")%>
                     </a></li>
-                </ul>
-            </div>
+                    </ul>
+                </div>
+            </c:if>
 
         </div><!-- /#menu -->
     </aside>
+
     <section class="col-xs-offset-4 col-sm-offset-2 col-xs-8 col-sm-10" id="main">
         <main>
