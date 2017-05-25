@@ -162,7 +162,7 @@
                 </span>
                     </c:if>
            </td>
-                <td><a href="?${queryString}&author=${post.postAuthorId}">${authorMap[post.postAuthorId]}</a></td>
+                <td><a href="?${queryString}&author=${post.postAuthorId}">${authorMap[post.postAuthorId].displayName}</a></td>
                 <td>
                     <%--@elvariable id="taxonomyMap" type="java.util.Map"--%>
                     <%--@elvariable id="taxonomyCat" type="com.youthlin.blog.model.po.Taxonomy"--%>

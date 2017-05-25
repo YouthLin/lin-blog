@@ -3,6 +3,7 @@ package com.youthlin.blog.web.back;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import com.youthlin.blog.model.bo.Category;
 import com.youthlin.blog.model.bo.Pageable;
 import com.youthlin.blog.model.enums.PostStatus;
@@ -34,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static com.youthlin.utils.i18n.Translation.__;
 
@@ -183,18 +185,17 @@ public class PostController {
 
     private void fetchAuthorInfo(List<Post> posts, Model model) {
         Map<Long, String> authorMap = Maps.newHashMap();
+        Set<Long> userIds = Sets.newHashSet();
         for (Post post : posts) {
             Long authorId = post.getPostAuthorId();
-            String name = globalInfoUserIdNameMap.get(authorId, () -> {
-                User user = userService.findById(authorId);
-                Long id = user.getUserId();
-                String displayName = user.getDisplayName();
-                globalInfoUserIdNameMap.set(id, displayName);
-                return displayName;
-            });
-            authorMap.put(authorId, name);
+            userIds.add(authorId);
         }
-        model.addAttribute("authorMap", authorMap);
+        List<User> userList = userService.listById(userIds);
+        Map<Long, User> userMap = Maps.newHashMap();
+        for (User user : userList) {
+            userMap.put(user.getUserId(), user);
+        }
+        model.addAttribute("authorMap", userMap);
     }
 
     private void fetchCategoryInfo(Model model) {

@@ -21,6 +21,10 @@
         <%@ include file="include/header.jsp" %>
         <ol class="breadcrumb">
             <li><a href="<c:url value="/"/>"><%=__("Home")%></a></li>
+            <%--@elvariable id="author" type="com.youthlin.blog.model.po.User"--%>
+            <c:if test="${not empty author}">
+                <li><a href="<c:url value="/author/${author.userId}"/>">${author.displayName}</a></li>
+            </c:if>
             <%--@elvariable id="taxonomyList" type="java.util.List"--%>
             <%--@elvariable id="taxonomy" type="com.youthlin.blog.model.po.Taxonomy"--%>
             <c:forEach items="${taxonomyList}" var="taxonomy">
@@ -63,7 +67,6 @@
                                     <span class="glyphicon glyphicon-user"
                                           aria-label=<%=__("\"Author:\"")%> aria-hidden="true"></span>
                                     <%--@elvariable id="userMap" type="java.util.Map"--%>
-                                    <%--@elvariable id="author" type="com.youthlin.blog.model.po.User"--%>
                                     <c:set var="author" value="${userMap[post.postAuthorId]}"/>
                                     <a href="<c:url value="/author/${post.postAuthorId}"/>">${author.displayName}</a>
                                 </span>

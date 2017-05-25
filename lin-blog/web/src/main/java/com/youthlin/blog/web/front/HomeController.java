@@ -63,7 +63,7 @@ public class HomeController {
         int pageNum = parsePageNum(pageIndex);
         int size = parsePageNum(pageSize);
         Taxonomy taxonomy = parseTaxonomy(categorySlug, tagSlug, model);
-        User user = parseUser(authorId);
+        User user = parseUser(authorId, model);
         DateTime[] dateTimes = parseDate(year, month, model);
         DateTime start = dateTimes[0];
         DateTime end = dateTimes[1];
@@ -119,7 +119,7 @@ public class HomeController {
         return taxonomy;
     }
 
-    private User parseUser(String authorIdStr) {
+    private User parseUser(String authorIdStr, Model model) {
         if (!StringUtils.hasText(authorIdStr)) {
             return null;
         }
@@ -132,6 +132,7 @@ public class HomeController {
             return null;
         }
         User user = userService.findById(id);
+        model.addAttribute("author", user);
         log.debug("user = {}", user);
         return user;
     }

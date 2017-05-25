@@ -139,6 +139,8 @@
         <include refid="all"/>
         FROM posts
         <where>
+            post_status=0
+            AND
             <choose>
                 <when test="grater">
                     ID &gt; #{id}
