@@ -110,8 +110,8 @@ public class CommentService {
     /**
      * @param status 不为 null 时，直查该状态的评论。为 null 查所有状态的评论
      */
-    public Page<Comment> listPageByStatus(int pageIndex, int pageSize, CommentStatus status,Long userId) {
-        PageInfo<Comment> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(() -> commentDao.listByStatus(status,userId));
+    public Page<Comment> listPageByStatus(int pageIndex, int pageSize, CommentStatus status, Long userId) {
+        PageInfo<Comment> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(() -> commentDao.listByStatus(status, userId));
         Page<Comment> page = new Page<>(pageInfo);
         log.debug("list comments: {}", page);
         return page;
@@ -119,6 +119,10 @@ public class CommentService {
 
     public boolean changeStatus(Long commentId, CommentStatus newStatus) {
         return commentDao.updateStatus(commentId, newStatus) == 1;
+    }
+
+    public boolean update(Comment comment) {
+        return commentDao.update(comment) == 1;
     }
 
 }

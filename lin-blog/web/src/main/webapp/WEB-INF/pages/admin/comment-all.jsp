@@ -55,7 +55,7 @@
         <tbody>
         <c:choose>
             <%--@elvariable id="commentPage" type="com.youthlin.blog.model.bo.Page"--%>
-            <c:when test="${not empty commentPage}">
+            <c:when test="${not empty commentPage  and commentPage.list.size()>0}">
                 <%--@elvariable id="comment" type="com.youthlin.blog.model.po.Comment"--%>
                 <c:forEach items="${commentPage.list}" var="comment">
                     <c:set var="trClass" value=""/>
@@ -85,7 +85,7 @@
                         <td class="relative">
                             <div class="comment-info comment-info-content">${comment.commentContent}</div>
                             <div class="comment-info comment-info-action absolute-bottom">
-                                <a href="#"><%=__("Edit")%></a>
+                                <a href="<c:url value="/admin/comment/edit?id=${comment.commentId}"/>"><%=__("Edit")%></a>
                                 | <a href="<c:url value="/post/${comment.commentPostId}#comment-${comment.commentId}"/>"
                                      target="_blank"><%=__("View")%></a>
                                     <%--0正常 1待审 2垃圾 3删除--%>

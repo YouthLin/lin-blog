@@ -34,4 +34,6 @@ public interface CommentDao {
     long countByStatus(CommentStatus status);
 
     int updateStatus(@Param("id") long commentId, @Param("status") CommentStatus status);
+
+    int update(Comment comment);
 }

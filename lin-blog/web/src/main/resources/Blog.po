@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 17:39+0800\n"
-"PO-Revision-Date: 2017-05-25 17:40+0800\n"
+"POT-Creation-Date: 2017-05-25 19:08+0800\n"
+"PO-Revision-Date: 2017-05-25 19:09+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -33,7 +33,7 @@ msgstr "很抱歉，但是您访问的页面不存在。 "
 
 #: webapp/WEB-INF/pages/admin/comment-all.jsp:24
 #: webapp/WEB-INF/pages/common/admin/header.jsp:120
-#: java/com/youthlin/blog/web/back/CommentController.java:60
+#: java/com/youthlin/blog/web/back/CommentController.java:63
 msgid "All Comments"
 msgstr "所有评论"
 
@@ -141,9 +141,65 @@ msgstr "移至回收站"
 msgid "No comments"
 msgstr "没有评论"
 
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:19
+#: java/com/youthlin/blog/web/back/CommentController.java:146
+msgid "Edit Comment"
+msgstr "编辑评论"
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:31
+#: webapp/WEB-INF/pages/admin/post-category.jsp:66
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:147
+msgid "Name"
+msgstr "名称"
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:34
+#: webapp/WEB-INF/pages/post.jsp:152
+msgid "\"Display Name\""
+msgstr "\"显示名称\""
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:38
+#: webapp/WEB-INF/pages/admin/users-add.jsp:37
+#: webapp/WEB-INF/pages/admin/users-all.jsp:30
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:57
+#: webapp/WEB-INF/pages/post.jsp:156
+msgid "Email"
+msgstr "电子邮件"
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:42
+#: webapp/WEB-INF/pages/post.jsp:161
+msgid "\"Email will never public\""
+msgstr "\"邮件地址不会公开\""
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:46
+#: webapp/WEB-INF/pages/post.jsp:166
+msgid "URL"
+msgstr "网址"
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:49
+#: webapp/WEB-INF/pages/post.jsp:169
+msgid "\"URL is optional\""
+msgstr "\"可不填\""
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:54
+#: webapp/WEB-INF/pages/post.jsp:176
+msgid "Content"
+msgstr "内容"
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:62
+msgid "Status"
+msgstr "状态"
+
+#: webapp/WEB-INF/pages/admin/comment-edit.jsp:93
+#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
+#: webapp/WEB-INF/pages/admin/post-edit.jsp:136
+#: webapp/WEB-INF/pages/admin/settings-general.jsp:26
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:95
+msgid "Update"
+msgstr "更新"
+
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:18
 #: webapp/WEB-INF/pages/common/admin/header.jsp:124
-#: java/com/youthlin/blog/web/back/CommentController.java:133
+#: java/com/youthlin/blog/web/back/CommentController.java:136
 msgid "My Comments"
 msgstr "我的评论"
 
@@ -393,22 +449,10 @@ msgstr "描述："
 msgid "And you may write some description about this category..."
 msgstr "分类目录的描述。"
 
-#: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
-#: webapp/WEB-INF/pages/admin/post-edit.jsp:136
-#: webapp/WEB-INF/pages/admin/settings-general.jsp:26
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:95
-msgid "Update"
-msgstr "更新"
-
 #: webapp/WEB-INF/pages/admin/post-category.jsp:26
 #: webapp/WEB-INF/pages/admin/post-category.jsp:52
 msgid "Add Category"
 msgstr "新增分类目录"
-
-#: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:147
-msgid "Name"
-msgstr "名称"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:67
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:57
@@ -598,13 +642,6 @@ msgstr "用户名"
 #: webapp/WEB-INF/pages/admin/users-add.jsp:33
 msgid "Username can not change after user added."
 msgstr "添加后用户名不可更改。"
-
-#: webapp/WEB-INF/pages/admin/users-add.jsp:37
-#: webapp/WEB-INF/pages/admin/users-all.jsp:30
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:57
-#: webapp/WEB-INF/pages/post.jsp:156
-msgid "Email"
-msgstr "电子邮件"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:43
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:76
@@ -902,26 +939,6 @@ msgstr ""
 msgid "Log out?"
 msgstr "登出？"
 
-#: webapp/WEB-INF/pages/post.jsp:152
-msgid "\"Display Name\""
-msgstr "\"显示名称\""
-
-#: webapp/WEB-INF/pages/post.jsp:161
-msgid "\"Email will never public\""
-msgstr "\"邮件地址不会公开\""
-
-#: webapp/WEB-INF/pages/post.jsp:166
-msgid "URL"
-msgstr "网址"
-
-#: webapp/WEB-INF/pages/post.jsp:169
-msgid "\"URL is optional\""
-msgstr "\"可不填\""
-
-#: webapp/WEB-INF/pages/post.jsp:176
-msgid "Content"
-msgstr "内容"
-
 #: webapp/WEB-INF/pages/post.jsp:188
 msgid "Post Comment"
 msgstr "发表评论"
@@ -1049,6 +1066,27 @@ msgstr "未知的分类目录。"
 msgid "Name must not be empty."
 msgstr "名称不能为空。"
 
+#: java/com/youthlin/blog/web/back/CommentController.java:158
+msgid "Invalid param."
+msgstr "非法参数。"
+
+#: java/com/youthlin/blog/web/back/CommentController.java:165
+msgid "No such comment."
+msgstr "评论不存在。"
+
+#: java/com/youthlin/blog/web/back/CommentController.java:169
+msgid "Sorry, but you can not edit this comment."
+msgstr "很抱歉，但是您不能编辑这则评论。"
+
+#: java/com/youthlin/blog/web/back/CommentController.java:189
+#: java/com/youthlin/blog/web/front/SinglePostController.java:107
+msgid "Name, email, and comment content are required."
+msgstr "姓名，电子邮件和评论内容是必填项。"
+
+#: java/com/youthlin/blog/web/back/CommentController.java:219
+msgid "Comment updated."
+msgstr "评论已更新。"
+
 #: java/com/youthlin/blog/web/back/PostController.java:315
 #: java/com/youthlin/blog/web/back/PostController.java:363
 msgid "Illegal param: postId."
@@ -1099,10 +1137,6 @@ msgstr "文章不存在。"
 #: java/com/youthlin/blog/web/front/SinglePostController.java:99
 msgid "Comments are closed on this post."
 msgstr "评论已关闭。"
-
-#: java/com/youthlin/blog/web/front/SinglePostController.java:107
-msgid "Name, email, and comment content are required."
-msgstr "姓名，电子邮件和评论内容是必填项。"
 
 #: java/com/youthlin/blog/web/front/SinglePostController.java:123
 msgid "Parent comment does not exist."

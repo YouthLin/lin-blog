@@ -157,6 +157,10 @@ a.active {
     bottom: 5px;
 }
 
+.comment-info-content {
+    margin-bottom: 20px;
+}
+
 /* endregion */
 
 /* region 导航条 */

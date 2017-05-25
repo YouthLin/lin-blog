@@ -43,6 +43,19 @@
         WHERE comment_ID = #{id}
     </update>
 
+    <update id="update">
+        UPDATE comments
+        SET comment_post_ID      = #{commentPostId}, comment_author = #{commentAuthor},
+            comment_author_email = #{commentAuthorEmail},
+            comment_author_url   = #{commentAuthorUrl},
+            comment_author_IP    = #{commentAuthorIp}, comment_date = #{commentDate},
+            comment_date_utc     = #{commentDateUtc},
+            comment_content      = #{commentContent}, comment_status = #{commentStatus},
+            comment_agent        = #{commentAgent},
+            comment_type         = #{commentType}, comment_parent = #{commentParent}, user_id = #{userId}
+        WHERE comment_ID = #{commentId}
+    </update>
+
     <select id="findByPostId" resultMap="commentMap">
         SELECT
         <include refid="all"/>
