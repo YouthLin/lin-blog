@@ -2,6 +2,7 @@
 <%@ taglib prefix="cmt" uri="http://youthlin.com/linblog/tag/comment" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._x" %>
+<%@ page import="com.youthlin.blog.util.Constant" %>
 <%--
   Created by IntelliJ IDEA.
   User: youthlin.chen
@@ -117,34 +118,60 @@
                     <div id="respond">
                         <c:choose>
                             <c:when test="${post.commentOpen}">
+                                <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
+                                <%--@elvariable id="name" type="java.lang.String"--%>
+                                <%--@elvariable id="email" type="java.lang.String"--%>
+                                <%--@elvariable id="url" type="java.lang.String"--%>
                                 <form class="form-horizontal border-ccc margin-padding-p1 well"
                                       id="commentform" method="post">
                                     <h4 class="margin-padding-p1"><%=__("Leave your comment")%>
                                     <small><a href="javascript:cancel();" class="hide" id="to-cancel">
                                         <%=_x("Cancel", "cancel response.")%></a></small></h4>
-                                    <div class="form-group">
+                                    <c:choose>
+                                        <c:when test="${not empty user}"><%--已登录--%>
+                                            <p class="col-sm-offset-2 col-sm-10 form-control-static">
+                                                <%=
+                                                /*TRANSLATORS: 0, context path; 1, user display name*/
+                                                        _f("You are logged as <a href=\"{0}/admin/users/my\" target=\"_blank\">{1}</a>. ",
+                                                                request.getContextPath(), request.getAttribute(Constant.NAME))%>
+                                                <small>&nbsp;
+                                                    <a href="<c:url value="/login.out"/>"><%=__("Log out?")%></a>
+                                                </small>
+                                                <input type="hidden" name="author" value="${name}">
+                                                <input type="hidden" name="email" value="${email}">
+                                                <input type="hidden" name="url" value="${url}">
+                                            </p>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="form-group">
                                         <label for="author" class="col-sm-2 control-label"><%=__("Name")%>
                                             <span class="star">*</span> </label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="author" name="author"
-                                                   required placeholder=<%=__("\"Display Name\"")%>>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="author" name="author"
+                                                           value="${name}" required
+                                                           placeholder=<%=__("\"Display Name\"")%>>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                         <label for="email" class="col-sm-2 control-label"><%=__("Email")%>
                                             <span class="star">*</span> </label>
-                                        <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="email" name="email"
-                                                   required placeholder=<%=__("\"Email will never public\"")%>>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="url" class="col-sm-2 control-label"><%=__("URL")%> &nbsp;</label>
-                                        <div class="col-sm-10">
-                                            <input type="url" class="form-control" id="url" name="url"
-                                                   placeholder=<%=__("\"URL is optional\"")%>>
-                                        </div>
-                                    </div>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="email" name="email"
+                                                           required value="${email}"
+                                                           placeholder=<%=__("\"Email will never public\"")%>>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="url"
+                                                       class="col-sm-2 control-label"><%=__("URL")%> &nbsp;</label>
+                                                <div class="col-sm-10">
+                                                    <input type="url" class="form-control" id="url" name="url"
+                                                           value="${url}" placeholder=<%=__("\"URL is optional\"")%>>
+                                                </div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                     <div class="form-group">
                                         <label for="content" class="col-sm-2 control-label"><%=__("Content")%>
                                             <span class="star">*</span> </label>

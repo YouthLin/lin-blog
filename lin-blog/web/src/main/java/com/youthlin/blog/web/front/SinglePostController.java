@@ -1,10 +1,11 @@
 package com.youthlin.blog.web.front;
 
-import com.google.common.base.Charsets;
 import com.youthlin.blog.model.bo.CommentNode;
-import com.youthlin.blog.model.enums.CommentStatus;
+import com.youthlin.blog.model.enums.PostStatus;
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Post;
+import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.CommentService;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.util.Constant;
@@ -23,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -43,8 +42,9 @@ public class SinglePostController {
     @Resource
     private CommentService commentService;
 
+    @SuppressWarnings("StatementWithEmptyBody")
     @RequestMapping(path = {"/post/{id}"}, method = {RequestMethod.GET})
-    public String view(@PathVariable(required = false, name = "id") String id, Model model) {
+    public String view(@PathVariable(required = false, name = "id") String id, Model model, HttpServletRequest request) {
         long postId = 0;
         try {
             postId = Long.parseLong(id);
@@ -53,6 +53,16 @@ public class SinglePostController {
         Post post = postService.findById(postId);
         if (post == null || new DateTime(post.getPostDate()).isAfterNow()) {
             return "404";
+        }
+        User user = (User) request.getAttribute(Constant.USER);
+        Role role = (Role) request.getAttribute(Constant.K_ROLE);
+        if (post.getPostStatus() != PostStatus.PUBLISHED) {//对于未发布文章
+            //编辑+ 可查看、文章作者可查看
+            if (role != null && role.getCode() >= Role.Editor.getCode()) {
+            } else if (user != null && post.getPostAuthorId().equals(user.getUserId())) {
+            } else {
+                return "404";            //否则 404
+            }
         }
         model.addAttribute("post", post);
         PostTaxonomyHelper.fetchTaxonomyRelationships(Collections.singletonList(post), model, postService);

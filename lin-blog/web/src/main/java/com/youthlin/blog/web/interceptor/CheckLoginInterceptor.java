@@ -43,6 +43,7 @@ public class CheckLoginInterceptor extends HandlerInterceptorAdapter {
         }
         request.setAttribute(Constant.USER, user);
         request.setAttribute(Constant.NAME, user.getDisplayName());
+        request.setAttribute(Constant.URL, user.getUserUrl());
         request.setAttribute(Constant.EMAIL, user.getUserEmail());
         String blogName = globalInfo.get(Constant.O_BLOG_TITLE, () -> _f("{0}&#39;Blog", userName));
         request.setAttribute(Constant.O_BLOG_TITLE, blogName);

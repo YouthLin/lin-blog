@@ -19,6 +19,7 @@ public class Constant {
     public static final String TOKEN = "token";
     public static final String USER = "user";
     public static final String NAME = "name";
+    public static final String URL = "url";
     public static final String EMAIL = "email";
     public static final int DEFAULT_EXPIRE_DAYS_7 = 7;
     public static final int DEFAULT_EXPIRE_DAYS_7_SECOND = DEFAULT_EXPIRE_DAYS_7 * 24 * 3600;

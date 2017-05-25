@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 12:20+0800\n"
-"PO-Revision-Date: 2017-05-25 12:21+0800\n"
+"POT-Creation-Date: 2017-05-25 12:54+0800\n"
+"PO-Revision-Date: 2017-05-25 12:56+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/die.jsp:21
 #: webapp/WEB-INF/pages/index.jsp:16 webapp/WEB-INF/pages/index.jsp:23
-#: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/post.jsp:29
+#: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/post.jsp:30
 msgid "Home"
 msgstr "首页"
 
@@ -350,7 +350,7 @@ msgid "Add Category"
 msgstr "新增分类目录"
 
 #: webapp/WEB-INF/pages/admin/post-category.jsp:66
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:126
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:56 webapp/WEB-INF/pages/post.jsp:147
 msgid "Name"
 msgstr "名称"
 
@@ -533,7 +533,7 @@ msgstr "添加后用户名不可更改。"
 #: webapp/WEB-INF/pages/admin/users-add.jsp:37
 #: webapp/WEB-INF/pages/admin/users-all.jsp:30
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:57
-#: webapp/WEB-INF/pages/post.jsp:134
+#: webapp/WEB-INF/pages/post.jsp:156
 msgid "Email"
 msgstr "电子邮件"
 
@@ -693,19 +693,19 @@ msgstr "Powered By {0}"
 msgid "Page {0} "
 msgstr "第 {0} 页 "
 
-#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:40
+#: webapp/WEB-INF/pages/index.jsp:54 webapp/WEB-INF/pages/post.jsp:41
 msgid "\"Published Date:\""
 msgstr "\"发布时间：\""
 
-#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:50
+#: webapp/WEB-INF/pages/index.jsp:64 webapp/WEB-INF/pages/post.jsp:51
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:56
+#: webapp/WEB-INF/pages/index.jsp:69 webapp/WEB-INF/pages/post.jsp:57
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:68
+#: webapp/WEB-INF/pages/index.jsp:81 webapp/WEB-INF/pages/post.jsp:69
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
@@ -804,56 +804,68 @@ msgstr "忘记密码？"
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
 
-#: webapp/WEB-INF/pages/post.jsp:86 webapp/WEB-INF/pages/post.jsp:93
+#: webapp/WEB-INF/pages/post.jsp:87 webapp/WEB-INF/pages/post.jsp:94
 msgid "Previous post:"
 msgstr "上一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:95
+#: webapp/WEB-INF/pages/post.jsp:96
 msgid "No previous post"
 msgstr "没有上一篇"
 
-#: webapp/WEB-INF/pages/post.jsp:101 webapp/WEB-INF/pages/post.jsp:107
+#: webapp/WEB-INF/pages/post.jsp:102 webapp/WEB-INF/pages/post.jsp:108
 msgid "Next post:"
 msgstr "下一篇："
 
-#: webapp/WEB-INF/pages/post.jsp:108
+#: webapp/WEB-INF/pages/post.jsp:109
 msgid "No next post"
 msgstr "没有下一篇"
 
-#: webapp/WEB-INF/pages/post.jsp:122
+#: webapp/WEB-INF/pages/post.jsp:127
 msgid "Leave your comment"
 msgstr "留下你的想法"
 
-#: webapp/WEB-INF/pages/post.jsp:124
+#: webapp/WEB-INF/pages/post.jsp:129
 msgctxt "cancel response."
 msgid "Cancel"
 msgstr "取消回复"
 
-#: webapp/WEB-INF/pages/post.jsp:130
+#. TRANSLATORS: 0, context path; 1, user display name
+#: webapp/WEB-INF/pages/post.jsp:135
+#, java-format
+msgid ""
+"You are logged as <a href=\"{0}/admin/users/my\" target=\"_blank\">{1}</a>. "
+msgstr ""
+"您正已 <a href=\"{0}/admin/users/my\" target=\"_blank\">{1}</a> 的身份登录。 "
+
+#: webapp/WEB-INF/pages/post.jsp:138
+msgid "Log out?"
+msgstr "登出？"
+
+#: webapp/WEB-INF/pages/post.jsp:152
 msgid "\"Display Name\""
 msgstr "\"显示名称\""
 
-#: webapp/WEB-INF/pages/post.jsp:138
+#: webapp/WEB-INF/pages/post.jsp:161
 msgid "\"Email will never public\""
 msgstr "\"邮件地址不会公开\""
 
-#: webapp/WEB-INF/pages/post.jsp:142
+#: webapp/WEB-INF/pages/post.jsp:166
 msgid "URL"
 msgstr "网址"
 
-#: webapp/WEB-INF/pages/post.jsp:145
+#: webapp/WEB-INF/pages/post.jsp:169
 msgid "\"URL is optional\""
 msgstr "\"可不填\""
 
-#: webapp/WEB-INF/pages/post.jsp:149
+#: webapp/WEB-INF/pages/post.jsp:176
 msgid "Content"
 msgstr "内容"
 
-#: webapp/WEB-INF/pages/post.jsp:161
+#: webapp/WEB-INF/pages/post.jsp:188
 msgid "Post Comment"
 msgstr "发表评论"
 
-#: webapp/WEB-INF/pages/post.jsp:188
+#: webapp/WEB-INF/pages/post.jsp:215
 msgid "Comment are closed"
 msgstr "评论已关闭"
 
@@ -932,7 +944,7 @@ msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 
 #. TRANSLATORS: 0: username
 #: java/com/youthlin/blog/web/SetUpController.java:60
-#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:47
+#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:48
 #, java-format
 msgid "{0}&#39;Blog"
 msgstr "{0} 的博客"
@@ -1002,24 +1014,24 @@ msgstr "密码错误。"
 msgid "Your profile has been updated."
 msgstr "您的信息已更新。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:79
-#: java/com/youthlin/blog/web/front/SinglePostController.java:84
+#: java/com/youthlin/blog/web/front/SinglePostController.java:88
+#: java/com/youthlin/blog/web/front/SinglePostController.java:93
 msgid "No such post."
 msgstr "文章不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:89
+#: java/com/youthlin/blog/web/front/SinglePostController.java:98
 msgid "Comments are closed on this post."
 msgstr "评论已关闭。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:97
+#: java/com/youthlin/blog/web/front/SinglePostController.java:106
 msgid "Name, email, and comment content are required."
 msgstr "姓名，电子邮件和评论内容是必填项。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:113
+#: java/com/youthlin/blog/web/front/SinglePostController.java:122
 msgid "Parent comment does not exist."
 msgstr "您要回复的评论不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:117
+#: java/com/youthlin/blog/web/front/SinglePostController.java:126
 msgid "This post does not contains the parent comment."
 msgstr "您回复的评论不是本文的评论。"
 
