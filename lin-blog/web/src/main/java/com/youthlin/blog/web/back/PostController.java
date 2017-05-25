@@ -170,7 +170,7 @@ public class PostController {
 
     private long parseAuthorId(Map<String, String> param, Model model) {
         String author = param.get("author");
-        long id = 1L;
+        long id = 0L;
         if (author != null) {
             try {
                 id = Long.parseLong(author);

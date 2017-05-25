@@ -92,7 +92,14 @@
                     </div>
                     <div class="panel-footer">
                         <input type="submit" class="btn btn-default" name="draft" value=<%=__("\"Save Draft\"")%>/>
-                        <button type="submit" class="btn btn-primary pull-right"><%=__("Publish")%></button>
+                        <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+                        <c:choose>
+                            <c:when test="${role.code ge 20}">
+                                <button type="submit" class="btn btn-primary pull-right"><%=__("Publish")%></button>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="help-block"><%=__("You can not publish post, but can save draft accroding to your role.")%></div></c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>

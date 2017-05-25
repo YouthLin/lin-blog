@@ -30,6 +30,6 @@ public class CommentController {
     @RequestMapping("/comment/my")
     public String myComments(Model model) {
         model.addAttribute("title", __("My Comments"));
-        return "admin/comment-all";
+        return "admin/comment-my";
     }
 }

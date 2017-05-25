@@ -62,7 +62,10 @@
         LEFT JOIN taxonomy_relationships ON posts.ID=taxonomy_relationships.post_id
         LEFT JOIN taxonomy ON taxonomy_relationships.taxonomy_id=taxonomy.taxonomy_id
         <where>
-            post_author=#{authorId}
+            1=1
+            <if test="authorId != 0 ">
+                AND post_author=#{authorId}
+            </if>
             <if test="status != null">
                 AND post_status=#{status}
             </if>

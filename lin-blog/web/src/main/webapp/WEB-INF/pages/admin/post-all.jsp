@@ -110,7 +110,10 @@
                     </label>
                 </td>
                 <td><strong>${post.postTitle}</strong><br>
-                <span class="operation operation-${post.postId}">
+                    <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
+                    <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+                    <c:if test="${(post.postAuthorId eq user.userId )or(role.code ge 30)}">
+                    <span class="operation operation-${post.postId}">
                     <c:choose>
                         <c:when test="${status eq 'trash'}">
                             <a href="<c:url value="#"/>"><%=__("UnTrash")%></a> |
@@ -122,7 +125,9 @@
                         </c:otherwise>
                     </c:choose>
                     <a href="<c:url value="/post/${post.postId}"/>" target="_blank"><%=__("View")%></a>
-                </span></td>
+                </span>
+                    </c:if>
+           </td>
                 <td><a href="?${queryString}&author=${post.postAuthorId}">${authorMap[post.postAuthorId]}</a></td>
                 <td>
                     <%--@elvariable id="taxonomyMap" type="java.util.Map"--%>

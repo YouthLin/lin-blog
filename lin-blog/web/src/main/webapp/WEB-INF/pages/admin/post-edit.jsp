@@ -111,16 +111,25 @@
                         </div>
                         <div class="form-group">
                             <label for="post-status"><%=__("Status:")%></label>
-                            <select class="form-control" id="post-status" name="status">
-                                <%--@elvariable id="status" type="com.youthlin.blog.model.enums.PostStatus[]"--%>
-                                <c:forEach items="${status}" var="s">
-                                    <c:set var="select" value=""/>
-                                    <c:if test="${post.postStatus eq s}">
-                                        <c:set var="select" value="selected"/>
-                                    </c:if>
-                                    <option ${select} value="${s.name()}">${s.describe}</option>
-                                </c:forEach>
-                            </select>
+                            <c:choose>
+                                <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+                                <c:when test="${role.code ge 20}">
+                                    <select class="form-control" id="post-status" name="status">
+                                            <%--@elvariable id="status" type="com.youthlin.blog.model.enums.PostStatus[]"--%>
+                                        <c:forEach items="${status}" var="s">
+                                            <c:set var="select" value=""/>
+                                            <c:if test="${post.postStatus eq s}">
+                                                <c:set var="select" value="selected"/>
+                                            </c:if>
+                                            <option ${select} value="${s.name()}">${s.describe}</option>
+                                        </c:forEach>
+                                    </select>
+                                </c:when>
+                                <c:otherwise>
+                                    <p class="form-control-static">${post.postStatus.describe}</p>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                     </div>
                     <div class="panel-footer">
