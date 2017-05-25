@@ -38,14 +38,20 @@
             </p>
         </div>
     </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><%=__("Username")%></label>
+        <div class="col-sm-10">
+            <p class="form-control-static" id="user" data-user="${user.userLogin}">${user.userLogin}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label"><%=__("Role")%></label>
+        <div class="col-sm-10">
+            <p class="form-control-static" id="role"><%=__(String.valueOf(request.getAttribute(Constant.K_ROLE)))%></p>
+        </div>
+    </div>
     <fieldset>
         <legend><%=__("General")%></legend>
-        <div class="form-group">
-            <label class="col-sm-2 control-label"><%=__("Username")%></label>
-            <div class="col-sm-10">
-                <p class="form-control-static" id="user" data-user="${user.userLogin}">${user.userLogin}</p>
-            </div>
-        </div>
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label"><%=__("Email")%></label>
             <div class="col-sm-10">

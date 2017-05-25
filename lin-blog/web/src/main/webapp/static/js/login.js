@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // region login, setup
-    $('#login-form').submit(function () {
+    $('#login-form,#user-add-form').submit(function () {
         var user = $('#user');
         var plain = $('#plain');
         var pass = $('#pass');

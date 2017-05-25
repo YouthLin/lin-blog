@@ -42,4 +42,11 @@
         WHERE meta_key=#{meteKey}
     </select>
 
+    <select id="listByUserId" resultMap="userMetaMap">
+        SELECT
+        <include refid="all"/>
+        FROM user_meta
+        WHERE user_id=#{userId}
+    </select>
+
 </mapper>

@@ -1,10 +1,13 @@
 package com.youthlin.blog.web.back;
 
+import com.youthlin.blog.model.enums.Role;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.MD5Util;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -31,6 +34,7 @@ import static com.youthlin.utils.i18n.Translation.__;
 @Controller
 @RequestMapping("/admin")
 public class UserController {
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
     @Resource
     private UserService userService;
 
@@ -47,6 +51,45 @@ public class UserController {
     @RequestMapping(path = "/users/add", method = RequestMethod.GET)
     public String add(Model model) {
         model.addAttribute("title", __("Add User"));
+        return "admin/users-add";
+    }
+
+    @RequestMapping(path = "/users/add", method = RequestMethod.POST)
+    public String add(@RequestParam Map<String, String> params, Model model) {
+        model.addAttribute("title", __("Add User"));
+        log.debug("add user, params = {}", params);
+        String username = params.get("username");
+        String email = params.get("email");
+        String pass = params.get("password");
+        String role = params.get("role");
+        User byUserName = userService.findByUserName(username);
+        if (byUserName != null) {
+            model.addAttribute(Constant.ERROR, __("This username has been used."));
+            return "admin/users-add";
+        }
+        if (!StringUtils.hasText(pass) || pass.length() != Constant.MD5_LEN) {
+            model.addAttribute(Constant.ERROR, __("Password is required."));
+            return "admin/users-add";
+        }
+        if (!email.matches(".*?@.*?\\..*?")) {
+            model.addAttribute(Constant.ERROR, __("Illegal email."));
+            return "admin/users-add";
+        }
+        String rand = UUID.randomUUID().toString().substring(0, Constant.RAND_LEN);
+        pass = rand + MD5Util.md5(rand + pass);
+        User user = new User();
+        user.setUserLogin(username)
+                .setUserEmail(email)
+                .setUserPass(pass)
+                .setDisplayName(username)
+        ;
+        Role userRole = Role.nameOf(role);
+        if (userRole == null) {
+            userRole = Role.Author;
+        }
+        userService.saveNewUser(user, userRole);
+        log.info("saved new user {}", user);
+        model.addAttribute(Constant.MSG, __("User added."));
         return "admin/users-add";
     }
 

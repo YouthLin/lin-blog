@@ -10,11 +10,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/WEB-INF/pages/common/admin/header.jsp" %>
+<script src="<c:url value="/static/js/jquery.md5.min.js"/>"></script>
 <script>$(document).ready(function () {
     $(".menu-parent-users").addClass("active").click();
     $(".menu-item-add-user").addClass("active");
 });</script>
-<form class="form-horizontal" id="profile-form" method="post">
+<form class="form-horizontal" id="user-add-form" method="post">
     <h1><%=__("Add User")%></h1>
     <%--@elvariable id="msg" type="java.lang.String"--%>
     <%--@elvariable id="error" type="java.lang.String"--%>
@@ -25,10 +26,10 @@
         <div class="error">${error}</div>
     </c:if>
     <div class="form-group">
-        <label for="username" class="col-sm-2 control-label"><%=__("Username")%>&nbsp;<span
+        <label for="user" class="col-sm-2 control-label"><%=__("Username")%>&nbsp;<span
                 class="star">*</span></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="username" name="username" required>
+            <input type="text" class="form-control" id="user" name="username" required>
             <span class="help-block"><%=__("Username can not change after user added.")%></span>
         </div>
     </div>
@@ -39,10 +40,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="pass" class="col-sm-2 control-label"><%=__("Password")%>&nbsp;<span class="star">*</span></label>
+        <label for="plain" class="col-sm-2 control-label"><%=__("Password")%>&nbsp;<span class="star">*</span></label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" id="pass" required>
-            <input type="hidden" id="password" name="password">
+            <input type="password" class="form-control" id="plain" required>
+            <input type="hidden" id="pass" name="password">
         </div>
     </div>
 

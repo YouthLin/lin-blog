@@ -2,6 +2,7 @@ package com.youthlin.blog.web.interceptor;
 
 import com.youthlin.blog.model.bo.LoginInfo;
 import com.youthlin.blog.model.po.User;
+import com.youthlin.blog.model.po.UserMeta;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
@@ -11,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 import static com.youthlin.utils.i18n.Translation._f;
 
@@ -34,6 +36,10 @@ public class CheckLoginInterceptor extends HandlerInterceptorAdapter {
         }
         String userName = loginInfo.getUserName();
         User user = userService.findByUserName(userName);
+        UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
+        if (roleMeta != null) {
+            request.setAttribute(Constant.K_ROLE, roleMeta.getMetaValue());
+        }
         request.setAttribute(Constant.USER, user);
         request.setAttribute(Constant.NAME, user.getDisplayName());
         request.setAttribute(Constant.EMAIL, user.getUserEmail());

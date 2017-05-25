@@ -49,6 +49,16 @@ public class UserService {
         return user;
     }
 
+    @Transactional
+    public void saveNewUser(User user, Role role) {
+        userDao.save(user);
+        UserMeta meta = new UserMeta();
+        meta.setUserId(user.getUserId())
+                .setMetaKey(Constant.K_ROLE)
+                .setMetaValue(role.name());
+        userMetaDao.save(meta);
+    }
+
     public User update(User user) {
         int i = userDao.update(user);
         if (i == 1) {
@@ -59,6 +69,14 @@ public class UserService {
 
     public User findByUserName(String username) {
         return userDao.findByUserName(username);
+    }
+
+    public List<UserMeta> listUserMeta(long userId) {
+        return userMetaDao.listByUserId(userId);
+    }
+
+    public UserMeta findMetaByUserIdAndMetaKey(long userId, String metaKey) {
+        return userMetaDao.findByUserIdAndMetaKey(userId, metaKey);
     }
 
     public User findById(Long id) {

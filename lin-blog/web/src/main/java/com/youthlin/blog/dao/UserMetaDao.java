@@ -21,4 +21,6 @@ public interface UserMetaDao {
     UserMeta findByUserNameAndMetaKey(@Param("name") String username, @Param("key") String metaKey);
 
     List<UserMeta> listByMetaKey(String metaKey);
+
+    List<UserMeta> listByUserId(long userId);
 }
