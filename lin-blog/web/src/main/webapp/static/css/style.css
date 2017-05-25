@@ -161,6 +161,10 @@ a.active {
     margin-bottom: 20px;
 }
 
+.border-pager .form-control {
+    display: inline-block;
+}
+
 /* endregion */
 
 /* region 导航条 */

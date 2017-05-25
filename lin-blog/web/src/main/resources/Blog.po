@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 19:08+0800\n"
-"PO-Revision-Date: 2017-05-25 19:09+0800\n"
+"POT-Creation-Date: 2017-05-25 19:46+0800\n"
+"PO-Revision-Date: 2017-05-25 19:46+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -31,37 +31,73 @@ msgstr "404 未找到"
 msgid "We are sorry, but the page is not found. "
 msgstr "很抱歉，但是您访问的页面不存在。 "
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:24
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:26
 #: webapp/WEB-INF/pages/common/admin/header.jsp:120
 #: java/com/youthlin/blog/web/back/CommentController.java:63
 msgid "All Comments"
 msgstr "所有评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:28
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:30
 #: webapp/WEB-INF/pages/admin/post-all.jsp:38
 msgid "All"
 msgstr "所有"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:30
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:32
 #: webapp/WEB-INF/pages/admin/post-all.jsp:43
 msgid "Pending"
 msgstr "待审"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:32
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:34
 msgid "Approved"
 msgstr "已批准"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:34
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:36
 msgid "Spam"
 msgstr "垃圾评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:36
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:38
 #: webapp/WEB-INF/pages/admin/post-all.jsp:47
 msgid "Trash"
 msgstr "回收站"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:45
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:25
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:50
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:168
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:29
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:130
+#, java-format
+msgid "{0} Items"
+msgstr "共 {0} 项"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:56
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:174
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:35
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:136
+msgid "First page"
+msgstr "首页"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:58
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:176
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:37
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:138
+msgid "Previous page"
+msgstr "上一页"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:68
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:186
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:47
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:148
+msgid "Next page"
+msgstr "下一页"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:70
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:188
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:49
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:150
+msgid "Last page"
+msgstr "尾页"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:78
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:57
 #: webapp/WEB-INF/pages/admin/post-all.jsp:88
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:52
@@ -69,32 +105,32 @@ msgstr "回收站"
 msgid "Select All"
 msgstr "全选"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:49
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:29
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:82
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:61
 #: webapp/WEB-INF/pages/admin/post-all.jsp:93
 #: java/com/youthlin/blog/model/enums/Role.java:46
 msgid "Author"
 msgstr "作者"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:50
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:30
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:83
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:62
 msgid "Comment"
 msgstr "评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:51
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:31
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:84
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:63
 #: webapp/WEB-INF/pages/common/admin/header.jsp:78
 msgid "Post"
 msgstr "文章"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:52
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:32
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:85
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:64
 #: webapp/WEB-INF/pages/admin/post-all.jsp:98
 msgid "Date"
 msgstr "日期"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:75
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:55
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:107
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:87
 #: webapp/WEB-INF/pages/admin/post-all.jsp:108
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:66
@@ -102,8 +138,8 @@ msgstr "日期"
 msgid "Select"
 msgstr "选择"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:88
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:68
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:120
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:100
 #: webapp/WEB-INF/pages/admin/index.jsp:47
 #: webapp/WEB-INF/pages/admin/index.jsp:108
 #: webapp/WEB-INF/pages/admin/post-all.jsp:123
@@ -112,32 +148,32 @@ msgstr "选择"
 msgid "Edit"
 msgstr "编辑"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:90
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:70
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:122
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:102
 #: webapp/WEB-INF/pages/admin/post-all.jsp:127
 #: webapp/WEB-INF/pages/admin/post-category.jsp:90
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:74
 msgid "View"
 msgstr "查看"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:94
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:126
 msgid "approved"
 msgstr "批准"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:98
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:130
 msgid "unapproved"
 msgstr "待审"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:102
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:134
 msgid "Tag as spam"
 msgstr "垃圾评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:106
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:138
 msgid "Move to trash"
 msgstr "移至回收站"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:124
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:87
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:156
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:119
 msgid "No comments"
 msgstr "没有评论"
 
@@ -197,7 +233,7 @@ msgstr "状态"
 msgid "Update"
 msgstr "更新"
 
-#: webapp/WEB-INF/pages/admin/comment-my.jsp:18
+#: webapp/WEB-INF/pages/admin/comment-my.jsp:20
 #: webapp/WEB-INF/pages/common/admin/header.jsp:124
 #: java/com/youthlin/blog/web/back/CommentController.java:136
 msgid "My Comments"

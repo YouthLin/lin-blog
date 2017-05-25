@@ -45,6 +45,11 @@
         <function-signature>java.lang.String __(java.lang.String)</function-signature>
     </function>
     <function>
+        <name>_f</name>
+        <function-class>com.youthlin.utils.i18n.Translation</function-class>
+        <function-signature>java.lang.String _f(java.lang.String,java.lang.Object...)</function-signature>
+    </function>
+    <function>
         <name>img</name>
         <function-class>com.youthlin.blog.util.Gravatar</function-class>
         <function-signature>java.lang.String getUrlWithEmail(java.lang.String)</function-signature>
