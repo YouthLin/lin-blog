@@ -58,10 +58,10 @@
                     <input type="checkbox">
                 </label>
             </th>
-            <th><%=__("Author")%></th>
-            <th><%=__("Comment")%></th>
-            <th><%=__("Post")%></th>
-            <th><%=__("Date")%></th>
+            <th class="col-sm-2"><%=__("Author")%></th>
+            <th class="col-sm-5"><%=__("Comment")%></th>
+            <th class="col-sm-2"><%=__("Post")%></th>
+            <th class="col-sm-2"><%=__("Date")%></th>
         </tr>
         </thead>
         <tbody>

@@ -4,7 +4,9 @@
 <%--@elvariable id="category" type="com.youthlin.blog.model.bo.Category"--%>
 <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Pageable"--%>
 <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
-<%@ page import="static com.youthlin.utils.i18n.Translation.__" %><%--
+<%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
+<%@ page import="com.youthlin.blog.model.po.Post" %>
+<%@ page import="com.youthlin.blog.model.bo.Page" %><%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -80,6 +82,38 @@
     <button type="submit" class="btn btn-default"><%=__("Filter")%></button>
 </form>
 <div class="table-responsive">
+
+    <%--@elvariable id="commentPage" type="com.youthlin.blog.model.bo.Page"--%>
+    <c:if test="${not empty postPage and postPage.totalPage>0}">
+        <div class="border-pager pull-right">
+            <%
+                Page<Post> postPage = (Page<Post>) request.getAttribute("postPage");
+            %>
+            <c:set var="totalRow" value="${commentPage.totalRow}"/>
+            <span class="table-meta table-meta-count"><%=_f("{0} Items", postPage.getTotalRow())%></span>
+            <c:set var="disabled" value=""/>
+            <c:if test="${postPage.currentPage==1}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=1">
+                <span class="sr-only"><%=__("First page")%></span>&laquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${postPage.currentPage-1}">
+                <span class="sr-only"><%=__("Previous page")%></span>&lsaquo;</a>
+            <form action="" class="form-inline" style="display: inline-block;">
+                <label><input type="text" name="page" class="form-control" value="${postPage.currentPage}"
+                              style="width: 34px;"> / ${postPage.totalPage}</label>
+            </form>
+            <c:set var="disabled" value=""/>
+            <c:if test="${postPage.currentPage==postPage.totalPage}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${postPage.currentPage+1}">
+                 <span class="sr-only"><%=__("Next page")%></span>&rsaquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${postPage.totalPage}">
+                 <span class="sr-only"><%=__("Last page")%></span>&raquo;</a>
+        </div>
+    </c:if>
+
     <table class="table table-striped table-hover border-ccc">
         <thead>
         <tr>
@@ -169,5 +203,37 @@
         </c:forEach>
         </tbody>
     </table>
+
+    <%--@elvariable id="commentPage" type="com.youthlin.blog.model.bo.Page"--%>
+    <c:if test="${not empty postPage and postPage.totalPage>0}">
+        <div class="border-pager pull-right">
+            <%
+                Page<Post> postPage = (Page<Post>) request.getAttribute("postPage");
+            %>
+            <c:set var="totalRow" value="${commentPage.totalRow}"/>
+            <span class="table-meta table-meta-count"><%=_f("{0} Items", postPage.getTotalRow())%></span>
+            <c:set var="disabled" value=""/>
+            <c:if test="${postPage.currentPage==1}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=1">
+                <span class="sr-only"><%=__("First page")%></span>&laquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${postPage.currentPage-1}">
+                <span class="sr-only"><%=__("Previous page")%></span>&lsaquo;</a>
+            <form action="" class="form-inline" style="display: inline-block;">
+                <label><input type="text" name="page" class="form-control" value="${postPage.currentPage}"
+                              style="width: 34px;"> / ${postPage.totalPage}</label>
+            </form>
+            <c:set var="disabled" value=""/>
+            <c:if test="${postPage.currentPage==postPage.totalPage}">
+                <c:set var="disabled" value="disabled"/>
+            </c:if>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${postPage.currentPage+1}">
+                 <span class="sr-only"><%=__("Next page")%></span>&rsaquo;</a>
+            <a class="btn btn-sm btn-default ${disabled}" href="?page=${postPage.totalPage}">
+                 <span class="sr-only"><%=__("Last page")%></span>&raquo;</a>
+        </div>
+    </c:if>
+
 </div>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>
