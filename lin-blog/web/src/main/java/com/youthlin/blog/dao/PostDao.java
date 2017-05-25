@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 创建： youthlin.chen
@@ -62,5 +63,7 @@ public interface PostDao {
     List<Date> listAllDateByStatus(@Param("status")PostStatus status);
 
     List<Post> listRecentPublished(int count);
+
+    List<Post> listByPostIds(@Param("postIds") Set<Long> postIds);
 
 }

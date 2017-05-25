@@ -147,13 +147,16 @@ a.active {
 .recent-comment:last-child {
     border-bottom: none;
 }
-.relative{
+
+.relative {
     position: relative;
 }
-.absolute-bottom{
+
+.absolute-bottom {
     position: absolute;
     bottom: 5px;
 }
+
 /* endregion */
 
 /* region 导航条 */

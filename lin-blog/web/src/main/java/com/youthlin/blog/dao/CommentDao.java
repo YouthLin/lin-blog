@@ -32,4 +32,6 @@ public interface CommentDao {
      * 获取各种状态评论的数量
      */
     long countByStatus(CommentStatus status);
+
+    int updateStatus(@Param("id") long commentId, @Param("status") CommentStatus status);
 }

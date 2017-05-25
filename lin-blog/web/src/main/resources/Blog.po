@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-25 12:54+0800\n"
-"PO-Revision-Date: 2017-05-25 12:56+0800\n"
+"POT-Creation-Date: 2017-05-25 16:36+0800\n"
+"PO-Revision-Date: 2017-05-25 16:38+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -31,15 +31,110 @@ msgstr "404 未找到"
 msgid "We are sorry, but the page is not found. "
 msgstr "很抱歉，但是您访问的页面不存在。 "
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:15
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:24
 #: webapp/WEB-INF/pages/common/admin/header.jsp:120
-#: java/com/youthlin/blog/web/back/CommentController.java:26
+#: java/com/youthlin/blog/web/back/CommentController.java:59
 msgid "All Comments"
 msgstr "所有评论"
 
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:28
+#: webapp/WEB-INF/pages/admin/post-all.jsp:38
+msgid "All"
+msgstr "所有"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:30
+#: webapp/WEB-INF/pages/admin/post-all.jsp:43
+msgid "Pending"
+msgstr "待审"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:32
+msgid "Approved"
+msgstr "已批准"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:34
+msgid "Spam"
+msgstr "垃圾评论"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:36
+#: webapp/WEB-INF/pages/admin/post-all.jsp:47
+msgid "Trash"
+msgstr "回收站"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:45
+#: webapp/WEB-INF/pages/admin/post-all.jsp:88
+#: webapp/WEB-INF/pages/admin/post-category.jsp:62
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:52
+#: webapp/WEB-INF/pages/admin/users-all.jsp:24
+msgid "Select All"
+msgstr "全选"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:49
+#: webapp/WEB-INF/pages/admin/post-all.jsp:93
+#: java/com/youthlin/blog/model/enums/Role.java:46
+msgid "Author"
+msgstr "作者"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:50
+msgid "Comment"
+msgstr "评论"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:51
+#: webapp/WEB-INF/pages/common/admin/header.jsp:78
+msgid "Post"
+msgstr "文章"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:52
+#: webapp/WEB-INF/pages/admin/post-all.jsp:98
+msgid "Date"
+msgstr "日期"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:63
+#: webapp/WEB-INF/pages/admin/post-all.jsp:108
+#: webapp/WEB-INF/pages/admin/post-category.jsp:77
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:66
+#: webapp/WEB-INF/pages/admin/users-all.jsp:42
+msgid "Select"
+msgstr "选择"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:80
+msgid "unapproved"
+msgstr "待审"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:85
+msgid "approved"
+msgstr "批准"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:88
+#: webapp/WEB-INF/pages/admin/index.jsp:47
+#: webapp/WEB-INF/pages/admin/index.jsp:108
+#: webapp/WEB-INF/pages/admin/post-all.jsp:123
+#: webapp/WEB-INF/pages/admin/post-category.jsp:84
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
+msgid "Edit"
+msgstr "编辑"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:90
+#: webapp/WEB-INF/pages/admin/post-all.jsp:127
+#: webapp/WEB-INF/pages/admin/post-category.jsp:90
+#: webapp/WEB-INF/pages/admin/post-tag.jsp:74
+msgid "View"
+msgstr "查看"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:91
+msgid "Tag as spam"
+msgstr "垃圾评论"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:92
+msgid "Move to trash"
+msgstr "移至回收站"
+
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:108
+msgid "No comments"
+msgstr "没有评论"
+
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:124
-#: java/com/youthlin/blog/web/back/CommentController.java:32
+#: java/com/youthlin/blog/web/back/CommentController.java:134
 msgid "My Comments"
 msgstr "我的评论"
 
@@ -58,14 +153,6 @@ msgstr "概览"
 #: webapp/WEB-INF/pages/admin/index.jsp:27
 msgid "Recent Published"
 msgstr "最近发布"
-
-#: webapp/WEB-INF/pages/admin/index.jsp:47
-#: webapp/WEB-INF/pages/admin/index.jsp:108
-#: webapp/WEB-INF/pages/admin/post-all.jsp:123
-#: webapp/WEB-INF/pages/admin/post-category.jsp:84
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:72
-msgid "Edit"
-msgstr "编辑"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:61
 #: webapp/WEB-INF/pages/include/sidebar.jsp:18
@@ -165,26 +252,14 @@ msgstr "新建页面"
 msgid "All Post"
 msgstr "所有文章"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:38
-msgid "All"
-msgstr "所有"
-
 #: webapp/WEB-INF/pages/admin/post-all.jsp:40
 #: webapp/WEB-INF/pages/admin/post-all.jsp:157
 msgid "Published"
 msgstr "已发布"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:43
-msgid "Pending"
-msgstr "待审"
-
 #: webapp/WEB-INF/pages/admin/post-all.jsp:45
 msgid "Draft"
 msgstr "草稿"
-
-#: webapp/WEB-INF/pages/admin/post-all.jsp:47
-msgid "Trash"
-msgstr "回收站"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:52
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:101
@@ -208,21 +283,9 @@ msgstr "所有分类目录"
 msgid "Filter"
 msgstr "过滤"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:88
-#: webapp/WEB-INF/pages/admin/post-category.jsp:62
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:52
-#: webapp/WEB-INF/pages/admin/users-all.jsp:24
-msgid "Select All"
-msgstr "全选"
-
 #: webapp/WEB-INF/pages/admin/post-all.jsp:92
 msgid "Title"
 msgstr "标题"
-
-#: webapp/WEB-INF/pages/admin/post-all.jsp:93
-#: java/com/youthlin/blog/model/enums/Role.java:46
-msgid "Author"
-msgstr "作者"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:94
 #: webapp/WEB-INF/pages/admin/post-category.jsp:18
@@ -245,17 +308,6 @@ msgstr "标签"
 msgid "Comment Count"
 msgstr "评论数量"
 
-#: webapp/WEB-INF/pages/admin/post-all.jsp:98
-msgid "Date"
-msgstr "日期"
-
-#: webapp/WEB-INF/pages/admin/post-all.jsp:108
-#: webapp/WEB-INF/pages/admin/post-category.jsp:77
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:66
-#: webapp/WEB-INF/pages/admin/users-all.jsp:42
-msgid "Select"
-msgstr "选择"
-
 #: webapp/WEB-INF/pages/admin/post-all.jsp:119
 msgid "UnTrash"
 msgstr "还原"
@@ -269,12 +321,6 @@ msgstr "删除"
 #: webapp/WEB-INF/pages/admin/post-all.jsp:124
 msgid "Move To Trash"
 msgstr "移至回收站"
-
-#: webapp/WEB-INF/pages/admin/post-all.jsp:127
-#: webapp/WEB-INF/pages/admin/post-category.jsp:90
-#: webapp/WEB-INF/pages/admin/post-tag.jsp:74
-msgid "View"
-msgstr "查看"
 
 #: webapp/WEB-INF/pages/admin/post-all.jsp:151
 msgid "Comment Count:"
@@ -340,6 +386,7 @@ msgstr "分类目录的描述。"
 
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:136
+#: webapp/WEB-INF/pages/admin/settings-general.jsp:26
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:95
 msgid "Update"
 msgstr "更新"
@@ -483,19 +530,32 @@ msgstr "由于您的权限限制，您只能保存草稿而不能发布文章。
 
 #: webapp/WEB-INF/pages/admin/settings-comment.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:171
-#: java/com/youthlin/blog/web/back/SettingsController.java:46
+#: java/com/youthlin/blog/web/back/SettingsController.java:78
 msgid "Comment Settings"
 msgstr "评论设置"
 
+#: webapp/WEB-INF/pages/admin/settings-comment.jsp:16
+#: webapp/WEB-INF/pages/admin/settings-post.jsp:16
+#: webapp/WEB-INF/pages/admin/tool-export.jsp:16
+#: webapp/WEB-INF/pages/admin/tool-import.jsp:16
+msgid "This feature is developing, it will coming soon."
+msgstr "此功能正在开发者，敬请期待。"
+
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:165
-#: java/com/youthlin/blog/web/back/SettingsController.java:26
+#: java/com/youthlin/blog/web/back/SettingsController.java:40
+#: java/com/youthlin/blog/web/back/SettingsController.java:58
 msgid "General Settings"
 msgstr "常规设置"
 
+#: webapp/WEB-INF/pages/admin/settings-general.jsp:18
+#: webapp/WEB-INF/pages/install.jsp:40
+msgid "Site Title"
+msgstr "博客标题"
+
 #: webapp/WEB-INF/pages/admin/settings-post.jsp:15
 #: webapp/WEB-INF/pages/common/admin/header.jsp:168
-#: java/com/youthlin/blog/web/back/SettingsController.java:36
+#: java/com/youthlin/blog/web/back/SettingsController.java:68
 msgid "Post Settings"
 msgstr "文章设置"
 
@@ -634,10 +694,6 @@ msgstr "登出"
 msgid "DashBoard"
 msgstr "仪表盘"
 
-#: webapp/WEB-INF/pages/common/admin/header.jsp:78
-msgid "Post"
-msgstr "文章"
-
 #: webapp/WEB-INF/pages/common/admin/header.jsp:85
 msgid "New Post"
 msgstr "写文章"
@@ -744,10 +800,6 @@ msgid ""
 "Please provide the following information. Don't worry, you can always change "
 "these settings later."
 msgstr "请提供以下信息。别担心会填错，安装完成后可以随时修改。"
-
-#: webapp/WEB-INF/pages/install.jsp:40
-msgid "Site Title"
-msgstr "博客标题"
 
 #: webapp/WEB-INF/pages/install.jsp:51
 msgid ""
@@ -1014,24 +1066,24 @@ msgstr "密码错误。"
 msgid "Your profile has been updated."
 msgstr "您的信息已更新。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:88
-#: java/com/youthlin/blog/web/front/SinglePostController.java:93
+#: java/com/youthlin/blog/web/front/SinglePostController.java:89
+#: java/com/youthlin/blog/web/front/SinglePostController.java:94
 msgid "No such post."
 msgstr "文章不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:98
+#: java/com/youthlin/blog/web/front/SinglePostController.java:99
 msgid "Comments are closed on this post."
 msgstr "评论已关闭。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:106
+#: java/com/youthlin/blog/web/front/SinglePostController.java:107
 msgid "Name, email, and comment content are required."
 msgstr "姓名，电子邮件和评论内容是必填项。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:122
+#: java/com/youthlin/blog/web/front/SinglePostController.java:123
 msgid "Parent comment does not exist."
 msgstr "您要回复的评论不存在。"
 
-#: java/com/youthlin/blog/web/front/SinglePostController.java:126
+#: java/com/youthlin/blog/web/front/SinglePostController.java:127
 msgid "This post does not contains the parent comment."
 msgstr "您回复的评论不是本文的评论。"
 

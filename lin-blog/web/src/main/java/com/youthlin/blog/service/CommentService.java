@@ -116,4 +116,9 @@ public class CommentService {
         log.debug("list comments: {}", page);
         return page;
     }
+
+    public boolean changeStatus(Long commentId, CommentStatus newStatus) {
+        return commentDao.updateStatus(commentId, newStatus) == 1;
+    }
+
 }

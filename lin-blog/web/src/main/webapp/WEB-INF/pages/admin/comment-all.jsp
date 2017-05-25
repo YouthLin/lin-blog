@@ -58,7 +58,19 @@
             <c:when test="${not empty commentPage}">
                 <%--@elvariable id="comment" type="com.youthlin.blog.model.po.Comment"--%>
                 <c:forEach items="${commentPage.list}" var="comment">
-                    <tr>
+                    <c:set var="trClass" value=""/>
+                    <c:choose>
+                        <c:when test="${comment.commentStatus.code eq 1}">
+                            <c:set var="trClass" value="warning"/>
+                        </c:when>
+                        <c:when test="${comment.commentStatus.code eq 2}">
+                            <c:set var="trClass" value="danger"/>
+                        </c:when>
+                        <c:when test="${comment.commentStatus.code eq 3}">
+                            <c:set var="trClass" value="danger"/>
+                        </c:when>
+                    </c:choose>
+                    <tr class="${trClass}">
                          <td>
                              <label><span class="sr-only"><%=__("Select")%></span>
                             <input type="checkbox" name="ids" value="${comment.commentId}"></label>
@@ -73,25 +85,36 @@
                         <td class="relative">
                             <div class="comment-info comment-info-content">${comment.commentContent}</div>
                             <div class="comment-info comment-info-action absolute-bottom">
-                                <c:choose>
-                                    <c:when test="${comment.commentStatus.code eq 0}">
-                                        <%--0正常 1待审 2垃圾 3删除--%>
-                                        <a href="#" class="text-warning"><%=__("unapproved")%></a>
-                                    </c:when>
-                                    <c:when test="${comment.commentStatus.code eq 1}">
-                                        <%--0正常 1待审 2垃圾 3删除--%>
-                                        <a href="#" class="text-info"><%=__("approved")%></a>
-                                    </c:when>
-                                </c:choose>
-                                | <a href="#"><%=__("Edit")%></a>
+                                <a href="#"><%=__("Edit")%></a>
                                 | <a href="<c:url value="/post/${comment.commentPostId}#comment-${comment.commentId}"/>"
                                      target="_blank"><%=__("View")%></a>
-                                | <a href="#" class="text-danger"><%=__("Tag as spam")%></a>
-                                | <a href="#" class="text-danger"><%=__("Move to trash")%></a>
+                                    <%--0正常 1待审 2垃圾 3删除--%>
+                                    <c:if test="${comment.commentStatus.code ne 0}">
+                                        | <a href="?action=normal&id=${comment.commentId}" class="text-info">
+                                            <%=__("approved")%></a>
+                                    </c:if>
+                                    <c:if test="${comment.commentStatus.code ne 1}">
+                                        | <a href="?action=pending&id=${comment.commentId}" class="text-warning">
+                                            <%=__("unapproved")%></a>
+                                    </c:if>
+                                    <c:if test="${comment.commentStatus.code ne 2}">
+                                        |<a href="?action=spam&id=${comment.commentId}" class="text-danger">
+                                        <%=__("Tag as spam")%></a>
+                                    </c:if>
+                                    <c:if test="${comment.commentStatus.code ne 3}">
+                                        | <a href="?action=trash&id=${comment.commentId}" class="text-danger">
+                                    <%=__("Move to trash")%></a>
+                                    </c:if>
+
                             </div>
                         </td>
                         <td>
-                                ${comment.commentPostId}
+                            <%--@elvariable id="postMap" type="java.util.Map"--%>
+                            <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
+                            <a href="<c:url value="/post/${comment.commentPostId}"/>" target="_blank">
+                                <c:set var="post" value="${postMap[comment.commentPostId]}"/>
+                                ${post.postTitle}
+                            </a>
                         </td>
                         <td><fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm"/></td>
                     </tr>

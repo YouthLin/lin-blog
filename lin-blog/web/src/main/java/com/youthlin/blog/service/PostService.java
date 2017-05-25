@@ -33,6 +33,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 创建： youthlin.chen
@@ -319,4 +320,7 @@ public class PostService {
         return postDao.listRecentPublished(count);
     }
 
+    public List<Post> listByPostIds(Set<Long> postIds) {
+        return postDao.listByPostIds(postIds);
+    }
 }

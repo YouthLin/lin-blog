@@ -175,4 +175,16 @@
         FROM posts WHERE post_status=0 ORDER BY post_date DESC LIMIT #{count}
     </select>
 
+    <select id="listByPostIds" resultMap="postMap" parameterType="collection">
+        SELECT
+        <include refid="all"/>
+        FROM posts
+        WHERE 1!=1
+        <if test="postIds !=null and postIds.size()>0">
+            <foreach collection="postIds" item="id" open="OR ID IN(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+
 </mapper>

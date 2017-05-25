@@ -37,6 +37,12 @@
                                #{commentStatus}, #{commentAgent}, #{commentType}, #{commentParent}, #{userId})
     </insert>
 
+    <update id="updateStatus">
+        UPDATE comments
+        SET comment_status = #{status}
+        WHERE comment_ID = #{id}
+    </update>
+
     <select id="findByPostId" resultMap="commentMap">
         SELECT
         <include refid="all"/>
