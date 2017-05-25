@@ -1,6 +1,8 @@
 package com.youthlin.blog.dao;
 
+import com.youthlin.blog.model.enums.CommentStatus;
 import com.youthlin.blog.model.po.Comment;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,5 +21,15 @@ public interface CommentDao {
 
     List<Comment> listRecent(int count);
 
+    /**
+     * 评论总数
+     */
     long count();
+
+    List<Comment> listByStatus(@Param("status") CommentStatus status);
+
+    /**
+     * 获取各种状态评论的数量
+     */
+    long countByStatus(CommentStatus status);
 }

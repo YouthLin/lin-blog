@@ -15,14 +15,18 @@ public enum CommentStatus {
     private final int code;
     private final String describe;
     private static final Map<Integer, CommentStatus> map;
+    private static final Map<String, CommentStatus> nameMap;
 
     static {
         Map<Integer, CommentStatus> all = Maps.newHashMap();
+        Map<String, CommentStatus> names = Maps.newHashMap();
         CommentStatus[] values = CommentStatus.values();
         for (CommentStatus v : values) {
             all.put(v.code, v);
+            names.put(v.name(), v);
         }
         map = Collections.unmodifiableMap(all);
+        nameMap = Collections.unmodifiableMap(names);
     }
 
     CommentStatus(int code, String describe) {
@@ -40,6 +44,10 @@ public enum CommentStatus {
 
     public static CommentStatus codeOf(int code) {
         return map.get(code);
+    }
+
+    public static CommentStatus nameOf(String name) {
+        return nameMap.get(name);
     }
 
 }

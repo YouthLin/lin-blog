@@ -116,7 +116,7 @@
             <div class="panel panel-menu bd ">
                 <ul id="comment" class="collapse">
                     <c:if test="${not empty role and (role.code ge 30)}"><%--编辑及以上权限(能编辑他人评论)--%>
-                        <li><a class="menu-item-a menu-item-comment" href="<c:url value="/admin/comment/all"/>">
+                        <li><a class="menu-item-a menu-item-comment" href="<c:url value="/admin/comment"/>">
                         <%=__("All Comments")%>
                     </a></li>
                     </c:if>

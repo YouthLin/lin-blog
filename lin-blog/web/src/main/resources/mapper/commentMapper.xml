@@ -62,4 +62,21 @@
         FROM comments
     </select>
 
+    <select id="countByStatus" resultType="java.lang.Long">
+        SELECT count(1)
+        FROM comments
+        WHERE comment_status = #{status}
+    </select>
+
+    <select id="listByStatus" resultMap="commentMap">
+        SELECT
+        <include refid="all"/>
+        FROM comments
+        WHERE 1=1
+        <if test="status != null">
+            AND comment_status = #{status}
+        </if>
+        ORDER BY comment_date DESC
+    </select>
+
 </mapper>

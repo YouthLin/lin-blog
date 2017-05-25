@@ -1,10 +1,14 @@
 package com.youthlin.blog.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.youthlin.blog.dao.CommentDao;
 import com.youthlin.blog.dao.PostDao;
 import com.youthlin.blog.model.bo.CommentNode;
+import com.youthlin.blog.model.bo.Page;
+import com.youthlin.blog.model.enums.CommentStatus;
 import com.youthlin.blog.model.po.Comment;
 import com.youthlin.blog.model.po.Post;
 import org.slf4j.Logger;
@@ -92,7 +96,24 @@ public class CommentService {
         return map;
     }
 
+    /**
+     * 评论总数
+     */
     public long count() {
         return commentDao.count();
+    }
+
+    public long countByStatus(CommentStatus status) {
+        return commentDao.countByStatus(status);
+    }
+
+    /**
+     * @param status 不为 null 时，直查该状态的评论。为 null 查所有状态的评论
+     */
+    public Page<Comment> listPageByStatus(int pageIndex, int pageSize, CommentStatus status) {
+        PageInfo<Comment> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(() -> commentDao.listByStatus(status));
+        Page<Comment> page = new Page<>(pageInfo);
+        log.debug("list comments: {}", page);
+        return page;
     }
 }

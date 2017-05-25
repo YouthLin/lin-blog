@@ -33,7 +33,7 @@
     <%--@elvariable id="draftCount" type="java.lang.Long"--%>
     <%--@elvariable id="pendingCount" type="java.lang.Long"--%>
     <%--@elvariable id="trashCount" type="java.lang.Long"--%>
-    <div class="btn-group" role="group" aria-label="...">
+    <div class="btn-group" role="group" aria-label="post status">
         <a class="btn btn-default" id="a-all" href="<c:url value="/admin/post/all"/>">
             <%=__("All")%><span class="badge">${allCount}</span></a>
         <a class="btn btn-default" id="a-published" href="<c:url value="/admin/post/published"/>">
