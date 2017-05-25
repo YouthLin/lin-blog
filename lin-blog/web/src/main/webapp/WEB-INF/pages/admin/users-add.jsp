@@ -50,7 +50,7 @@
     <div class="form-group">
         <label for="role" class="col-sm-2 control-label"><%=__("Role")%>&nbsp;<span class="star">*</span></label>
         <div class="col-sm-10">
-            <select name="role" id="role" class="form-control"  readonly>
+            <select name="role" id="role" class="form-control">
                 <%
                     for (Role role : Role.values()) {
                         if (role.equals(Role.Author)) {

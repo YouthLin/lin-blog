@@ -13,5 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface OptionDao {
     void save(Option option);
 
+    int update(Option option);
+
     Option findByName(String optionName);
 }

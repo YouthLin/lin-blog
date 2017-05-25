@@ -13,5 +13,6 @@
     $(".menu-item-settings-comment").addClass("active");
 });</script>
 <h1><%=__("Comment Settings")%></h1>
-
+<p><%=__("This feature is developing, it will coming soon.")%></p>
+<p>是否允许游客评论等设置。</p>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

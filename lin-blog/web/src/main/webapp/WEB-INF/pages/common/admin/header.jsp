@@ -97,9 +97,9 @@
             </c:if>
 
             <c:if test="${not empty role and (role.code ge 30)}"><%--编辑及以上权限(能新增页面)--%>
-                <a href="#page" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-page"
+                <a href="#page" data-toggle="collapse" data-parent="#menu" class="parent menu-parent-page hide"
                    aria-expanded="false" aria-controls="page"><%=__("Page")%></a>
-                <div class="panel panel-menu bd ">
+                <div class="panel panel-menu bd hide">
                     <ul id="page" class="collapse">
                         <li><a class="menu-item-a menu-item-all-page" href="<c:url value="/admin/page/all"/>">
                         <%=__("All Page")%>

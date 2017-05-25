@@ -18,6 +18,12 @@
         VALUES (#{optionName}, #{optionValue})
     </insert>
 
+    <update id="update" parameterType="com.youthlin.blog.model.po.Option">
+        UPDATE options
+        SET option_name = #{optionName}, option_value = #{optionValue}
+        WHERE option_id = #{optionId}
+    </update>
+
     <select id="findByName" resultMap="optionMap">
         SELECT
         <include refid="all"/>

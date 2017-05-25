@@ -13,5 +13,6 @@
     $(".menu-item-settings-post").addClass("active");
 });</script>
 <h1><%=__("Post Settings")%></h1>
-
+<p><%=__("This feature is developing, it will coming soon.")%></p>
+<p>默认编辑器设置等。</p>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>

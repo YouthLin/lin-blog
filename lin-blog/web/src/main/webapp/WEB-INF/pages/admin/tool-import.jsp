@@ -13,5 +13,5 @@
     $(".menu-item-tool-import").addClass("active");
 });</script>
 <h1><%=__("Import")%></h1>
-
+<p><%=__("This feature is developing, it will coming soon.")%></p>
 <%@ include file="/WEB-INF/pages/common/admin/footer.jsp" %>
