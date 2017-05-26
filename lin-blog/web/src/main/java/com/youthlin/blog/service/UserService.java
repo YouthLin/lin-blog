@@ -112,7 +112,7 @@ public class UserService {
         }
         UserMeta loginInfoMeta = userMetaDao.findByUserNameAndMetaKey(loginInfo.getUserName(), Constant.K_LOGIN_INFO);
         Map<String, LoginInfo> map = getLoginInfoMapFromMeta(loginInfoMeta);
-        if (map == null) {
+        if (map == null || map.isEmpty()) {
             LOGGER.warn("数据库中没有登录记录");
             return false;
         }
@@ -181,6 +181,9 @@ public class UserService {
     }
 
     private Map<String, LoginInfo> getLoginInfoMapFromMeta(UserMeta loginInfoMeta) {
+        if (loginInfoMeta == null) {
+            return Collections.emptyMap();
+        }
         if (Constant.K_LOGIN_INFO.equals(loginInfoMeta.getMetaKey())) {
             String loginInfoJson = loginInfoMeta.getMetaValue();
             @SuppressWarnings("unchecked")
@@ -251,7 +254,7 @@ public class UserService {
         }
         @SuppressWarnings("unchecked")
         Map<String, LoginInfo> infoMap = getLoginInfoMapFromMeta(loginInfoMeta);
-        if (infoMap == null) {
+        if (infoMap == null || infoMap.isEmpty()) {
             LOGGER.warn("InfoMap 为空");
             infoMap = Maps.newHashMap();
         }

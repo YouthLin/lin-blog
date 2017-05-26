@@ -53,7 +53,7 @@
                 <img src="<%=Gravatar.getUrlWithEmail((String) request.getAttribute(Constant.EMAIL))%>"
                      width=60 height=60 class="pull-left">
                 <ul class="pull-right">
-                    <li><a href="#"><%=__("Profile")%></a></li>
+                    <li><a href="<c:url value="/admin/users/my"/>"><%=__("Profile")%></a></li>
                     <li><a href="<c:url value="/login.out"/>"><%=__("Log out")%></a></li>
                 </ul>
             </div>

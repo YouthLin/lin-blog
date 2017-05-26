@@ -72,8 +72,8 @@
     <select id="listRecent" resultMap="commentMap">
         SELECT
         <include refid="all"/>
-        FROM comments
-        WHERE comment_status=0 ORDER BY comment_date DESC LIMIT #{count}
+        FROM comments LEFT JOIN posts ON comment_post_ID=posts.ID
+        WHERE comment_status=0 AND posts.post_status=0 ORDER BY comment_date DESC LIMIT #{count}
     </select>
 
     <select id="count" resultType="java.lang.Long">

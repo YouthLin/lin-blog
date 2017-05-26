@@ -19,6 +19,9 @@ public interface CommentDao {
 
     Comment findById(Long id);
 
+    /**
+     * 获取最近评论(已发布文章的)
+     */
     List<Comment> listRecent(int count);
 
     /**
@@ -26,7 +29,7 @@ public interface CommentDao {
      */
     long count();
 
-    List<Comment> listByStatus(@Param("status") CommentStatus status,@Param("userId") Long userId);
+    List<Comment> listByStatus(@Param("status") CommentStatus status, @Param("userId") Long userId);
 
     /**
      * 获取各种状态评论的数量
