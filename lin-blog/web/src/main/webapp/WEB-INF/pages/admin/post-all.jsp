@@ -41,7 +41,7 @@
         <a class="btn btn-default" id="a-published" href="<c:url value="/admin/post/published"/>">
             <%=__("Published")%><span class="badge">${publishedCount}</span></a>
         <%-- 暂时没有这个功能 --%>
-        <a class="btn btn-default sr-only" id="a-pending" href="<c:url value="/admin/post/pending"/>">
+        <a class="btn btn-default" id="a-pending" href="<c:url value="/admin/post/pending"/>">
             <%=__("Pending")%><span class="badge">${pendingCount}</span></a>
         <a class="btn btn-default" id="a-draft" href="<c:url value="/admin/post/draft"/>">
             <%=__("Draft")%><span class="badge">${draftCount}</span></a>

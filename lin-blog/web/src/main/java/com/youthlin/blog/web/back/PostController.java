@@ -17,6 +17,7 @@ import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.support.GlobalInfo;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.PostTaxonomyHelper;
+import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -61,7 +62,6 @@ public class PostController {
     private GlobalInfo<String, Long> globalInfo;//status-count
     @Resource
     private GlobalInfo<Long, String> globalInfoUserIdNameMap;
-
 
     // region //list all post
     @RequestMapping(path = {"/post", "/post/{status}"})
@@ -226,9 +226,9 @@ public class PostController {
 
     @RequestMapping(path = {"/post/add"}, method = {RequestMethod.POST})
     public String addPost(@RequestParam Map<String, String> param, HttpServletRequest request) {
-        Role role = (Role) request.getAttribute(Constant.K_ROLE);
-        if (role != null && role.getCode() < Role.Contributor.getCode()) {
-            return Constant.REDIRECT_TO_PROFILE;
+        String redirect = ServletUtil.checkRole(request, Role.Contributor);
+        if (redirect != null) {
+            return redirect;
         }
         String title = param.get("title");
         String content = param.get("content");
@@ -266,6 +266,10 @@ public class PostController {
         }
 
         PostStatus status = PostStatus.PUBLISHED;
+        Role currentUserRole = (Role) request.getAttribute(Constant.K_ROLE);
+        if (currentUserRole == null || currentUserRole.getCode() <= Role.Contributor.getCode()) {
+            status = PostStatus.PENDING;
+        }
         if (StringUtils.hasText(draft)) {
             status = PostStatus.DRAFT;
         }

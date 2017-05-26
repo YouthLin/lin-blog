@@ -98,7 +98,11 @@
                                 <button type="submit" class="btn btn-primary pull-right"><%=__("Publish")%></button>
                             </c:when>
                             <c:otherwise>
-                                <div class="help-block"><%=__("You can not publish post, but can save draft accroding to your role.")%></div></c:otherwise>
+                                <button type="submit" class="btn btn-primary pull-right"><%=__("Pending")%></button>
+                                <div class="help-block">
+                                    <%=__("You can not publish post, but can save draft or submit to pending according to your role.")%>
+                                </div>
+                            </c:otherwise>
                         </c:choose>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ package com.youthlin.blog.util;
 
 import com.google.common.base.Charsets;
 import com.youthlin.blog.model.bo.LoginInfo;
+import com.youthlin.blog.model.enums.Role;
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
 import org.slf4j.Logger;
@@ -87,4 +88,14 @@ public class ServletUtil {
         return Gravatar.withEmail(email).defaults(Gravatar.DefaultType.MONSTERID).size(40).getUrl();
     }
 
+    /**
+     * 当前用户的权限小于指定角色权限时，返回重定向地址。有权限则返回 null
+     */
+    public static String checkRole(HttpServletRequest request, Role role) {
+        Role currentUserRole = (Role) request.getAttribute(Constant.K_ROLE);
+        if (currentUserRole == null || currentUserRole.getCode() < role.getCode()) {
+            return Constant.REDIRECT_TO_PROFILE;
+        }
+        return null;
+    }
 }
