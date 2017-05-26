@@ -21,6 +21,18 @@ import java.util.Base64;
 public class ServletUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(ServletUtil.class);
 
+    public static String getHostLink(HttpServletRequest request) {
+        String url = request.getRequestURL().toString();
+        int indexOfProtocol = url.indexOf("://") + 3;
+        String protocol = url.substring(0, indexOfProtocol);
+        url = url.substring(indexOfProtocol);
+        if (url.contains("/")) {
+            url = url.substring(0, url.indexOf("/"));
+        }
+        url = protocol + url + request.getContextPath();
+        return url;
+    }
+
     public static String getUrl(HttpServletRequest request) {
         String uri = request.getRequestURI();
         String queryString = request.getQueryString();

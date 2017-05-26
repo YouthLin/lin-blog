@@ -9,14 +9,12 @@ import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.service.UserService;
-import com.youthlin.blog.support.RssFeedViewer;
+import com.youthlin.blog.support.RssFeedView;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,19 +24,32 @@ import java.util.Set;
  * 时间： 2017-05-26 18:42.
  */
 @Controller
-public class RssFeedController {
+public class FeedController {
     @Resource
     private PostService postService;
     @Resource
     private UserService userService;
 
-    @RequestMapping(path = {"/feed"})
-    public ModelAndView feed() {
-        ModelAndView mv = new ModelAndView("rssFeedViewer");
+    private ModelAndView getMv() {
+        ModelAndView mv = new ModelAndView();
         List<Post> posts = postService.recentPublished(5);
         fetchAuthorInfo(posts, mv.getModel());
         fetchTaxonomyRelaships(posts, mv.getModel());
-        mv.addObject(RssFeedViewer.POSTS, posts);
+        mv.addObject(RssFeedView.POSTS, posts);
+        return mv;
+    }
+
+    @RequestMapping(path = {"/feed"})
+    public ModelAndView rss() {
+        ModelAndView mv = getMv();
+        mv.setViewName("rssFeedView");
+        return mv;
+    }
+
+    @RequestMapping(path = {"/feed/atom"})
+    public ModelAndView atom() {
+        ModelAndView mv = getMv();
+        mv.setViewName("atomFeedView");
         return mv;
     }
 
@@ -55,7 +66,7 @@ public class RssFeedController {
         for (User user : users) {
             userMap.put(user.getUserId(), user);
         }
-        model.put(RssFeedViewer.USER_MAP, userMap);
+        model.put(RssFeedView.USER_MAP, userMap);
     }
 
     private void fetchTaxonomyRelaships(List<Post> posts, Map<String, Object> model) {
@@ -65,7 +76,7 @@ public class RssFeedController {
         }
         Long[] postIds = ids.toArray(new Long[0]);
         Multimap<Long, Taxonomy> postIdTaxonomyMultimap = postService.findTaxonomyByPostId(postIds);
-        model.put(RssFeedViewer.TAXONOMY_Map, postIdTaxonomyMultimap.asMap());
+        model.put(RssFeedView.TAXONOMY_Map, postIdTaxonomyMultimap.asMap());
     }
 }
 

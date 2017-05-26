@@ -12,8 +12,6 @@ import com.youthlin.blog.model.po.Taxonomy;
 import com.youthlin.blog.model.po.User;
 import com.youthlin.blog.util.Constant;
 import com.youthlin.blog.util.ServletUtil;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -35,8 +33,8 @@ import static com.youthlin.utils.i18n.Translation._x;
  * 时间： 2017-05-26 18:31.
  */
 @Component
-public class RssFeedViewer extends AbstractRssFeedView {
-    private static final Logger log = LoggerFactory.getLogger(RssFeedViewer.class);
+public class RssFeedView extends AbstractRssFeedView {
+    private static final Logger log = LoggerFactory.getLogger(RssFeedView.class);
     public static final String POSTS = "posts";
     public static final String USER_MAP = "userMap";
     public static final String TAXONOMY_Map = "taxonomyMap";
@@ -46,23 +44,11 @@ public class RssFeedViewer extends AbstractRssFeedView {
     @Override
     protected void buildFeedMetadata(Map<String, Object> model, Channel feed, HttpServletRequest request) {
         super.buildFeedMetadata(model, feed, request);
-        String url = getLink(request);
-        feed.setLink(url);
+        String url = ServletUtil.getHostLink(request);
+        feed.setLink(url + "/feed");
         String title = globalInfo.get(Constant.O_BLOG_TITLE);
         feed.setTitle(title);
         feed.setDescription(title);
-    }
-
-    private String getLink(HttpServletRequest request) {
-        String url = request.getRequestURL().toString();
-        int indexOfProtocol = url.indexOf("://") + 3;
-        String protocol = url.substring(0, indexOfProtocol);
-        url = url.substring(indexOfProtocol);
-        if (url.contains("/")) {
-            url = url.substring(0, url.indexOf("/"));
-        }
-        url = protocol + url + request.getContextPath();
-        return url;
     }
 
     @SuppressWarnings("unchecked")
@@ -71,7 +57,7 @@ public class RssFeedViewer extends AbstractRssFeedView {
         List<Post> posts = (List<Post>) model.get(POSTS);
         Map<Long, User> userMap = (Map<Long, User>) model.get(USER_MAP);
         Map<Long, Collection<Taxonomy>> taxonomyMap = (Map<Long, Collection<Taxonomy>>) model.get(TAXONOMY_Map);
-        String link = getLink(request);
+        String link = ServletUtil.getHostLink(request);
         List<Item> items = Lists.newArrayList();
         for (Post post : posts) {
             Item item = new Item();
@@ -85,7 +71,7 @@ public class RssFeedViewer extends AbstractRssFeedView {
             description.setType("text/plain");
             String postExcerpt = post.getPostExcerpt();
             if (StringUtils.hasText(postExcerpt)) {
-                description.setValue(postExcerpt);
+                description.setValue(ServletUtil.substringHtml(postExcerpt, 300));
             } else {
                 description.setValue(ServletUtil.substringHtml(post.getPostContent(), 300));
             }
