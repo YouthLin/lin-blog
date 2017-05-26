@@ -43,7 +43,7 @@
 <div class="table-responsive">
 
     <%--@elvariable id="commentPage" type="com.youthlin.blog.model.bo.Page"--%>
-    <c:if test="${not empty commentPage and commentPage.totalPage>0}">
+    <c:if test="${not empty commentPage and commentPage.totalPage>1}">
         <div class="border-pager pull-right">
             <%
                 Page<Comment> commentPage = (Page<Comment>) request.getAttribute("commentPage");
@@ -177,7 +177,7 @@
 
         </tbody>
     </table>
-    <c:if test="${not empty commentPage and commentPage.totalPage>0}">
+    <c:if test="${not empty commentPage and commentPage.totalPage>1}">
         <div class="border-pager pull-right">
             <%
                 Page<Comment> commentPage = (Page<Comment>) request.getAttribute("commentPage");

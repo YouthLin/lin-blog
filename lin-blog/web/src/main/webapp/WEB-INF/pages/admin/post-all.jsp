@@ -84,7 +84,7 @@
 <div class="table-responsive">
 
     <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
-    <c:if test="${not empty postPage and postPage.totalPage>0}">
+    <c:if test="${not empty postPage and postPage.totalPage>1}">
         <div class="border-pager pull-right">
             <%
                 Page<Post> postPage = (Page<Post>) request.getAttribute("postPage");
@@ -113,7 +113,6 @@
                  <span class="sr-only"><%=__("Last page")%></span>&raquo;</a>
         </div>
     </c:if>
-
     <table class="table table-striped table-hover border-ccc">
         <thead>
         <tr>
@@ -203,9 +202,7 @@
         </c:forEach>
         </tbody>
     </table>
-
-    <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
-    <c:if test="${not empty postPage and postPage.totalPage>0}">
+    <c:if test="${not empty postPage and postPage.totalPage>1}">
         <div class="border-pager pull-right">
             <%
                 Page<Post> postPage = (Page<Post>) request.getAttribute("postPage");

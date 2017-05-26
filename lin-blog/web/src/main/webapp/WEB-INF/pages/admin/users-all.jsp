@@ -21,7 +21,7 @@
 <h1><%=__("All Users")%></h1>
 <div class="table-responsive">
     <%--@elvariable id="userPage" type="com.youthlin.blog.model.bo.Page"--%>
-    <c:if test="${not empty userPage and userPage.totalPage>0}">
+    <c:if test="${not empty userPage and userPage.totalPage>1}">
         <div class="border-pager pull-right">
             <%
                 Page<User> userPage = (Page<User>) request.getAttribute("userPage");
@@ -99,7 +99,7 @@
         </tbody>
     </table>
     <%--@elvariable id="userPage" type="com.youthlin.blog.model.bo.Page"--%>
-    <c:if test="${not empty userPage and userPage.totalPage>0}">
+    <c:if test="${not empty userPage and userPage.totalPage>1}">
         <div class="border-pager pull-right">
             <%
                 Page<User> userPage = (Page<User>) request.getAttribute("userPage");
