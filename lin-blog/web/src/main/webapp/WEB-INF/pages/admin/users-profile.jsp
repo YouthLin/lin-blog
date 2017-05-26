@@ -1,5 +1,4 @@
 <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
-
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.po.User" %>
 <%@ page import="com.youthlin.blog.model.enums.Role" %><%--
@@ -66,11 +65,13 @@
         <div class="form-group">
             <label for="url" class="col-sm-2 control-label"><%=__("Url")%><span>&nbsp;&nbsp;</span></label>
             <div class="col-sm-10">
-                <input type="url" class="form-control" id="url" name="url" value="${user.userUrl}" placeholder="http://">
+                <input type="url" class="form-control" id="url" name="url" value="${user.userUrl}"
+                       placeholder="http://">
             </div>
         </div>
         <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"><%=__("Display name")%><span class="star">&nbsp;*</span></label>
+            <label for="name" class="col-sm-2 control-label"><%=__("Display name")%><span
+                    class="star">&nbsp;*</span></label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" id="name" name="name" value="${user.displayName}" required>
             </div>

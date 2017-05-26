@@ -30,6 +30,7 @@
         <pagehelper.version>5.0.1</pagehelper.version>
         <aspectj.version>1.8.10</aspectj.version>
         <jsoup.version>1.10.2</jsoup.version>
+        <rss.rome.version>1.7.3</rss.rome.version>
     </properties>
 
     <dependencyManagement>
@@ -125,6 +126,15 @@
                 <version>${jackson.version}</version>
             </dependency>
             <!-- endregion -->
+
+            <!--region rss-->
+            <!-- https://mvnrepository.com/artifact/com.rometools/rome -->
+            <dependency>
+                <groupId>com.rometools</groupId>
+                <artifactId>rome</artifactId>
+                <version>${rss.rome.version}</version>
+            </dependency>
+            <!--endregion -->
 
             <!-- region database -->
             <dependency>

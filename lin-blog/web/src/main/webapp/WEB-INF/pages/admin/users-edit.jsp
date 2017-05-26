@@ -1,4 +1,4 @@
-<%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%--@elvariable id="userEdit" type="com.youthlin.blog.model.po.User"--%>
 <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
@@ -57,7 +57,7 @@
                     <p class="form-control-static" id="role">
                         <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
                         <c:if test="${not empty role}">
-                            ${g:__(role.name())}
+                            ${blog:__(role.name())}
                         </c:if>
                     &nbsp;<small class="help-text"><%=__("You can not edit yourself or super admin's role.")%></small>
                     </p>

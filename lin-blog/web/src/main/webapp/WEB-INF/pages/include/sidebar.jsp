@@ -1,5 +1,6 @@
 <%--suppress ELValidationInJSP --%>
 <%@ page import="static com.youthlin.utils.i18n.Translation._f" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%@ page import="com.youthlin.blog.util.ServletUtil" %>
 <%@ page import="com.youthlin.blog.model.po.Comment" %>
 
@@ -29,9 +30,7 @@
                             <div class="media">
                                 <div class="media-left">
                                     <img class="media-object" width="40" height="40" alt="Gravatar"
-                                         src=<%="'"+ServletUtil.getGravatarUrl(
-                                                 ((Comment)pageContext.getAttribute("comment")).getCommentAuthorEmail()
-                                                 )+"'"%>>
+                                         src="${blog:img(comment.commentAuthorEmail,40)}">
                                 </div>
                                 <div class="media-body">
                                     <strong class="media-heading">
@@ -45,10 +44,7 @@
                                             </c:otherwise>
                                         </c:choose> :
                                     </strong>
-                                    <c:set var="content" value="${comment.commentContent.replaceAll('<','&lt;')}"/>
-                                    <c:if test="${(not empty content) and(content.length()>50) }">
-                                        <c:set var="content" value="${content.substring(0,50)} [...]"/>
-                                    </c:if>
+                                        ${blog:sub(comment.commentContent,50)}
                                     <a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>"
                                        title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>${content}</a>
                                 </div>

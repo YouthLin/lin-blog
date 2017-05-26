@@ -4,8 +4,8 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
         version="2.0">
     <tlib-version>1.0</tlib-version>
-    <short-name>cmt</short-name>
-    <uri>http://youthlin.com/linblog/tag/comment</uri>
+    <short-name>blog</short-name>
+    <uri>http://youthlin.com/linblog/tag/blog</uri>
     <tag>
         <!-- 定义标签名 -->
         <name>comments</name>
@@ -50,8 +50,13 @@
         <function-signature>java.lang.String _f(java.lang.String,java.lang.Object...)</function-signature>
     </function>
     <function>
+        <name>sub</name>
+        <function-class>com.youthlin.blog.util.ServletUtil</function-class>
+        <function-signature>java.lang.String substringHtml(java.lang.String,int)</function-signature>
+    </function>
+    <function>
         <name>img</name>
-        <function-class>com.youthlin.blog.util.Gravatar</function-class>
-        <function-signature>java.lang.String getUrlWithEmail(java.lang.String)</function-signature>
+        <function-class>com.youthlin.blog.util.ServletUtil</function-class>
+        <function-signature>java.lang.String getGravatarUrl(java.lang.String,int)</function-signature>
     </function>
 </taglib>

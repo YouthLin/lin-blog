@@ -1,8 +1,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._n" %>
-<%@ page import="com.youthlin.blog.util.ServletUtil" %>
-<%@ page import="com.youthlin.blog.model.po.Comment" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._x" %><%--
   Created by IntelliJ IDEA.
   User: lin
@@ -74,9 +73,7 @@
                             <div class="media">
                                 <div class="media-left">
                                     <img class="media-object" width="40" height="40" alt="Gravatar"
-                                         src=<%="'"+ServletUtil.getGravatarUrl(
-                                                 ((Comment)pageContext.getAttribute("comment")).getCommentAuthorEmail()
-                                                 )+"'"%>>
+                                         src="${blog:img(comment.commentAuthorEmail,40)}">
                                 </div>
                                 <div class="media-body">
                                     <strong class="media-heading">
@@ -93,25 +90,11 @@
                                              target="_blank">${post.postTitle}</a> 》
                                     </strong>
                                     <div>
-                                        <c:set var="content" value="${comment.commentContent.replaceAll('<','&lt;')}"/>
-                                        <c:if test="${(not empty content) and(content.length()>50) }">
-                                            <c:set var="content" value="${content.substring(0,50)} [...]"/>
-                                        </c:if>
                                         <a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>"
                                            target="_blank"
-                                           title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>${content}</a>
+                                           title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}"
+                                           pattern="YYYY-MM-dd HH:mm:ss"/>'>${blog:sub(comment.commentContent, 50)}</a>
                                         <br>
-                                        <span class="sr-only">
-                                            <a class="text-warning"
-                                               href="#"><%=_x("Pending", "un publish this comment")%></a> |
-                                            <a href="#"><%=__("Response")%></a> |
-                                            <a href="#"><%=__("Edit")%></a> |
-                                            <a class="text-danger"
-                                               href="#"><%=_x("Spam", "tagged as spam")%></a> |
-                                            <a class="text-danger"
-                                               href="#"><%=_x("Trash", "moving this comment to trash")%></a>
-                                        </span>
-                                        &nbsp;
                                     </div>
                                 </div>
                             </div>

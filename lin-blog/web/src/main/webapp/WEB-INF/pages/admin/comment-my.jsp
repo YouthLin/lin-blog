@@ -1,4 +1,4 @@
-<%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.po.Comment" %>
@@ -88,7 +88,7 @@
                             <input type="checkbox" name="ids" value="${comment.commentId}"></label>
                          </td>
                         <td>
-                            <img src="${g:img(comment.commentAuthorEmail)}" alt="Avatar" height="40" width="40">
+                            <img src="${blog:img(comment.commentAuthorEmail,40)}" alt="Avatar" height="40" width="40">
                             <span class="comment-info comment-info-author">${comment.commentAuthor}</span><br>
                             <span class="comment-info comment-info-url">${comment.commentAuthorUrl}</span><br>
                             <span class="comment-info comment-info-email">${comment.commentAuthorEmail}</span><br>
@@ -100,7 +100,7 @@
                                 <a href="<c:url value="/admin/comment/edit?id=${comment.commentId}"/>"><%=__("Edit")%></a>
                                 | <a href="<c:url value="/post/${comment.commentPostId}#comment-${comment.commentId}"/>"
                                      target="_blank"><%=__("View")%></a>
-                                | <span>${g:__(comment.commentStatus.name())}</span>
+                                | <span>${blog:__(comment.commentStatus.name())}</span>
                             </div>
                         </td>
                         <td>

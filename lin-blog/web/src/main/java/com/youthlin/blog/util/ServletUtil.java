@@ -4,6 +4,7 @@ import com.google.common.base.Charsets;
 import com.youthlin.blog.model.bo.LoginInfo;
 import com.youthlin.blog.model.enums.Role;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.safety.Whitelist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,8 +85,8 @@ public class ServletUtil {
                 .addProtocols("a", "href", "#"));
     }
 
-    public static String getGravatarUrl(String email) {
-        return Gravatar.withEmail(email).defaults(Gravatar.DefaultType.MONSTERID).size(40).getUrl();
+    public static String getGravatarUrl(String email, int size) {
+        return Gravatar.withEmail(email).defaults(Gravatar.DefaultType.MONSTERID).size(size).getUrl();
     }
 
     /**
@@ -97,5 +98,17 @@ public class ServletUtil {
             return Constant.REDIRECT_TO_PROFILE;
         }
         return null;
+    }
+
+    public static String substringHtml(String html, int length) {
+        if (!StringUtils.hasText(html)) {
+            return "";
+        }
+        Document document = Jsoup.parse(html);
+        String text = document.body().text();
+        if (text.length() > length) {
+            text = text.substring(0, length);
+        }
+        return text;
     }
 }

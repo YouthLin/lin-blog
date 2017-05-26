@@ -63,6 +63,12 @@
             <artifactId>jackson-annotations</artifactId>
         </dependency>
         <!-- endregion -->
+        <!-- https://mvnrepository.com/artifact/com.rometools/rome -->
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+        </dependency>
+
 
         <!-- region log -->
         <dependency>

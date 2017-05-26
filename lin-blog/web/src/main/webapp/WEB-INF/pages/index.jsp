@@ -1,6 +1,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
-<%@ page import="com.youthlin.blog.model.bo.Pageable" %><%--
+<%@ page import="com.youthlin.blog.model.bo.Pageable" %>
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-5
@@ -103,12 +105,7 @@
                                 <c:choose>
                                     <c:when test="${not empty post.postExcerpt}">${post.postExcerpt}</c:when>
                                     <c:otherwise>
-                                        <c:choose>
-                                            <c:when test="${post.postContent.length() > 300}">
-                                                ${post.postContent.substring(0,300)}
-                                            </c:when>
-                                            <c:otherwise>${post.postContent}</c:otherwise>
-                                        </c:choose>
+                                        ${blog:sub(post.postContent,300)}
                                     </c:otherwise>
                                 </c:choose>
                             </div>

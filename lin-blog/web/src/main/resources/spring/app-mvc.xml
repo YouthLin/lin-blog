@@ -43,6 +43,7 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
     <!-- 视图处理器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/pages/" p:suffix=".jsp"/>

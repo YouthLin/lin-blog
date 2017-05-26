@@ -82,7 +82,7 @@ public class CommentTag extends SimpleTagSupport {
         out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
                 + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
         out.println("      <div class=\"media-left\">");
-        out.println("        <img class=\"media-object\" src='" + ServletUtil.getGravatarUrl(comment.getCommentAuthorEmail())
+        out.println("        <img class=\"media-object\" src='" + ServletUtil.getGravatarUrl(comment.getCommentAuthorEmail(),40)
                 + "' alt=\"Gravatar\" width=\"40\" height=\"40\">");
         out.println("      </div>");
         out.println("      <div class=\"media-body\">");

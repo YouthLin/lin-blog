@@ -1,6 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="tr" uri="http://youthlin.com/linblog/tag/comment" %>
-<%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.po.User" %>
 <%@ page import="com.youthlin.blog.model.bo.Page" %>
@@ -76,7 +75,7 @@
                     </label>
                 </td>
                 <td>
-                    <img src="${g:img(aUser.userEmail)}" alt="Avatar" width="40" height="40">
+                    <img src="${blog:img(aUser.userEmail,40)}" alt="Avatar" width="40" height="40">
                         ${aUser.userLogin}&nbsp;
                     <a href="<c:url value="/admin/users/edit?id=${aUser.userId}"/>" class="pull-right">
                         <%=__("Edit")%></a></td>
@@ -91,7 +90,7 @@
                 <td>${aUser.userEmail}</td>
                 <td>
             <%--@elvariable id="roleMetaMap" type="java.util.Map"--%>
-                    <span class="split">${tr:__(roleMetaMap[aUser.userId].metaValue)}</span>
+                    <span class="split">${blog:__(roleMetaMap[aUser.userId].metaValue)}</span>
                </td>
                <td><fmt:formatDate value="${aUser.userRegistered}" pattern="YYYY-MM-dd HH:mm"/></td>
             </tr>

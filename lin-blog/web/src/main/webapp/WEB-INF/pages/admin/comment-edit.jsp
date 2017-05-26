@@ -1,4 +1,3 @@
-<%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.enums.CommentStatus" %>
