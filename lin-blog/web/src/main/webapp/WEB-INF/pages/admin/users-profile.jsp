@@ -42,33 +42,37 @@
     <div class="form-group">
         <label class="col-sm-2 control-label"><%=__("Username")%></label>
         <div class="col-sm-10">
-            <p class="form-control-static" id="user" data-user="${user.userLogin}">${user.userLogin}</p>
+            <p class="form-control-static" id="user" data-user="${user.userLogin}">${user.userLogin}
+                &nbsp;<small class="help-text"><%=__("Username can not be modified.")%></small>
+            </p>
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label"><%=__("Role")%></label>
         <div class="col-sm-10">
-            <p class="form-control-static" id="role"><%=__(((Role) request.getAttribute(Constant.K_ROLE)).name())%></p>
+            <p class="form-control-static" id="role"><%=__(((Role) request.getAttribute(Constant.K_ROLE)).name())%>
+                &nbsp;<small class="help-text"><%=__("You can't edit your role.")%></small>
+            </p>
         </div>
     </div>
     <fieldset>
         <legend><%=__("General")%></legend>
         <div class="form-group">
-            <label for="email" class="col-sm-2 control-label"><%=__("Email")%></label>
+            <label for="email" class="col-sm-2 control-label"><%=__("Email")%><span class="star">&nbsp;*</span></label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="email" name="email" value="${user.userEmail}">
+                <input type="email" class="form-control" id="email" name="email" value="${user.userEmail}" required>
             </div>
         </div>
         <div class="form-group">
-            <label for="url" class="col-sm-2 control-label"><%=__("Url")%></label>
+            <label for="url" class="col-sm-2 control-label"><%=__("Url")%><span>&nbsp;&nbsp;</span></label>
             <div class="col-sm-10">
                 <input type="url" class="form-control" id="url" name="url" value="${user.userUrl}">
             </div>
         </div>
         <div class="form-group">
-            <label for="name" class="col-sm-2 control-label"><%=__("Display name")%></label>
+            <label for="name" class="col-sm-2 control-label"><%=__("Display name")%><span class="star">&nbsp;*</span></label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" name="name" value="${user.displayName}">
+                <input type="text" class="form-control" id="name" name="name" value="${user.displayName}" required>
             </div>
         </div>
     </fieldset>

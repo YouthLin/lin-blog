@@ -1,8 +1,9 @@
+<%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
+<%--@elvariable id="userEdit" type="com.youthlin.blog.model.po.User"--%>
 <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
-
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
-<%@ page import="com.youthlin.blog.model.po.User" %>
 <%@ page import="com.youthlin.blog.model.enums.Role" %>
+<%@ page import="com.youthlin.blog.model.po.User" %>
 <%@ page import="com.youthlin.blog.model.po.UserMeta" %><%--
   Created by IntelliJ IDEA.
   User: lin
@@ -29,13 +30,13 @@
         <div class="error">${error}</div>
     </c:if>
     <div class="form-group">
-        <input type="hidden" name="id" value="${user.userId}">
+        <input type="hidden" name="id" value="${userEdit.userId}">
         <label class="col-sm-2 control-label"><span class="sr-only"><%=__("Avatar")%></span></label>
         <div class="col-sm-10">
             <p class="form-control-static">
                 <a tabindex="0" class="gravatar" role="button" data-toggle="popover" data-trigger="focus"
                    title=<%=__("'How to change my avatar?'")%> data-content=<%=__("'You can change your avatar image at <a href=\"http://cn.gravatar.com\" target=\"_blank\">Gravatar.com</a>'")%>>
-                    <img src="<%=Gravatar.withEmail(((User)request.getAttribute(Constant.USER)).getUserEmail()).defaults(Gravatar.DefaultType.MONSTERID).getUrl()%>"
+                    <img src="<%=Gravatar.withEmail(((User)request.getAttribute("userEdit")).getUserEmail()).defaults(Gravatar.DefaultType.MONSTERID).getUrl()%>"
                          height="80" width="80" alt="Avatar"></a>
             </p>
         </div>
@@ -43,43 +44,59 @@
     <div class="form-group">
         <label class="col-sm-2 control-label"><%=__("Username")%></label>
         <div class="col-sm-10">
-            <p class="form-control-static" id="user" data-user="${user.userLogin}">${user.userLogin}</p>
+            <p class="form-control-static" id="user" data-user="${userEdit.userLogin}">${userEdit.userLogin}
+             &nbsp;<small class="help-text"><%=__("Username can not be modified.")%></small>
+            </p>
         </div>
     </div>
     <div class="form-group">
         <label for="role" class="col-sm-2 control-label"><%=__("Role")%></label>
         <div class="col-sm-10">
-            <select name="role" id="role" class="form-control">
-                <%
-                    UserMeta roleMeta = (UserMeta) request.getAttribute("roleMeta");
-                    for (Role role : Role.values()) {
-                        if (role.name().equalsIgnoreCase(roleMeta.getMetaValue())) {
-                            out.print("<option selected value=\"" + role.name() + "\">" + __(role.name()) + "</option>\n");
-                        } else {
-                            out.print("<option value=\"" + role.name() + "\">" + __(role.name()) + "</option>\n");
-                        }
-                    }
-                %>
-            </select>
+            <c:choose>
+                <c:when test="${(userEdit.userId eq user.userId) or (userEdit.userId eq 1)}">
+                    <p class="form-control-static" id="role">
+                        <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+                        <c:if test="${not empty role}">
+                            ${g:__(role.name())}
+                        </c:if>
+                    &nbsp;<small class="help-text"><%=__("You can not edit yourself or super admin's role.")%></small>
+                    </p>
+                </c:when>
+                <c:otherwise>
+                    <select name="role" id="role" class="form-control">
+                        <%
+                            UserMeta roleMeta = (UserMeta) request.getAttribute("roleMeta");
+                            for (Role role : Role.values()) {
+                                if (role.name().equalsIgnoreCase(roleMeta.getMetaValue())) {
+                                    out.print("<option selected value=\"" + role.name() + "\">" + __(role.name()) + "</option>\n");
+                                } else {
+                                    out.print("<option value=\"" + role.name() + "\">" + __(role.name()) + "</option>\n");
+                                }
+                            }
+                        %>
+                    </select>
+                </c:otherwise>
+            </c:choose>
+
         </div>
     </div>
 
     <div class="form-group">
         <label for="email" class="col-sm-2 control-label"><%=__("Email")%></label>
         <div class="col-sm-10">
-            <input type="email" class="form-control" id="email" name="email" value="${user.userEmail}">
+            <input type="email" class="form-control" id="email" name="email" value="${userEdit.userEmail}">
         </div>
     </div>
     <div class="form-group">
         <label for="url" class="col-sm-2 control-label"><%=__("Url")%></label>
         <div class="col-sm-10">
-            <input type="url" class="form-control" id="url" name="url" value="${user.userUrl}">
+            <input type="url" class="form-control" id="url" name="url" value="${userEdit.userUrl}">
         </div>
     </div>
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label"><%=__("Display name")%></label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="name" name="name" value="${user.displayName}">
+            <input type="text" class="form-control" id="name" name="name" value="${userEdit.displayName}">
         </div>
     </div>
 

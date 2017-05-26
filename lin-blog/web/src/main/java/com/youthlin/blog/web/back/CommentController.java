@@ -59,7 +59,7 @@ public class CommentController {
         CommentStatus status = parseStatus(statusStr, model);
         processCommentPage(param, model, status, null);
         processStatusCount(model);
-
+        model.addAttribute("queryString", request.getQueryString());
         model.addAttribute("title", __("All Comments"));
         return "admin/comment-all";
     }

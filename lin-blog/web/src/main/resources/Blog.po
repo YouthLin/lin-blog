@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-26 00:24+0800\n"
-"PO-Revision-Date: 2017-05-26 00:24+0800\n"
+"POT-Creation-Date: 2017-05-26 10:54+0800\n"
+"PO-Revision-Date: 2017-05-26 10:55+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
@@ -32,135 +32,145 @@ msgstr "404 未找到"
 msgid "We are sorry, but the page is not found. "
 msgstr "很抱歉，但是您访问的页面不存在。 "
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:26
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:28
 #: webapp/WEB-INF/pages/common/admin/header.jsp:120
 #: java/com/youthlin/blog/web/back/CommentController.java:63
 msgid "All Comments"
 msgstr "所有评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:30
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:32
 #: webapp/WEB-INF/pages/admin/post-all.jsp:40
 msgid "All"
 msgstr "所有"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:32
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:34
 #: webapp/WEB-INF/pages/admin/post-all.jsp:45
 msgid "Pending"
 msgstr "待审"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:34
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:36
 msgid "Approved"
 msgstr "已批准"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:36
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:38
 msgid "Spam"
 msgstr "垃圾评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:38
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:40
 #: webapp/WEB-INF/pages/admin/post-all.jsp:49
 msgid "Trash"
 msgstr "回收站"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:50
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:168
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:52
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:186
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:29
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:130
 #: webapp/WEB-INF/pages/admin/post-all.jsp:93
 #: webapp/WEB-INF/pages/admin/post-all.jsp:214
+#: webapp/WEB-INF/pages/admin/users-all.jsp:29
+#: webapp/WEB-INF/pages/admin/users-all.jsp:107
 #, java-format
 msgid "{0} Items"
 msgstr "共 {0} 项"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:56
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:174
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:58
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:192
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:35
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:136
 #: webapp/WEB-INF/pages/admin/post-all.jsp:99
 #: webapp/WEB-INF/pages/admin/post-all.jsp:220
+#: webapp/WEB-INF/pages/admin/users-all.jsp:35
+#: webapp/WEB-INF/pages/admin/users-all.jsp:113
 msgid "First page"
 msgstr "首页"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:58
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:176
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:60
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:194
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:37
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:138
 #: webapp/WEB-INF/pages/admin/post-all.jsp:101
 #: webapp/WEB-INF/pages/admin/post-all.jsp:222
+#: webapp/WEB-INF/pages/admin/users-all.jsp:37
+#: webapp/WEB-INF/pages/admin/users-all.jsp:115
 msgid "Previous page"
 msgstr "上一页"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:68
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:186
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:70
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:204
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:47
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:148
 #: webapp/WEB-INF/pages/admin/post-all.jsp:111
 #: webapp/WEB-INF/pages/admin/post-all.jsp:232
+#: webapp/WEB-INF/pages/admin/users-all.jsp:47
+#: webapp/WEB-INF/pages/admin/users-all.jsp:125
 msgid "Next page"
 msgstr "下一页"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:70
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:188
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:72
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:206
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:49
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:150
 #: webapp/WEB-INF/pages/admin/post-all.jsp:113
 #: webapp/WEB-INF/pages/admin/post-all.jsp:234
+#: webapp/WEB-INF/pages/admin/users-all.jsp:49
+#: webapp/WEB-INF/pages/admin/users-all.jsp:127
 msgid "Last page"
 msgstr "尾页"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:78
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:80
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:57
 #: webapp/WEB-INF/pages/admin/post-all.jsp:122
 #: webapp/WEB-INF/pages/admin/post-category.jsp:62
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:52
-#: webapp/WEB-INF/pages/admin/users-all.jsp:24
+#: webapp/WEB-INF/pages/admin/users-all.jsp:57
 msgid "Select All"
 msgstr "全选"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:82
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:84
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:61
 #: webapp/WEB-INF/pages/admin/post-all.jsp:127
 #: java/com/youthlin/blog/model/enums/Role.java:46
 msgid "Author"
 msgstr "作者"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:83
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:85
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:62
 msgid "Comment"
 msgstr "评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:84
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:86
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:63
 #: webapp/WEB-INF/pages/common/admin/header.jsp:78
 msgid "Post"
 msgstr "文章"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:85
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:87
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:64
 #: webapp/WEB-INF/pages/admin/post-all.jsp:132
 msgid "Date"
 msgstr "日期"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:107
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:110
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:87
 #: webapp/WEB-INF/pages/admin/post-all.jsp:142
 #: webapp/WEB-INF/pages/admin/post-category.jsp:77
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:66
-#: webapp/WEB-INF/pages/admin/users-all.jsp:42
+#: webapp/WEB-INF/pages/admin/users-all.jsp:73
 msgid "Select"
 msgstr "选择"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:120
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:123
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:100
 #: webapp/WEB-INF/pages/admin/index.jsp:47
 #: webapp/WEB-INF/pages/admin/index.jsp:108
 #: webapp/WEB-INF/pages/admin/post-all.jsp:157
 #: webapp/WEB-INF/pages/admin/post-category.jsp:84
 #: webapp/WEB-INF/pages/admin/post-tag.jsp:72
-#: webapp/WEB-INF/pages/admin/users-all.jsp:48
+#: webapp/WEB-INF/pages/admin/users-all.jsp:81
 msgid "Edit"
 msgstr "编辑"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:122
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:125
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:102
 #: webapp/WEB-INF/pages/admin/post-all.jsp:161
 #: webapp/WEB-INF/pages/admin/post-category.jsp:90
@@ -168,23 +178,23 @@ msgstr "编辑"
 msgid "View"
 msgstr "查看"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:126
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:133
 msgid "approved"
 msgstr "批准"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:130
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:141
 msgid "unapproved"
 msgstr "待审"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:134
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:148
 msgid "Tag as spam"
 msgstr "垃圾评论"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:138
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:156
 msgid "Move to trash"
 msgstr "移至回收站"
 
-#: webapp/WEB-INF/pages/admin/comment-all.jsp:156
+#: webapp/WEB-INF/pages/admin/comment-all.jsp:174
 #: webapp/WEB-INF/pages/admin/comment-my.jsp:119
 msgid "No comments"
 msgstr "没有评论"
@@ -207,9 +217,9 @@ msgstr "\"显示名称\""
 
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:38
 #: webapp/WEB-INF/pages/admin/users-add.jsp:37
-#: webapp/WEB-INF/pages/admin/users-all.jsp:30
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:68
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:57
+#: webapp/WEB-INF/pages/admin/users-all.jsp:63
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:85
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:61
 #: webapp/WEB-INF/pages/post.jsp:162 webapp/WEB-INF/pages/register.jsp:57
 msgid "Email"
 msgstr "电子邮件"
@@ -242,8 +252,8 @@ msgstr "状态"
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:136
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:26
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:99
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:95
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:116
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:99
 msgid "Update"
 msgstr "更新"
 
@@ -677,14 +687,14 @@ msgstr "导入"
 #: webapp/WEB-INF/pages/admin/users-add.jsp:19
 #: webapp/WEB-INF/pages/admin/users-add.jsp:70
 #: webapp/WEB-INF/pages/common/admin/header.jsp:138
-#: java/com/youthlin/blog/web/back/UserController.java:146
-#: java/com/youthlin/blog/web/back/UserController.java:156
+#: java/com/youthlin/blog/web/back/UserController.java:161
+#: java/com/youthlin/blog/web/back/UserController.java:171
 msgid "Add User"
 msgstr "添加用户"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:29
-#: webapp/WEB-INF/pages/admin/users-all.jsp:28
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:44
+#: webapp/WEB-INF/pages/admin/users-all.jsp:61
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:45
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:43
 #: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:53
 #: webapp/WEB-INF/pages/register.jsp:53
@@ -696,49 +706,49 @@ msgid "Username can not change after user added."
 msgstr "添加后用户名不可更改。"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:43
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:76
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:80
 #: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:58
 #: webapp/WEB-INF/pages/register.jsp:61
 msgid "Password"
 msgstr "密码"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:51
-#: webapp/WEB-INF/pages/admin/users-all.jsp:31
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:50
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:49
+#: webapp/WEB-INF/pages/admin/users-all.jsp:64
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:53
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:51
 msgid "Role"
 msgstr "角色"
 
-#: webapp/WEB-INF/pages/admin/users-all.jsp:17
+#: webapp/WEB-INF/pages/admin/users-all.jsp:20
 #: webapp/WEB-INF/pages/common/admin/header.jsp:135
-#: java/com/youthlin/blog/web/back/UserController.java:46
+#: java/com/youthlin/blog/web/back/UserController.java:48
 msgid "All Users"
 msgstr "所有用户"
 
-#: webapp/WEB-INF/pages/admin/users-all.jsp:29
+#: webapp/WEB-INF/pages/admin/users-all.jsp:62
 msgid "Nickname"
 msgstr "昵称"
 
-#: webapp/WEB-INF/pages/admin/users-all.jsp:32
+#: webapp/WEB-INF/pages/admin/users-all.jsp:65
 msgid "Register date"
 msgstr "注册日期"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:22
-#: java/com/youthlin/blog/web/back/UserController.java:61
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:23
+#: java/com/youthlin/blog/web/back/UserController.java:71
 msgid "Edit User"
 msgstr "编辑用户"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:33
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:34
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:32
 msgid "Avatar"
 msgstr "头像"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:37
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:38
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:36
 msgid "'How to change my avatar?'"
 msgstr "'如何更改头像？'"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:37
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:38
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:36
 msgid ""
 "'You can change your avatar image at <a href=\"http://cn.gravatar.com\" "
@@ -747,43 +757,56 @@ msgstr ""
 "'您可以在 <a href=\"http://cn.gravatar.com\" target=\"_blank\">Gravatar.com</"
 "a> 更改头像'"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:74
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:63
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:48
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:46
+msgid "Username can not be modified."
+msgstr "用户名不可更改。"
+
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:62
+msgid "You can not edit yourself or super admin's role."
+msgstr "您不能编辑自己或管理员的角色。"
+
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:91
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:67
 msgid "Url"
 msgstr "网址"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:80
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:69
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:97
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:73
 msgid "Display name"
 msgstr "显示名称"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:88
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:85
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:105
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:89
 msgid "New password"
 msgstr "新密码"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:92
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:109
 msgid "Leave this filed blank if you does't need change the user's password."
 msgstr "若不需更改该用户密码，请将此输入项留空。"
 
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:22
 #: webapp/WEB-INF/pages/common/admin/header.jsp:142
-#: java/com/youthlin/blog/web/back/UserController.java:195
-#: java/com/youthlin/blog/web/back/UserController.java:201
+#: java/com/youthlin/blog/web/back/UserController.java:210
+#: java/com/youthlin/blog/web/back/UserController.java:216
 msgid "My Profile"
 msgstr "个人资料"
 
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:55
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:54
+msgid "You can't edit your role."
+msgstr "您不能编辑自己的角色。"
+
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:59
 msgid "General"
 msgstr "常规"
 
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:76
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:80
 msgid ""
 "If you don't want change password, please remain the password filed blank "
 "below."
 msgstr "若您不想更改密码，请将下列输入框留空。"
 
-#: webapp/WEB-INF/pages/admin/users-profile.jsp:78
+#: webapp/WEB-INF/pages/admin/users-profile.jsp:82
 msgid "Old password"
 msgstr "原密码"
 
@@ -1112,12 +1135,12 @@ msgstr "您已登出。"
 
 #: java/com/youthlin/blog/web/LoginController.java:71
 #: java/com/youthlin/blog/web/back/CommentController.java:158
-#: java/com/youthlin/blog/web/back/UserController.java:69
+#: java/com/youthlin/blog/web/back/UserController.java:79
 msgid "Invalid param."
 msgstr "非法参数。"
 
 #: java/com/youthlin/blog/web/LoginController.java:76
-#: java/com/youthlin/blog/web/back/UserController.java:164
+#: java/com/youthlin/blog/web/back/UserController.java:179
 msgid "This username has been used."
 msgstr "该用户名已被使用。"
 
@@ -1126,7 +1149,7 @@ msgid "Username, password, email are all required."
 msgstr "用户名、密码、电子邮件均为必填项。"
 
 #: java/com/youthlin/blog/web/SetUpController.java:55
-#: java/com/youthlin/blog/web/back/UserController.java:223
+#: java/com/youthlin/blog/web/back/UserController.java:238
 msgid ""
 "It seem that JavaScript doesn't work, but we need it to generate password."
 msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
@@ -1188,38 +1211,37 @@ msgstr "非法参数︰ 文章不存在。"
 msgid "Illegal param: postId does not exist."
 msgstr "非法参数︰ 文章不存在。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:91
-#: java/com/youthlin/blog/web/back/UserController.java:98
+#: java/com/youthlin/blog/web/back/UserController.java:106
 msgid "Invalid param"
 msgstr "非法参数"
 
-#: java/com/youthlin/blog/web/back/UserController.java:113
-#: java/com/youthlin/blog/web/back/UserController.java:208
+#: java/com/youthlin/blog/web/back/UserController.java:126
+#: java/com/youthlin/blog/web/back/UserController.java:223
 msgid "Email and display name are required."
 msgstr "电子邮件和显示名称是必填项。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:121
-#: java/com/youthlin/blog/web/back/UserController.java:216
+#: java/com/youthlin/blog/web/back/UserController.java:135
+#: java/com/youthlin/blog/web/back/UserController.java:231
 msgid "illegal url."
 msgstr "非法网址。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:168
+#: java/com/youthlin/blog/web/back/UserController.java:183
 msgid "Password is required."
 msgstr "密码是必填项。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:172
+#: java/com/youthlin/blog/web/back/UserController.java:187
 msgid "Illegal email."
 msgstr "非法的电子邮件。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:189
+#: java/com/youthlin/blog/web/back/UserController.java:204
 msgid "User added."
 msgstr "用户已添加。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:230
+#: java/com/youthlin/blog/web/back/UserController.java:245
 msgid "Password is incorrect."
 msgstr "密码错误。"
 
-#: java/com/youthlin/blog/web/back/UserController.java:241
+#: java/com/youthlin/blog/web/back/UserController.java:256
 msgid "Your profile has been updated."
 msgstr "您的信息已更新。"
 

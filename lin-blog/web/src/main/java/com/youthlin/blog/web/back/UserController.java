@@ -63,8 +63,7 @@ public class UserController {
         return "admin/users-all";
     }
 
-    @RequestMapping(path = "/users/edit", method = RequestMethod.GET)
-    public String editUser(Model model, HttpServletRequest request) {
+    private String editPage(Model model, HttpServletRequest request) {
         Role role = (Role) request.getAttribute(Constant.K_ROLE);
         if (role != null && role.getCode() < Role.Administrator.getCode()) {
             return Constant.REDIRECT_TO_PROFILE;
@@ -80,10 +79,15 @@ public class UserController {
             model.addAttribute(Constant.ERROR, __("Invalid param."));
         }
         User user = userService.findById(id);
-        model.addAttribute("user", user);
+        model.addAttribute("userEdit", user);
         UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
         model.addAttribute("roleMeta", roleMeta);
         return "admin/users-edit";
+    }
+
+    @RequestMapping(path = "/users/edit", method = RequestMethod.GET)
+    public String editUser(Model model, HttpServletRequest request) {
+        return editPage(model, request);
     }
 
     @RequestMapping(path = "/users/edit", method = RequestMethod.POST)
@@ -100,18 +104,16 @@ public class UserController {
         }
         if (id < 0) {
             model.addAttribute(Constant.ERROR, __("Invalid param"));
-            return "admin/users-edit";
+            log.info("参数错误 id < 0");
+            return editPage(model, request);
         }
         User user = userService.findById(id);
         String roleStr = params.get("role");
         role = Role.nameOf(roleStr);
-        if (role == null) {
-            model.addAttribute(Constant.ERROR, __("Invalid param"));
-            return "admin/users-edit";
-        }
-
+        User currentUser = (User) request.getAttribute(Constant.USER);
         UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
-        if (!user.getUserId().equals(1L)) {
+        if (role != null && !user.getUserId().equals(currentUser.getUserId()) && !user.getUserId().equals(1L)) {
+            //该用户不是自己，才可以修改他的角色; 而且要修改的不是初始管理员
             roleMeta.setMetaValue(role.name());
             userService.updateMeta(roleMeta);
         }
@@ -122,7 +124,8 @@ public class UserController {
         String newPass = params.get("newPass");
         if (!StringUtils.hasText(email) || !StringUtils.hasText(name)) {
             model.addAttribute(Constant.ERROR, __("Email and display name are required."));
-            return "admin/users-edit";
+            log.info("email name  是必填的.");
+            return editPage(model, request);
         }
         if (StringUtils.hasText(url)) {
             try {
@@ -130,7 +133,8 @@ public class UserController {
                 URI.create(url).toURL();
             } catch (MalformedURLException e) {
                 model.addAttribute(Constant.ERROR, __("illegal url."));
-                return "admin/users-edit";
+                log.info("illegal url: {}", url, e);
+                return editPage(model, request);
             }
         }
         user.setUserEmail(email)

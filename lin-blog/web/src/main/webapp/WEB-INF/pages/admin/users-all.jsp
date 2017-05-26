@@ -1,8 +1,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="tr" uri="http://youthlin.com/linblog/tag/comment" %>
+<%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.po.User" %>
-<%@ page import="com.youthlin.blog.model.bo.Page" %><%--
+<%@ page import="com.youthlin.blog.model.bo.Page" %>
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -73,7 +75,9 @@
                         <input type="checkbox" name="ids" value="${aUser.userId}">
                     </label>
                 </td>
-                <td>${aUser.userLogin}&nbsp;
+                <td>
+                    <img src="${g:img(aUser.userEmail)}" alt="Avatar" width="40" height="40">
+                        ${aUser.userLogin}&nbsp;
                     <a href="<c:url value="/admin/users/edit?id=${aUser.userId}"/>" class="pull-right">
                         <%=__("Edit")%></a></td>
                 <td>

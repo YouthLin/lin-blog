@@ -1,8 +1,10 @@
 <%@ taglib prefix="g" uri="http://youthlin.com/linblog/tag/comment" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
+<%@ page import="com.youthlin.blog.model.bo.Page" %>
+<%@ page import="com.youthlin.blog.model.enums.CommentStatus" %>
 <%@ page import="com.youthlin.blog.model.po.Comment" %>
-<%@ page import="com.youthlin.blog.model.bo.Page" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -93,15 +95,16 @@
                     <c:set var="trClass" value=""/>
                     <c:choose>
                         <c:when test="${comment.commentStatus.code eq 1}">
-                            <c:set var="trClass" value="warning"/>
+                            <c:set var="trClass" value="info"/>
                         </c:when>
                         <c:when test="${comment.commentStatus.code eq 2}">
-                            <c:set var="trClass" value="danger"/>
+                            <c:set var="trClass" value="warning"/>
                         </c:when>
                         <c:when test="${comment.commentStatus.code eq 3}">
                             <c:set var="trClass" value="danger"/>
                         </c:when>
                     </c:choose>
+                    <%--@elvariable id="queryString" type="java.lang.String"--%>
                     <tr class="${trClass}">
                          <td>
                              <label><span class="sr-only"><%=__("Select")%></span>
@@ -121,21 +124,36 @@
                                 | <a href="<c:url value="/post/${comment.commentPostId}#comment-${comment.commentId}"/>"
                                      target="_blank"><%=__("View")%></a>
                                     <%--0正常 1待审 2垃圾 3删除--%>
+                                    <c:if test="${comment.commentStatus.code eq 0}">
+                                        | <span><%=__(CommentStatus.NORMAL.name())%></span>
+                                    </c:if>
                                     <c:if test="${comment.commentStatus.code ne 0}">
-                                        | <a href="?action=normal&id=${comment.commentId}" class="text-info">
-                                            <%=__("approved")%></a>
+                                        | <a
+                                            href="?action=normal&id=${comment.commentId}&page=${commentPage.currentPage}"
+                                            class="text-info"><%=__("approved")%></a>
+                                    </c:if>
+                                    <c:if test="${comment.commentStatus.code eq 1}">
+                                        | <span><%=__(CommentStatus.PENDING.name())%></span>
                                     </c:if>
                                     <c:if test="${comment.commentStatus.code ne 1}">
-                                        | <a href="?action=pending&id=${comment.commentId}" class="text-warning">
-                                            <%=__("unapproved")%></a>
+                                        | <a
+                                            href="?action=pending&id=${comment.commentId}&page=${commentPage.currentPage}"
+                                            class="text-warning"><%=__("unapproved")%></a>
+                                    </c:if>
+                                    <c:if test="${comment.commentStatus.code eq 2}">
+                                        | <span><%=__(CommentStatus.SPAM.name())%></span>
                                     </c:if>
                                     <c:if test="${comment.commentStatus.code ne 2}">
-                                        |<a href="?action=spam&id=${comment.commentId}" class="text-danger">
-                                        <%=__("Tag as spam")%></a>
+                                        | <a href="?action=spam&id=${comment.commentId}&page=${commentPage.currentPage}"
+                                             class="text-danger"><%=__("Tag as spam")%></a>
+                                    </c:if>
+                                    <c:if test="${comment.commentStatus.code eq 3}">
+                                        | <span><%=__(CommentStatus.TRASH.name())%></span>
                                     </c:if>
                                     <c:if test="${comment.commentStatus.code ne 3}">
-                                        | <a href="?action=trash&id=${comment.commentId}" class="text-danger">
-                                    <%=__("Move to trash")%></a>
+                                        | <a
+                                            href="?action=trash&id=${comment.commentId}&page=${commentPage.currentPage}"
+                                            class="text-danger"><%=__("Move to trash")%></a>
                                     </c:if>
 
                             </div>
