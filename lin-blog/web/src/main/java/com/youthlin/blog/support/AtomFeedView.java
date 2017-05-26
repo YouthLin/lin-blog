@@ -66,7 +66,7 @@ public class AtomFeedView extends AbstractAtomFeedView {
             entry.setPublished(post.getPostDate());
             entry.setModified(post.getPostModified());
             entry.setTitle(post.getPostTitle());
-            User author = userMap.get(post.getPostId());
+            User author = userMap.get(post.getPostAuthorId());
             if (author != null) {
                 SyndPerson person = new Person();
                 person.setEmail(author.getUserEmail());
