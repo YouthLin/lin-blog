@@ -90,10 +90,9 @@
                                              target="_blank">${post.postTitle}</a> 》
                                     </strong>
                                     <div>
-                                        <a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>"
-                                           target="_blank"
-                                           title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}"
-                                           pattern="YYYY-MM-dd HH:mm:ss"/>'>${blog:sub(comment.commentContent, 50)}</a>
+<a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>" target="_blank"
+   title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>
+        ${blog:sub(comment.commentContent, 50)}</a>
                                         <br>
                                     </div>
                                 </div>
