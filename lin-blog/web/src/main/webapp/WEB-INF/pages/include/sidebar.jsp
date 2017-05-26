@@ -118,7 +118,9 @@
                             <li><a href="<c:url value="/login.register"/>"><%=__("Register")%></a></li>
                         </c:otherwise>
                     </c:choose>
-                    <li><a href="javascript:"><abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                    <li><a href="<c:url value="/feed.xml"/>" target="_blank">
+                        <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                    <li><a href="<c:url value="/feed/atom.xml"/>" target="_blank">Atom</a></li>
                     <li><a href="http://youthlin.com/" target="_blank"><%=_f("Powered By {0}", "LinBlog")%></a></li>
                 </ul>
             </div>

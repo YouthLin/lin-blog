@@ -19,5 +19,7 @@
 <script src="<c:url value="/static/js/jquery-3.1.1.min.js"/> "></script>
 <script src="<c:url value="/static/js/bootstrap.min.js"/> "></script>
 <link href="<c:url value="/static/css/style.css"/> " rel="stylesheet">
-<link rel="icon" href="<c:url value="/favicon.ico"/>" type="image/x-icon" />
-<link rel="shortcut icon" href="<c:url value="/favicon.ico"/>" type="image/x-icon" />
+<link rel="icon" href="<c:url value="/favicon.ico"/>" type="image/x-icon"/>
+<link rel="shortcut icon" href="<c:url value="/favicon.ico"/>" type="image/x-icon"/>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<c:url value="/feed.xml"/>"/>
+<link rel="alternate" type="application/atom+xml" title="Atom" href="<c:url value="/feed/atom.xml"/>"/>

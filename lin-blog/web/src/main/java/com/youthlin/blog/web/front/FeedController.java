@@ -39,14 +39,14 @@ public class FeedController {
         return mv;
     }
 
-    @RequestMapping(path = {"/feed"})
+    @RequestMapping(path = {"/feed", "/feed.xml"})
     public ModelAndView rss() {
         ModelAndView mv = getMv();
         mv.setViewName("rssFeedView");
         return mv;
     }
 
-    @RequestMapping(path = {"/feed/atom"})
+    @RequestMapping(path = {"/feed/atom", "/feed/atom.xml", "/atom", "/atom.xml"})
     public ModelAndView atom() {
         ModelAndView mv = getMv();
         mv.setViewName("atomFeedView");
