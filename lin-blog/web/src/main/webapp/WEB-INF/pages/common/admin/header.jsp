@@ -1,7 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._f" %>
 <%@ page import="com.youthlin.blog.util.Constant" %>
-<%@ page import="com.youthlin.blog.util.Gravatar" %>
+<%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
+<%--@elvariable id="email" type="java.lang.String"--%>
 <%--@elvariable id="title" type="java.lang.String"--%>
 <%--@elvariable id="blog_title" type="java.lang.String"--%>
 <%--
@@ -42,16 +43,14 @@
                 <div class="pull-right nav-user">
                     <a href="#user-menu" aria-expanded="false" aria-controls="user-menu" data-toggle="collapse">
                         <%=/*TRANSLATORS: 0 username*/_f("Hi, {0}", request.getAttribute(Constant.NAME))%>
-                        <img src="<%=Gravatar.getUrlWithEmail((String) request.getAttribute(Constant.EMAIL))%>"
-                             width="30" height="30">
+                        <img src="${blog:img(email, 60)}" width="30" height="30">
                     </a>
                 </div>
             </div>
         </nav>
         <div id="user-menu" class="bg collapse">
             <div class="pull-right">
-                <img src="<%=Gravatar.getUrlWithEmail((String) request.getAttribute(Constant.EMAIL))%>"
-                     width=60 height=60 class="pull-left">
+                <img src="${blog:img(email, 60)}" width=60 height=60 class="pull-left">
                 <ul class="pull-right">
                     <li><a href="<c:url value="/admin/users/my"/>"><%=__("Profile")%></a></li>
                     <li><a href="<c:url value="/login.out"/>"><%=__("Log out")%></a></li>
