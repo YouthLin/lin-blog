@@ -136,7 +136,7 @@
                     <div class="panel-footer">
                         <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
                         <c:choose>
-                            <c:when test="${role.code gt 20}">
+                            <c:when test="${role.code ge 20}">
                                 <button type="submit" class="btn btn-primary"><%=__("Update")%></button>
                             </c:when>
                             <c:otherwise>
