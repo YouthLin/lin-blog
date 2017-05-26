@@ -325,6 +325,16 @@ public class PostController {
             model.addAttribute(Constant.ERROR, __("Illegal param: postId does not exist."));
             return "admin/die";
         }
+
+        User user = (User) request.getAttribute(Constant.USER);
+        if (!post.getPostAuthorId().equals(user.getUserId())) {
+            // 不是自己的文章
+            if (role == null || role.getCode() < Role.Editor.getCode()) {
+                model.addAttribute(Constant.ERROR, __("You can not edit this post according to your role."));
+                return "admin/die";
+            }
+        }
+
         model.addAttribute("post", post);
         List<PostMeta> postMetaList = postService.findPostMetaByPostId(postId);
         String mdSource = null;
@@ -359,7 +369,7 @@ public class PostController {
     @RequestMapping(path = {"/post/edit"}, method = {RequestMethod.POST})
     public String editPost(@RequestParam Map<String, String> param, Model model, HttpServletRequest request) {
         Role role = (Role) request.getAttribute(Constant.K_ROLE);
-        if (role != null && role.getCode() < Role.Contributor.getCode()) {
+        if (role == null || role.getCode() < Role.Contributor.getCode()) {
             return Constant.REDIRECT_TO_PROFILE;
         }
         log.debug("param = {}", param);
@@ -398,6 +408,9 @@ public class PostController {
         PostStatus postStatus = PostStatus.nameOf(status);
         if (postStatus != null) {
             post.setPostStatus(postStatus);
+        }
+        if (role.getCode() <= Role.Contributor.getCode()) {
+            post.setPostStatus(PostStatus.PENDING);
         }
         if (StringUtils.hasText(commentOpenStr)) {
             post.setCommentOpen(commentOpenStr.equals("on"));

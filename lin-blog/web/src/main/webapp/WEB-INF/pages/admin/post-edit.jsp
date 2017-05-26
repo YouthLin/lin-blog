@@ -3,6 +3,7 @@
 <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._x" %>
+<%@ page import="com.youthlin.blog.model.enums.PostStatus" %>
 <%--@elvariable id="categoryList" type="java.util.List"--%>
 <%--@elvariable id="category" type="com.youthlin.blog.model.bo.Category"--%>
 <%--@elvariable id="md" type="java.lang.String"--%>
@@ -133,7 +134,19 @@
                         </div>
                     </div>
                     <div class="panel-footer">
-                        <button type="submit" class="btn btn-primary"><%=__("Update")%></button>
+                        <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+                        <c:choose>
+                            <c:when test="${role.code gt 20}">
+                                <button type="submit" class="btn btn-primary"><%=__("Update")%></button>
+                            </c:when>
+                            <c:otherwise>
+                                <input type="hidden" name="status" value="<%=PostStatus.PENDING.name()%>">
+                                <button type="submit" class="btn btn-primary"><%=__("Pending")%></button>
+                                <div class="help-block">
+                                    <%=__("You can not publish post, but can submit to pending according to your role.")%>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
