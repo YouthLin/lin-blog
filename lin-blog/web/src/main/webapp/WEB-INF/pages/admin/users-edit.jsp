@@ -3,8 +3,8 @@
 <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="com.youthlin.blog.model.enums.Role" %>
-<%@ page import="com.youthlin.blog.model.po.User" %>
-<%@ page import="com.youthlin.blog.model.po.UserMeta" %><%--
+<%@ page import="com.youthlin.blog.model.po.UserMeta" %>
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-6
@@ -36,8 +36,7 @@
             <p class="form-control-static">
                 <a tabindex="0" class="gravatar" role="button" data-toggle="popover" data-trigger="focus"
                    title=<%=__("'How to change my avatar?'")%> data-content=<%=__("'You can change your avatar image at <a href=\"http://cn.gravatar.com\" target=\"_blank\">Gravatar.com</a>'")%>>
-                    <img src="<%=Gravatar.withEmail(((User)request.getAttribute("userEdit")).getUserEmail()).defaults(Gravatar.DefaultType.MONSTERID).getUrl()%>"
-                         height="80" width="80" alt="Avatar"></a>
+                    <img src="${blog:img(userEdit.userEmail, 80)}" height="80" width="80" alt="Avatar"></a>
             </p>
         </div>
     </div>
