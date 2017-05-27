@@ -38,7 +38,7 @@
                         <header class="post-meta post-header">
                             <span class="meta-info meta-info-date">
                                     <span class="glyphicon glyphicon-time"
-                                          aria-level=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
+                                          aria-label=<%=__("\"Published Date:\"")%> aria-hidden="true"></span>
                                     <a class="meta-link" href="<c:url value="/post/${post.postId}"/>">
                                         <time datetime="${post.postDate}"
                                               title="<fmt:formatDate value="${post.postDate}" pattern="YYYY-MM-dd HH:mm"/>">
@@ -54,13 +54,13 @@
                              </span>
                             <span class="meta-info meta-info-comment">
                                     <span class="glyphicon glyphicon-comment"
-                                          aria-level=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
+                                          aria-label=<%=__("\"Comment Count:\"")%> aria-hidden="true"></span>
                                 <%--suppress HtmlUnknownAnchorTarget --%>
                                 <a href="#comments">${post.commentCount}</a>
                             </span>
                             <span class="meta-info meta-info-category">
                                     <span class="glyphicon glyphicon-folder-open"
-                                          aria-level=<%=__("\"Category:\"")%> aria-hidden="true"></span>
+                                          aria-label=<%=__("\"Category:\"")%> aria-hidden="true"></span>
 <%--@elvariable id="taxonomyMap" type="java.util.Map"--%>
 <%--@elvariable id="taxonomyCat" type="com.youthlin.blog.model.po.Taxonomy"--%>
                                 <c:forEach items="${taxonomyMap[post.postId]}" var="taxonomyCat">
@@ -72,7 +72,7 @@
                                 </span>
                             <span class="meta-info meta-info-tag">
                                     <span class="glyphicon glyphicon-tags"
-                                          aria-level=<%=__("\"Tags:\"")%> aria-hidden="true"></span>
+                                          aria-label=<%=__("\"Tags:\"")%> aria-hidden="true"></span>
                                 <c:forEach items="${taxonomyMap[post.postId]}" var="taxonomyCat">
                                     <c:if test="${taxonomyCat.taxonomy eq 'tag'}">
                                         <a class="meta-link" href="<c:url value="/tag/${taxonomyCat.slug}"/>">
