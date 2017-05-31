@@ -69,4 +69,5 @@ public interface PostDao {
 
     List<Post> listByPostIds(@Param("postIds") Set<Long> postIds);
 
+    List<Post> search(@Param("keywords") String keywords);
 }

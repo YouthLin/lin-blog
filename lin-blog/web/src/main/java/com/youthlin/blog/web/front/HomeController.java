@@ -14,14 +14,17 @@ import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.service.TaxonomyService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.PostTaxonomyHelper;
+import com.youthlin.blog.util.ServletUtil;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StopWatch;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
@@ -69,11 +72,15 @@ public class HomeController {
         DateTime end = dateTimes[1];
         log.info("参数：页码{} 分类法{} 日期{} -> {}", pageNum, taxonomy, toString(start), toString(end));
         Page<Post> postPage = getPostPage(pageNum, size, taxonomy, user, start, end);
+        injectPostInfo(postPage, model);
+        return "index";
+    }
+
+    private void injectPostInfo(Page<Post> postPage, Model model) {
         model.addAttribute("postPage", postPage);
         log.info("post page = {}", postPage);
         PostTaxonomyHelper.fetchTaxonomyRelationships(postPage.getList(), model, postService);
         fetchAuthorInfo(postPage.getList(), model);
-        return "index";
     }
 
     private int parsePageNum(String pageIndex) {
@@ -195,5 +202,24 @@ public class HomeController {
             userMap.put(user.getUserId(), user);
         }
         model.addAttribute("userMap", userMap);
+    }
+
+    @RequestMapping(path = "/s", method = RequestMethod.GET)
+    public String search(@RequestParam Map<String, String> params, Model model) {
+        String keyWords = params.get("w");
+        if (!StringUtils.hasText(keyWords)) {
+            return "redirect:/";
+        }
+        keyWords = ServletUtil.filterHtml(keyWords);
+        keyWords = ServletUtil.filterXss(keyWords);
+        int[] indexAndSize = ServletUtil.parsePageIndexAndSize(params);
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        Page<Post> postPage = postService.search(indexAndSize[0], indexAndSize[1], keyWords);
+        injectPostInfo(postPage, model);
+        stopWatch.stop();
+        model.addAttribute("keyWords", keyWords);
+        model.addAttribute("usedMillsTime", stopWatch.getTotalTimeMillis());
+        return "index";
     }
 }

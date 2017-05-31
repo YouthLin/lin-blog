@@ -13,6 +13,7 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
+import java.util.Map;
 
 /**
  * 创建： lin
@@ -57,6 +58,9 @@ public class ServletUtil {
     }
 
     public static String filterHtml(String source) {
+        if (!StringUtils.hasText(source)) {
+            return "";
+        }
         return source
                 .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;");
@@ -96,6 +100,9 @@ public class ServletUtil {
     }
 
     public static String filterXss(String html) {
+        if (!StringUtils.hasText(html)) {
+            return "";
+        }
         return Jsoup.clean(html, Whitelist.relaxed()
                 .addAttributes("a", "target")
                 .addProtocols("a", "href", "#"));
@@ -126,5 +133,24 @@ public class ServletUtil {
             text = text.substring(0, length);
         }
         return text;
+    }
+
+    public static int[] parsePageIndexAndSize(Map<String, String> params) {
+        int[] result = new int[2];
+        String page = params.get("page");
+        String size = params.get("size");
+        int pageIndex = 1;
+        try {
+            pageIndex = Integer.parseInt(page);
+        } catch (NumberFormatException ignore) {
+        }
+        int pageSize = Constant.DEFAULT_FRONT_PAGE_SIZE;
+        try {
+            pageSize = Integer.parseInt(size);
+        } catch (NumberFormatException ignore) {
+        }
+        result[0] = pageIndex;
+        result[1] = pageSize;
+        return result;
     }
 }

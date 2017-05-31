@@ -22,23 +22,49 @@
     <div class="page container-fluid">
         <%@ include file="include/header.jsp" %>
         <ol class="breadcrumb">
-            <li><a href="<c:url value="/"/>"><%=__("Home")%></a></li>
+            <li aria-label=<%=__("\"Home\"")%>>
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <a href="<c:url value="/"/>"><%=__("Home")%></a></li>
             <%--@elvariable id="author" type="com.youthlin.blog.model.po.User"--%>
             <c:if test="${not empty author}">
-                <li><a href="<c:url value="/author/${author.userId}"/>">${author.displayName}</a></li>
+                <li aria-label=<%=__("\"Post of author\"")%>>
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <a href="<c:url value="/author/${author.userId}"/>">${author.displayName}</a></li>
             </c:if>
             <%--@elvariable id="taxonomyList" type="java.util.List"--%>
             <%--@elvariable id="taxonomy" type="com.youthlin.blog.model.po.Taxonomy"--%>
             <c:forEach items="${taxonomyList}" var="taxonomy">
-                <li><a href="<c:url value="/${taxonomy.taxonomy}/${taxonomy.slug}"/>">${taxonomy.name}</a></li>
+                <li aria-label=<%=__("\"Post of taxonomy\"")%>>
+                    <c:choose>
+                        <c:when test="${taxonomy.taxonomy eq 'tag'}">
+                            <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                        </c:otherwise>
+                    </c:choose>
+                    <a href="<c:url value="/${taxonomy.taxonomy}/${taxonomy.slug}"/>">${taxonomy.name}</a></li>
             </c:forEach>
             <%--@elvariable id="year" type="java.lang.String"--%>
             <c:if test="${not empty year}">
-                <li><a href="<c:url value="/date/${year}"/>">${year}</a></li>
+                <li aria-label=<%=__("\"Post of year\"")%>>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    <a href="<c:url value="/date/${year}"/>">${year}</a></li>
             </c:if>
             <%--@elvariable id="month" type="java.lang.String"--%>
             <c:if test="${not empty month}">
-                <li><a href="<c:url value="/date/${year}/${month}"/>">${year}-${month}</a></li>
+                <li aria-label=<%=__("\"Post of month\"")%>>
+                    <a href="<c:url value="/date/${year}/${month}"/>">${year}-${month}</a>
+                </li>
+            </c:if>
+            <%--@elvariable id="keyWords" type="java.lang.String"--%>
+            <c:if test="${not empty keyWords}">
+                <li aria-label=<%=__("\"Search Result\"")%>>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <a href="<c:url value="/s?w=${keyWords}"/>"
+                       title=<%=_f("\"Used {0} ms.\"", request.getAttribute("usedMillsTime"))%>>
+                        <%=ServletUtil.filterHtml(request.getParameter("w"))%></a>
+                </li>
             </c:if>
             <c:if test="${postPage.totalPage > 1}">
                 <li class="active"><%=_f("Page {0} ", ((Pageable) request.getAttribute("postPage")).getCurrentPage())%>

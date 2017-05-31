@@ -14,6 +14,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <aside id="page-sidebar" class="col-sm-3">
     <div class="sidebar">
+        <div class="panel panel-default panel-search">
+            <div class="panel-heading">
+                <h5 class="panel-title"><%=__("Search")%></h5>
+            </div>
+            <div class="panel-body">
+                <form action="<c:url value="/s"/>" method="get" class="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class=" input-group-addon" for="search-input">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </label>
+                            <input type="text" class="form-control" id="search-input" name="w" placeholder="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="panel panel-default panel-comment">
             <div class="panel-heading">
                 <h5 class="panel-title"><%=__("Recent Comments")%></h5>

@@ -328,4 +328,9 @@ public class PostService {
     public List<Post> listByPostIds(Set<Long> postIds) {
         return postDao.listByPostIds(postIds);
     }
+
+    public Page<Post> search(int pageIndex, int pageSize, String keywords) {
+        PageInfo<Post> pageInfo = PageHelper.startPage(pageIndex, pageSize).doSelectPageInfo(() -> postDao.search(keywords));
+        return new Page<>(pageInfo);
+    }
 }

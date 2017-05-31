@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LinBlog\n"
-"POT-Creation-Date: 2017-05-26 21:04+0800\n"
-"PO-Revision-Date: 2017-05-26 21:47+0800\n"
+"POT-Creation-Date: 2017-05-31 13:01+0800\n"
+"PO-Revision-Date: 2017-05-31 13:01+0800\n"
 "Last-Translator: YouthLin Chen <lin@youthlin.com>\n"
 "Language-Team: lin@youthlin.com\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=n==0? 0 : n==1 ? 1 : 2;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: webapp/WEB-INF/pages\n"
 
 #: webapp/WEB-INF/pages/404.jsp:21 webapp/WEB-INF/pages/die.jsp:21
-#: webapp/WEB-INF/pages/index.jsp:18 webapp/WEB-INF/pages/index.jsp:25
+#: webapp/WEB-INF/pages/index.jsp:18 webapp/WEB-INF/pages/index.jsp:27
 #: webapp/WEB-INF/pages/installed.jsp:30 webapp/WEB-INF/pages/post.jsp:30
 #: java/com/youthlin/blog/web/interceptor/InitInterceptor.java:41
 msgid "Home"
@@ -219,7 +219,7 @@ msgstr "\"显示名称\""
 #: webapp/WEB-INF/pages/admin/comment-edit.jsp:37
 #: webapp/WEB-INF/pages/admin/users-add.jsp:37
 #: webapp/WEB-INF/pages/admin/users-all.jsp:63
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:85
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:84
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:60
 #: webapp/WEB-INF/pages/post.jsp:162 webapp/WEB-INF/pages/register.jsp:57
 msgid "Email"
@@ -253,7 +253,7 @@ msgstr "状态"
 #: webapp/WEB-INF/pages/admin/post-category-edit.jsp:69
 #: webapp/WEB-INF/pages/admin/post-edit.jsp:140
 #: webapp/WEB-INF/pages/admin/settings-general.jsp:26
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:116
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:115
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:100
 msgid "Update"
 msgstr "更新"
@@ -281,7 +281,7 @@ msgid "Recent Published"
 msgstr "最近发布"
 
 #: webapp/WEB-INF/pages/admin/index.jsp:60
-#: webapp/WEB-INF/pages/include/sidebar.jsp:19
+#: webapp/WEB-INF/pages/include/sidebar.jsp:36
 msgid "Recent Comments"
 msgstr "近期评论"
 
@@ -626,7 +626,7 @@ msgstr "\"存草稿\""
 
 #: webapp/WEB-INF/pages/admin/post-write.jsp:103
 msgid ""
-"You can not publish post, but can save draft or submit to pending according "
+"You can not publish post, but can save draft or submit to pedning according "
 "to your role."
 msgstr "由于您的权限限制，您只能保存草稿或提交文章审核而不能发布文章。"
 
@@ -683,9 +683,9 @@ msgstr "添加用户"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:29
 #: webapp/WEB-INF/pages/admin/users-all.jsp:61
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:45
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:44
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:42
-#: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:53
+#: webapp/WEB-INF/pages/install.jsp:47 webapp/WEB-INF/pages/login.jsp:52
 #: webapp/WEB-INF/pages/register.jsp:53
 msgid "Username"
 msgstr "用户名"
@@ -696,14 +696,14 @@ msgstr "添加后用户名不可更改。"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:43
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:81
-#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:58
+#: webapp/WEB-INF/pages/install.jsp:55 webapp/WEB-INF/pages/login.jsp:57
 #: webapp/WEB-INF/pages/register.jsp:61
 msgid "Password"
 msgstr "密码"
 
 #: webapp/WEB-INF/pages/admin/users-add.jsp:51
 #: webapp/WEB-INF/pages/admin/users-all.jsp:64
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:53
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:52
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:50
 msgid "Role"
 msgstr "角色"
@@ -746,31 +746,31 @@ msgstr ""
 "'您可以在 <a href=\"http://cn.gravatar.com\" target=\"_blank\">Gravatar.com</"
 "a> 更改头像'"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:48
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:47
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:45
 msgid "Username can not be modified."
 msgstr "用户名不可更改。"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:62
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:61
 msgid "You can not edit yourself or super admin's role."
 msgstr "您不能编辑自己或管理员的角色。"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:91
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:90
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:66
 msgid "Url"
 msgstr "网址"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:97
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:96
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:73
 msgid "Display name"
 msgstr "显示名称"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:105
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:104
 #: webapp/WEB-INF/pages/admin/users-profile.jsp:90
 msgid "New password"
 msgstr "新密码"
 
-#: webapp/WEB-INF/pages/admin/users-edit.jsp:109
+#: webapp/WEB-INF/pages/admin/users-edit.jsp:108
 msgid "Leave this filed blank if you does't need change the user's password."
 msgstr "若不需更改该用户密码，请将此输入项留空。"
 
@@ -814,7 +814,7 @@ msgid "Profile"
 msgstr "个人资料"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:56
-#: webapp/WEB-INF/pages/include/sidebar.jsp:114
+#: webapp/WEB-INF/pages/include/sidebar.jsp:131
 msgid "Log out"
 msgstr "登出"
 
@@ -827,7 +827,7 @@ msgid "New Post"
 msgstr "写文章"
 
 #: webapp/WEB-INF/pages/common/admin/header.jsp:88
-#: webapp/WEB-INF/pages/include/sidebar.jsp:59
+#: webapp/WEB-INF/pages/include/sidebar.jsp:76
 msgid "Categories"
 msgstr "分类目录"
 
@@ -851,71 +851,104 @@ msgstr "工具"
 msgid "Settings"
 msgstr "设置"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:75
+#: webapp/WEB-INF/pages/include/sidebar.jsp:19
+msgid "Search"
+msgstr "搜索"
+
+#: webapp/WEB-INF/pages/include/sidebar.jsp:92
 msgid "Tags"
 msgstr "标签"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:88
+#: webapp/WEB-INF/pages/include/sidebar.jsp:105
 msgid "Archive"
 msgstr "归档"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:107
+#: webapp/WEB-INF/pages/include/sidebar.jsp:124
 msgid "Meta"
 msgstr "功能"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:113
+#: webapp/WEB-INF/pages/include/sidebar.jsp:130
 msgid "Dashboard"
 msgstr "仪表盘"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:117
-#: webapp/WEB-INF/pages/login.jsp:19 webapp/WEB-INF/pages/register.jsp:19
+#: webapp/WEB-INF/pages/include/sidebar.jsp:134
+#: webapp/WEB-INF/pages/login.jsp:18 webapp/WEB-INF/pages/register.jsp:19
 msgid "Login"
 msgstr "登录"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:118
-#: webapp/WEB-INF/pages/login.jsp:76 webapp/WEB-INF/pages/register.jsp:66
+#: webapp/WEB-INF/pages/include/sidebar.jsp:135
+#: webapp/WEB-INF/pages/login.jsp:75 webapp/WEB-INF/pages/register.jsp:66
 msgid "Register"
 msgstr "注册"
 
-#: webapp/WEB-INF/pages/include/sidebar.jsp:122
+#: webapp/WEB-INF/pages/include/sidebar.jsp:141
 #, java-format
 msgid "Powered By {0}"
 msgstr "Powered By {0}"
 
-#: webapp/WEB-INF/pages/index.jsp:44
+#: webapp/WEB-INF/pages/index.jsp:25
+msgid "\"Home\""
+msgstr "\"首页\""
+
+#: webapp/WEB-INF/pages/index.jsp:30
+msgid "\"Post of author\""
+msgstr "“作者发布的文章”"
+
+#: webapp/WEB-INF/pages/index.jsp:37
+msgid "\"Post of taxonomy\""
+msgstr "“分类法之下的文章”"
+
+#: webapp/WEB-INF/pages/index.jsp:50
+msgid "\"Post of year\""
+msgstr "“该年份的文章”"
+
+#: webapp/WEB-INF/pages/index.jsp:56
+msgid "\"Post of month\""
+msgstr "“该月份下的文章”"
+
+#: webapp/WEB-INF/pages/index.jsp:62
+msgid "\"Search Result\""
+msgstr "\"搜索结果\""
+
+#: webapp/WEB-INF/pages/index.jsp:65
+#, java-format
+msgid "\"Used {0} ms.\""
+msgstr "用时 {0} 毫秒"
+
+#: webapp/WEB-INF/pages/index.jsp:70
 #, java-format
 msgid "Page {0} "
 msgstr "第 {0} 页 "
 
-#: webapp/WEB-INF/pages/index.jsp:60 webapp/WEB-INF/pages/post.jsp:41
+#: webapp/WEB-INF/pages/index.jsp:86 webapp/WEB-INF/pages/post.jsp:41
 msgid "\"Published Date:\""
 msgstr "\"发布时间：\""
 
-#: webapp/WEB-INF/pages/index.jsp:70 webapp/WEB-INF/pages/post.jsp:50
+#: webapp/WEB-INF/pages/index.jsp:96 webapp/WEB-INF/pages/post.jsp:50
 msgid "\"Author:\""
 msgstr "\"作者:\""
 
-#: webapp/WEB-INF/pages/index.jsp:78 webapp/WEB-INF/pages/post.jsp:57
+#: webapp/WEB-INF/pages/index.jsp:104 webapp/WEB-INF/pages/post.jsp:57
 msgid "\"Comment Count:\""
 msgstr "\"评论数量\""
 
-#: webapp/WEB-INF/pages/index.jsp:83 webapp/WEB-INF/pages/post.jsp:63
+#: webapp/WEB-INF/pages/index.jsp:109 webapp/WEB-INF/pages/post.jsp:63
 msgid "\"Category:\""
 msgstr "\"分类目录：\""
 
-#: webapp/WEB-INF/pages/index.jsp:95 webapp/WEB-INF/pages/post.jsp:75
+#: webapp/WEB-INF/pages/index.jsp:121 webapp/WEB-INF/pages/post.jsp:75
 msgid "\"Tags:\""
 msgstr "\"标签：\""
 
-#: webapp/WEB-INF/pages/index.jsp:113
+#: webapp/WEB-INF/pages/index.jsp:139
 msgid "Read More"
 msgstr "阅读全文"
 
-#: webapp/WEB-INF/pages/index.jsp:126 webapp/WEB-INF/pages/index.jsp:132
+#: webapp/WEB-INF/pages/index.jsp:152 webapp/WEB-INF/pages/index.jsp:158
 msgid "Previous Page"
 msgstr "上一页"
 
-#: webapp/WEB-INF/pages/index.jsp:141 webapp/WEB-INF/pages/index.jsp:147
+#: webapp/WEB-INF/pages/index.jsp:167 webapp/WEB-INF/pages/index.jsp:173
 msgid "Next Page"
 msgstr "下一页"
 
@@ -976,20 +1009,20 @@ msgid ""
 "database tables first and then restart the web container."
 msgstr "您似乎已经安装过。若要重新安装，请删除数据库表，并重启 Web 容器。"
 
-#: webapp/WEB-INF/pages/installed.jsp:31 webapp/WEB-INF/pages/login.jsp:70
+#: webapp/WEB-INF/pages/installed.jsp:31 webapp/WEB-INF/pages/login.jsp:69
 msgid "Log In"
 msgstr "登录"
 
-#: webapp/WEB-INF/pages/login.jsp:66
+#: webapp/WEB-INF/pages/login.jsp:65
 msgid "Remember Me"
 msgstr "记住我"
 
-#: webapp/WEB-INF/pages/login.jsp:75
+#: webapp/WEB-INF/pages/login.jsp:74
 msgid "Lost your password?"
 msgstr "忘记密码？"
 
 #. TRANSLATORS: 0. site name.
-#: webapp/WEB-INF/pages/login.jsp:77 webapp/WEB-INF/pages/register.jsp:72
+#: webapp/WEB-INF/pages/login.jsp:76 webapp/WEB-INF/pages/register.jsp:72
 #, java-format
 msgid "&larr; Back to {0}"
 msgstr "&larr; 返回 {0}"
@@ -1113,7 +1146,7 @@ msgstr "别名已被其他条目使用。"
 #: java/com/youthlin/blog/support/RssFeedView.java:65
 msgctxt "author name"
 msgid "Unknown"
-msgstr ""
+msgstr "佚名"
 
 #: java/com/youthlin/blog/web/LoginController.java:43
 msgid "Username, password are all required."
@@ -1150,7 +1183,7 @@ msgstr "您似乎禁用了 JavaScript, 但我们需要用到它。"
 
 #. TRANSLATORS: 0: username
 #: java/com/youthlin/blog/web/SetUpController.java:60
-#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:48
+#: java/com/youthlin/blog/web/interceptor/CheckLoginInterceptor.java:52
 #, java-format
 msgid "{0}&#39;Blog"
 msgstr "{0} 的博客"

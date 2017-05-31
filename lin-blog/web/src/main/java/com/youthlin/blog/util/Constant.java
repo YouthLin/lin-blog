@@ -49,6 +49,7 @@ public class Constant {
     // pageable
     public static final int DEFAULT_PAGE_INDEX = 1;
     public static final int DEFAULT_PAGE_SIZE = 5;
+    public static final int DEFAULT_FRONT_PAGE_SIZE = 3;
 
     // date
     public static final String YYYY_MM = "YYYY-MM";

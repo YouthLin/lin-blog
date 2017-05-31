@@ -192,4 +192,17 @@
         </if>
     </select>
 
+    <select id="search" resultMap="postMap">
+        SELECT DISTINCT
+        <include refid="all"/>
+        FROM posts
+        WHERE 1!=1
+        <if test="keywords != null">
+            OR post_content LIKE CONCAT('%',#{keywords},'%')
+            OR post_title LIKE CONCAT('%',#{keywords},'%')
+            OR post_excerpt LIKE CONCAT('%',#{keywords},'%')
+        </if>
+        ORDER BY post_date DESC
+    </select>
+
 </mapper>
