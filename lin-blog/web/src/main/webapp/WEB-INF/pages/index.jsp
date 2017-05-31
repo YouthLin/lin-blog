@@ -143,7 +143,7 @@
                 </div>
                 <%-- paging --%>
                 <c:if test="${postPage.totalPage > 1}">
-                    <nav aria-label="Navigation">
+                    <nav aria-label="Navigation" class="margin-left-right-p1">
                         <ul class="pager">
                             <c:choose>
                                 <c:when test="${postPage.currentPage > 1}">

@@ -85,7 +85,7 @@
                         <div class="post-content"> ${post.postContent} </div>
 
                     </article>
-                    <div class="border-ccc margin-padding-p1 well" id="post-nav">
+                    <div class="margin-left-right-p1" id="post-nav">
                         <nav aria-label="Navigation">
                             <ul class="pager">
                                 <c:choose>
@@ -128,7 +128,7 @@
                                 <%--@elvariable id="name" type="java.lang.String"--%>
                                 <%--@elvariable id="email" type="java.lang.String"--%>
                                 <%--@elvariable id="url" type="java.lang.String"--%>
-                                <form class="form-horizontal border-ccc margin-padding-p1 well"
+                                <form class="form-horizontal border-top-ccc margin-padding-p1"
                                       id="commentform" method="post">
                                     <h4 class="margin-padding-p1"><%=__("Leave your comment")%>
                                     <small><a href="javascript:cancel();" class="hide" id="to-cancel">

@@ -31,7 +31,7 @@ public class CommentTag extends SimpleTagSupport {
     @Override
     public void doTag() throws JspException, IOException {
         JspWriter out = getJspContext().getOut();
-        out.println("<div id=\"comments\" class=\"border-ccc margin-padding-p1 well\">");
+        out.println("<div id=\"comments\" class=\"margin-left-right-p1 border-top-ccc\">");
         out.println("  <h4 class=\"margin-padding-p1\">"
                 /*TRANSLATORS: 0, comment count; 1, post title. */
                 + _n("One Comment On {1} ", "{0} Comments On {1} ",
