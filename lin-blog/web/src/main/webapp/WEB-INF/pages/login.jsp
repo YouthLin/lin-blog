@@ -1,5 +1,4 @@
 <%@page import="static com.youthlin.utils.i18n.Translation.*" %>
-<%@ page import="org.joda.time.DateTime" %>
 <%@ page import="com.youthlin.blog.util.Constant" %>
 <%--@elvariable id="msg" type="String"--%>
 <%--@elvariable id="error" type="String"--%>

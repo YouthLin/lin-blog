@@ -48,7 +48,11 @@ public class ServletUtil {
     }
 
     public static String base64Decode(String base64String) {
-        byte[] decode = Base64.getDecoder().decode(base64String.getBytes(Charsets.UTF_8));
+        byte[] decode = new byte[0];
+        try {
+            decode = Base64.getDecoder().decode(base64String.getBytes(Charsets.UTF_8));
+        } catch (Exception ignore) {
+        }
         return new String(decode);
     }
 

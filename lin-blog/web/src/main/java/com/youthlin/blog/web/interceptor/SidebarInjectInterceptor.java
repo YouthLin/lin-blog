@@ -15,6 +15,8 @@ import com.youthlin.blog.service.PostService;
 import com.youthlin.blog.service.TagService;
 import com.youthlin.blog.service.UserService;
 import com.youthlin.blog.util.Constant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -30,6 +32,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
+    private static final Logger logger = LoggerFactory.getLogger(SidebarInjectInterceptor.class);
     private int recentCommentsCount = 6;
     @Resource
     private UserService userService;
@@ -48,14 +51,16 @@ public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
         if (loginInfo != null) {
             String userName = loginInfo.getUserName();
             User user = userService.findByUserName(userName);
-            UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
-            if (roleMeta != null) {
-                request.setAttribute(Constant.K_ROLE, Role.nameOf(roleMeta.getMetaValue()));
+            if (user != null) {
+                UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
+                if (roleMeta != null) {
+                    request.setAttribute(Constant.K_ROLE, Role.nameOf(roleMeta.getMetaValue()));
+                }
+                request.setAttribute(Constant.USER, user);
+                request.setAttribute(Constant.NAME, user.getDisplayName());
+                request.setAttribute(Constant.URL, user.getUserUrl());
+                request.setAttribute(Constant.EMAIL, user.getUserEmail());
             }
-            request.setAttribute(Constant.USER, user);
-            request.setAttribute(Constant.NAME, user.getDisplayName());
-            request.setAttribute(Constant.URL, user.getUserUrl());
-            request.setAttribute(Constant.EMAIL, user.getUserEmail());
         }
         return super.preHandle(request, response, handler);
     }
@@ -68,18 +73,21 @@ public class SidebarInjectInterceptor extends HandlerInterceptorAdapter {
         if (!request.getMethod().equalsIgnoreCase("GET")) {
             return;
         }
-        LinkedHashMap<Comment, Post> recentComment = commentService.getRecentComment(recentCommentsCount);
-        modelAndView.addObject("recentCommentMap", recentComment);
+        try {
+            LinkedHashMap<Comment, Post> recentComment = commentService.getRecentComment(recentCommentsCount);
+            modelAndView.addObject("recentCommentMap", recentComment);
 
-        List<Category> categoryList = categoryService.listCategoriesByOrder();
-        modelAndView.addObject("categoryList", categoryList);
+            List<Category> categoryList = categoryService.listCategoriesByOrder();
+            modelAndView.addObject("categoryList", categoryList);
 
-        List<Taxonomy> tagList = tagService.listAllTag();
-        modelAndView.addObject("tagList", tagList);
+            List<Taxonomy> tagList = tagService.listAllTag();
+            modelAndView.addObject("tagList", tagList);
 
-        LinkedHashMultiset<String> months = postService.archiveCount();
-        modelAndView.addObject("months", months);
-
+            LinkedHashMultiset<String> months = postService.archiveCount();
+            modelAndView.addObject("months", months);
+        } catch (Exception e) {
+            logger.warn("侧栏数据异常！", e);
+        }
     }
 
     public int getRecentCommentsCount() {

@@ -37,6 +37,10 @@ public class CheckLoginInterceptor extends HandlerInterceptorAdapter {
         }
         String userName = loginInfo.getUserName();
         User user = userService.findByUserName(userName);
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return false;
+        }
         UserMeta roleMeta = userService.findMetaByUserIdAndMetaKey(user.getUserId(), Constant.K_ROLE);
         if (roleMeta != null) {
             request.setAttribute(Constant.K_ROLE, Role.nameOf(roleMeta.getMetaValue()));

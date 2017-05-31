@@ -44,9 +44,9 @@
                                             </c:otherwise>
                                         </c:choose> :
                                     </strong>
-                                        ${blog:sub(comment.commentContent,50)}
                                     <a href="<c:url value="/post/${post.postId}#comment-${comment.commentId}"/>"
-                                       title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>${content}</a>
+                                       title='${post.postTitle} at <fmt:formatDate value="${comment.commentDate}" pattern="YYYY-MM-dd HH:mm:ss"/>'>
+                                            ${blog:sub(comment.commentContent,50)}</a>
                                 </div>
                             </div>
                         </li>
