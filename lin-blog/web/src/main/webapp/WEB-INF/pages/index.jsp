@@ -19,7 +19,7 @@
 </head>
 <body>
 <div id="wrap">
-    <div class="page container-fluid">
+    <div class="page">
         <%@ include file="include/header.jsp" %>
         <ol class="breadcrumb">
             <li aria-label=<%=__("\"Home\"")%>>
@@ -71,7 +71,7 @@
                 </li>
             </c:if>
         </ol>
-        <div class="content-wrap row">
+        <div class="content-wrap row container-fluid">
             <main id="page-main" class="col-sm-9">
                 <div class="main-content">
                     <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
@@ -131,7 +131,7 @@
                                 <c:choose>
                                     <c:when test="${not empty post.postExcerpt}">${post.postExcerpt}</c:when>
                                     <c:otherwise>
-                                        ${blog:sub(post.postContent,300)}
+                                        ${blog:sub(post.postContent,500)}
                                     </c:otherwise>
                                 </c:choose>
                             </div>

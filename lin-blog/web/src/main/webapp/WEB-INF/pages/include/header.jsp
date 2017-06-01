@@ -8,8 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header id="page-header" class="jumbotron">
-    <div class="container">
+    <div class="container page-header-container">
         <h1><a href="<c:url value="/"/>">${siteTitle}</a></h1>
-
     </div>
 </header>

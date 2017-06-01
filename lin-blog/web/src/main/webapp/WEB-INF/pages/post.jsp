@@ -24,13 +24,13 @@
     <%--@elvariable id="next" type="com.youthlin.blog.model.po.Post"--%>
     <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
     <%--@elvariable id="topLevelCommentNodeList" type="java.util.List"--%>
-    <div class="page container-fluid">
+    <div class="page ">
         <%@ include file="include/header.jsp" %>
         <ol class="breadcrumb">
             <li><a href="<c:url value="/"/>"><%=__("Home")%></a></li>
             <li class="active">${post.postTitle}</li>
         </ol>
-        <div class="content-wrap row">
+        <div class="content-wrap row container-fluid">
             <main id="page-main" class="col-sm-9">
                 <div class="main-content">
                     <article id="post-${post.postId}"

@@ -175,6 +175,29 @@ a.active {
 
 /* endregion */
 
+/* region home page */
+#page-header {
+    background: #f1f1f1 url("http://cn.bing.com/ImageResolution.aspx?w=1920&h=1200") no-repeat center;
+    background-size: cover;
+}
+
+.page .page-header-container {
+    background-color: rgba(255, 255, 255, .4);
+}
+
+.page .page-header-container a {
+    color: #333;
+}
+
+.page .page-header-container a:hover {
+    color: #337ab7;
+}
+
+/* endregion */
+/* region dashboard aside */
+
+/* endregion */
+
 /* region 导航条 */
 body.nav-fixed {
     padding-top: 50px;
@@ -234,6 +257,8 @@ body.nav-fixed {
     top: 0;
     padding: 50px 0 0 0;
     overflow-y: auto;
+    background: #f1f1f1 url(http://cn.bing.com/ImageResolution.aspx?h=1920&w=1200) no-repeat;
+    background-size: cover;
 }
 
 #menu a {
@@ -242,6 +267,11 @@ body.nav-fixed {
     height: 40px;
     line-height: 40px;
     padding: 0 20px;
+    color: #ccc;
+}
+
+#menu a.active {
+    color: #fff;
 }
 
 #menu a:hover {
@@ -250,7 +280,13 @@ body.nav-fixed {
 
 a.parent {
     font-weight: bolder;
-    background: #333;
+    font-size: larger;
+    background: rgba(51, 51, 51, .8);
+}
+
+#menu .panel {
+    background-color: rgba(51, 51, 51, .7);
+    border-radius: 0;
 }
 
 /* 子菜单 */
@@ -262,7 +298,7 @@ a.parent {
 }
 
 .panel-menu a.active {
-    background: #48c;
+    background: rgba(68, 136, 204, .7);
 }
 
 .panel-menu a.active:after {
