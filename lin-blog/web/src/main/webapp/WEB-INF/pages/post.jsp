@@ -27,10 +27,12 @@
     <div class="page ">
         <%@ include file="include/header.jsp" %>
         <ol class="breadcrumb">
-            <li><a href="<c:url value="/"/>"><%=__("Home")%></a></li>
+            <li aria-label=<%=__("\"Home\"")%>>
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <a href="<c:url value="/"/>"><%=__("Home")%></a></li>
             <li class="active">${post.postTitle}</li>
         </ol>
-        <div class="content-wrap row container-fluid">
+        <div class="content-wrap container-fluid">
             <main id="page-main" class="col-sm-9">
                 <div class="main-content">
                     <article id="post-${post.postId}"

@@ -71,7 +71,7 @@
                 </li>
             </c:if>
         </ol>
-        <div class="content-wrap row container-fluid">
+        <div class="content-wrap container-fluid">
             <main id="page-main" class="col-sm-9">
                 <div class="main-content">
                     <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
