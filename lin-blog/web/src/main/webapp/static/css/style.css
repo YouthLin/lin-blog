@@ -257,7 +257,7 @@ body.nav-fixed {
     top: 0;
     padding: 50px 0 0 0;
     overflow-y: auto;
-    background: #f1f1f1 url(http://cn.bing.com/ImageResolution.aspx?h=1920&w=1200) no-repeat;
+    background: #222 url(http://cn.bing.com/ImageResolution.aspx?h=1920&w=1200) no-repeat;
     background-size: cover;
 }
 
