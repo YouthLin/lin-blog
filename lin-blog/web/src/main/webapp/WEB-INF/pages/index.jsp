@@ -126,6 +126,15 @@
                                     </c:if>
                                 </c:forEach>
                                 </span>
+
+                                    <%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
+                                    <%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+                                <c:if test="${((not empty user) and (post.postAuthorId eq user.userId)) or ( (not empty role) and role.code ge 30 )}">
+                                <span class="meta-info meta-info-tag" aria-label="Edit">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    <a href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a>
+                                </span>
+                                </c:if>
                             </header>
                             <div class="post-content">
                                 <c:choose>

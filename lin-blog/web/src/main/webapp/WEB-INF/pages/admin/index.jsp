@@ -2,7 +2,9 @@
 <%@ taglib prefix="blog" uri="http://youthlin.com/linblog/tag/blog" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation.__" %>
 <%@ page import="static com.youthlin.utils.i18n.Translation._n" %>
-<%@ page import="static com.youthlin.utils.i18n.Translation._x" %><%--
+<%--@elvariable id="user" type="com.youthlin.blog.model.po.User"--%>
+<%--@elvariable id="role" type="com.youthlin.blog.model.enums.Role"--%>
+<%--
   Created by IntelliJ IDEA.
   User: lin
   Date: 17-5-5
@@ -41,10 +43,13 @@
                                     <strong>
                                         <a target="_blank"
                                            href="<c:url value="/post/${post.postId}"/>">${post.postTitle}</a></strong>
-                                    <small>
-                                        | <a
-                                            href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a>
-                                    </small>
+                                    <c:if test="${post.postAuthorId eq user.userId or role.code ge 30}">
+                                        <small>
+                                            | <a
+                                                href="<c:url value="/admin/post/edit?postId=${post.postId}"/>"><%=__("Edit")%></a>
+                                        </small>
+                                    </c:if>
+
                                 </div>
                             </div>
                         </li>
@@ -124,21 +129,49 @@
                     %>
                     <div class="col-sm-6 count count-posts">
                         <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;
-                        <a href="<c:url value="/admin/post"/>"><%=_n("One Post", "{0} Posts", postCount, postCount)%></a>
+                        <c:choose>
+                            <c:when test="${role.code ge 20}">
+                                <a href="<c:url value="/admin/post"/>"><%=_n("One Post", "{0} Posts", postCount, postCount)%></a>
+                            </c:when>
+                            <c:otherwise>
+                                <%=_n("One Post", "{0} Posts", postCount, postCount)%>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="col-sm-6 count count-comments">
                         <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;
-                        <a href="<c:url value="/admin/comment/all"/>">
-                            <%=_n("One Comment", "{0} Comments", commentCount, commentCount)%></a>
+                        <c:choose>
+                            <c:when test="${role.code ge 30}">
+                                <a href="<c:url value="/admin/comment/all"/>">
+                                    <%=_n("One Comment", "{0} Comments", commentCount, commentCount)%></a>
+                            </c:when>
+                            <c:otherwise>
+                                <%=_n("One Comment", "{0} Comments", commentCount, commentCount)%>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="col-sm-6 count count-categories">
                         <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>&nbsp;
-                        <a href="<c:url value="/admin/post/category" />">
-                            <%=_n("One Category", "{0} Categories", categoryCount, categoryCount)%></a>
+                        <c:choose>
+                            <c:when test="${role.code ge 40}">
+                                <a href="<c:url value="/admin/post/category" />">
+                                    <%=_n("One Category", "{0} Categories", categoryCount, categoryCount)%></a>
+                            </c:when>
+                            <c:otherwise>
+                                <%=_n("One Category", "{0} Categories", categoryCount, categoryCount)%>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="col-sm-6 count count-tags">
                         <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>&nbsp;
-                        <a href="<c:url value="/admin/post/tag"/>"><%=_n("One Tag", "{0} Tags", tagCount, tagCount)%></a>
+                        <c:choose>
+                            <c:when test="${role.code ge 40}">
+                                <a href="<c:url value="/admin/post/tag"/>"><%=_n("One Tag", "{0} Tags", tagCount, tagCount)%></a>
+                            </c:when>
+                            <c:otherwise>
+                                <%=_n("One Tag", "{0} Tags", tagCount, tagCount)%>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>

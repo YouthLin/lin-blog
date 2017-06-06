@@ -71,6 +71,14 @@ li {
     list-style: none;
 }
 
+article ol li {
+    list-style-type: decimal;
+}
+
+article ul li {
+    list-style-type: circle;
+}
+
 textarea {
     max-width: 100%;
 }
