@@ -82,7 +82,7 @@ public class CommentTag extends SimpleTagSupport {
         out.println("    <li class=\"media border-ccc margin-padding-p1 comment-item comment-" + comment.getCommentId()
                 + " depth-" + node.getLevel() + "\" id=\"comment-" + comment.getCommentId() + "\">");
         out.println("      <div class=\"media-left\">");
-        out.println("        <img class=\"media-object\" src='" + ServletUtil.getGravatarUrl(comment.getCommentAuthorEmail(),40)
+        out.println("        <img class=\"media-object\" src='" + ServletUtil.getGravatarUrl(comment.getCommentAuthorEmail(), 40)
                 + "' alt=\"Gravatar\" width=\"40\" height=\"40\">");
         out.println("      </div>");
         out.println("      <div class=\"media-body\">");
@@ -102,10 +102,12 @@ public class CommentTag extends SimpleTagSupport {
         out.println("          </header>");
         out.println("          <div class=\"comment-cotent\">" + ServletUtil.filterXss(comment.getCommentContent()
                 .replaceAll("(\\n)?<br>(\\n)?", "\n").replaceAll("(\\r\\n|\\n)", "<br>")) + "</div>");
-        out.println("          <footer class=\"comment-meta comment-meta-footer\">");
-        out.println("            <span><a href=\"#commentform\" data-to='" + comment.getCommentId() + "' class='replay'>"
-                + __("Replay") + "</a></span>");
-        out.println("          </footer>");
+        if (post.getCommentOpen()) {
+            out.println("          <footer class=\"comment-meta comment-meta-footer\">");
+            out.println("            <span><a href=\"#commentform\" data-to='" + comment.getCommentId() + "' class='replay'>"
+                    + __("Replay") + "</a></span>");
+            out.println("          </footer>");
+        }
         out.println("        </article>");
         // endregion article
         processChildrenComment(node);

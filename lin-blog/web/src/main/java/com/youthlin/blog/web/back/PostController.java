@@ -414,9 +414,13 @@ public class PostController {
         }
         if (StringUtils.hasText(commentOpenStr)) {
             post.setCommentOpen(commentOpenStr.equals("on"));
+        } else {
+            post.setCommentOpen(false);
         }
         if (StringUtils.hasText(pingOpenStr)) {
             post.setPingOpen(pingOpenStr.equals("on"));
+        } else {
+            post.setPingOpen(false);
         }
         post.setPostPassword(password);
         post.setPostName(postName);

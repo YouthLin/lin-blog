@@ -71,11 +71,11 @@ li {
     list-style: none;
 }
 
-article ol li {
+article ol li, #editors ol li {
     list-style-type: decimal;
 }
 
-article ul li {
+article ul li, #editors ul li {
     list-style-type: circle;
 }
 

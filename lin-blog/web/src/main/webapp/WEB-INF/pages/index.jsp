@@ -76,6 +76,11 @@
                 <div class="main-content">
                     <%--@elvariable id="postPage" type="com.youthlin.blog.model.bo.Page"--%>
                     <%--@elvariable id="post" type="com.youthlin.blog.model.po.Post"--%>
+                    <c:if test="${(empty postPage) or (empty postPage.list) or (postPage.list.size() eq 0)}">
+                        <div class="text-info well well-lg">
+                            <%=__("No Posts.")%>
+                        </div>
+                    </c:if>
                     <c:forEach items="${postPage.list}" var="post">
                         <article id="post-${post.postId}"
                                  class="article article-${post.postId} border-ccc margin-padding-p1">
